@@ -22,9 +22,9 @@ public abstract class Property {
 	
 	public static String APPIUM_PORT;
 	
-	public static String APP_NORESET;
+	public static Boolean APP_NORESET;
 	
-	public static String APP_FULLRESET;
+	public static Boolean APP_FULLRESET;
 	
 	public static String HTML_REPORTER_PATH;
 	
@@ -48,20 +48,20 @@ public abstract class Property {
 		
 		try {
 			Properties properties = getProp();
-			DEVICE_NAME                = properties.getProperty("app.device.name");
-			PLATFORM_NAME              = properties.getProperty("app.apk.platformName");
-			PLATFORM_VERSION           = properties.getProperty("app.apk.platformVersion");
-			APP_PACKAGE                = properties.getProperty("app.apk.appPackage");
-			APP_ACTIVITY               = properties.getProperty("app.apk.appActivity");
-			APP_PATH                   = properties.getProperty("app.apk.path");
-			APPIUM_IP                  = properties.getProperty("app.appium.ip");
-			APPIUM_PORT                = properties.getProperty("app.appium.port");
-			APP_NORESET                = properties.getProperty("app.apk.noReset");
-			APP_FULLRESET              = properties.getProperty("app.apk.fullReset");
-			HTML_REPORTER_PATH         = properties.getProperty("extent.report.path");
-			HTML_REPORTER_NAME         = properties.getProperty("extent.report.name");
-			HTML_REPORTER_TITLE        = properties.getProperty("extent.report.title");
-			HTML_REPORTER_PAGE_NAME    = properties.getProperty("extent.report.page.name");
+			DEVICE_NAME                = properties.getProperty("app.device.name").trim();
+			PLATFORM_NAME              = properties.getProperty("app.apk.platformName").trim();
+			PLATFORM_VERSION           = properties.getProperty("app.apk.platformVersion").trim();
+			APP_PACKAGE                = properties.getProperty("app.apk.appPackage").trim();
+			APP_ACTIVITY               = properties.getProperty("app.apk.appActivity").trim();
+			APP_PATH                   = properties.getProperty("app.apk.path").trim();
+			APPIUM_IP                  = properties.getProperty("app.appium.ip").trim();
+			APPIUM_PORT                = properties.getProperty("app.appium.port").trim();
+			APP_NORESET                = Boolean.parseBoolean(properties.getProperty("app.apk.noReset").trim());
+			APP_FULLRESET              = Boolean.parseBoolean(properties.getProperty("app.apk.fullReset").trim());
+			HTML_REPORTER_PATH         = properties.getProperty("extent.report.path").trim();
+			HTML_REPORTER_NAME         = properties.getProperty("extent.report.name").trim();
+			HTML_REPORTER_TITLE        = properties.getProperty("extent.report.title").trim();
+			HTML_REPORTER_PAGE_NAME    = properties.getProperty("extent.report.page.name").trim();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
