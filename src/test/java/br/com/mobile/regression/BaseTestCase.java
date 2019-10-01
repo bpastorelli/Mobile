@@ -25,7 +25,7 @@ public class BaseTestCase {
 	}
 	
 	@AfterClass
-	public static void afterClass() throws IOException {
+	public static void afterClass() throws Exception {
 		
 		LogReport.finalizarReport();
 		setup.driverClose();

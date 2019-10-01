@@ -7,6 +7,7 @@ import java.net.URL;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import br.com.mobile.utils.Command;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -16,9 +17,11 @@ public class SetupEnviroment {
 	
 	protected static WebDriver driver;
 	
-	private DesiredCapabilities      caps;
+	private DesiredCapabilities caps;
 	
 	private AppiumDriverLocalService service;
+	
+	private static final String process = "Appium.exe";
 	
 	public WebDriver setupEnviroment() throws URISyntaxException {
 		
@@ -30,7 +33,6 @@ public class SetupEnviroment {
 		caps.setCapability("platformVersion", Property.PLATFORM_VERSION);
 		caps.setCapability("appPackage", Property.APP_PACKAGE);
 		caps.setCapability("appActivity", Property.APP_ACTIVITY);				
-		
 		service = AppiumDriverLocalService.buildService(new AppiumServiceBuilder().usingAnyFreePort());
 		
 		try {	
@@ -59,8 +61,12 @@ public class SetupEnviroment {
 		}
 	}	
 	
-	public void serviceStop() {
+	public void serviceStop() throws Exception {
 		
-		service.stop();
+		if(Command.isProcessRunning(process))
+			Command.killProcess(process);
+		
+		if(service.isRunning())
+			service.stop();
 	}	
 }
