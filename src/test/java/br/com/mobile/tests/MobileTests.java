@@ -19,6 +19,5 @@ format = {"pretty", "html:target/reports/cucumber/html",
 @ContextConfiguration(classes= AppConfiguration.class)
 public class MobileTests extends BaseTestCase {
 	
-	
 
 }

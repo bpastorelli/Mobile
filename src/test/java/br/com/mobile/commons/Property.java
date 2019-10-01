@@ -26,6 +26,14 @@ public abstract class Property {
 	
 	public static String APP_FULLRESET;
 	
+	public static String HTML_REPORTER_PATH;
+	
+	public static String HTML_REPORTER_NAME;
+	
+	public static String HTML_REPORTER_TITLE;
+	
+	public static String HTML_REPORTER_PAGE_NAME;
+	
 	private static final String PROP_FILE_CONFIG = "src/test/resources/config.properties";
 	
 	private static Properties getProp() throws IOException {
@@ -50,6 +58,9 @@ public abstract class Property {
 			APPIUM_PORT                = properties.getProperty("app.appium.port");
 			APP_NORESET                = properties.getProperty("app.apk.noReset");
 			APP_FULLRESET              = properties.getProperty("app.apk.fullReset");
+			HTML_REPORTER_PATH         = properties.getProperty("");
+			HTML_REPORTER_NAME         = properties.getProperty("");
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
