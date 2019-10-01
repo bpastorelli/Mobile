@@ -58,9 +58,10 @@ public abstract class Property {
 			APPIUM_PORT                = properties.getProperty("app.appium.port");
 			APP_NORESET                = properties.getProperty("app.apk.noReset");
 			APP_FULLRESET              = properties.getProperty("app.apk.fullReset");
-			HTML_REPORTER_PATH         = properties.getProperty("");
-			HTML_REPORTER_NAME         = properties.getProperty("");
-			
+			HTML_REPORTER_PATH         = properties.getProperty("extent.report.path");
+			HTML_REPORTER_NAME         = properties.getProperty("extent.report.name");
+			HTML_REPORTER_TITLE        = properties.getProperty("extent.report.title");
+			HTML_REPORTER_PAGE_NAME    = properties.getProperty("extent.report.page.name");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
