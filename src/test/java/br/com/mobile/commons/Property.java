@@ -50,7 +50,7 @@ public abstract class Property {
 			Properties properties = getProp();
 			DEVICE_NAME                = properties.getProperty("app.device.name");
 			PLATFORM_NAME              = properties.getProperty("app.apk.platformName");
-			PLATFORM_VERSION           = properties.getProperty("app.apk.version");
+			PLATFORM_VERSION           = properties.getProperty("app.apk.platformVersion");
 			APP_PACKAGE                = properties.getProperty("app.apk.appPackage");
 			APP_ACTIVITY               = properties.getProperty("app.apk.appActivity");
 			APP_PATH                   = properties.getProperty("app.apk.path");

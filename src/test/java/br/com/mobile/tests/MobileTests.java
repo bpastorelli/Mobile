@@ -10,7 +10,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = {"src/test/resources/features/Mobile.feature"}, 
-glue = { "br.com.b3.sinacor.stepDefinition" }, 
+glue = { "br.com.mobile.stepDefinition" }, 
 plugin = {"html:target/cucumber-html-report","json:target/cucumber.json"},
 format = {"pretty", "html:target/reports/cucumber/html",
         "json:target/cucumber.json", "usage:target/usage.jsonx", "junit:target/junit.xml"}

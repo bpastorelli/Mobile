@@ -18,24 +18,24 @@ public class SetupEnviroment {
 	
 	protected static WebDriver driver;
 	
-	private AppiumDriverLocalService service;
+	private DesiredCapabilities      caps;
 	
 	private AppiumServiceBuilder     builder;
 	
-	private DesiredCapabilities      caps;
+	private AppiumDriverLocalService service;
 	
 	public WebDriver setupEnviroment() throws URISyntaxException {
 		
 		caps = new DesiredCapabilities();
-		caps.setCapability("noReset", Property.APP_NORESET);
-		caps.setCapability("fullReset", Property.APP_FULLRESET);
-		caps.setCapability("deviceName", Property.DEVICE_NAME);
-		caps.setCapability("platformName", Property.PLATFORM_NAME);
-		caps.setCapability("platformVersion", Property.PLATFORM_VERSION);
-		caps.setCapability("appPackage", Property.APP_PACKAGE);
+		caps.setCapability("noReset", true);
+		caps.setCapability("fullReset", false);
+		caps.setCapability("deviceName", "fortuna3gdtv");
+		caps.setCapability("platformName", "android");
+		caps.setCapability("platformVersion", "5.0.2");
+		caps.setCapability("appPackage", "br.uol.noticias");
 		caps.setCapability("appActivity", Property.APP_ACTIVITY);				
 		
-		builder = new AppiumServiceBuilder();
+		/*builder = new AppiumServiceBuilder();
 		builder.withIPAddress(Property.APPIUM_IP);
 		builder.usingPort(Integer.parseInt(Property.APPIUM_PORT));
 		builder.withCapabilities(caps);
@@ -43,7 +43,7 @@ public class SetupEnviroment {
 		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
 
 		service = AppiumDriverLocalService.buildService(builder);
-		service.start();
+		service.start();*/
 		
 		try {	
 			
