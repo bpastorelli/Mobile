@@ -1,29 +1,30 @@
 package br.com.mobile.commons;
 
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import br.com.mobile.utils.Command;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
 public class SetupEnviroment {
 	
-	protected static WebDriver driver;
+	protected static AppiumDriver<MobileElement> driver;
 	
-	private DesiredCapabilities caps;
+	private DesiredCapabilities caps; 
+	
+	private AppiumServiceBuilder builder;
 	
 	private AppiumDriverLocalService service;
 	
 	private static final String process = "Appium.exe";
 	
-	public WebDriver setupEnviroment() throws URISyntaxException {
+	public WebDriver setupEnviroment() throws Exception {
 		
 		caps = new DesiredCapabilities();
 		caps.setCapability("noReset", Property.APP_NORESET);
@@ -32,15 +33,24 @@ public class SetupEnviroment {
 		caps.setCapability("platformName", Property.PLATFORM_NAME);
 		caps.setCapability("platformVersion", Property.PLATFORM_VERSION);
 		caps.setCapability("appPackage", Property.APP_PACKAGE);
-		caps.setCapability("appActivity", Property.APP_ACTIVITY);				
-		service = AppiumDriverLocalService.buildService(new AppiumServiceBuilder().usingAnyFreePort());
+		caps.setCapability("appActivity", Property.APP_ACTIVITY);
+		
+		builder = new AppiumServiceBuilder();
+		builder.withIPAddress(Property.APPIUM_IP);
+		builder.usingPort(Property.APPIUM_PORT);
+		builder.withCapabilities(caps);
+		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
+		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
+
+		service = AppiumDriverLocalService.buildService(builder);
+		service.start();
 		
 		try {	
 			
-			driver = new AndroidDriver<MobileElement>(new URL("http:" 
+			driver = new AppiumDriver<MobileElement>(new URL("http:" 
 					+ Property.APPIUM_IP 
 					+ ":" + Property.APPIUM_PORT + "/wd/hub"), caps);
-		} catch (MalformedURLException e) {
+		} catch (Exception e) {
 			System.out.println("Falha ao abrir o app:" + e.getMessage());
 		}
 		

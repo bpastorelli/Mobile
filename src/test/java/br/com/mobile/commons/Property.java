@@ -6,6 +6,8 @@ import java.util.Properties;
 
 public abstract class Property {
 	
+	public static Integer TIMEOUT;
+	
 	public static String DEVICE_NAME;
 	
 	public static String PLATFORM_NAME;
@@ -20,7 +22,7 @@ public abstract class Property {
 	
 	public static String APPIUM_IP;
 	
-	public static String APPIUM_PORT;
+	public static Integer APPIUM_PORT;
 	
 	public static Boolean APP_NORESET;
 	
@@ -48,6 +50,7 @@ public abstract class Property {
 		
 		try {
 			Properties properties = getProp();
+			TIMEOUT                    = Integer.parseInt(properties.getProperty("selenium.element.timeout"));
 			DEVICE_NAME                = properties.getProperty("app.device.name").trim();
 			PLATFORM_NAME              = properties.getProperty("app.apk.platformName").trim();
 			PLATFORM_VERSION           = properties.getProperty("app.apk.platformVersion").trim();
@@ -55,9 +58,9 @@ public abstract class Property {
 			APP_ACTIVITY               = properties.getProperty("app.apk.appActivity").trim();
 			APP_PATH                   = properties.getProperty("app.apk.path").trim();
 			APPIUM_IP                  = properties.getProperty("app.appium.ip").trim();
-			APPIUM_PORT                = properties.getProperty("app.appium.port").trim();
-			APP_NORESET                = Boolean.parseBoolean(properties.getProperty("app.apk.noReset").trim());
-			APP_FULLRESET              = Boolean.parseBoolean(properties.getProperty("app.apk.fullReset").trim());
+			APPIUM_PORT                = Integer.parseInt(properties.getProperty("app.appium.port"));
+			APP_NORESET                = Boolean.parseBoolean(properties.getProperty("app.apk.noReset"));
+			APP_FULLRESET              = Boolean.parseBoolean(properties.getProperty("app.apk.fullReset"));
 			HTML_REPORTER_PATH         = properties.getProperty("extent.report.path").trim();
 			HTML_REPORTER_NAME         = properties.getProperty("extent.report.name").trim();
 			HTML_REPORTER_TITLE        = properties.getProperty("extent.report.title").trim();

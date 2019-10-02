@@ -25,7 +25,7 @@ public class Command {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
 		String line;
 		while ((line = reader.readLine()) != null) {
-
+			
 			System.out.println(line);
 			if (line.contains(serviceName)) {
 				return true;

@@ -1,8 +1,5 @@
 package br.com.mobile.regression;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +15,7 @@ public class BaseTestCase {
 	public static SetupEnviroment setup = new SetupEnviroment();
 	
 	@BeforeClass
-	public static void beforeClass() throws IOException, URISyntaxException {
+	public static void beforeClass() throws Exception {
 		
 		Property.loadProperties();
 		setup.setupEnviroment();
