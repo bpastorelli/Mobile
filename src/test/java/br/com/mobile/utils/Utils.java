@@ -8,12 +8,12 @@ import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import br.com.mobile.commons.SetupEnviroment;
+import br.com.mobile.commons.SetupAndroid;
 import br.com.mobile.reports.LogReport;
 
 public class Utils {
 	
-	private static SetupEnviroment setup = new SetupEnviroment();
+	private static SetupAndroid setup = new SetupAndroid();
     
     public static String formatarNomeLog(String strLog) {
     	

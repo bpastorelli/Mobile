@@ -9,13 +9,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.commons.SetupEnviroment;
+import br.com.mobile.commons.SetupAndroid;
 import br.com.mobile.reports.LogReport;
 import br.com.mobile.utils.Utils;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class BasePage extends SetupEnviroment {
+public class BasePage extends SetupAndroid {
 
 	private static WebElement element;
 
@@ -186,6 +186,12 @@ public class BasePage extends SetupEnviroment {
 		return retorno;
 	}
 
+	/**
+	 * Aguarda um determinado texto na página independente do elemento.
+	 * 
+	 * @param text
+	 * @return Boolean
+	 */
 	public static boolean waitText(String text) {
 
 		boolean retorno = false;
@@ -203,6 +209,9 @@ public class BasePage extends SetupEnviroment {
 		return retorno;
 	}
 	
+	/**
+	 * Desliza a tela para a esquerda.
+	 */
 	public void toucheActionLeft() {
 		
 		try {

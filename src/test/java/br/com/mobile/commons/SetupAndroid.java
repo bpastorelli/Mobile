@@ -2,9 +2,9 @@ package br.com.mobile.commons;
 
 import java.net.URL;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import br.com.mobile.interfaces.SetupEnviroment;
 import br.com.mobile.utils.Command;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -12,7 +12,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
-public class SetupEnviroment {
+public class SetupAndroid implements SetupEnviroment {
 	
 	protected static AppiumDriver<MobileElement> driver;
 	
@@ -24,7 +24,7 @@ public class SetupEnviroment {
 	
 	private static final String process = "Appium.exe";
 	
-	public WebDriver setupEnviroment() throws Exception {
+	public AppiumDriver<MobileElement> setupEnviroment() {
 		
 		caps = new DesiredCapabilities();
 		caps.setCapability("noReset", Property.APP_NORESET);
@@ -57,7 +57,7 @@ public class SetupEnviroment {
 		return driver;
 	}
 	
-	public WebDriver getDriver() {
+	public AppiumDriver<MobileElement> getDriver() {
 		
 		return driver;
 	}

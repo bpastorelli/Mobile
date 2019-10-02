@@ -5,14 +5,14 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.commons.SetupEnviroment;
+import br.com.mobile.commons.SetupAndroid;
 import br.com.mobile.reports.LogReport;
 
 public class BaseTestCase {
 	
 	public static WebDriver driver;
 	
-	public static SetupEnviroment setup = new SetupEnviroment();
+	public static SetupAndroid setup = new SetupAndroid();
 	
 	@BeforeClass
 	public static void beforeClass() throws Exception {
