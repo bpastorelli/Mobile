@@ -13,7 +13,7 @@ Feature: Automacao Mobile
     Then Encontro o texto "Não perca nenhuma notícia!" na tela atual 
     
   @acessando_pula_introducao
-  Scenario: Primeiro acesso passando pela introducao
+  Scenario: Primeiro acesso navegando pela introducao e pulando a introducao
     Given Que eu quero testar "Primeiro acesso"
     And Desinstalo o aplicativo do dispositivo
     And Finalizo o aplicativo inicializado
