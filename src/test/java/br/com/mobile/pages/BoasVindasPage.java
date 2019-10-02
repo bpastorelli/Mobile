@@ -26,7 +26,7 @@ public class BoasVindasPage extends BasePageAndroid {
 		
 		for(int i = 0; i < qtde; i++) {			
 			toucheActionLeft();
-			LogReport.info("Visualizo a esquerda, tela " + (i + 1) + " de " + qtde + ".");
+			LogReport.info("Deslizo a esquerda, visualizo a tela " + (i + 1) + " de " + qtde + ".");
 		}
 	}
 	
@@ -34,7 +34,7 @@ public class BoasVindasPage extends BasePageAndroid {
 		
 		for(int i = 0; i < qtde; i++) {			
 			toucheActionRight();
-			LogReport.info("Visualizo a direita, tela " + (i + 1) + " de " + qtde + ".");
+			LogReport.info("Deslizo a direita, visualizo a tela " + (qtde - i) + " de " + qtde + ".");
 		}
 	}
 }
