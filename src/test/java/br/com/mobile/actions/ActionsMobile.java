@@ -7,9 +7,9 @@ public class ActionsMobile {
 	
 	private BoasVindasPage boasVindasPage = new BoasVindasPage();
 	
-	public void validarTextoPagina(String texto) {
+	public void validarTextoPagina(String textoEsperado, String mensagem) {
 		
-		LogReport.passFail(boasVindasPage.textoExibidoPagina(texto), "Carregamento do aplicatico");
+		LogReport.passFail(boasVindasPage.textoExibidoPagina(textoEsperado), mensagem);
 	}
 	
 	public void clicarBotao(String botao) {

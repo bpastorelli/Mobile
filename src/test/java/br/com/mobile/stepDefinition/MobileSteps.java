@@ -11,7 +11,7 @@ public class MobileSteps {
 	@When("^Encontro o texto (.*) na tela atual$")
 	public void abrir_aplicativo_na_tela(String texto) {
 		
-		actionsMobile.validarTextoPagina(texto);		
+		actionsMobile.validarTextoPagina(texto, "Texto esperado na pagina: " + texto);		
 	}
 	
 	@And("^Clico no botao (.*)$")
