@@ -21,46 +21,6 @@ public class Utils {
     	return strLogFormatado;
     }
     
-    public static String convertNumeroToNome(String numero) {
-    	
-    	String nome = null;
-    	
-    	switch(numero) {
-    		case "0":
-    			nome = "Zero";
-    			break;
-	    	case "1":
-	    		nome = "Um";
-	    		break;
-	    	case "2":
-	    		nome = "Dois";
-	    		break;	
-	    	case "3":
-	    		nome = "Três";
-	    		break;
-	    	case "4":
-	    		nome = "Quatro";
-	    		break;
-	    	case "5":
-	    		nome = "Cinco";
-	    		break;
-	    	case "6":
-	    		nome = "Seis";
-	    		break;
-	    	case "7":
-	    		nome = "Sete";
-	    		break;
-	    	case "8":
-	    		nome = "Oito";
-	    		break;
-	    	case "9":
-	    		nome = "Nove";
-	    		break;
-    	}
-    	
-    	return nome;
-    }
-    
     public static String getSystemVersion() {
     	
         Runtime rt; 
@@ -101,7 +61,7 @@ public class Utils {
            }
 
         } catch(IOException ioe) {   
-             System.err.println(ioe.getMessage());
+             log(ioe.getMessage());
         }
         
         return edition;
@@ -114,7 +74,7 @@ public class Utils {
     	try {
 			path = Thread.currentThread().getContextClassLoader().getResource(file).toURI();
 		} catch (Exception e) {
-			System.out.println("Falha ao obter o path para o arquivo " + file);
+			log("Falha ao obter o path para o arquivo " + file);
 		}
     	return path;
     }

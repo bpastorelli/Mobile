@@ -1,8 +1,8 @@
-#Author: your.email@your.domain.com
+#Author: brunopastorelli@hotmail.com
 
 @mobile
 Feature: Automacao Mobile
-  I want to use this template for my feature file
+  Feature de Testes para criação de framework de automção mobile.
 
   @acessando
   Scenario: Primeiro acesso

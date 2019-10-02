@@ -36,7 +36,7 @@ public class Command {
 	public void executeCommand(String command, Boolean updateListProcess) {
 
 		try {
-			Utils.log(command);
+			Utils.log("Executando o comando: " + command);
 			Process process = Runtime.getRuntime().exec(command);
 			logOutput(process.getInputStream(), "", updateListProcess);
 			logOutput(process.getErrorStream(), "Error: ", updateListProcess);

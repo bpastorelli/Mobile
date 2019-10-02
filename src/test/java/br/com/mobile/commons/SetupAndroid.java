@@ -36,6 +36,7 @@ public class SetupAndroid implements SetupEnviroment {
 		cmd.executeCommand("cmd /c netstat -ano | findstr " + Property.APPIUM_PORT);
 		cmd.killProcessPort();
 		
+		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		caps = new DesiredCapabilities();
 		caps.setCapability("noReset", Property.APP_NORESET);
 		caps.setCapability("fullReset", Property.APP_FULLRESET);
@@ -56,17 +57,19 @@ public class SetupAndroid implements SetupEnviroment {
 		
 		service = AppiumDriverLocalService.buildService(builder);
 		service.start();
+		Utils.log("[SUCESSO]Appium iniciado.");
 		
 		try {	
-			
+			Utils.log("[APLICATIVO]Iniciando o aplicativo...");
 			driver = new AppiumDriver<MobileElement>(new URL("http:" 
 					+ Property.APPIUM_IP 
 					+ ":" + Property.APPIUM_PORT + "/wd/hub"), caps);
 		} catch (Exception e) {
 			
-			Utils.log("[FALHA]Falha ao abrir o app:" + e.getMessage());
+			Utils.log("[FALHA]Falha ao iniciar o aplicativo:" + e.getMessage());
 		}
 		
+		Utils.log("[SUCESSO]Aplicativo iniciado com sucesso.");
 		return driver;
 	}
 	
@@ -100,8 +103,10 @@ public class SetupAndroid implements SetupEnviroment {
 	public void uninstallApp() {
 		
 		if(Property.APK_INSTALL) {			
-			Utils.log("[ENCERRAR]Desinstalando a APK do dispositivo.");
+			Utils.log("[DESINSTALAR APK]Desinstalando a APK do dispositivo.");
 			driver.removeApp(Property.APP_PACKAGE);
 		}
+		
+		Utils.log("[SUCESSO]APK desinstalada com sucesso.");
 	}	
 }
