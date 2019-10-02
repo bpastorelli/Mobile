@@ -21,5 +21,24 @@ public class ActionsMobile {
 		
 		boasVindasPage.deslizarParaEsquerda(qtde);
 	}
-
+	
+	public void deslizarParaDireita(int qtde) throws Exception {
+		
+		boasVindasPage.deslizarParaDireita(qtde);
+	}
+	
+	public void instalarApp() {
+		
+		boasVindasPage.setupEnviroment();
+	}
+	
+	public void finalizarApp() throws Exception {
+		
+		boasVindasPage.driverClose();
+	}
+	
+	public void desinstalarApp() {
+		
+		boasVindasPage.uninstallApp();
+	}
 }

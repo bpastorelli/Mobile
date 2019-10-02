@@ -21,9 +21,33 @@ public class MobileSteps {
 	}
 	
 	@And("^Deslizo para a esquerda e visualizo (.*) telas$")
-	public void delizo_para_direita(Integer qtde) throws Exception {
+	public void delizo_para_esquerda(Integer qtde) throws Exception {
 		
 		actionsMobile.deslizarParaEsquerda(qtde);
+	}
+	
+	@And("^Deslizo para a direita e visualizo (.*) telas$")
+	public void delizo_para_direita(Integer qtde) throws Exception {
+		
+		actionsMobile.deslizarParaDireita(qtde);
+	}
+	
+	@And("^Desinstalo o aplicativo do dispositivo$")
+	public void desinstalo_aplicativo_dispositivo() {
+		
+		actionsMobile.desinstalarApp();
+	}
+	
+	@And("^Reinstalo o aplicativo no dispositivo$")
+	public void reinstalo_aplicativo_dispositivo() {
+		
+		actionsMobile.instalarApp();
+	}
+	
+	@And("^Finalizo o aplicativo inicializado$")
+	public void finalizo_aplicativo_inicializado() throws Exception {
+		
+		actionsMobile.finalizarApp();
 	}
 
 }

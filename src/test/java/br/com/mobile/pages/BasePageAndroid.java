@@ -243,8 +243,21 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 
 	@Override
 	public void toucheActionRight() {
-		// TODO Auto-generated method stub
 		
+		try {
+			
+			Dimension size = driver.manage().window().getSize();
+			int startx = (int)(size.width * 0.1D);
+			int endx = (int)(size.width * 0.9D);
+			int starty = size.height / 2;
+			
+			@SuppressWarnings("rawtypes")
+			TouchAction<?> action = new TouchAction(driver);
+			action.press(PointOption.point(startx, starty)).moveTo(PointOption.point(endx, starty)).release().perform();
+		}catch(Exception e) {
+			
+			LogReport.fail("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")");
+		}		
 	}
 	
 	@Override

@@ -8,6 +8,7 @@ public class BoasVindasPage extends BasePageAndroid {
 	
 	public BoasVindasPage() {
 		
+		this.addElement("PULAR", By.id("tutorial_fragment_skip_button"));
 		this.addElement("IR PARA O APLICATIVO", By.id("tutorial_fragment_skip_button"));
 	}
 	
@@ -28,5 +29,12 @@ public class BoasVindasPage extends BasePageAndroid {
 			LogReport.info("Visualizo a tela " + (i + 1) + " de " + qtde + ".");
 		}
 	}
-
+	
+	public void deslizarParaDireita(int qtde) throws Exception {
+		
+		for(int i = 0; i < qtde; i++) {			
+			toucheActionRight();
+			LogReport.info("Visualizo a tela " + (i + 1) + " de " + qtde + ".");
+		}
+	}
 }
