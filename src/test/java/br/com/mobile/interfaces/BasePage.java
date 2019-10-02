@@ -96,6 +96,11 @@ public interface BasePage {
 	 */
 	void toucheActionRight();
 	
+	/**
+	 * Aguarda até o tempo informado de segundos.
+	 * 
+	 * @param segundos
+	 */
 	void wait(int segundos);
 
 }

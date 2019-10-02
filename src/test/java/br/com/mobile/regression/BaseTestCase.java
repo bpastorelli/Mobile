@@ -25,6 +25,7 @@ public class BaseTestCase {
 	public static void afterClass() throws Exception {
 		
 		LogReport.finalizarReport();
+		setup.uninstallApp();
 		setup.driverClose();
 		setup.serviceStop();
 	}

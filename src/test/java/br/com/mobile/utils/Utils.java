@@ -4,13 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
-import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
-import br.com.mobile.reports.LogReport;
+import java.util.Date;
 
 public class Utils {
+	
+	private static SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss:SSS");
     
     public static String formatarNomeLog(String strLog) {
     	
@@ -111,9 +112,9 @@ public class Utils {
     	URI path = null;
     	
     	try {
-			return Thread.currentThread().getContextClassLoader().getResource(file).toURI();
-		} catch (URISyntaxException e) {
-			LogReport.fail("Falha ao obter o path para o arquivo " + file);
+			path = Thread.currentThread().getContextClassLoader().getResource(file).toURI();
+		} catch (Exception e) {
+			System.out.println("Falha ao obter o path para o arquivo " + file);
 		}
     	return path;
     }
@@ -127,4 +128,13 @@ public class Utils {
         return true;
     }
     
+	/**
+	 * Printa o log no console
+	 * 
+	 * message Mensagem a ser exibida
+	 */
+	public static synchronized void log(String message) {
+
+		System.out.println(format.format(new Date()) + ": " + message);
+	}
 }

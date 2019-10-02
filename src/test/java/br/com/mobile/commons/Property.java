@@ -20,6 +20,8 @@ public abstract class Property {
 	
 	public static String APP_PATH;
 	
+	public static Boolean APK_INSTALL;
+	
 	public static String APPIUM_IP;
 	
 	public static Integer APPIUM_PORT;
@@ -49,6 +51,7 @@ public abstract class Property {
 	public static void loadProperties(){
 		
 		try {
+			
 			Properties properties = getProp();
 			TIMEOUT                    = Integer.parseInt(properties.getProperty("selenium.element.timeout"));
 			DEVICE_NAME                = properties.getProperty("app.device.name").trim();
@@ -57,6 +60,7 @@ public abstract class Property {
 			APP_PACKAGE                = properties.getProperty("app.apk.appPackage").trim();
 			APP_ACTIVITY               = properties.getProperty("app.apk.appActivity").trim();
 			APP_PATH                   = properties.getProperty("app.apk.path").trim();
+			APK_INSTALL                = Boolean.parseBoolean(properties.getProperty("app.apk.install"));
 			APPIUM_IP                  = properties.getProperty("app.appium.ip").trim();
 			APPIUM_PORT                = Integer.parseInt(properties.getProperty("app.appium.port"));
 			APP_NORESET                = Boolean.parseBoolean(properties.getProperty("app.apk.noReset"));

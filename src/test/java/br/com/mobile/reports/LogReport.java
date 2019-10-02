@@ -60,7 +60,6 @@ public class LogReport {
 					MediaEntityBuilder
 					.createScreenCaptureFromBase64String(scrFile)
 					.build());
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -93,9 +92,15 @@ public class LogReport {
 	
 	public static void info(String message) {
 		
+		info(message, true);
+	}
+	
+	public static void info(String message, Boolean print) {
+		
 		ExtentTest extentTest = getExtentTest();
 		extentTest.log(Status.INFO, message);
-		logPrint(message, Status.INFO);
+		if(print)
+			logPrint(message, Status.INFO);
 	}
 	
 	public static String efetuarPrintTela(String strLog) {
