@@ -12,7 +12,6 @@ import br.com.mobile.commons.Property;
 import br.com.mobile.commons.SetupAndroid;
 import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.reports.LogReport;
-import br.com.mobile.utils.Utils;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 
@@ -160,7 +159,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 		boolean retorno = false;
 		for (int i = 0; i < time; i++) {
 			if (!elemento.isDisplayed())
-				Utils.wait(1);
+				wait(1);
 			else
 				return true;
 		}
@@ -186,7 +185,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 		boolean retorno = false;
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!elemento.getText().contains(texto))
-				Utils.wait(1);
+				wait(1);
 			else
 				return true;
 		}
@@ -209,7 +208,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 
 			if (!driver.getPageSource().contains(text))
-				Utils.wait(1);
+				wait(1);
 			else
 				return true;
 		}
@@ -247,5 +246,17 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+    public void wait(int segundos) {
+        
+    	try {
+    		synchronized(getDriver()) {
+    			getDriver().wait(segundos * 1000);
+    		}
+    	}catch (InterruptedException e) {
+    		e.printStackTrace();
+    	}
+    }
 
 }

@@ -95,5 +95,7 @@ public interface BasePage {
 	 * Desliza a tela para a direita.
 	 */
 	void toucheActionRight();
+	
+	void wait(int segundos);
 
 }

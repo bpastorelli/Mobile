@@ -8,12 +8,9 @@ import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import br.com.mobile.commons.SetupAndroid;
 import br.com.mobile.reports.LogReport;
 
 public class Utils {
-	
-	private static SetupAndroid setup = new SetupAndroid();
     
     public static String formatarNomeLog(String strLog) {
     	
@@ -21,17 +18,6 @@ public class Utils {
     	DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd_MM_yy_HH_mm_ss");
     	String strLogFormatado = strLog.replace(" ", "_") + "_" + dataHoraAgora.format(formatoDataHora);
     	return strLogFormatado;
-    }
-    
-    public static void wait(int segundos) {
-    
-    	try {
-    		synchronized(setup.getDriver()) {
-    			setup.getDriver().wait(segundos * 1000);
-    		}
-    	}catch (InterruptedException e) {
-    		e.printStackTrace();
-    	}
     }
     
     public static String convertNumeroToNome(String numero) {
