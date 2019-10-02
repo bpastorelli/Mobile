@@ -103,7 +103,7 @@ public class Command {
 	}
 
 	/**
-	 * Finaliza um processo pela porta
+	 * Finaliza um processo pelo PID (Processo ID)
 	 */
 	public void killProcessPort() {
 
