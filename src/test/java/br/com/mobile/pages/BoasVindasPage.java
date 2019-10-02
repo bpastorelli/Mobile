@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 import br.com.mobile.reports.LogReport;
 
-public class BoasVindasPage extends BasePage {
+public class BoasVindasPage extends BasePageAndroid {
 	
 	public BoasVindasPage() {
 		

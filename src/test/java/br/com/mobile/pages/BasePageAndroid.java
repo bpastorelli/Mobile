@@ -10,12 +10,13 @@ import org.openqa.selenium.interactions.Actions;
 
 import br.com.mobile.commons.Property;
 import br.com.mobile.commons.SetupAndroid;
+import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.reports.LogReport;
 import br.com.mobile.utils.Utils;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class BasePage extends SetupAndroid {
+public class BasePageAndroid extends SetupAndroid implements BasePage{
 
 	private static WebElement element;
 
@@ -27,6 +28,7 @@ public class BasePage extends SetupAndroid {
 	 * @param name Nome que será atribuido ao elemento.
 	 * @param by   Condição de busca Id, Name e etc.
 	 */
+	@Override
 	public void addElement(String name, By by) {
 
 		mapElements.put(name, by);
@@ -38,7 +40,8 @@ public class BasePage extends SetupAndroid {
 	 * @param name Nome do elemento no mapa
 	 * @return WebElemento
 	 */
-	protected WebElement getElement(String name) {
+	@Override
+	public WebElement getElement(String name) {
 
 		By obj = null;
 		element = null;
@@ -58,7 +61,8 @@ public class BasePage extends SetupAndroid {
 	 * @param key
 	 * @return By
 	 */
-	private By getMap(String key) {
+	@Override
+	public By getMap(String key) {
 
 		By obj = null;
 
@@ -75,7 +79,8 @@ public class BasePage extends SetupAndroid {
 	 * @param by By.Id, By.Name, By.Xpath...
 	 * @return WebElement
 	 */
-	protected WebElement findElement(By by) {
+	@Override
+	public WebElement findElement(By by) {
 
 		element = null;
 		try {
@@ -92,7 +97,8 @@ public class BasePage extends SetupAndroid {
 	 * 
 	 * @param name Nome do elemento
 	 */
-	protected void clickElementByMapElements(String name) {
+	@Override
+	public void clickElementByMapElements(String name) {
 
 		try {
 			element = getElement(name);
@@ -109,7 +115,8 @@ public class BasePage extends SetupAndroid {
 	 * 
 	 * @param by Id, Name, Xpath...
 	 */
-	protected void clickElement(By by) {
+	@Override
+	public void clickElement(By by) {
 
 		element = null;
 
@@ -127,7 +134,8 @@ public class BasePage extends SetupAndroid {
 	 * 
 	 * @param name nome do elemento no mapa de elementos.
 	 */
-	protected void moveToElementClick(String name) {
+	@Override
+	public void moveToElementClick(String name) {
 
 		try {
 			element = getElement(name);
@@ -146,7 +154,8 @@ public class BasePage extends SetupAndroid {
 	 * @param time     Tempo limite de espera
 	 * @return Retorna true caso esteja visível ou false caso não esteja visível.
 	 */
-	public static boolean waitDisplayed(WebElement elemento, int time) {
+	@Override
+	public boolean waitDisplayed(WebElement elemento, int time) {
 
 		boolean retorno = false;
 		for (int i = 0; i < time; i++) {
@@ -170,7 +179,8 @@ public class BasePage extends SetupAndroid {
 	 * @return Retorna true caso o texto esteja presente e false caso não esteja
 	 *         presente.
 	 */
-	public static boolean waitTextElement(WebElement elemento, String texto) {
+	@Override
+	public boolean waitTextElement(WebElement elemento, String texto) {
 
 		// Aguarda por determinado texto por ate o tempo informado na vari�vel time.
 		boolean retorno = false;
@@ -192,7 +202,8 @@ public class BasePage extends SetupAndroid {
 	 * @param text
 	 * @return Boolean
 	 */
-	public static boolean waitText(String text) {
+	@Override
+	public boolean waitText(String text) {
 
 		boolean retorno = false;
 		for (int i = 0; i < Property.TIMEOUT; i++) {
@@ -212,6 +223,7 @@ public class BasePage extends SetupAndroid {
 	/**
 	 * Desliza a tela para a esquerda.
 	 */
+	@Override
 	public void toucheActionLeft() {
 		
 		try {
@@ -228,6 +240,12 @@ public class BasePage extends SetupAndroid {
 			
 			LogReport.fail("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")");
 		}
+	}
+
+	@Override
+	public void toucheActionRight() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
