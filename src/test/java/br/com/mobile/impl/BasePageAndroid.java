@@ -1,4 +1,4 @@
-package br.com.mobile.pages;
+package br.com.mobile.impl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,10 +7,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.touch.TouchActions;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.commons.SetupAndroid;
-import br.com.mobile.interfaces.BasePage;
+import br.com.mobile.pages.BasePage;
 import br.com.mobile.reports.LogReport;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
@@ -258,18 +258,51 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 			
 			LogReport.fail("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")");
 		}		
-	}
-	
-	@Override
-    public void wait(int segundos) {
-        
-    	try {
-    		synchronized(getDriver()) {
-    			getDriver().wait(segundos * 1000);
-    		}
-    	}catch (InterruptedException e) {
-    		e.printStackTrace();
-    	}
-    }
+	}	
 
+	@Override
+	public void touchActionTop() {
+		
+		try {
+			
+			Dimension size = driver.manage().window().getSize();
+			int x = (int)(size.width * 0.1D);
+			int y = (int)(size.width * 0.9D);
+			
+			TouchActions action = new TouchActions(driver);
+			action.up(x, y);
+		}catch(Exception e ) {
+			
+			LogReport.fail("[FALHA]Falha ao deslizar a tela para cima (" + e.getMessage() + ")");
+		}		
+	}
+
+	@Override
+	public void touchActionDown() {
+		
+		try {
+			
+			Dimension size = driver.manage().window().getSize();
+			int x = (int)(size.width * 0.9D);
+			int y = (int)(size.width * 0.1D);
+			
+			TouchActions action = new TouchActions(driver);
+			action.down(x, y);
+		}catch(Exception e ) {
+			
+			LogReport.fail("[FALHA]Falha ao deslizar a tela para cima (" + e.getMessage() + ")");
+		}	
+	}
+
+	@Override
+	public void wait(int segundos) {
+		
+		try {
+			synchronized(getDriver()) {
+				getDriver().wait(segundos * 1000);
+			}
+		}catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }

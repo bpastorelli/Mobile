@@ -1,11 +1,12 @@
-package br.com.mobile.commons;
+package br.com.mobile.impl;
 
 import java.io.File;
 import java.net.URL;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import br.com.mobile.interfaces.SetupEnviroment;
+import br.com.mobile.commons.Property;
+import br.com.mobile.commons.SetupEnviroment;
 import br.com.mobile.utils.Command;
 import br.com.mobile.utils.Utils;
 import io.appium.java_client.AppiumDriver;

@@ -1,4 +1,4 @@
-package br.com.mobile.interfaces;
+package br.com.mobile.commons;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;

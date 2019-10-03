@@ -1,4 +1,4 @@
-package br.com.mobile.interfaces;
+package br.com.mobile.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -95,6 +95,16 @@ public interface BasePage {
 	 * Desliza a tela para a direita.
 	 */
 	void toucheActionRight();
+	
+	/**
+	 * Desliza a tela para cima.
+	 */	
+	void touchActionTop();
+	
+	/**
+	 * Desliza a tela para baixo.
+	 */
+	void touchActionDown();
 	
 	/**
 	 * Aguarda até o tempo informado de segundos.

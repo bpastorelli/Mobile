@@ -5,7 +5,7 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.commons.SetupAndroid;
+import br.com.mobile.impl.SetupAndroid;
 import br.com.mobile.reports.LogReport;
 
 public class BaseTestCase {
