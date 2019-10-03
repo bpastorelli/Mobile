@@ -2,7 +2,7 @@ package br.com.mobile.pages;
 
 import org.openqa.selenium.By;
 
-import br.com.mobile.impl.BasePageAndroid;
+import br.com.mobile.implementation.BasePageAndroid;
 import br.com.mobile.reports.LogReport;
 
 public class BoasVindasPage extends BasePageAndroid {
