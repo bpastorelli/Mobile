@@ -14,7 +14,7 @@ public class MobileSteps {
 		actionsMobile.validarTextoPagina(texto, "Texto esperado na pagina: " + texto);		
 	}
 	
-	@And("^Clico no botao (.*)$")
+	@And("^Clico no botao \"([^\"]*)\"$")
 	public void clicoBotao(String botao) {
 		
 		actionsMobile.clicarBotao(botao);

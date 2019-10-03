@@ -9,7 +9,7 @@ Feature: Automacao Mobile
     Given Que eu quero testar "Primeiro acesso - Passando pela introducao"
     And Encontro o texto "Bem-vindo!" na tela atual
     And Deslizo para a esquerda e visualizo 4 telas
-    When Clico no botao IR PARA O APLICATIVO
+    When Clico no botao "IR PARA O APLICATIVO"
     Then Encontro o texto "Não perca nenhuma notícia!" na tela atual 
     
   @acessando_pula_introducao
@@ -21,6 +21,6 @@ Feature: Automacao Mobile
     And Encontro o texto "Bem-vindo!" na tela atual
     And Deslizo para a esquerda e visualizo 4 telas
     And Deslizo para a direita e visualizo 4 telas
-    When Clico no botao PULAR
+    When Clico no botao "PULAR"
     Then Encontro o texto "Não perca nenhuma notícia!" na tela atual 
 		
