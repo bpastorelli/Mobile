@@ -39,6 +39,8 @@ Feature: Automacao Mobile
     Then Encontro o texto "Login pelas redes sociais" na tela atual 
     
     Examples:
-    	| opcao                    | alerta     | 
-      | "Não quero perder nada"  | "Vibração" |
-      | "Só as mais importantes" | "Som"      |
+    	| opcao                           | alerta     | 
+      | "Não quero perder nada"         | "Vibração" |
+      | "Só as mais importantes"        | "Som"      |
+      | "Apenas grandes acontecimentos" | "Som"      |
+      | "Não receber nenhuma"           | "Vibração" |

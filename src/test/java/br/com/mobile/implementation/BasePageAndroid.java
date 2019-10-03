@@ -103,6 +103,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 			element = getElement(name);
 			waitDisplayed(element, Property.TIMEOUT);
 			element.click();
+			wait(3);
 			LogReport.info("Clicar no elemento " + name);
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getTagName() + ".");
