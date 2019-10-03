@@ -6,6 +6,8 @@ import java.util.Properties;
 
 public abstract class Property {
 	
+	public static Integer TIMEOUT;
+	
 	public static String DEVICE_NAME;
 	
 	public static String PLATFORM_NAME;
@@ -18,13 +20,25 @@ public abstract class Property {
 	
 	public static String APP_PATH;
 	
+	public static Boolean APK_INSTALL;
+	
 	public static String APPIUM_IP;
 	
-	public static String APPIUM_PORT;
+	public static Integer APPIUM_PORT;
 	
-	public static String APP_NORESET;
+	public static Boolean APP_NORESET;
 	
-	public static String APP_FULLRESET;
+	public static Boolean APP_FULLRESET;
+	
+	public static String HTML_REPORTER_PATH;
+	
+	public static String HTML_REPORTER_NAME;
+	
+	public static String HTML_REPORTER_TITLE;
+	
+	public static String HTML_REPORTER_PAGE_NAME;
+	
+	public static Boolean AUTO_PERMISSIONS;
 	
 	private static final String PROP_FILE_CONFIG = "src/test/resources/config.properties";
 	
@@ -39,17 +53,25 @@ public abstract class Property {
 	public static void loadProperties(){
 		
 		try {
+			
 			Properties properties = getProp();
-			DEVICE_NAME                = properties.getProperty("app.device.name");
-			PLATFORM_NAME              = properties.getProperty("app.apk.platformName");
-			PLATFORM_VERSION           = properties.getProperty("app.apk.version");
-			APP_PACKAGE                = properties.getProperty("app.apk.appPackage");
-			APP_ACTIVITY               = properties.getProperty("app.apk.appActivity");
-			APP_PATH                   = properties.getProperty("app.apk.path");
-			APPIUM_IP                  = properties.getProperty("app.appium.ip");
-			APPIUM_PORT                = properties.getProperty("app.appium.port");
-			APP_NORESET                = properties.getProperty("app.apk.noReset");
-			APP_FULLRESET              = properties.getProperty("app.apk.fullReset");
+			TIMEOUT                    = Integer.parseInt(properties.getProperty("selenium.element.timeout"));
+			DEVICE_NAME                = properties.getProperty("app.device.name").trim();
+			PLATFORM_NAME              = properties.getProperty("app.apk.platformName").trim();
+			PLATFORM_VERSION           = properties.getProperty("app.apk.platformVersion").trim();
+			APP_PACKAGE                = properties.getProperty("app.apk.appPackage").trim();
+			APP_ACTIVITY               = properties.getProperty("app.apk.appActivity").trim();
+			APP_PATH                   = properties.getProperty("app.apk.path").trim();
+			APK_INSTALL                = Boolean.parseBoolean(properties.getProperty("app.apk.install"));
+			AUTO_PERMISSIONS           = Boolean.parseBoolean(properties.getProperty("app.apk.autoPermissions"));
+			APPIUM_IP                  = properties.getProperty("app.appium.ip").trim();
+			APPIUM_PORT                = Integer.parseInt(properties.getProperty("app.appium.port"));
+			APP_NORESET                = Boolean.parseBoolean(properties.getProperty("app.apk.noReset"));
+			APP_FULLRESET              = Boolean.parseBoolean(properties.getProperty("app.apk.fullReset"));
+			HTML_REPORTER_PATH         = properties.getProperty("extent.report.path").trim();
+			HTML_REPORTER_NAME         = properties.getProperty("extent.report.name").trim();
+			HTML_REPORTER_TITLE        = properties.getProperty("extent.report.title").trim();
+			HTML_REPORTER_PAGE_NAME    = properties.getProperty("extent.report.page.name").trim();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
