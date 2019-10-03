@@ -46,8 +46,9 @@ public class SetupAndroid implements SetupEnviroment {
 		caps.setCapability("platformVersion", Property.PLATFORM_VERSION);
 		caps.setCapability("appPackage", Property.APP_PACKAGE);
 		caps.setCapability("appActivity", Property.APP_ACTIVITY);
+		caps.setCapability("autoGrantPermissions", Property.AUTO_PERMISSIONS);
 		if(Property.APK_INSTALL)
-			caps.setCapability("app", new File(Utils.getFilePath("apk/" + Property.APP_PATH)).toString());
+			caps.setCapability("app", new File(Utils.getFilePath(Property.APP_PATH)).toString());
 		
 		builder = new AppiumServiceBuilder();
 		builder.withIPAddress(Property.APPIUM_IP);
@@ -84,7 +85,7 @@ public class SetupAndroid implements SetupEnviroment {
 	public void driverClose() {
 		
 		try {
-			driver.quit();
+			getDriver().quit();
 		}catch(Exception e) {
 			Utils.log("[FALHA]Falha ao fechar o driver [" + e.getMessage() + "]");
 		}
@@ -105,7 +106,7 @@ public class SetupAndroid implements SetupEnviroment {
 		
 		if(Property.APK_INSTALL) {			
 			Utils.log("[DESINSTALAR APK]Desinstalando a APK do dispositivo.");
-			driver.removeApp(Property.APP_PACKAGE);
+			getDriver().removeApp(Property.APP_PACKAGE);
 		}
 		
 		Utils.log("[SUCESSO]APK desinstalada com sucesso.");

@@ -46,7 +46,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 		element = null;
 		try {
 			obj = getMap(name);
-			element = driver.findElement(obj);
+			element = getDriver().findElement(obj);
 		} catch (Exception e) {
 			LogReport.fail(e.getMessage());
 		}
@@ -83,7 +83,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 
 		element = null;
 		try {
-			element = driver.findElement(by);
+			element = getDriver().findElement(by);
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Elemento " + by.toString() + " nao encontrado.");
 		}
@@ -139,7 +139,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 		try {
 			element = getElement(name);
 			waitDisplayed(element, Property.TIMEOUT);
-			new Actions(driver).moveToElement(element).click().perform();
+			new Actions(getDriver()).moveToElement(element).click().perform();
 			LogReport.info("Mover o foco e clicar no elemento " + name);
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getTagName() + ".");
@@ -207,7 +207,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 		boolean retorno = false;
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 
-			if (!driver.getPageSource().contains(text))
+			if (!getDriver().getPageSource().contains(text))
 				wait(1);
 			else
 				return true;
@@ -233,7 +233,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 			int starty = size.height / 2;
 			
 			@SuppressWarnings("rawtypes")
-			TouchAction<?> action = new TouchAction(driver);
+			TouchAction<?> action = new TouchAction(getDriver());
 			action.press(PointOption.point(startx, starty)).moveTo(PointOption.point(endx, starty)).release().perform();
 		}catch(Exception e) {
 			
@@ -252,7 +252,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 			int starty = size.height / 2;
 			
 			@SuppressWarnings("rawtypes")
-			TouchAction<?> action = new TouchAction(driver);
+			TouchAction<?> action = new TouchAction(getDriver());
 			action.press(PointOption.point(startx, starty)).moveTo(PointOption.point(endx, starty)).release().perform();
 		}catch(Exception e) {
 			
@@ -269,7 +269,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 			int x = (int)(size.width * 0.1D);
 			int y = (int)(size.width * 0.9D);
 			
-			TouchActions action = new TouchActions(driver);
+			TouchActions action = new TouchActions(getDriver());
 			action.up(x, y);
 		}catch(Exception e ) {
 			
@@ -286,7 +286,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 			int x = (int)(size.width * 0.9D);
 			int y = (int)(size.width * 0.1D);
 			
-			TouchActions action = new TouchActions(driver);
+			TouchActions action = new TouchActions(getDriver());
 			action.down(x, y);
 		}catch(Exception e ) {
 			
@@ -302,6 +302,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 				getDriver().wait(segundos * 1000);
 			}
 		}catch (InterruptedException e) {
+			
 			e.printStackTrace();
 		}
 	}

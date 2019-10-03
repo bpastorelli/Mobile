@@ -38,6 +38,8 @@ public abstract class Property {
 	
 	public static String HTML_REPORTER_PAGE_NAME;
 	
+	public static Boolean AUTO_PERMISSIONS;
+	
 	private static final String PROP_FILE_CONFIG = "src/test/resources/config.properties";
 	
 	private static Properties getProp() throws IOException {
@@ -61,6 +63,7 @@ public abstract class Property {
 			APP_ACTIVITY               = properties.getProperty("app.apk.appActivity").trim();
 			APP_PATH                   = properties.getProperty("app.apk.path").trim();
 			APK_INSTALL                = Boolean.parseBoolean(properties.getProperty("app.apk.install"));
+			AUTO_PERMISSIONS           = Boolean.parseBoolean(properties.getProperty("app.apk.autoPermissions"));
 			APPIUM_IP                  = properties.getProperty("app.appium.ip").trim();
 			APPIUM_PORT                = Integer.parseInt(properties.getProperty("app.appium.port"));
 			APP_NORESET                = Boolean.parseBoolean(properties.getProperty("app.apk.noReset"));
