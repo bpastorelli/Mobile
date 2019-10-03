@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import br.com.mobile.implementation.BasePageAndroid;
 import br.com.mobile.reports.LogReport;
 
-public class BoasVindasPage extends BasePageAndroid {
+public class BoasVindasPage extends BasePageAndroid implements Page {
 	
 	public BoasVindasPage() {
 		
@@ -37,5 +37,11 @@ public class BoasVindasPage extends BasePageAndroid {
 			toucheActionRight();
 			LogReport.info("Deslizo a direita, visualizo a tela " + (qtde - i) + " de " + qtde + ".");
 		}
+	}
+
+	@Override
+	public void digitarTexto(String name, String texto) {
+		
+		setText(name, texto);
 	}
 }

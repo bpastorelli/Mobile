@@ -23,4 +23,22 @@ Feature: Automacao Mobile
     And Deslizo para a direita e visualizo 4 telas
     When Clico no botao "PULAR"
     Then Encontro o texto "Não perca nenhuma notícia!" na tela atual 
-		
+
+  @configurando_notificacoes
+  Scenario Outline: Configuracao de Notificacoes
+    Given Que eu quero testar "Configuracao de Notificacoes"
+    And Desinstalo o aplicativo do dispositivo
+    And Finalizo o aplicativo inicializado
+    And Reinstalo o aplicativo no dispositivo
+    And Encontro o texto "Bem-vindo!" na tela atual
+    When Clico no botao "PULAR"
+    And Encontro o texto "Não perca nenhuma notícia!" na tela atual
+    And Configuro a quantidade de noticias para <opcao>
+    And Configuro tipos de alertas <alerta>
+    When Clico no botao "IR PARA A TELA INICIAL"
+    Then Encontro o texto "Login pelas redes sociais" na tela atual 
+    
+    Examples:
+    	| opcao                    | alerta     | 
+      | "Não quero perder nada"  | "Vibração" |
+      | "Só as mais importantes" | "Som"      |

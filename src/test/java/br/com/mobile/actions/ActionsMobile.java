@@ -1,11 +1,14 @@
 package br.com.mobile.actions;
 
 import br.com.mobile.pages.BoasVindasPage;
+import br.com.mobile.pages.ConfigurationPage;
 import br.com.mobile.reports.LogReport;
 
 public class ActionsMobile {
 	
 	private BoasVindasPage boasVindasPage = new BoasVindasPage();
+	
+	private ConfigurationPage configurationPage = new ConfigurationPage();
 	
 	public void validarTextoPagina(String textoEsperado, String mensagem) {
 		
@@ -14,6 +17,7 @@ public class ActionsMobile {
 	
 	public void clicarBotao(String botao) {
 		
+		boasVindasPage.touchDownDisplayed(botao);
 		boasVindasPage.clicarBotao(botao);
 	}
 	
@@ -40,5 +44,15 @@ public class ActionsMobile {
 	public void desinstalarApp() {
 		
 		boasVindasPage.uninstallApp();
+	}
+	
+	public void clicarOpcaoQuantidadeNoticias(String opcao) {
+		
+		configurationPage.clicarBotao(opcao);
+	}
+	
+	public void clicarSetarTiposAlertas(String tipo) {
+		
+		configurationPage.clicarBotao(tipo);
 	}
 }

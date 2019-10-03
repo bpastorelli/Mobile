@@ -53,7 +53,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 
 		return element;
 	}
-
+	
 	/**
 	 * Busca o mapeamento de um elemento a partir do key informado no mapa de elementos.
 	 * 
@@ -251,9 +251,10 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 			int endx = (int)(size.width * 0.9D);
 			int starty = size.height / 2;
 			
-			@SuppressWarnings("rawtypes")
-			TouchAction<?> action = new TouchAction(getDriver());
-			action.press(PointOption.point(startx, starty)).moveTo(PointOption.point(endx, starty)).release().perform();
+			scroll(startx, starty, endx, starty);
+			//@SuppressWarnings("rawtypes")
+			//TouchAction<?> action = new TouchAction(getDriver());
+			//action.press(PointOption.point(startx, starty)).moveTo(PointOption.point(endx, starty)).release().perform();
 		}catch(Exception e) {
 			
 			LogReport.fail("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")");
@@ -282,16 +283,21 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 		
 		try {
 			
-			Dimension size = driver.manage().window().getSize();
-			int x = (int)(size.width * 0.9D);
-			int y = (int)(size.width * 0.1D);
-			
-			TouchActions action = new TouchActions(getDriver());
-			action.down(x, y);
+		    int pressX = getDriver().manage().window().getSize().width / 2;
+		    int bottomY = getDriver().manage().window().getSize().height * 4/5;
+		    int topY = getDriver().manage().window().getSize().height / 8;
+		    scroll(pressX, bottomY, pressX, topY);
 		}catch(Exception e ) {
 			
 			LogReport.fail("[FALHA]Falha ao deslizar a tela para cima (" + e.getMessage() + ")");
 		}	
+	}
+	
+	private void scroll(int fromX, int fromY, int toX, int toY) {
+	    
+		@SuppressWarnings("rawtypes")
+		TouchAction<?> touchAction = new TouchAction(driver);
+	    touchAction.longPress(PointOption.point(fromX, fromY)).moveTo(PointOption.point(toX, toY)).release().perform();
 	}
 
 	@Override
@@ -304,6 +310,45 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 		}catch (InterruptedException e) {
 			
 			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void setText(String name, String text) {
+		
+		try {
+			element = getElement(name);
+			waitDisplayed(element, Property.TIMEOUT);
+			element.sendKeys(text);
+		}catch(Exception e) {
+			LogReport.fail("[FALHA]Falha ao enviar texto para o campo " + name + ".");
+		}
+	}
+
+	@Override
+	public void touchDownDisplayed(String name) {
+		
+		for(int i = 0; i < Property.TIMEOUT; i++) {
+			if(!elementIsPresent(name))
+				touchActionDown();
+			else
+				return;
+		}
+	}
+
+	@Override
+	public boolean elementIsPresent(String name) {
+		
+		By obj = null;
+		
+		try {
+			
+			obj = getMap(name);
+			element = getDriver().findElement(obj);
+			return true;
+		}catch(Exception e) {
+			
+			return false;
 		}
 	}
 }

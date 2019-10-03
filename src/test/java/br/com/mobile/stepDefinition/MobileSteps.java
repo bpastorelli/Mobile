@@ -49,5 +49,17 @@ public class MobileSteps {
 		
 		actionsMobile.finalizarApp();
 	}
+	
+	@And("^Configuro a quantidade de noticias para \"([^\"]*)\"$")
+	public void configuro_quantidade_de_noticias(String opcao) {
+		
+		actionsMobile.clicarOpcaoQuantidadeNoticias(opcao);
+	}
+	
+	@And("Configuro tipos de alertas \"([^\"]*)\"$")
+	public void configuro_tipos_alertas(String tipo) {
+		
+		actionsMobile.clicarSetarTiposAlertas(tipo);
+	}
 
 }

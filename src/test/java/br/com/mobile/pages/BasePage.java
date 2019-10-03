@@ -112,5 +112,24 @@ public interface BasePage {
 	 * @param segundos
 	 */
 	void wait(int segundos);
+	
+	/**
+	 * Digitar um texto
+	 * 
+	 * @param text Texto
+	 */
+	void setText(String name, String text);
+	
+	/**
+	 * Desliza para baixo até que o elemento esteja visivel.
+	 * @param name Nome do elemento mapeado no mapa de elementos
+	 */
+	void touchDownDisplayed(String name);
+	
+	/**
+	 * Verifica se o elemento está presente
+	 * @param name Nome do elemento mapeado no mapa de elementos
+	 */
+	boolean elementIsPresent(String name);
 
 }
