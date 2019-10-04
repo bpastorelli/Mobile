@@ -1,4 +1,4 @@
-package br.com.mobile.pages;
+package br.com.mobile.interfaces;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

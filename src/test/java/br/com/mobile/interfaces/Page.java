@@ -1,4 +1,4 @@
-package br.com.mobile.pages;
+package br.com.mobile.interfaces;
 
 public interface Page {
 

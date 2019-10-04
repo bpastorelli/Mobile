@@ -10,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.touch.TouchActions;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.pages.BasePage;
+import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.reports.LogReport;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;

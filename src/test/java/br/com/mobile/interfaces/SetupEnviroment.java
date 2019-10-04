@@ -1,4 +1,4 @@
-package br.com.mobile.commons;
+package br.com.mobile.interfaces;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -8,7 +8,7 @@ public interface SetupEnviroment {
 	/**
 	 * Starta o serviço do Appium e o app
 	 * 
-	 * @return
+	 * @return AppiumDriver<MobileElement>
 	 */
 	AppiumDriver<MobileElement> setupEnviroment();
 	
@@ -20,12 +20,12 @@ public interface SetupEnviroment {
 	AppiumDriver<MobileElement> getDriver();
 	
 	/**
-	 * Fecha o driver
+	 * Fecha o driver (App)
 	 */
 	void driverClose();
 	
 	/**
-	 * Para o serviço do Appium
+	 * Pára o serviço do Appium
 	 * 
 	 * @throws Exception
 	 */
