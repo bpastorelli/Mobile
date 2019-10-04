@@ -223,7 +223,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 	 * Desliza a tela para a esquerda.
 	 */
 	@Override
-	public void toucheActionLeft() {
+	public void touchActionLeft() {
 		
 		try {
 			
@@ -239,7 +239,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 	}
 
 	@Override
-	public void toucheActionRight() {
+	public void touchActionRight() {
 		
 		try {
 			

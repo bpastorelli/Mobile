@@ -1,77 +1,68 @@
 package br.com.mobile.stepDefinition;
 
-import br.com.mobile.actions.ActionsMobile;
+import br.com.mobile.actions.ActionsBoasVindas;
+import br.com.mobile.actions.ActionsConfiguration;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 
-public class MobileSteps {
+public class ConfigurationSteps {
 	
-	private ActionsMobile actionsMobile = new ActionsMobile();
+	private ActionsBoasVindas actionsBoasVindas = new ActionsBoasVindas();
+	
+	private ActionsConfiguration actionsConfiguration = new ActionsConfiguration();
 	
 	@When("^Encontro o texto (.*) na tela atual$")
 	public void abrir_aplicativo_na_tela(String texto) {
 		
-		actionsMobile.validarTextoPagina(texto, "Texto esperado na pagina: " + texto);		
+		actionsBoasVindas.validarTextoPagina(texto, "Texto esperado na pagina: " + texto);		
 	}
 	
 	@And("^Clico no botao \"([^\"]*)\"$")
 	public void clicoBotao(String botao) {
 		
-		actionsMobile.clicarBotao(botao);
-	}
-	
-	@And("^Deslizo para a esquerda e visualizo (.*) telas$")
-	public void delizo_para_esquerda(Integer qtde) throws Exception {
-		
-		actionsMobile.deslizarParaEsquerda(qtde);
-	}
-	
-	@And("^Deslizo para a direita e visualizo (.*) telas$")
-	public void delizo_para_direita(Integer qtde) throws Exception {
-		
-		actionsMobile.deslizarParaDireita(qtde);
+		actionsBoasVindas.clicarBotao(botao);
 	}
 	
 	@And("^Desinstalo o aplicativo do dispositivo$")
 	public void desinstalo_aplicativo_dispositivo() {
 		
-		actionsMobile.desinstalarApp();
+		actionsBoasVindas.desinstalarApp();
 	}
 	
 	@And("^Reinstalo o aplicativo no dispositivo$")
 	public void reinstalo_aplicativo_dispositivo() {
 		
-		actionsMobile.instalarApp();
+		actionsBoasVindas.instalarApp();
 	}
 	
 	@And("^Finalizo o aplicativo inicializado$")
 	public void finalizo_aplicativo_inicializado() throws Exception {
 		
-		actionsMobile.finalizarApp();
+		actionsBoasVindas.finalizarApp();
 	}
 	
 	@And("^Configuro a quantidade de noticias para \"([^\"]*)\"$")
 	public void configuro_quantidade_de_noticias(String opcao) {
 		
-		actionsMobile.clicarOpcaoQuantidadeNoticias(opcao);
+		actionsConfiguration.clicarOpcaoQuantidadeNoticias(opcao);
 	}
 	
 	@And("^Configuro tipos de alertas \"([^\"]*)\"$")
 	public void configuro_tipos_alertas(String tipo) {
 		
-		actionsMobile.clicarSetarTiposAlertas(tipo);
+		actionsConfiguration.clicarSetarTiposAlertas(tipo);
 	}
 	
 	@And("^Deslizo a tela para cima (.*) vezes$")
 	public void deslizo_tela_para_cima(Integer qtde) {
 		
-		actionsMobile.deslizarParaCima(qtde);
+		actionsConfiguration.deslizarParaCima(qtde);
 	}
 	
 	@And("^Deslizo a tela para baixo (.*) vezes$")
 	public void deslizo_tela_para_baixo(Integer qtde) {
 		
-		actionsMobile.deslizarParaBaixo(qtde);
+		actionsConfiguration.deslizarParaBaixo(qtde);
 	}
 
 }

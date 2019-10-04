@@ -24,4 +24,42 @@ public interface Page {
 	 */
 	void digitarTexto(String name, String texto);
 	
+	/**
+	 * Deslizar para a esquerda.
+	 */
+	void deslizarParaEsquerda() throws Exception;
+	
+	/**
+	 * Desliza para a direita
+	 * 
+	 * @param qtde Numero de vezes a deslizar
+	 */
+	void deslizarParaDireia(int qtde) throws Exception;
+	
+	/**
+	 * Deslizar para a esquerda.
+	 * 
+	 * @param qtde Numero de vezes a deslizar
+	 */
+	void deslizarParaEsquerda(int qtde) throws Exception;
+	
+	/*
+	 * Deslizar para a direita.
+	 */
+	void deslizarParaDireia();
+	
+	/**
+	 * Deslizar para cima
+	 * 
+	 * @param qtde Numero de vezes a deslizar
+	 */
+	void deslizarParaCima(Integer qtde);
+	
+	/**
+	 * Deslizar para baixo
+	 * 
+	 * @param qtde Numero de vezes a deslizar
+	 */
+	void deslizarParaBaixo(Integer qtde);
+	
 }

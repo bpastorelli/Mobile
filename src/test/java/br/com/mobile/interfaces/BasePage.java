@@ -89,12 +89,12 @@ public interface BasePage {
 	/**
 	 * Desliza a tela para a esquerda.
 	 */
-	void toucheActionLeft();
+	void touchActionLeft();
 	
 	/**
 	 * Desliza a tela para a direita.
 	 */
-	void toucheActionRight();
+	void touchActionRight();
 	
 	/**
 	 * Desliza a tela para cima.

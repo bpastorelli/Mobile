@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 
 import br.com.mobile.implementations.BasePageAndroid;
 import br.com.mobile.interfaces.Page;
+import br.com.mobile.reports.LogReport;
 
 public class ConfigurationPage extends BasePageAndroid implements Page {
 	
@@ -37,14 +38,46 @@ public class ConfigurationPage extends BasePageAndroid implements Page {
 		setText(name, texto);
 	}
 	
+	@Override
 	public void deslizarParaCima(Integer qtde) {
 			
 		touchActionTop(qtde);
 	}
 	
+	@Override
 	public void deslizarParaBaixo(Integer qtde) {
 			
 		touchActionDown(qtde);
+	}
+
+	@Override
+	public void deslizarParaEsquerda() {
+		
+		touchActionLeft();
+	}
+
+	@Override
+	public void deslizarParaDireia() {
+		
+		touchActionRight();
+	}
+
+	@Override
+	public void deslizarParaDireia(int qtde) throws Exception {
+		
+		for(int i=0; i < qtde; i++) {
+			touchActionRight();
+			LogReport.info("Deslizo a direita, visualizo a tela " + (qtde - i) + " de " + qtde + ".");
+		}
+	}
+
+	@Override
+	public void deslizarParaEsquerda(int qtde) throws Exception {
+		
+		for(int i=0; i < qtde; i++) {
+			touchActionLeft();
+			LogReport.info("Deslizo a esquerda, visualizo a tela " + (qtde - i) + " de " + qtde + ".");
+		}		
 	}
 
 }
