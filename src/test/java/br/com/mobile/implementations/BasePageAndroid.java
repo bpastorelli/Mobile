@@ -1,4 +1,4 @@
-package br.com.mobile.implementation;
+package br.com.mobile.implementations;
 
 import java.util.HashMap;
 import java.util.Map;

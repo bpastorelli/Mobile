@@ -2,7 +2,7 @@ package br.com.mobile.pages;
 
 import org.openqa.selenium.By;
 
-import br.com.mobile.implementation.BasePageAndroid;
+import br.com.mobile.implementations.BasePageAndroid;
 import br.com.mobile.interfaces.Page;
 import br.com.mobile.reports.LogReport;
 
