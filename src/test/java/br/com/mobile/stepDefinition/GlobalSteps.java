@@ -36,6 +36,6 @@ public class GlobalSteps {
 	@When("^Encontro o texto (.*) na pagina (.*)$")
 	public void abrir_aplicativo_na_tela(String texto, String pagina) {
 		
-	
+		controller.getAction(pagina).validarTextoPagina(texto, "Texto esperado na pagina: " + texto);
 	}
 }

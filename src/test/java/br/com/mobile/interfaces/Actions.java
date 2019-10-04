@@ -2,6 +2,9 @@ package br.com.mobile.interfaces;
 
 public interface Actions {
 	
+	
+	void validarTextoPagina(String textoEsperado, String mensagem);
+	
 	/**
 	 * Clica em elemento tipo botão
 	 * 
@@ -38,5 +41,22 @@ public interface Actions {
 	 * @throws Exception
 	 */
 	void deslizarParaDireita(int qtde) throws Exception;
+	
+	/**
+	 * Instalar o APP
+	 */
+	void instalarApp();
+	
+	/**
+	 * Desinstalar o APP
+	 */
+	void desinstalarApp();
+	
+	/**
+	 * Finalizar o APP
+	 * 
+	 * @throws Exception
+	 */
+	void finalizarApp() throws Exception;
 
 }

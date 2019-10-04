@@ -2,7 +2,6 @@ package br.com.mobile.stepDefinition;
 
 import br.com.mobile.actions.ActionsBoasVindas;
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.When;
 
 public class BoasVindasSteps {
 	

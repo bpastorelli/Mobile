@@ -14,11 +14,13 @@ public class BoasVindasPage extends BasePageAndroid implements Page {
 		this.addElement("IR PARA O APLICATIVO", By.id("tutorial_fragment_skip_button"));
 	}
 	
+	@Override
 	public boolean textoExibidoPagina(String texto) {
 		
 		return waitText(texto);
 	}
 	
+	@Override
 	public void clicarBotao(String label) {
 		
 		clickElementByMapElements(label);

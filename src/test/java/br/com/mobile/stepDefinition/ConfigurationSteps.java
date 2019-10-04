@@ -3,25 +3,12 @@ package br.com.mobile.stepDefinition;
 import br.com.mobile.actions.ActionsBoasVindas;
 import br.com.mobile.actions.ActionsConfiguration;
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.When;
 
 public class ConfigurationSteps {
 	
 	private ActionsBoasVindas actionsBoasVindas = new ActionsBoasVindas();
 	
 	private ActionsConfiguration actionsConfiguration = new ActionsConfiguration();
-	
-	@When("^Encontro o texto (.*) na tela atual$")
-	public void abrir_aplicativo_na_tela(String texto) {
-		
-		actionsBoasVindas.validarTextoPagina(texto, "Texto esperado na pagina: " + texto);		
-	}
-	
-	@And("^Clico no botao \"([^\"]*)\"$")
-	public void clicoBotao(String botao) {
-		
-		actionsBoasVindas.clicarBotao(botao);
-	}
 	
 	@And("^Desinstalo o aplicativo do dispositivo$")
 	public void desinstalo_aplicativo_dispositivo() {

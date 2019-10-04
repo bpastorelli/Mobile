@@ -8,6 +8,7 @@ public class ActionsBoasVindas implements Actions {
 	
 	private BoasVindasPage boasVindasPage = new BoasVindasPage();
 	
+	@Override
 	public void validarTextoPagina(String textoEsperado, String mensagem) {
 		
 		LogReport.passFail(boasVindasPage.textoExibidoPagina(textoEsperado), mensagem);
@@ -32,16 +33,19 @@ public class ActionsBoasVindas implements Actions {
 		boasVindasPage.deslizarParaDireia(qtde);
 	}
 	
+	@Override
 	public void instalarApp() {
 		
 		boasVindasPage.setupEnviroment();
 	}
 	
+	@Override
 	public void finalizarApp() throws Exception {
 		
 		boasVindasPage.driverClose();
 	}
 	
+	@Override
 	public void desinstalarApp() {
 		
 		boasVindasPage.uninstallApp();
