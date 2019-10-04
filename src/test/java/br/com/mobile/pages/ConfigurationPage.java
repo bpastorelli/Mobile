@@ -36,5 +36,15 @@ public class ConfigurationPage extends BasePageAndroid implements Page {
 		
 		setText(name, texto);
 	}
+	
+	public void deslizarParaCima(Integer qtde) {
+			
+		touchActionTop(qtde);
+	}
+	
+	public void deslizarParaBaixo(Integer qtde) {
+			
+		touchActionDown(qtde);
+	}
 
 }

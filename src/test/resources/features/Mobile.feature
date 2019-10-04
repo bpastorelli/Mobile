@@ -35,6 +35,8 @@ Feature: Automacao Mobile
     And Encontro o texto "Não perca nenhuma notícia!" na tela atual
     And Configuro a quantidade de noticias para <opcao>
     And Configuro tipos de alertas <alerta>
+    Then Deslizo a tela para baixo 1 vezes
+    Then Deslizo a tela para cima 1 vezes
     When Clico no botao "IR PARA A TELA INICIAL"
     Then Encontro o texto "Login pelas redes sociais" na tela atual 
     

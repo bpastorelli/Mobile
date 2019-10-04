@@ -102,9 +102,23 @@ public interface BasePage {
 	void touchActionTop();
 	
 	/**
+	 * Desliza a tela para cima por determinadas vezes.
+	 * 
+	 * @param qtde Quantidades de vezes a deslizar a tela para cima.
+	 */
+	void touchActionTop(int qtde);
+	
+	/**
 	 * Desliza a tela para baixo.
 	 */
 	void touchActionDown();
+	
+	/**
+	 * Desliza a tela para baixo por determinadas vezes.
+	 * 
+	 * @param qtde Quantidades de vezes a deslizar a tela para baixo.
+	 */
+	void touchActionDown(int qtde);
 	
 	/**
 	 * Aguarda até o tempo informado de segundos.
@@ -121,6 +135,12 @@ public interface BasePage {
 	void setText(String name, String text);
 	
 	/**
+	 * Desliza para cima até que o elemento esteja visivel.
+	 * @param name Nome do elemento mapeado no mapa de elementos
+	 */	
+	void touchTopDisplayed(String name);
+	
+	/**
 	 * Desliza para baixo até que o elemento esteja visivel.
 	 * @param name Nome do elemento mapeado no mapa de elementos
 	 */
@@ -131,5 +151,15 @@ public interface BasePage {
 	 * @param name Nome do elemento mapeado no mapa de elementos
 	 */
 	boolean elementIsPresent(String name);
+	
+	/**
+	 * Scroll da Tela
+	 * 
+	 * @param fromX De X
+	 * @param fromY De Y
+	 * @param toX Para X
+	 * @param toY Para Y
+	 */
+	void scroll(int fromX, int fromY, int toX, int toY);
 
 }

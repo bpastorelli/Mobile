@@ -56,10 +56,22 @@ public class MobileSteps {
 		actionsMobile.clicarOpcaoQuantidadeNoticias(opcao);
 	}
 	
-	@And("Configuro tipos de alertas \"([^\"]*)\"$")
+	@And("^Configuro tipos de alertas \"([^\"]*)\"$")
 	public void configuro_tipos_alertas(String tipo) {
 		
 		actionsMobile.clicarSetarTiposAlertas(tipo);
+	}
+	
+	@And("^Deslizo a tela para cima (.*) vezes$")
+	public void deslizo_tela_para_cima(Integer qtde) {
+		
+		actionsMobile.deslizarParaCima(qtde);
+	}
+	
+	@And("^Deslizo a tela para baixo (.*) vezes$")
+	public void deslizo_tela_para_baixo(Integer qtde) {
+		
+		actionsMobile.deslizarParaBaixo(qtde);
 	}
 
 }

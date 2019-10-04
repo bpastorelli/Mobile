@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.touch.TouchActions;
 
 import br.com.mobile.commons.Property;
 import br.com.mobile.interfaces.BasePage;
@@ -232,10 +231,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 			int startx = (int)(size.width * 0.9D);
 			int endx = (int)(size.width * 0.1D);
 			int starty = size.height / 2;
-			
-			@SuppressWarnings("rawtypes")
-			TouchAction<?> action = new TouchAction(getDriver());
-			action.press(PointOption.point(startx, starty)).moveTo(PointOption.point(endx, starty)).release().perform();
+			scroll(startx, starty, endx, starty);
 		}catch(Exception e) {
 			
 			LogReport.fail("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")");
@@ -251,11 +247,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 			int startx = (int)(size.width * 0.1D);
 			int endx = (int)(size.width * 0.9D);
 			int starty = size.height / 2;
-			
 			scroll(startx, starty, endx, starty);
-			//@SuppressWarnings("rawtypes")
-			//TouchAction<?> action = new TouchAction(getDriver());
-			//action.press(PointOption.point(startx, starty)).moveTo(PointOption.point(endx, starty)).release().perform();
 		}catch(Exception e) {
 			
 			LogReport.fail("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")");
@@ -267,18 +259,25 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 		
 		try {
 			
-			Dimension size = driver.manage().window().getSize();
-			int x = (int)(size.width * 0.1D);
-			int y = (int)(size.width * 0.9D);
-			
-			TouchActions action = new TouchActions(getDriver());
-			action.up(x, y);
+		    int pressX = getDriver().manage().window().getSize().width / 2;
+		    int bottomY = getDriver().manage().window().getSize().height / 8;
+		    int topY = getDriver().manage().window().getSize().height * 4/5;
+		    scroll(pressX, bottomY, pressX, topY);
 		}catch(Exception e ) {
 			
 			LogReport.fail("[FALHA]Falha ao deslizar a tela para cima (" + e.getMessage() + ")");
 		}		
 	}
 
+	@Override
+	public void touchActionTop(int qtde) {
+		
+		for(int i=0; i < qtde; i++) {
+			
+			touchActionTop();
+		}
+	}
+	
 	@Override
 	public void touchActionDown() {
 		
@@ -294,11 +293,24 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 		}	
 	}
 	
-	private void scroll(int fromX, int fromY, int toX, int toY) {
+	@Override
+	public void touchActionDown(int qtde) {
+		
+		for(int i=0; i < qtde; i++) {
+			
+			touchActionDown();
+		}
+	}
+	
+	@Override
+	public void scroll(int fromX, int fromY, int toX, int toY) {
 	    
 		@SuppressWarnings("rawtypes")
 		TouchAction<?> touchAction = new TouchAction(driver);
-	    touchAction.longPress(PointOption.point(fromX, fromY)).moveTo(PointOption.point(toX, toY)).release().perform();
+	    touchAction.longPress(PointOption.point(fromX, fromY))
+	    	.moveTo(PointOption.point(toX, toY))
+	    	.release()
+	    	.perform();
 	}
 
 	@Override
@@ -327,6 +339,17 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 	}
 
 	@Override
+	public void touchTopDisplayed(String name) {
+		
+		for(int i = 0; i < Property.TIMEOUT; i++) {
+			if(!elementIsPresent(name))
+				touchActionTop();
+			else
+				return;
+		}
+	}	
+	
+	@Override
 	public void touchDownDisplayed(String name) {
 		
 		for(int i = 0; i < Property.TIMEOUT; i++) {
@@ -352,4 +375,5 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 			return false;
 		}
 	}
+
 }

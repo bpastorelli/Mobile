@@ -31,6 +31,16 @@ public class ActionsMobile {
 		boasVindasPage.deslizarParaDireita(qtde);
 	}
 	
+	public void deslizarParaCima(int qtde) {
+		
+		configurationPage.deslizarParaCima(qtde);
+	}
+	
+	public void deslizarParaBaixo(int qtde) {
+		
+		configurationPage.deslizarParaBaixo(qtde);
+	}
+	
 	public void instalarApp() {
 		
 		boasVindasPage.setupEnviroment();
