@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import br.com.mobile.interfaces.Actions;
+import br.com.mobile.reports.LogReport;
 
 public class GlobalStepsController {
 	
@@ -18,6 +19,9 @@ public class GlobalStepsController {
 		
 		Actions actions;
 		
+		if(!this.mapaActions.containsKey(pagina))
+			LogReport.fail("A pagina " + pagina + " não foi encontrada no mapa de configuração de páginas.");
+			
 		actions = this.mapaActions.get(pagina);
 		
 		if(actions instanceof Actions)
