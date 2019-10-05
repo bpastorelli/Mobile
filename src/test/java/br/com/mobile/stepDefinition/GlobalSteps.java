@@ -38,4 +38,17 @@ public class GlobalSteps {
 		
 		controller.getAction(pagina).validarTextoPagina(texto, "Texto esperado na pagina: " + texto);
 	}
+	
+	@And("^Deslizo a tela para cima (.*) vezes na pagina (.*)$")
+	public void deslizo_tela_para_cima(Integer qtde, String pagina) {
+		
+		controller.getAction(pagina).deslizarParaCima(qtde);
+	}
+	
+	@And("^Deslizo a tela para baixo (.*) vezes na pagina (.*)$")
+	public void deslizo_tela_para_baixo(Integer qtde, String pagina) {
+		
+		controller.getAction(pagina).deslizarParaBaixo(qtde);
+	}
+
 }

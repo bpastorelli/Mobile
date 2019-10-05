@@ -1,28 +1,28 @@
 package br.com.mobile.controllers;
 
-import br.com.mobile.actions.ActionsBoasVindas;
-import br.com.mobile.actions.ActionsConfiguration;
+import java.util.HashMap;
+import java.util.Map;
+
 import br.com.mobile.interfaces.Actions;
 
 public class GlobalStepsController {
+	
+	Map<String, Actions> mapaActions = new HashMap<String, Actions>();
+	
+	public void addActions(String key, Actions actions) {
+		
+		this.mapaActions.put(key, actions);
+	}
 	
 	public Actions getAction(String pagina) {
 		
 		Actions actions;
 		
-		switch(pagina) {
-		case "boas vindas":
-			actions = new ActionsBoasVindas();
-			break;
-		case "configuracao":
-			actions = new ActionsConfiguration();
-			break;
-		default:
-			actions = null;
-		}
+		actions = this.mapaActions.get(pagina);
 		
-		return actions;
-		
+		if(actions instanceof Actions)
+			return actions;
+		else
+			return null;
 	}
-
 }

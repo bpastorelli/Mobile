@@ -58,12 +58,12 @@ public class ActionsConfiguration implements Actions {
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
 		
-		
+		configurationPage.deslizarParaEsquerda(qtde);
 	}
 
 	@Override
 	public void deslizarParaDireita(int qtde) throws Exception {
 		
-		
+		configurationPage.deslizarParaDireia(qtde);
 	}
 }
