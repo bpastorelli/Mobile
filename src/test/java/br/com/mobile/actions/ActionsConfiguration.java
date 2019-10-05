@@ -1,9 +1,12 @@
 package br.com.mobile.actions;
 
+import org.springframework.stereotype.Component;
+
 import br.com.mobile.interfaces.Actions;
 import br.com.mobile.pages.ConfigurationPage;
 import br.com.mobile.reports.LogReport;
 
+@Component
 public class ActionsConfiguration implements Actions {
 	
 	private ConfigurationPage configurationPage = new ConfigurationPage();
