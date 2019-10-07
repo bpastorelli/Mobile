@@ -2,7 +2,12 @@ package br.com.mobile.interfaces;
 
 public interface Actions {
 	
-	
+	/**
+	 * Validação pelo texto apresentado na tela
+	 * 
+	 * @param textoEsperado Texto esperado.
+	 * @param mensagem Mensagem para o relatório.
+	 */
 	void validarTextoPagina(String textoEsperado, String mensagem);
 	
 	/**

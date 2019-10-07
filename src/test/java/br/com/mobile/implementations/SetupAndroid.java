@@ -104,11 +104,17 @@ public class SetupAndroid implements SetupEnviroment {
 	@Override
 	public void uninstallApp() {
 		
-		if(Property.APK_INSTALL) {			
-			Utils.log("[DESINSTALAR APK]Desinstalando a APK do dispositivo.");
-			getDriver().removeApp(Property.APP_PACKAGE);
+		if(Property.APK_INSTALL) {
+			try {
+				
+				Utils.log("[DESINSTALAR APK]Desinstalando a APK do dispositivo.");
+				getDriver().removeApp(Property.APP_PACKAGE);
+				Utils.log("[SUCESSO]APK desinstalada com sucesso.");
+			}catch(Exception e) {
+				
+				Utils.log("[INFO]APK já desinstalada.");
+			}
 		}
 		
-		Utils.log("[SUCESSO]APK desinstalada com sucesso.");
 	}	
 }

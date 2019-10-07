@@ -1,12 +1,9 @@
 package br.com.mobile.actions;
 
-import org.springframework.stereotype.Component;
-
 import br.com.mobile.interfaces.Actions;
 import br.com.mobile.pages.ConfigurationPage;
 import br.com.mobile.reports.LogReport;
 
-@Component
 public class ActionsConfiguration implements Actions {
 	
 	private ConfigurationPage configurationPage = new ConfigurationPage();
@@ -23,26 +20,31 @@ public class ActionsConfiguration implements Actions {
 		configurationPage.clicarBotao(botao);
 	}
 	
+	@Override
 	public void deslizarParaCima(int qtde) {
 		
 		configurationPage.deslizarParaCima(qtde);
 	}
 	
+	@Override
 	public void deslizarParaBaixo(int qtde) {
 		
 		configurationPage.deslizarParaBaixo(qtde);
 	}
 	
+	@Override
 	public void instalarApp() {
 		
 		configurationPage.setupEnviroment();
 	}
 	
+	@Override
 	public void finalizarApp() throws Exception {
 		
 		configurationPage.driverClose();
 	}
 	
+	@Override
 	public void desinstalarApp() {
 		
 		configurationPage.uninstallApp();

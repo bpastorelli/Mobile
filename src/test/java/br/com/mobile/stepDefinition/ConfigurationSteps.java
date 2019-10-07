@@ -1,14 +1,11 @@
 package br.com.mobile.stepDefinition;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import br.com.mobile.actions.ActionsConfiguration;
 import cucumber.api.java.en.And;
 
 public class ConfigurationSteps {
 	
-	@Autowired
-	private ActionsConfiguration actionsConfiguration;
+	private ActionsConfiguration actionsConfiguration = new ActionsConfiguration();
 	
 	@And("^Configuro a quantidade de noticias para \"([^\"]*)\"$")
 	public void configuro_quantidade_de_noticias(String opcao) {

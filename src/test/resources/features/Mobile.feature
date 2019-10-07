@@ -2,15 +2,15 @@
 
 @mobile
 Feature: Automacao Mobile
-  Feature de Testes para criação de framework de automção mobile.
+  Feature de Testes para criação de framework de automação mobile.
 
   @acessando_introducao
   Scenario: Primeiro acesso passando pela introducao
     Given Que eu quero testar "Primeiro acesso - Passando pela introducao"
-    And Encontro o texto "Bem-vindo!" na tela atual
-    And Deslizo para a esquerda e visualizo 4 telas
+    And Encontro o texto "Bem-vindo!" na pagina boas vindas
+    And Deslizo para a esquerda e visualizo 4 telas 
     When Clico no botao "IR PARA O APLICATIVO" da pagina boas vindas
-    Then Encontro o texto "Não perca nenhuma notícia!" na tela atual 
+    Then Encontro o texto "Não perca nenhuma notícia!" na pagina configuracao 
     
   @acessando_pula_introducao
   Scenario: Primeiro acesso navegando pela introducao e pulando a introducao
@@ -18,11 +18,11 @@ Feature: Automacao Mobile
     And Desinstalo o aplicativo do dispositivo
     And Finalizo o aplicativo inicializado
     And Reinstalo o aplicativo no dispositivo
-    And Encontro o texto "Bem-vindo!" na tela atual
+    And Encontro o texto "Bem-vindo!" na pagina boas vindas
     And Deslizo para a esquerda e visualizo 4 telas
     And Deslizo para a direita e visualizo 4 telas
     When Clico no botao "PULAR" da pagina boas vindas
-    Then Encontro o texto "Não perca nenhuma notícia!" na tela atual 
+    Then Encontro o texto "Não perca nenhuma notícia!" na pagina configuracao 
 
   @configurando_notificacoes
   Scenario Outline: Configuracao de Notificacoes
@@ -30,15 +30,15 @@ Feature: Automacao Mobile
     And Desinstalo o aplicativo do dispositivo
     And Finalizo o aplicativo inicializado
     And Reinstalo o aplicativo no dispositivo
-    And Encontro o texto "Bem-vindo!" na tela atual
+    And Encontro o texto "Bem-vindo!" na pagina boas vindas
     When Clico no botao "PULAR" da pagina boas vindas
-    And Encontro o texto "Não perca nenhuma notícia!" na tela atual
+    And Encontro o texto "Não perca nenhuma notícia!" na pagina configuracao
     And Configuro a quantidade de noticias para <opcao>
     And Configuro tipos de alertas <alerta>
     Then Deslizo a tela para baixo 1 vezes
     Then Deslizo a tela para cima 1 vezes
     When Clico no botao "IR PARA A TELA INICIAL" da pagina configuracao
-    Then Encontro o texto "Login pelas redes sociais" na tela atual 
+    Then Encontro o texto "Login pelas redes sociais" na pagina configuracao 
     
     Examples:
     	| opcao                           | alerta     | 

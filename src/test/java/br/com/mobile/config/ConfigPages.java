@@ -10,6 +10,7 @@ public class ConfigPages {
 	
 	private static void setPages() {
 		
+		controller.addActions(null, new ActionsBoasVindas());
 		controller.addActions("boas vindas", new ActionsBoasVindas());
 		controller.addActions("configuracao", new ActionsConfiguration());
 	}
