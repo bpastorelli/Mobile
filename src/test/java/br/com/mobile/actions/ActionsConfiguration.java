@@ -16,7 +16,7 @@ public class ActionsConfiguration implements Actions {
 	@Override
 	public void clicarBotao(String botao) {
 		
-		configurationPage.touchDownDisplayed(botao);
+		configurationPage.touchActionDownDisplayed(botao);
 		configurationPage.clicarBotao(botao);
 	}
 	
@@ -70,5 +70,29 @@ public class ActionsConfiguration implements Actions {
 	public void deslizarParaDireita(int qtde) throws Exception {
 		
 		configurationPage.deslizarParaDireia(qtde);
+	}
+
+	@Override
+	public void deslizarParaEsquerdaElementoVisivel(String elemento) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaDireitaElementoVisivel(String elemento) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaDireitaTextoVisivel(String elemento) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaEsquerdaTextoVisivel(String elemento) {
+		// TODO Auto-generated method stub
+		
 	}
 }

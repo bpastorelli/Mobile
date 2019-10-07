@@ -14,7 +14,7 @@ import br.com.mobile.reports.LogReport;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class BasePageAndroid extends SetupAndroid implements BasePage{
+public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	private static WebElement element;
 
@@ -52,9 +52,10 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 
 		return element;
 	}
-	
+
 	/**
-	 * Busca o mapeamento de um elemento a partir do key informado no mapa de elementos.
+	 * Busca o mapeamento de um elemento a partir do key informado no mapa de
+	 * elementos.
 	 * 
 	 * @param key
 	 * @return By
@@ -218,142 +219,139 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 					+ ").");
 		return retorno;
 	}
-	
+
 	/**
 	 * Desliza a tela para a esquerda.
 	 */
 	@Override
 	public void touchActionLeft() {
-		
+
 		try {
-			
+
 			Dimension size = driver.manage().window().getSize();
-			int startx = (int)(size.width * 0.9D);
-			int endx = (int)(size.width * 0.1D);
+			int startx = (int) (size.width * 0.9D);
+			int endx = (int) (size.width * 0.1D);
 			int starty = size.height / 2;
 			scroll(startx, starty, endx, starty);
-		}catch(Exception e) {
-			
+		} catch (Exception e) {
+
 			LogReport.fail("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")");
 		}
 	}
 
 	@Override
 	public void touchActionRight() {
-		
+
 		try {
-			
+
 			Dimension size = driver.manage().window().getSize();
-			int startx = (int)(size.width * 0.1D);
-			int endx = (int)(size.width * 0.9D);
+			int startx = (int) (size.width * 0.1D);
+			int endx = (int) (size.width * 0.9D);
 			int starty = size.height / 2;
 			scroll(startx, starty, endx, starty);
-		}catch(Exception e) {
-			
+		} catch (Exception e) {
+
 			LogReport.fail("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")");
-		}		
-	}	
+		}
+	}
 
 	@Override
 	public void touchActionTop() {
-		
+
 		try {
-			
-		    int pressX = getDriver().manage().window().getSize().width / 2;
-		    int bottomY = getDriver().manage().window().getSize().height / 8;
-		    int topY = getDriver().manage().window().getSize().height * 4/5;
-		    scroll(pressX, bottomY, pressX, topY);
-		}catch(Exception e ) {
-			
+
+			int pressX = getDriver().manage().window().getSize().width / 2;
+			int bottomY = getDriver().manage().window().getSize().height / 8;
+			int topY = getDriver().manage().window().getSize().height * 4 / 5;
+			scroll(pressX, bottomY, pressX, topY);
+		} catch (Exception e) {
+
 			LogReport.fail("[FALHA]Falha ao deslizar a tela para cima (" + e.getMessage() + ")");
-		}		
+		}
 	}
 
 	@Override
 	public void touchActionTop(int qtde) {
-		
-		for(int i=0; i < qtde; i++) {
-			
+
+		for (int i = 0; i < qtde; i++) {
+
 			touchActionTop();
 		}
 	}
-	
+
 	@Override
 	public void touchActionDown() {
-		
+
 		try {
-			
-		    int pressX = getDriver().manage().window().getSize().width / 2;
-		    int bottomY = getDriver().manage().window().getSize().height * 4/5;
-		    int topY = getDriver().manage().window().getSize().height / 8;
-		    scroll(pressX, bottomY, pressX, topY);
-		}catch(Exception e ) {
-			
+
+			int pressX = getDriver().manage().window().getSize().width / 2;
+			int bottomY = getDriver().manage().window().getSize().height * 4 / 5;
+			int topY = getDriver().manage().window().getSize().height / 8;
+			scroll(pressX, bottomY, pressX, topY);
+		} catch (Exception e) {
+
 			LogReport.fail("[FALHA]Falha ao deslizar a tela para cima (" + e.getMessage() + ")");
-		}	
+		}
 	}
-	
+
 	@Override
 	public void touchActionDown(int qtde) {
-		
-		for(int i=0; i < qtde; i++) {
-			
+
+		for (int i = 0; i < qtde; i++) {
+
 			touchActionDown();
 		}
 	}
-	
+
 	@Override
 	public void scroll(int fromX, int fromY, int toX, int toY) {
-	    
+
 		@SuppressWarnings("rawtypes")
 		TouchAction<?> touchAction = new TouchAction(driver);
-	    touchAction.longPress(PointOption.point(fromX, fromY))
-	    	.moveTo(PointOption.point(toX, toY))
-	    	.release()
-	    	.perform();
+		touchAction.longPress(PointOption.point(fromX, fromY)).moveTo(PointOption.point(toX, toY)).release().perform();
 	}
 
 	@Override
 	public void wait(int segundos) {
-		
+
 		try {
-			synchronized(getDriver()) {
+			synchronized (getDriver()) {
 				getDriver().wait(segundos * 1000);
 			}
-		}catch (InterruptedException e) {
-			
+		} catch (InterruptedException e) {
+
 			e.printStackTrace();
 		}
 	}
 
 	@Override
 	public void setText(String name, String text) {
-		
+
 		try {
 			element = getElement(name);
 			waitDisplayed(element, Property.TIMEOUT);
 			element.sendKeys(text);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao enviar texto para o campo " + name + ".");
 		}
 	}
 
 	@Override
-	public void touchTopDisplayed(String name) {
-		
-		for(int i = 0; i < Property.TIMEOUT; i++) {
-			if(!elementIsPresent(name))
+	public void touchActionTopDisplayed(String name) {
+
+		for (int i = 0; i < Property.TIMEOUT; i++) {
+			if (!elementIsPresent(name))
 				touchActionTop();
 			else
 				return;
 		}
-	}	
-	
+	}
+
 	@Override
-	public void touchDownDisplayed(String name) {
-		
-		for(int i = 0; i < Property.TIMEOUT; i++) {
-			if(!elementIsPresent(name))
+	public void touchActionDownDisplayed(String name) {
+
+		for (int i = 0; i < Property.TIMEOUT; i++) {
+			if (!elementIsPresent(name))
 				touchActionDown();
 			else
 				return;
@@ -362,18 +360,75 @@ public class BasePageAndroid extends SetupAndroid implements BasePage{
 
 	@Override
 	public boolean elementIsPresent(String name) {
-		
+
 		By obj = null;
-		
+
 		try {
-			
+
 			obj = getMap(name);
 			element = getDriver().findElement(obj);
 			return true;
-		}catch(Exception e) {
-			
+		} catch (Exception e) {
+
 			return false;
 		}
+	}
+
+	@Override
+	public void touchActionLeftDisplayed(String name, String message) {
+
+		for (int i = 0; i < Property.TIMEOUT; i++) {
+			if (!elementIsPresent(name)) {
+				touchActionLeft();
+				LogReport.info(message);
+			} else
+				return;
+		}
+	}
+
+	@Override
+	public void touchActionRightDisplayed(String name, String message) {
+
+		for (int i = 0; i < Property.TIMEOUT; i++) {
+			if (!elementIsPresent(name)) {
+				touchActionRight();
+				LogReport.info(message);
+			} else
+				return;
+		}
+	}
+
+	@Override
+	public void touchActionLeftTextDisplayed(String text, String message) {
+
+		for (int i = 0; i < Property.TIMEOUT; i++) {
+			if (!textIsPresent(text)) {
+				touchActionLeft();
+				LogReport.info(message);
+			} else
+				return;
+		}
+	}
+
+	@Override
+	public void touchActionRightTextDisplayed(String text, String message) {
+
+		for (int i = 0; i < Property.TIMEOUT; i++) {
+			if (!textIsPresent(text)) {
+				touchActionRight();
+				LogReport.info(message);
+			} else
+				return;
+		}
+	}
+
+	@Override
+	public boolean textIsPresent(String text) {
+
+		if (!getDriver().getPageSource().contains(text))
+			return false;
+		else
+			return true;
 	}
 
 }

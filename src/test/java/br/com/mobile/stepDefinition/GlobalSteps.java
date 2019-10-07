@@ -68,4 +68,18 @@ public class GlobalSteps {
 		
 		controller.getAction().finalizarApp();
 	}
+	
+	@And("^Deslizo para a direita e clico no botao \"([^\"]*)\"$")
+	public void deslizo_para_direita_clico_no_botao(String botao) {
+		
+		controller.getAction().deslizarParaDireitaTextoVisivel(botao);
+		controller.getAction().clicarBotao(botao);
+	}
+	
+	@And("^Deslizo para a esquerda e clico no botao \"([^\"]*)\"$")
+	public void deslizo_para_esquerda_clico_no_botao(String botao) {
+		
+		controller.getAction().deslizarParaEsquerdaTextoVisivel(botao);
+		controller.getAction().clicarBotao(botao);
+	}
 }

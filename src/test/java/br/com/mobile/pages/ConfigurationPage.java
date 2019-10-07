@@ -28,7 +28,7 @@ public class ConfigurationPage extends BasePageAndroid implements Page {
 	@Override
 	public void clicarBotao(String label) {
 		
-		touchDownDisplayed(label);
+		touchActionDownDisplayed(label);
 		clickElementByMapElements(label);
 	}
 
@@ -78,6 +78,30 @@ public class ConfigurationPage extends BasePageAndroid implements Page {
 			touchActionLeft();
 			LogReport.info("Deslizo a esquerda, visualizo a tela " + (qtde - i) + " de " + qtde + ".");
 		}		
+	}
+
+	@Override
+	public void deslizarParaEsquerdaElementoVisivel(String name) {
+		
+		
+	}
+
+	@Override
+	public void deslizarParaDireitaElementoVisivel(String name) {
+		
+		
+	}
+
+	@Override
+	public void deslizarParaDireitaTextoVisivel(String texto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaEsquerdaTextoVisivel(String texto) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

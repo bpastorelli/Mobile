@@ -17,7 +17,7 @@ public class ActionsBoasVindas implements Actions {
 	@Override
 	public void clicarBotao(String botao) {
 		
-		boasVindasPage.touchDownDisplayed(botao);
+		boasVindasPage.touchActionDownDisplayed(botao);
 		boasVindasPage.clicarBotao(botao);
 	}
 	
@@ -61,5 +61,29 @@ public class ActionsBoasVindas implements Actions {
 	public void deslizarParaBaixo(int qtde) {
 		
 		boasVindasPage.deslizarParaBaixo(qtde);
+	}
+
+	@Override
+	public void deslizarParaEsquerdaElementoVisivel(String elemento) {
+		
+		boasVindasPage.deslizarParaEsquerdaElementoVisivel(elemento);
+	}
+
+	@Override
+	public void deslizarParaDireitaElementoVisivel(String elemento) {
+		
+		boasVindasPage.deslizarParaEsquerdaElementoVisivel(elemento);
+	}
+
+	@Override
+	public void deslizarParaDireitaTextoVisivel(String texto) {
+		
+		boasVindasPage.deslizarParaDireitaTextoVisivel(texto);
+	}
+
+	@Override
+	public void deslizarParaEsquerdaTextoVisivel(String texto) {
+		
+		boasVindasPage.deslizarParaEsquerdaTextoVisivel(texto);
 	}
 }

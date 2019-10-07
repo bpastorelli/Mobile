@@ -72,4 +72,28 @@ public class InicialPage extends BasePageAndroid implements Page {
 		}
 	}
 
+	@Override
+	public void deslizarParaEsquerdaElementoVisivel(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaDireitaElementoVisivel(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaDireitaTextoVisivel(String texto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaEsquerdaTextoVisivel(String texto) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -63,5 +63,22 @@ public interface Actions {
 	 * @throws Exception
 	 */
 	void finalizarApp() throws Exception;
+	
+	/**
+	 * Deslizar para a esquerda até que o elemento esteja visivel.
+	 * @param elemento Nome do elemento mapeado no mapa de elenentos.
+	 */
+	void deslizarParaEsquerdaElementoVisivel(String elemento);
+	
+	/**
+	 * Deslizar para a direita até que o elemento esteja visivel
+	 * @param elemento Nome do elemento mapeado no mapa de elementos.
+	 */
+	void deslizarParaDireitaElementoVisivel(String elemento);
+	
+	
+	void deslizarParaDireitaTextoVisivel(String texto);
+	
+	void deslizarParaEsquerdaTextoVisivel(String texto);
 
 }
