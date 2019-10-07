@@ -14,7 +14,7 @@ glue = { "br.com.mobile.stepDefinition" },
 plugin = {"html:target/cucumber-html-report","json:target/cucumber.json"},
 format = {"pretty", "html:target/reports/cucumber/html",
         "json:target/cucumber.json", "usage:target/usage.jsonx", "junit:target/junit.xml"}
-		,tags = {"@configurando_notificacoes"})
+		,tags = {"@mobile"})
 
 @ContextConfiguration(classes= AppConfiguration.class)
 public class MobileTests extends BaseTestCase {
