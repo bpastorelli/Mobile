@@ -50,20 +50,26 @@ public class InicialPage extends BasePageAndroid implements Page {
 
 	@Override
 	public void deslizarParaBaixo(Integer qtde) {
-		// TODO Auto-generated method stub
 		
+		touchActionDown(qtde);
 	}
 
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
-		// TODO Auto-generated method stub
 		
+		for(int i=0; i < qtde; i++) {
+			
+			touchActionRight();
+		}
 	}
 
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
-		// TODO Auto-generated method stub
 		
+		for(int i=0; i < qtde; i++) {
+			
+			touchActionLeft();
+		}
 	}
 
 }
