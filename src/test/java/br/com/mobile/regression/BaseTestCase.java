@@ -5,7 +5,8 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.implementation.SetupAndroid;
+import br.com.mobile.config.ConfigPages;
+import br.com.mobile.implementations.SetupAndroid;
 import br.com.mobile.reports.LogReport;
 
 public class BaseTestCase {
@@ -18,6 +19,7 @@ public class BaseTestCase {
 	public static void beforeClass() throws Exception {
 		
 		Property.loadProperties();
+		ConfigPages.loadPages();
 		setup.setupEnviroment();
 	}
 	

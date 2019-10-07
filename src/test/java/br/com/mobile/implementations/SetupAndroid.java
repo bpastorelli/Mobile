@@ -1,4 +1,4 @@
-package br.com.mobile.implementation;
+package br.com.mobile.implementations;
 
 import java.io.File;
 import java.net.URL;
@@ -6,7 +6,7 @@ import java.net.URL;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.commons.SetupEnviroment;
+import br.com.mobile.interfaces.SetupEnviroment;
 import br.com.mobile.utils.Command;
 import br.com.mobile.utils.Utils;
 import io.appium.java_client.AppiumDriver;
@@ -104,11 +104,17 @@ public class SetupAndroid implements SetupEnviroment {
 	@Override
 	public void uninstallApp() {
 		
-		if(Property.APK_INSTALL) {			
-			Utils.log("[DESINSTALAR APK]Desinstalando a APK do dispositivo.");
-			getDriver().removeApp(Property.APP_PACKAGE);
+		if(Property.APK_INSTALL) {
+			try {
+				
+				Utils.log("[DESINSTALAR APK]Desinstalando a APK do dispositivo.");
+				getDriver().removeApp(Property.APP_PACKAGE);
+				Utils.log("[SUCESSO]APK desinstalada com sucesso.");
+			}catch(Exception e) {
+				
+				Utils.log("[INFO]APK já desinstalada.");
+			}
 		}
 		
-		Utils.log("[SUCESSO]APK desinstalada com sucesso.");
 	}	
 }

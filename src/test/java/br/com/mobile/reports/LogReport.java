@@ -18,7 +18,7 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.implementation.SetupAndroid;
+import br.com.mobile.implementations.SetupAndroid;
 import br.com.mobile.utils.Utils;
 
 public class LogReport {
