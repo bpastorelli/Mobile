@@ -138,19 +138,54 @@ public interface BasePage {
 	 * Desliza para cima até que o elemento esteja visivel.
 	 * @param name Nome do elemento mapeado no mapa de elementos
 	 */	
-	void touchTopDisplayed(String name);
+	void touchActionTopDisplayed(String name);
 	
 	/**
 	 * Desliza para baixo até que o elemento esteja visivel.
 	 * @param name Nome do elemento mapeado no mapa de elementos
 	 */
-	void touchDownDisplayed(String name);
+	void touchActionDownDisplayed(String name);
+	
+	/**
+	 * Desliza para a esquerda até que o elemento esteja visível.
+	 * @param name Nome do elemento mapeado no mapa de elementos.
+	 * @message Mensagem e evidência gerada após deslizar a tela.
+	 */
+	void touchActionLeftDisplayed(String name, String message);
+	
+	/**
+	 * Desliza para a direita até que o elemento esteja visível
+	 * @param name Nome do elemento mapeado no mapa de elementos.
+	 * @message Mensagem e evidência gerada após deslizar a tela.
+	 */
+	void touchActionRightDisplayed(String name, String message);
+	
+	/**
+	 * Desliza para a esquerda até que o texto esteja visível.
+	 * @param texto Texto esperado.
+	 * @message Mensagem e evidência gerada após deslizar a tela.
+	 */
+	void touchActionLeftTextDisplayed(String text, String message);
+	
+	/**
+	 * Desliza para a direita até que o texto esteja visível.
+	 * @param texto Texto esperado.
+	 * @message Mensagem e evidência gerada após deslizar a tela.
+	 */
+	void touchActionRightTextDisplayed(String text, String message);
 	
 	/**
 	 * Verifica se o elemento está presente
 	 * @param name Nome do elemento mapeado no mapa de elementos
 	 */
 	boolean elementIsPresent(String name);
+	
+	/**
+	 * Verifica se o texto está presente
+	 * @param text Texto esperado
+	 * @return Boolean
+	 */
+	boolean textIsPresent(String text);
 	
 	/**
 	 * Scroll da Tela

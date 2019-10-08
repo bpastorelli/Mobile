@@ -62,4 +62,32 @@ public interface Page {
 	 */
 	void deslizarParaBaixo(Integer qtde);
 	
+	/**
+	 * Deslizar para a esquerda ate que o elemento esteja visivel
+	 * 
+	 * @param name Nome do elemento mapeado no mapa de elementos.
+	 * @param message Mensagem para o relatório
+	 */
+	void deslizarParaEsquerdaElementoVisivel(String name);
+
+	/**
+	 * Deslizar para a direita ate que o elemento esteja visivel
+	 * 
+	 * @param name Nome do elemento mapeado no mapa de elementos.
+	 * @param message Mensagem para o relatório
+	 */
+	void deslizarParaDireitaElementoVisivel(String name);
+	
+	/**
+	 * Deslizar para a direita até que o texto esteja visível.
+	 * @param texto Texto esperado
+	 */
+	void deslizarParaDireitaTextoVisivel(String texto);
+	
+	/**
+	 * Deslizar para a esquerda até que o texto esteja visível.
+	 * @param texto Texto esperado
+	 */
+	void deslizarParaEsquerdaTextoVisivel(String texto);
+	
 }

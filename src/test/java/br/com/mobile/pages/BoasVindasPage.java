@@ -75,4 +75,28 @@ public class BoasVindasPage extends BasePageAndroid implements Page {
 		touchActionDown(qtde);
 	}
 
+	@Override
+	public void deslizarParaEsquerdaElementoVisivel(String name) {
+		
+		touchActionLeftDisplayed(name, "Visualizando a tela.");
+	}
+
+	@Override
+	public void deslizarParaDireitaElementoVisivel(String name){
+		
+		touchActionRightDisplayed(name, "Visualizando a tela.");
+	}
+
+	@Override
+	public void deslizarParaDireitaTextoVisivel(String texto) {
+		
+		touchActionRightTextDisplayed(texto, "Visualizando a tela.");
+	}
+
+	@Override
+	public void deslizarParaEsquerdaTextoVisivel(String texto) {
+		
+		touchActionLeftTextDisplayed(texto, "Visualizando a tela.");
+	}
+
 }

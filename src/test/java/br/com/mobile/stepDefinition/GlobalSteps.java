@@ -18,6 +18,7 @@ public class GlobalSteps {
 
 	@Given("^Que eu quero testar \"([^\"]*)\"$")
 	public void que_eu_quero_testar(String arg1) throws Throwable {
+		
 		LogReport.createTest("Iniciando o Teste: " + arg1);
 	}
 	
@@ -68,4 +69,31 @@ public class GlobalSteps {
 		
 		controller.getAction().finalizarApp();
 	}
+	
+	@And("^Deslizo para a direita e clico no botao \"([^\"]*)\"$")
+	public void deslizo_para_direita_clico_no_botao(String botao) {
+		
+		controller.getAction().deslizarParaDireitaTextoVisivel(botao);
+		controller.getAction().clicarBotao(botao);
+	}
+	
+	@And("^Deslizo para a esquerda e clico no botao \"([^\"]*)\"$")
+	public void deslizo_para_esquerda_clico_no_botao(String botao) {
+		
+		controller.getAction().deslizarParaEsquerdaTextoVisivel(botao);
+		controller.getAction().clicarBotao(botao);
+	}
+	
+	@And("^Deslizo para a esquerda até o texto \"([^\"]*)\"$")
+	public void deslizo_esquerda_ate_o_texto(String texto) {
+		
+		controller.getAction().deslizarParaEsquerdaTextoVisivel(texto);
+	}
+	
+	@And("^Deslizo para a direita até o texto \"([^\"]*)\"$")
+	public void deslizo_direita_ate_o_texto(String texto) {
+		
+		controller.getAction().deslizarParaDireitaTextoVisivel(texto);
+	}
+			
 }

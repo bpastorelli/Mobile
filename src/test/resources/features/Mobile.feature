@@ -7,6 +7,9 @@ Feature: Automacao Mobile
   @acessando_introducao
   Scenario: Primeiro acesso passando pela introducao
     Given Que eu quero testar "Primeiro acesso - Passando pela introducao"
+    And Desinstalo o aplicativo do dispositivo
+    And Finalizo o aplicativo inicializado
+    When Reinstalo o aplicativo no dispositivo
     And Encontro o texto "Bem-vindo!" na pagina boas vindas
     And Deslizo para a esquerda e visualizo 4 telas 
     When Clico no botao "IR PARA O APLICATIVO" da pagina boas vindas
@@ -46,4 +49,15 @@ Feature: Automacao Mobile
       | "Só as mais importantes"        | "Som"      |
       | "Apenas grandes acontecimentos" | "Som"      |
       | "Não receber nenhuma"           | "Vibração" |
-    
+      
+  @deslizando_para_esquerda_ate_encontrar_elemento
+  Scenario: Deslizar para a esquerda até que o elemento esteja visivel
+   	Given Que eu quero testar "Deslizar a direita até encontrar o elemento"
+   	And Desinstalo o aplicativo do dispositivo
+    And Finalizo o aplicativo inicializado
+    When Reinstalo o aplicativo no dispositivo
+   	And Encontro o texto "Bem-vindo!" na pagina boas vindas
+   	And Deslizo para a esquerda até o texto "IR PARA O APLICATIVO"
+   	And Deslizo para a direita até o texto "Bem-vindo!"
+   	When Deslizo para a esquerda e clico no botao "IR PARA O APLICATIVO"
+    Then Encontro o texto "Não perca nenhuma notícia!" na pagina configuracao
