@@ -78,8 +78,16 @@ public interface Page {
 	 */
 	void deslizarParaDireitaElementoVisivel(String name);
 	
+	/**
+	 * Deslizar para a direita até que o texto esteja visível.
+	 * @param texto Texto esperado
+	 */
 	void deslizarParaDireitaTextoVisivel(String texto);
 	
+	/**
+	 * Deslizar para a esquerda até que o texto esteja visível.
+	 * @param texto Texto esperado
+	 */
 	void deslizarParaEsquerdaTextoVisivel(String texto);
 	
 }

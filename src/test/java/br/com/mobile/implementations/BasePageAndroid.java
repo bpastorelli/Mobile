@@ -166,7 +166,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		}
 
 		if (!retorno)
-			LogReport.fail("[FALHA]Elemento " + elemento + " nao encontrado (timeout = " + time + ").");
+			LogReport.fail("[FALHA]Elemento " + elemento + " nao encontrado (Timeout = " + time + ").");
 		return retorno;
 	}
 
@@ -182,7 +182,6 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public boolean waitTextElement(WebElement elemento, String texto) {
 
-		// Aguarda por determinado texto por ate o tempo informado na vari�vel time.
 		boolean retorno = false;
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!elemento.getText().contains(texto))
@@ -215,7 +214,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		}
 
 		if (!retorno)
-			LogReport.fail("[FALHA]Texto esperado na página " + text + " nao apresntado (Timeout = " + Property.TIMEOUT
+			LogReport.fail("[FALHA]Texto esperado na página " + text + " nao apresentado (Timeout = " + Property.TIMEOUT
 					+ ").");
 		return retorno;
 	}
@@ -239,6 +238,9 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		}
 	}
 
+	/**
+	 * Deslizar a tela para a direita.
+	 */
 	@Override
 	public void touchActionRight() {
 
@@ -255,6 +257,9 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		}
 	}
 
+	/**
+	 * Deslizar a tela para cima.
+	 */
 	@Override
 	public void touchActionTop() {
 
@@ -270,6 +275,10 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		}
 	}
 
+	/**
+	 * Deslizar a tela para cima N vezes.
+	 * @param qtde Quantidade de vezes a deslizar para cima
+	 */
 	@Override
 	public void touchActionTop(int qtde) {
 
@@ -279,6 +288,9 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		}
 	}
 
+	/**
+	 * Deslizar para baixo.
+	 */
 	@Override
 	public void touchActionDown() {
 
@@ -294,6 +306,10 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		}
 	}
 
+	/**
+	 * Deslizar para N vezes
+	 * @param qtde Quantidade de vezes a deslizar.
+	 */
 	@Override
 	public void touchActionDown(int qtde) {
 
@@ -303,6 +319,9 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		}
 	}
 
+	/**
+	 * Método de scroll da tela.
+	 */
 	@Override
 	public void scroll(int fromX, int fromY, int toX, int toY) {
 
