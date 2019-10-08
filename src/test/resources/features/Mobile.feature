@@ -47,9 +47,11 @@ Feature: Automacao Mobile
       | "Apenas grandes acontecimentos" | "Som"      |
       | "Não receber nenhuma"           | "Vibração" |
       
-  @deslizando_para_direita_ate_encontrar_elemento
-  Scenario: Deslizar para a direita até que o elemento esteja visivel
+  @deslizando_para_esquerda_ate_encontrar_elemento
+  Scenario: Deslizar para a esquerda até que o elemento esteja visivel
    	Given Que eu quero testar "Deslizar a direita até encontrar o elemento"
    	And Encontro o texto "Bem-vindo!" na pagina boas vindas
+   	And Deslizo para a esquerda até o texto "IR PARA O APLICATIVO"
+   	And Deslizo para a direita até o texto "Bem-vindo!"
    	When Deslizo para a esquerda e clico no botao "IR PARA O APLICATIVO"
     Then Encontro o texto "Não perca nenhuma notícia!" na pagina configuracao

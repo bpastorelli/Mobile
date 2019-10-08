@@ -82,4 +82,17 @@ public class GlobalSteps {
 		controller.getAction().deslizarParaEsquerdaTextoVisivel(botao);
 		controller.getAction().clicarBotao(botao);
 	}
+	
+	@And("^Deslizo para a esquerda até o texto \"([^\"]*)\"$")
+	public void deslizo_esquerda_ate_o_texto(String texto) {
+		
+		controller.getAction().deslizarParaEsquerdaTextoVisivel(texto);
+	}
+	
+	@And("^Deslizo para a direita até o texto \"([^\"]*)\"$")
+	public void deslizo_direita_ate_o_texto(String texto) {
+		
+		controller.getAction().deslizarParaDireitaTextoVisivel(texto);
+	}
+			
 }
