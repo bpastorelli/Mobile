@@ -6,7 +6,7 @@ import java.net.URL;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.interfaces.SetupEnviroment;
+import br.com.mobile.interfaces.SetupEnviromentMobile;
 import br.com.mobile.utils.Command;
 import br.com.mobile.utils.Utils;
 import io.appium.java_client.AppiumDriver;
@@ -15,7 +15,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
-public class SetupAndroid implements SetupEnviroment {
+public class SetupAndroid implements SetupEnviromentMobile {
 	
 	protected static AppiumDriver<MobileElement> driver;
 	
@@ -32,7 +32,6 @@ public class SetupAndroid implements SetupEnviroment {
 	@Override
 	public AppiumDriver<MobileElement> setupEnviroment() {
 		
-		cmd.executeCommand("cmd /c npm install -g appium");
 		//Verifica se existe algum processo preso para a porta configurada para o Appium e finaliza.
 		cmd.executeCommand("cmd /c netstat -ano | findstr " + Property.APPIUM_PORT);
 		cmd.killProcessPort();

@@ -3,7 +3,7 @@ package br.com.mobile.interfaces;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 
-public interface SetupEnviroment {
+public interface SetupEnviromentMobile {
 	
 	/**
 	 * Starta o serviço do Appium e o app

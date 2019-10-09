@@ -11,6 +11,8 @@ import java.util.Scanner;
 
 public class Command {
 
+	private static String content;
+	
 	private static final String TASKLIST = "tasklist";
 
 	private static final String KILL = "taskkill /F /IM ";
@@ -59,7 +61,7 @@ public class Command {
 		Scanner scanner = new Scanner(inputStream, "UTF-8");
 		while (scanner.hasNextLine()) {
 			synchronized (this) {
-				String content = prefix + scanner.nextLine();
+				content = prefix + scanner.nextLine();
 				Utils.log(content.trim());
 				if (updateListProcess) {
 					String[] item = content.split("\\s* \\s*");
@@ -113,5 +115,10 @@ public class Command {
 				return;
 			});
 		}
+	}
+	
+	public static String getContent() {
+		
+		return content;
 	}
 }
