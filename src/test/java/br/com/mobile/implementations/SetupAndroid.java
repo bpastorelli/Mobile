@@ -32,8 +32,7 @@ public class SetupAndroid implements SetupEnviromentMobile {
 	@Override
 	public AppiumDriver<MobileElement> setupEnviroment() {
 		
-		//Verifica se existe algum processo preso para a porta configurada para o Appium e finaliza.
-		cmd.executeCommand("cmd /c netstat -ano | findstr " + Property.APPIUM_PORT);
+		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
 		cmd.killProcessPort();
 		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");

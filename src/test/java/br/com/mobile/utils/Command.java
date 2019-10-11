@@ -39,7 +39,7 @@ public class Command {
 
 		try {
 			Utils.log("Executando o comando: " + command);
-			Process process = Runtime.getRuntime().exec(command);
+			Process process = Runtime.getRuntime().exec("cmd /c" + command);
 			logOutput(process.getInputStream(), "", updateListProcess);
 			logOutput(process.getErrorStream(), "Error: ", updateListProcess);
 			process.waitFor();
@@ -111,7 +111,7 @@ public class Command {
 
 		if (process.size() > 0) {
 			process.forEach(p -> {
-				executeCommand("cmd /c  taskkill  /F  /PID  " + p, false);
+				executeCommand("taskkill  /F  /PID  " + p, false);
 				return;
 			});
 		}

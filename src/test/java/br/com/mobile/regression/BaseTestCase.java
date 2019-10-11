@@ -7,6 +7,7 @@ import br.com.mobile.commons.Property;
 import br.com.mobile.config.ConfigPages;
 import br.com.mobile.implementations.SetupAndroid;
 import br.com.mobile.reports.LogReport;
+import br.com.mobile.utils.Appium;
 
 public class BaseTestCase {
 	
@@ -17,6 +18,7 @@ public class BaseTestCase {
 		
 		Property.loadProperties();
 		ConfigPages.loadPages();
+		Appium.install();
 		setup.setupEnviroment();
 	}
 	
