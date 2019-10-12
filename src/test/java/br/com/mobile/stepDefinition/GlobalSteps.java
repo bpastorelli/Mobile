@@ -10,10 +10,10 @@ public class GlobalSteps {
 	
 	private GlobalStepsController controller = new GlobalStepsController(); 
 	
-	@When("^Encontro o texto (.*) na pagina (.*)$")
-	public void abrir_aplicativo_na_tela(String texto, String pagina) {
+	@When("^Encontro o texto (.*) na pagina atual$")
+	public void abrir_aplicativo_na_tela(String texto) {
 		
-		controller.getAction(pagina).validarTextoPagina(texto, "Texto esperado na pagina: " + texto);
+		controller.getAction().validarTextoPagina(texto, "Texto esperado na pagina: " + texto);
 	}
 
 	@Given("^Que eu quero testar \"([^\"]*)\"$")
@@ -95,5 +95,12 @@ public class GlobalSteps {
 		
 		controller.getAction().deslizarParaDireitaTextoVisivel(texto);
 	}
+	
+	@And("^Digito o texto \"([^\"]*)\" no campo (.*) na pagina (.*)$")
+	public void digito_texto_no_campo_texto(String texto, String campo, String pagina) {
+		
+		controller.getAction(pagina).digitarTexto(campo, texto);
+	}
+	
 			
 }

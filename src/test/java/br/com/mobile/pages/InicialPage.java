@@ -9,7 +9,8 @@ public class InicialPage extends BasePageAndroid implements Page {
 
 	public InicialPage() {
 		
-		this.addElement("ENTRAR COM SEU E-MAIL", By.id("login_dialog_uol_button"));
+		this.addElement("Já tenho conta", By.id("com.mercadolibre:id/home_onboarding_already_has_account_button"));
+		this.addElement("MAIS TARDE", By.id("android:id/button2"));
 	}
 	
 	@Override
@@ -21,6 +22,7 @@ public class InicialPage extends BasePageAndroid implements Page {
 	@Override
 	public void clicarBotao(String label) {
 		
+		this.addElement("Acessar a minha conta", By.id(""));
 		clickElementByMapElements(label);
 	}
 
@@ -93,6 +95,22 @@ public class InicialPage extends BasePageAndroid implements Page {
 	@Override
 	public void deslizarParaEsquerdaTextoVisivel(String texto) {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	public void naoInstalarNovaVersao(String mensagem, String name) {
+		
+		boolean presence = false;
+		
+		int i = 0;
+		do {
+			i++;
+			wait(1);
+			if(textIsPresent(mensagem)) {
+				presence = true;
+				clickElementByMapElements(name);
+			}
+		}while(!presence && i < 5);
 		
 	}
 

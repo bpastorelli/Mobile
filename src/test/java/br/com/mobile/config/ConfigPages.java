@@ -1,7 +1,8 @@
 package br.com.mobile.config;
 
-import br.com.mobile.actions.ActionsBoasVindas;
-import br.com.mobile.actions.ActionsConfiguration;
+import br.com.mobile.actions.ActionsContinuar;
+import br.com.mobile.actions.ActionsInicial;
+import br.com.mobile.actions.ActionsLogar;
 import br.com.mobile.controllers.GlobalStepsController;
 
 public class ConfigPages {
@@ -10,9 +11,10 @@ public class ConfigPages {
 	
 	private static void setPages() {
 		
-		controller.addActions(null, new ActionsBoasVindas());
-		controller.addActions("boas vindas", new ActionsBoasVindas());
-		controller.addActions("configuracao", new ActionsConfiguration());
+		controller.addActions(null, new ActionsInicial());
+		controller.addActions("inicial", new ActionsInicial());
+		controller.addActions("continuar", new ActionsContinuar());
+		controller.addActions("logar", new ActionsLogar());
 	}
 	
 	public static void loadPages() {

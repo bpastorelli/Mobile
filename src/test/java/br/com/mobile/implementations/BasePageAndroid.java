@@ -450,4 +450,14 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			return true;
 	}
 
+	@Override
+	public void alert(Boolean option) {
+		
+		if(option)
+			getDriver().switchTo().alert().accept();
+		else 
+			getDriver().switchTo().alert().dismiss();
+		
+	}
+
 }

@@ -196,5 +196,11 @@ public interface BasePage {
 	 * @param toY Para Y
 	 */
 	void scroll(int fromX, int fromY, int toX, int toY);
+	
+	/**
+	 * Clica nos popus
+	 * @param option True aceitar e False recusar
+	 */
+	void alert(Boolean option);
 
 }

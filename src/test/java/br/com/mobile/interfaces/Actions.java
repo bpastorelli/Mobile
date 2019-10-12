@@ -87,5 +87,12 @@ public interface Actions {
 	 * @param texto Texto esperado
 	 */
 	void deslizarParaEsquerdaTextoVisivel(String texto);
+	
+	/**
+	 * Digitar um texto em um input
+	 * @param name Nome do elemento mapeado no mapa de elementos.
+	 * @param value Texto a ser inserido no elemento
+	 */
+	void digitarTexto(String name, String value);
 
 }
