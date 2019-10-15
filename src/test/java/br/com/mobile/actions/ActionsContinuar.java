@@ -91,4 +91,16 @@ public class ActionsContinuar implements Actions {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void selecionarItemListaSuspensa(String name, String value, String message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaBaixoTextoVisivel(String texto) {
+		// TODO Auto-generated method stub
+		
+	}
 }

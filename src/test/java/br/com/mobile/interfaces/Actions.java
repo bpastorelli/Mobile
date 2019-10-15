@@ -89,10 +89,23 @@ public interface Actions {
 	void deslizarParaEsquerdaTextoVisivel(String texto);
 	
 	/**
+	 * Deslizar para baixo até que o texto esteja visivel.
+	 * @param texto Texto esperado
+	 */	
+	void deslizarParaBaixoTextoVisivel(String texto);
+	
+	/**
 	 * Digitar um texto em um input
 	 * @param name Nome do elemento mapeado no mapa de elementos.
 	 * @param value Texto a ser inserido no elemento
 	 */
 	void digitarTexto(String name, String value);
+	
+	/**
+	 * Seleciona um item na lista suspensa
+	 * @param name Nome do elemento mapeado no mapa de elementos
+	 * @param value Texto a ser selecionado
+	 */
+	void selecionarItemListaSuspensa(String name, String value, String message);
 
 }

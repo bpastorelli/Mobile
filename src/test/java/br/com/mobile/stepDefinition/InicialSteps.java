@@ -13,4 +13,11 @@ public class InicialSteps {
 		actionsInicial.naoInstalarNovaVersao(mensagem, opcao);
 	}
 	
+	@And("^Que eu ja esteja autenticado$")
+	public void que_eu_ja_esteja_autenticado() {
+		
+		
+		
+	}
+	
 }

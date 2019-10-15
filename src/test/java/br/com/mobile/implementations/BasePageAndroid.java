@@ -1,6 +1,9 @@
 package br.com.mobile.implementations;
 
+import java.awt.AWTException;
+import java.awt.Robot;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
@@ -11,6 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import br.com.mobile.commons.Property;
 import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.reports.LogReport;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 
@@ -126,6 +130,23 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			LogReport.info("Clicar no elemento " + by);
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao clicar no elemento " + by.toString() + ".");
+		}
+	}
+	
+	/**
+	 * Clica no elemento a partir do By.
+	 * 
+	 * @param element Elemento a ser clicado
+	 */
+	@Override
+	public void clickElement(MobileElement element) {
+
+		try {
+			waitDisplayed(element, Property.TIMEOUT);
+			element.click();
+			LogReport.info("Clicar no elemento " + element.getText());
+		} catch (Exception e) {
+			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getText() + ".");
 		}
 	}
 
@@ -376,6 +397,17 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 				return;
 		}
 	}
+	
+	@Override
+	public void touchActionDownDisplayed(MobileElement element) {
+
+		for (int i = 0; i < Property.TIMEOUT; i++) {
+			if (!element.isDisplayed())
+				touchActionDown();
+			else
+				return;
+		}
+	}
 
 	@Override
 	public boolean elementIsPresent(String name) {
@@ -458,6 +490,63 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		else 
 			getDriver().switchTo().alert().dismiss();
 		
+	}
+
+	@Override
+	public void pressKey(int key) {
+		
+	     Robot robot;
+	     try {
+	         robot = new Robot();
+	          robot.keyPress(key);
+	          robot.keyRelease(key);
+	     } catch (AWTException e) {
+	         e.printStackTrace();
+	     }
+	}
+
+	@Override
+	public List<MobileElement> getListElements(String name) {
+		
+		By obj = null;
+		List<MobileElement> elements = null;
+		
+		try {
+			obj = getMap(name);
+			elements = getDriver().findElements(obj);
+		} catch (Exception e) {
+			LogReport.fail("[FALHA]Elemento " + obj.toString() + " nao encontrado.");
+		}
+
+		return elements;
+	}
+
+	@Override
+	public void selectItemList(String name, String text) {
+		
+		List<MobileElement> elements = getListElements(name);
+		
+		for(MobileElement e : elements) {
+			if(e.getText().toLowerCase().contains(text.toLowerCase())) {
+				touchActionDownDisplayed(e);
+				clickElement(e);
+				LogReport.info("Selecionado o item " + text);
+				return;
+			}
+		}
+	}
+
+	@Override
+	public void touchActionDownTextDisplayed(String text, String message) {
+		
+		for (int i = 0; i < Property.TIMEOUT; i++) {
+			if (!textIsPresent(text)) {
+				touchActionDown();
+			} else {
+				LogReport.info(message);
+				return;
+			}
+		}
 	}
 
 }

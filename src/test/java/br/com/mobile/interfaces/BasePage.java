@@ -1,7 +1,11 @@
 package br.com.mobile.interfaces;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import io.appium.java_client.MobileElement;
 
 public interface BasePage {
 	
@@ -50,6 +54,13 @@ public interface BasePage {
 	 * @param by Id, Name, Xpath...
 	 */
 	void clickElement(By by);
+	
+	/**
+	 * Clica no elemento.
+	 * 
+	 * @param element Elemento
+	 */
+	void clickElement(MobileElement element);
 	
 	/**
 	 * Move o mouse para o elemento e clica.
@@ -147,6 +158,12 @@ public interface BasePage {
 	void touchActionDownDisplayed(String name);
 	
 	/**
+	 * Desliza para baixo até que o elemento esteja visivel.
+	 * @param element Elemento
+	 */
+	void touchActionDownDisplayed(MobileElement element);
+	
+	/**
 	 * Desliza para a esquerda até que o elemento esteja visível.
 	 * @param name Nome do elemento mapeado no mapa de elementos.
 	 * @message Mensagem e evidência gerada após deslizar a tela.
@@ -173,6 +190,13 @@ public interface BasePage {
 	 * @message Mensagem e evidência gerada após deslizar a tela.
 	 */
 	void touchActionRightTextDisplayed(String text, String message);
+	
+	/**
+	 * Desliza para baixo até que o texto esteja visível.
+	 * @param texto Texto esperado.
+	 * @message Mensagem e evidência gerada após deslizar a tela.
+	 */
+	void touchActionDownTextDisplayed(String text, String message);
 	
 	/**
 	 * Verifica se o elemento está presente
@@ -202,5 +226,25 @@ public interface BasePage {
 	 * @param option True aceitar e False recusar
 	 */
 	void alert(Boolean option);
+	
+	/**
+	 * Pressiona uma tecla
+	 * @param key Tecla a ser clicada
+	 */
+	void pressKey(int key);
+	
+	/**
+	 * Lista elementos a partir de uma classe css
+	 * @param name Nome do elemento mapeado no mapa de elementos
+	 * @return List<MobileElement> 
+	 */
+	List<MobileElement> getListElements(String name);
+	
+	/**
+	 * Seleciona item em uma lista suspensa
+	 * @param name Nome do elemento mapeado na lista de elementos
+	 * @param text Texto a ser selecionado
+	 */
+	void selectItemList(String name, String text);
 
 }

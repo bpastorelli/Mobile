@@ -90,4 +90,18 @@ public interface Page {
 	 */
 	void deslizarParaEsquerdaTextoVisivel(String texto);
 	
+	/**
+	 * Deslizar para a baixo até que o texto esteja visível.
+	 * @param texto Texto esperado
+	 */	
+	void deslizarParaBaixoTextoVisivel(String texto);
+	
+	/**
+	 * Seleciona item na lista suspensa
+	 * @param name Nome do elemento
+	 * @param texto Texto a ser selecionado
+	 * @param message Mensagem para o relatório
+	 */
+	void selecionarItemListaSuspensa(String name, String texto, String message);
+	
 }

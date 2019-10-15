@@ -1,112 +1,108 @@
 package br.com.mobile.actions;
 
 import br.com.mobile.interfaces.Actions;
-import br.com.mobile.pages.InicialPage;
+import br.com.mobile.pages.PesquisaPage;
 import br.com.mobile.reports.LogReport;
 
-public class ActionsInicial implements Actions {
+public class ActionsPesquisa implements Actions {
 	
-	private InicialPage inicialPage = new InicialPage(); 
+	private PesquisaPage pesquisaPage = new PesquisaPage();
 	
 	@Override
 	public void validarTextoPagina(String textoEsperado, String mensagem) {
 		
-		LogReport.passFail(inicialPage.textoExibidoPagina(textoEsperado), mensagem);
+		LogReport.passFail(pesquisaPage.textoExibidoPagina(textoEsperado), mensagem);
 	}
 	
 	@Override
 	public void clicarBotao(String botao) {
 		
-		inicialPage.touchActionDownDisplayed(botao);
-		inicialPage.clicarBotao(botao);
+		//pesquisaPage.touchActionDownDisplayed(botao);
+		pesquisaPage.clicarBotao(botao);
 	}
 	
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
 		
-		inicialPage.deslizarParaEsquerda(qtde);
+		pesquisaPage.deslizarParaEsquerda(qtde);
 	}
 	
 	@Override
 	public void deslizarParaDireita(int qtde) throws Exception {
 		
-		inicialPage.deslizarParaDireia(qtde);
+		pesquisaPage.deslizarParaDireia(qtde);
 	}
 	
 	@Override
 	public void instalarApp() {
 		
-		inicialPage.setupEnviroment();
+		pesquisaPage.setupEnviroment();
 	}
 	
 	@Override
 	public void finalizarApp() throws Exception {
 		
-		inicialPage.driverClose();
+		pesquisaPage.driverClose();
 	}
 	
 	@Override
 	public void desinstalarApp() {
 		
-		inicialPage.uninstallApp();
+		pesquisaPage.uninstallApp();
 	}
 
 	@Override
 	public void deslizarParaCima(int qtde) {
 		
-		inicialPage.deslizarParaCima(qtde);
+		pesquisaPage.deslizarParaCima(qtde);
 	}
 
 	@Override
 	public void deslizarParaBaixo(int qtde) {
 		
-		inicialPage.deslizarParaBaixo(qtde);
+		pesquisaPage.deslizarParaBaixo(qtde);
 	}
 
 	@Override
 	public void deslizarParaEsquerdaElementoVisivel(String elemento) {
 		
-		inicialPage.deslizarParaEsquerdaElementoVisivel(elemento);
+		pesquisaPage.deslizarParaEsquerdaElementoVisivel(elemento);
 	}
 
 	@Override
 	public void deslizarParaDireitaElementoVisivel(String elemento) {
 		
-		inicialPage.deslizarParaEsquerdaElementoVisivel(elemento);
+		pesquisaPage.deslizarParaEsquerdaElementoVisivel(elemento);
 	}
 
 	@Override
 	public void deslizarParaDireitaTextoVisivel(String texto) {
 		
-		inicialPage.deslizarParaDireitaTextoVisivel(texto);
+		pesquisaPage.deslizarParaDireitaTextoVisivel(texto);
 	}
 
 	@Override
 	public void deslizarParaEsquerdaTextoVisivel(String texto) {
 		
-		inicialPage.deslizarParaEsquerdaTextoVisivel(texto);
+		pesquisaPage.deslizarParaEsquerdaTextoVisivel(texto);
 	}
 
 	@Override
 	public void digitarTexto(String name, String value) {
-		// TODO Auto-generated method stub
 		
-	}
-	
-	public void naoInstalarNovaVersao(String mensagem, String opcao) {
-				
-		inicialPage.naoInstalarNovaVersao(mensagem, opcao);
+		pesquisaPage.setText(name, value);
 	}
 
 	@Override
 	public void selecionarItemListaSuspensa(String name, String value, String message) {
-		// TODO Auto-generated method stub
 		
+		pesquisaPage.selecionarItemListaSuspensa(name, value, message);
 	}
 
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		pesquisaPage.deslizarParaBaixoTextoVisivel(texto);
 	}
+	
 }

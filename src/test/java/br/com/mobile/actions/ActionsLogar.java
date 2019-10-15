@@ -1,12 +1,18 @@
 package br.com.mobile.actions;
 
+import br.com.mobile.controllers.GlobalStepsController;
 import br.com.mobile.interfaces.Actions;
+import br.com.mobile.pages.InicialPage;
 import br.com.mobile.pages.LogarPage;
 import br.com.mobile.reports.LogReport;
 
 public class ActionsLogar implements Actions {
 	
-	private LogarPage logarPage = new LogarPage();
+	private LogarPage logarPage = new LogarPage(); 
+	
+	private InicialPage inicialPage = new InicialPage();
+	
+	private GlobalStepsController controller = new GlobalStepsController();
 	
 	@Override
 	public void validarTextoPagina(String textoEsperado, String mensagem) {
@@ -91,5 +97,28 @@ public class ActionsLogar implements Actions {
 	public void digitarTexto(String name, String value) {
 		
 		logarPage.setText(name, value);
+	}
+
+	@Override
+	public void selecionarItemListaSuspensa(String name, String value, String message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaBaixoTextoVisivel(String texto) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void logar() {
+		
+		inicialPage.naoInstalarNovaVersao("MAIS TARDE");
+		controller.getAction("inicial").validarTextoPagina("O que está esperando?", null);
+		controller.getAction("inicial").clicarBotao("Já tenho conta");
+		controller.getAction("inicial").validarTextoPagina("Continuar com", null);
+		controller.getAction("continuar").clicarBotao("NENHUMA DAS ALTERNATIVAS ACIMA");
+		controller.getAction("continuar").validarTextoPagina("Senha", null);
+		
 	}
 }

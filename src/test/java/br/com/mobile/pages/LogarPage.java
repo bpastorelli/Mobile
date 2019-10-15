@@ -93,4 +93,16 @@ public class LogarPage extends BasePageAndroid implements Page {
 		
 	}
 
+	@Override
+	public void selecionarItemListaSuspensa(String name, String texto, String message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaBaixoTextoVisivel(String texto) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

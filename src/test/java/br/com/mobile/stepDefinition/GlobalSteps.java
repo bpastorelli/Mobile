@@ -96,11 +96,22 @@ public class GlobalSteps {
 		controller.getAction().deslizarParaDireitaTextoVisivel(texto);
 	}
 	
+	@And("^Deslizo para baixo até o texto \"([^\"]*)\" da pagina (.*)$")
+	public void deslizo_baixo_ate_o_texto(String texto, String pagina) {
+		
+		controller.getAction(pagina).deslizarParaBaixoTextoVisivel(texto);
+	}
+	
 	@And("^Digito o texto \"([^\"]*)\" no campo (.*) na pagina (.*)$")
 	public void digito_texto_no_campo_texto(String texto, String campo, String pagina) {
 		
 		controller.getAction(pagina).digitarTexto(campo, texto);
 	}
 	
+	@And("^Seleciono o item \"([^\"]*)\" na lista de \"([^\"]*)\" da pagina (.*)$")
+	public void seleciono_item_lista_suspensa(String item, String name, String pagina) {
+		
+		controller.getAction(pagina).selecionarItemListaSuspensa(name, item, "Selecionar item na lista suspesa");
+	}
 			
 }

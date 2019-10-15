@@ -5,12 +5,15 @@ import org.openqa.selenium.By;
 import br.com.mobile.implementations.BasePageAndroid;
 import br.com.mobile.interfaces.Page;
 
-public class InicialPage extends BasePageAndroid implements Page {
+public class PesquisaPage extends BasePageAndroid implements Page {
 
-	public InicialPage() {
+	public PesquisaPage() {
 		
-		this.addElement("Já tenho conta", By.id("home_onboarding_already_has_account_button"));
-		this.addElement("MAIS TARDE", By.id("android:id/button2"));
+		this.addElement("NUNCA", By.id("com.google.android.gms:id/credential_save_reject"));
+		this.addElement("Buscar", By.id("com.mercadolibre:id/home_search"));
+		this.addElement("txtBusca", By.id("com.mercadolibre:id/search_input_edittext"));
+		this.addElement("produtos", By.xpath("//android.widget.TextView"));
+		this.addElement("produtos filtrados", By.xpath("//android.widget.TextView"));
 	}
 	
 	@Override
@@ -34,43 +37,37 @@ public class InicialPage extends BasePageAndroid implements Page {
 	@Override
 	public void deslizarParaEsquerda() {
 		
-		touchActionLeft();
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaDireia() {
 		
-		touchActionRight();
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaCima(Integer qtde) {
 			
-		touchActionTop(qtde);
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaBaixo(Integer qtde) {
 		
-		touchActionDown(qtde);
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
 		
-		for(int i=0; i < qtde; i++) {
-			
-			touchActionRight();
-		}
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
 		
-		for(int i=0; i < qtde; i++) {
-			
-			touchActionLeft();
-		}
+		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -96,50 +93,17 @@ public class InicialPage extends BasePageAndroid implements Page {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	public void naoInstalarNovaVersao(String name) {
-		
-		boolean presence = false;
-		
-		int i = 0;
-		do {
-			i++;
-			wait(1);
-			if(textIsPresent(name)) {
-				clickElementByMapElements(name);
-				presence = true;
-			}
-		}while(!presence && i < 5);
-		
-	}
-	
-	public void naoInstalarNovaVersao(String mensagem, String name) {
-		
-		boolean presence = false;
-		
-		int i = 0;
-		do {
-			i++;
-			wait(1);
-			if(textIsPresent(mensagem)) {
-				clickElementByMapElements(name);
-				if(!textIsPresent(mensagem))
-					presence = true;
-			}
-		}while(!presence && i < 5);
-		
-	}
 
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
-		// TODO Auto-generated method stub
 		
+		selectItemList(name, texto);
 	}
 
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		touchActionDownTextDisplayed(texto, "Texto esperado " + texto);
 	}
 
 }
