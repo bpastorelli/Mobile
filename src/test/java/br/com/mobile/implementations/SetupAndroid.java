@@ -5,11 +5,13 @@ import java.net.URL;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import com.microsoft.appcenter.appium.EnhancedAndroidDriver;
+import com.microsoft.appcenter.appium.Factory;
+
 import br.com.mobile.commons.Property;
 import br.com.mobile.interfaces.SetupEnviromentMobile;
 import br.com.mobile.utils.Command;
 import br.com.mobile.utils.Utils;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
@@ -17,7 +19,7 @@ import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
 public class SetupAndroid implements SetupEnviromentMobile {
 	
-	protected static AppiumDriver<MobileElement> driver;
+	protected static EnhancedAndroidDriver<MobileElement> driver;
 	
 	private Command cmd = new Command();
 	
@@ -30,7 +32,7 @@ public class SetupAndroid implements SetupEnviromentMobile {
 	private static final String process = "Appium.exe";
 	
 	@Override
-	public AppiumDriver<MobileElement> setupEnviroment() {
+	public EnhancedAndroidDriver<MobileElement> setupEnviroment() {
 		
 		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
 		cmd.killProcessPort();
@@ -63,9 +65,13 @@ public class SetupAndroid implements SetupEnviromentMobile {
 		
 		try {	
 			Utils.log("[APLICATIVO]Iniciando o aplicativo...");
-			driver = new AppiumDriver<MobileElement>(new URL("http:" 
-					+ Property.APPIUM_IP 
-					+ ":" + Property.APPIUM_PORT + "/wd/hub"), caps);
+			//driver = new AppiumDriver<MobileElement>(new URL("http:" 
+			//		+ Property.APPIUM_IP 
+			//		+ ":" + Property.APPIUM_PORT + "/wd/hub"), caps);
+			URL url = new URL("http:" 
+							+ Property.APPIUM_IP 
+							+ ":" + Property.APPIUM_PORT + "/wd/hub");
+			driver = Factory.createAndroidDriver(url, caps);
 		} catch (Exception e) {
 			
 			Utils.log("[FALHA]Falha ao iniciar o aplicativo:" + e.getMessage());
@@ -76,7 +82,7 @@ public class SetupAndroid implements SetupEnviromentMobile {
 	}
 	
 	@Override
-	public AppiumDriver<MobileElement> getDriver() {
+	public EnhancedAndroidDriver<MobileElement> getDriver() {
 		
 		return driver;
 	}
