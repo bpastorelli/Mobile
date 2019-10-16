@@ -1,8 +1,11 @@
 package br.com.mobile.commons;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+
+import br.com.mobile.utils.Utils;
 
 public abstract class Property {
 	
@@ -40,7 +43,7 @@ public abstract class Property {
 	
 	public static Boolean AUTO_PERMISSIONS;
 	
-	private static final String PROP_FILE_CONFIG = "src/test/resources/config.properties";
+	private static final String PROP_FILE_CONFIG = new File(Utils.getFilePath("config.properties")).toString();
 	
 	private static Properties getProp() throws IOException {
 		
