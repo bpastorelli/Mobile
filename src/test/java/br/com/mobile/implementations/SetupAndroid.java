@@ -21,8 +21,6 @@ public class SetupAndroid implements SetupEnviromentMobile {
 	
 	protected static EnhancedAndroidDriver<MobileElement> driver;
 	
-	private Command cmd = new Command();
-	
 	private DesiredCapabilities caps; 
 	
 	private AppiumServiceBuilder builder;
@@ -34,21 +32,13 @@ public class SetupAndroid implements SetupEnviromentMobile {
 	@Override
 	public EnhancedAndroidDriver<MobileElement> setupEnviroment() {
 		
-		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
-		cmd.killProcessPort();
-		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		caps = new DesiredCapabilities();
-		caps.setCapability("noReset", Property.APP_NORESET);
-		caps.setCapability("fullReset", Property.APP_FULLRESET);
-		caps.setCapability("deviceName", Property.DEVICE_NAME);
 		caps.setCapability("platformName", Property.PLATFORM_NAME);
 		caps.setCapability("platformVersion", Property.PLATFORM_VERSION);
 		caps.setCapability("appPackage", Property.APP_PACKAGE);
 		caps.setCapability("appActivity", Property.APP_ACTIVITY);
 		caps.setCapability("autoGrantPermissions", Property.AUTO_PERMISSIONS);
-		caps.setCapability("autoAcceptAlerts", false);
-		caps.setCapability("autoDismissAlerts", true);
 		caps.setCapability("app", new File(Utils.getFilePath(Property.APP_PATH)).toString());
 		
 		builder = new AppiumServiceBuilder();
@@ -58,16 +48,8 @@ public class SetupAndroid implements SetupEnviromentMobile {
 		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
 		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
 		
-		service = AppiumDriverLocalService.buildService(builder);
-		service.start();
-		
-		Utils.log("[SUCESSO]Appium iniciado.");
-		
 		try {	
 			Utils.log("[APLICATIVO]Iniciando o aplicativo...");
-			//driver = new AppiumDriver<MobileElement>(new URL("http:" 
-			//		+ Property.APPIUM_IP 
-			//		+ ":" + Property.APPIUM_PORT + "/wd/hub"), caps);
 			URL url = new URL("http:" 
 							+ Property.APPIUM_IP 
 							+ ":" + Property.APPIUM_PORT + "/wd/hub");
@@ -109,18 +91,6 @@ public class SetupAndroid implements SetupEnviromentMobile {
 
 	@Override
 	public void uninstallApp() {
-		
-		if(Property.APK_INSTALL) {
-			try {
-				
-				Utils.log("[DESINSTALAR APK]Desinstalando a APK do dispositivo.");
-				getDriver().removeApp(Property.APP_PACKAGE);
-				Utils.log("[SUCESSO]APK desinstalada com sucesso.");
-			}catch(Exception e) {
-				
-				Utils.log("[INFO]APK já desinstalada.");
-			}
-		}
 		
 	}	
 }

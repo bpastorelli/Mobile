@@ -20,7 +20,6 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import br.com.mobile.commons.Property;
 import br.com.mobile.implementations.SetupAndroid;
 import br.com.mobile.utils.Utils;
-import io.appium.java_client.AppiumDriver;
 
 public class LogReport {
 	
@@ -77,7 +76,6 @@ public class LogReport {
 		
 		ExtentTest extentTest = getExtentTest();
 		extentTest.log(Status.PASS, message);
-		//logPrint(message, Status.INFO);
 		assertTrue(true);
 	}
 
@@ -85,7 +83,6 @@ public class LogReport {
 		
 		ExtentTest extentTest = getExtentTest();
 		extentTest.log(Status.FAIL, message);
-		//logPrint(message, Status.FAIL);
 		assertFalse(message, true);
 	}
 	
@@ -98,8 +95,6 @@ public class LogReport {
 		
 		ExtentTest extentTest = getExtentTest();
 		extentTest.log(Status.INFO, message);
-		//if(print)
-		//	logPrint(message, Status.INFO);
 	}
 	
 	public static String efetuarPrintTela(String strLog) {

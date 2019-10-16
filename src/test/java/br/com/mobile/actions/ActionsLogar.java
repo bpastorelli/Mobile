@@ -118,7 +118,10 @@ public class ActionsLogar implements Actions {
 		controller.getAction("inicial").clicarBotao("Já tenho conta");
 		controller.getAction("inicial").validarTextoPagina("Continuar com", null);
 		controller.getAction("continuar").clicarBotao("NENHUMA DAS ALTERNATIVAS ACIMA");
-		controller.getAction("continuar").validarTextoPagina("Senha", null);
+		controller.getAction("logar").validarTextoPagina("Senha", null);
+		controller.getAction("logar").digitarTexto("senha", "sid04197");
+		controller.getAction("logar").clicarBotao("Entrar");
+		controller.getAction("pesquisa").validarTextoPagina("Pagar com QR", null);
 		
 	}
 }
