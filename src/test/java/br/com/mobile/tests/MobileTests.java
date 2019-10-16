@@ -1,11 +1,7 @@
 package br.com.mobile.tests;
 
-import org.junit.Rule;
-import org.junit.rules.TestWatcher;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-
-import com.microsoft.appcenter.appium.Factory;
 
 import br.com.mobile.regression.AppConfiguration;
 import br.com.mobile.regression.BaseTestCase;
@@ -22,8 +18,5 @@ format = {"pretty", "html:target/reports/cucumber/html",
 
 @ContextConfiguration(classes= AppConfiguration.class)
 public class MobileTests extends BaseTestCase {
-
-    @Rule
-    public TestWatcher watcher = Factory.createWatcher();
 	
 }

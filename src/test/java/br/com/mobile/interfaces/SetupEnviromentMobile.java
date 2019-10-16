@@ -1,7 +1,6 @@
 package br.com.mobile.interfaces;
 
-import com.microsoft.appcenter.appium.EnhancedAndroidDriver;
-
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 
 public interface SetupEnviromentMobile {
@@ -11,14 +10,14 @@ public interface SetupEnviromentMobile {
 	 * 
 	 * @return AppiumDriver<MobileElement>
 	 */
-	EnhancedAndroidDriver<MobileElement> setupEnviroment();
+	AppiumDriver<MobileElement> setupEnviroment();
 	
 	/**
 	 * Retorna o driver
 	 * 
 	 * @return AppiumDriver<MobileElement>
 	 */
-	EnhancedAndroidDriver<MobileElement> getDriver();
+	AppiumDriver<MobileElement> getDriver();
 	
 	/**
 	 * Fecha o driver (App)
