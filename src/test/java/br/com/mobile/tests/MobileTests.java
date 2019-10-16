@@ -13,7 +13,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = {"src/test/resources/features/Mobile.feature"}, 
+@CucumberOptions(features = {"src\\test\\resources\\features\\Mobile.feature"}, 
 glue = { "br.com.mobile.stepDefinition" }, 
 plugin = {"html:target/cucumber-html-report","json:target/cucumber.json"},
 format = {"pretty", "html:target/reports/cucumber/html",

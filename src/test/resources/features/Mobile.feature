@@ -24,7 +24,7 @@ Feature: Automacao Mobile
   @pesquisar_produto
   Scenario Outline: Pesquisar um produto
     Given Que eu quero testar "Pesquisar um produto"
-    And Que eu ja esteja autenticado
+    #And Que eu ja esteja autenticado
     And Clico no botao "Buscar" da pagina pesquisa
     And Digito o texto <filtro> no campo txtBusca na pagina pesquisa
     And Seleciono o item <filtro> na lista de "produtos" da pagina pesquisa
