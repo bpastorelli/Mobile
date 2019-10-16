@@ -21,7 +21,6 @@ public class MobileTests extends BaseTestCase {
     public void testA() {
     	
     	actionsLogar.logar();
-    	
     }
 	
 }

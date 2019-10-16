@@ -113,15 +113,18 @@ public class ActionsLogar implements Actions {
 	
 	public void logar() {
 		
-		inicialPage.naoInstalarNovaVersao("MAIS TARDE");
-		controller.getAction("inicial").validarTextoPagina("O que está esperando?", null);
-		controller.getAction("inicial").clicarBotao("Já tenho conta");
-		controller.getAction("inicial").validarTextoPagina("Continuar com", null);
-		controller.getAction("continuar").clicarBotao("NENHUMA DAS ALTERNATIVAS ACIMA");
-		controller.getAction("logar").validarTextoPagina("Senha", null);
-		controller.getAction("logar").digitarTexto("senha", "sid04197");
-		controller.getAction("logar").clicarBotao("Entrar");
-		controller.getAction("pesquisa").validarTextoPagina("Pagar com QR", null);
+		inicialPage.naoInstalarNovaVersao("Tenemos una nueva versión", "MÁS TARDE");
+		controller.getAction().validarTextoPagina("¿En dónde estás?", null);
+		controller.getAction("inicial").clicarBotao("Brasil");
+		//controller.getAction().validarTextoPagina("O que está esperando?", null);
+		//controller.getAction("inicial").clicarBotao("Já tenho conta");
+		//controller.getAction("inicial").validarTextoPagina("Continuar com", null);
+		//controller.getAction("continuar").clicarBotao("NENHUMA DAS ALTERNATIVAS ACIMA");
+		//controller.getAction("logar").validarTextoPagina("Senha", null);
+		//controller.getAction("logar").digitarTexto("senha", "sid04197");
+		//controller.getAction("logar").clicarBotao("Entrar");
+		//inicialPage.naoInstalarNovaVersao("Tenemos una nueva versión", "MÁS TARDE");
+		//controller.getAction().validarTextoPagina("¿En dónde estás?", null);
 		
 	}
 }

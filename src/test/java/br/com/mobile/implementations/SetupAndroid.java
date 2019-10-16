@@ -39,6 +39,7 @@ public class SetupAndroid implements SetupEnviromentMobile {
 		caps.setCapability("appPackage", Property.APP_PACKAGE);
 		caps.setCapability("appActivity", Property.APP_ACTIVITY);
 		caps.setCapability("autoGrantPermissions", Property.AUTO_PERMISSIONS);
+		caps.setCapability("autoDismissAlerts", true);
 		caps.setCapability("app", new File(Utils.getFilePath(Property.APP_PATH)).toString());
 		
 		builder = new AppiumServiceBuilder();
