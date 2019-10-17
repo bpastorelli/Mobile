@@ -35,6 +35,10 @@ taskkill  /F  /PID  <PID>
 
 # Comandos para execução no App Center
 
-C:\repositorio_local\Mobile>appcenter test run appium --app "bpastorelli/appCenter" --devices "bpastorelli/samsunga7" --app-path C:\repositorio_local\Mobile\src\test\resources\apk\ml.apk --test-series "master" --locale "en_US" --build-dir target/upload
+Compilar o projeto:
+C:\repositorio_local\Mobile>mvn -DskipTests -P prepare-for-upload package
 
+Executar os testes:
+
+C:\repositorio_local\Mobile>appcenter test run appium --app "bpastorelli/appCenter" --devices "bpastorelli/samsunga7" --app-path C:\repositorio_local\Mobile\src\test\resources\apk\ml.apk --test-series "master" --locale "en_US" --build-dir target/upload
 

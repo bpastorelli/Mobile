@@ -11,6 +11,7 @@ public class InicialPage extends BasePageAndroid implements Page {
 		
 		this.addElement("Já tenho conta", By.id("home_onboarding_already_has_account_button"));
 		this.addElement("MÁS TARDE", By.id("android:id/button2"));
+		this.addElement("paises", By.xpath("//android.widget.TextView"));
 	}
 	
 	@Override

@@ -100,8 +100,8 @@ public class ActionsInicial implements Actions {
 
 	@Override
 	public void selecionarItemListaSuspensa(String name, String value, String message) {
-		// TODO Auto-generated method stub
 		
+		inicialPage.selecionarItemListaSuspensa(name, value, message);;
 	}
 
 	@Override

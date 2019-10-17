@@ -1,6 +1,7 @@
 package br.com.mobile.actions;
 
 import br.com.mobile.controllers.GlobalStepsController;
+import br.com.mobile.enums.Page;
 import br.com.mobile.interfaces.Actions;
 import br.com.mobile.pages.InicialPage;
 import br.com.mobile.pages.LogarPage;
@@ -115,7 +116,8 @@ public class ActionsLogar implements Actions {
 		
 		inicialPage.naoInstalarNovaVersao("Tenemos una nueva versión", "MÁS TARDE");
 		controller.getAction().validarTextoPagina("¿En dónde estás?", null);
-		controller.getAction("inicial").clicarBotao("Brasil");
+		controller.getAction(Page.INICIAL.get()).selecionarItemListaSuspensa("paises", "Brasil", null);
+		//controller.getAction("inicial").clicarBotao("Brasil");
 		//controller.getAction().validarTextoPagina("O que está esperando?", null);
 		//controller.getAction("inicial").clicarBotao("Já tenho conta");
 		//controller.getAction("inicial").validarTextoPagina("Continuar com", null);
