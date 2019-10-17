@@ -1,6 +1,7 @@
 package br.com.mobile.stepDefinition;
 
 import br.com.mobile.controllers.GlobalStepsController;
+import br.com.mobile.enums.Page;
 import cucumber.api.java.en.And;
 
 public class PesquisaSteps {
@@ -10,7 +11,8 @@ public class PesquisaSteps {
 	@And("^Escolho o produto \"([^\"]*)\" na lista de \"([^\"]*)\"$")
 	public void seleciono_item_lista_suspensa(String item, String name) {
 		
-		controller.getAction("pesquisa").selecionarItemListaSuspensa(name, item, "Escolher o produto " + item);
+		controller.getAction(Page.PESQUISA).selecionarItemListaSuspensa(name, item, "Escolher o produto " + item);
 	}
 	
 }
+	

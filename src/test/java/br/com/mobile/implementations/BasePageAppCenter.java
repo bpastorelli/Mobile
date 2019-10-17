@@ -18,7 +18,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class BasePageAndroid extends SetupAndroid implements BasePage {
+public class BasePageAppCenter extends SetupAndroid implements BasePage {
 
 	private static WebElement element;
 
@@ -234,9 +234,6 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 				return true;
 		}
 
-		if (!retorno)
-			LogReport.fail("[FALHA]Texto esperado na página " + text + " nao apresentado (Timeout = " + Property.TIMEOUT
-					+ ").");
 		return retorno;
 	}
 
@@ -375,7 +372,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			LogReport.fail("[FALHA]Falha ao enviar texto para o campo " + name + ".");
 		}
 	}
-
+	
 	@Override
 	public void touchActionTopDisplayed(String name) {
 

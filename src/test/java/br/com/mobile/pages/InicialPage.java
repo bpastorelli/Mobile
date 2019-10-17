@@ -2,15 +2,15 @@ package br.com.mobile.pages;
 
 import org.openqa.selenium.By;
 
-import br.com.mobile.implementations.BasePageAndroid;
+import br.com.mobile.implementations.BasePageAppCenter;
 import br.com.mobile.interfaces.Page;
 
-public class InicialPage extends BasePageAndroid implements Page {
+public class InicialPage extends BasePageAppCenter implements Page {
 
 	public InicialPage() {
 		
 		this.addElement("Já tenho conta", By.id("home_onboarding_already_has_account_button"));
-		this.addElement("MÁS TARDE", By.id("android:id/button2"));
+		this.addElement("MAIS TARDE", By.id("android:id/button2"));
 		this.addElement("paises", By.xpath("//android.widget.TextView"));
 	}
 	
@@ -124,8 +124,9 @@ public class InicialPage extends BasePageAndroid implements Page {
 			wait(1);
 			if(textIsPresent(mensagem)) {
 				clickElementByMapElements(name);
-				if(!textIsPresent(mensagem))
+				if(!textIsPresent(mensagem)) {					
 					presence = true;
+				}
 			}
 		}while(!presence && i < 5);
 		
@@ -133,8 +134,8 @@ public class InicialPage extends BasePageAndroid implements Page {
 
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
-		// TODO Auto-generated method stub
 		
+		selectItemList(name, texto);
 	}
 
 	@Override

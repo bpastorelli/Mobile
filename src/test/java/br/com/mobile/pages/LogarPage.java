@@ -2,10 +2,10 @@ package br.com.mobile.pages;
 
 import org.openqa.selenium.By;
 
-import br.com.mobile.implementations.BasePageAndroid;
+import br.com.mobile.implementations.BasePageAppCenter;
 import br.com.mobile.interfaces.Page;
 
-public class LogarPage extends BasePageAndroid implements Page {
+public class LogarPage extends BasePageAppCenter implements Page {
 
 	public LogarPage() {
 		

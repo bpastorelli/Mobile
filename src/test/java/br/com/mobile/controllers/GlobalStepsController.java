@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import br.com.mobile.enums.Page;
 import br.com.mobile.interfaces.Actions;
 import br.com.mobile.reports.LogReport;
 
@@ -23,10 +24,10 @@ public class GlobalStepsController {
 		return getAction(null);
 	}
 	
-	public Actions getAction(String pagina) {
+	public Actions getAction(Page pagina) {
 		
 		Actions actions;
-		page = Objects.equals(pagina, null) ? page : pagina;
+		page = Objects.equals(pagina.get(), null) ? page : pagina.get();
 		
 		if(!mapaActions.containsKey(page))
 			LogReport.fail("A pagina [" + page + "] não foi encontrada no mapa de configurações de páginas.");

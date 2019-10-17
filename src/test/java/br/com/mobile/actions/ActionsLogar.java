@@ -114,19 +114,30 @@ public class ActionsLogar implements Actions {
 	
 	public void logar() {
 		
-		inicialPage.naoInstalarNovaVersao("Tenemos una nueva versión", "MÁS TARDE");
-		controller.getAction().validarTextoPagina("¿En dónde estás?", null);
-		controller.getAction(Page.INICIAL.get()).selecionarItemListaSuspensa("paises", "Brasil", null);
-		//controller.getAction("inicial").clicarBotao("Brasil");
-		//controller.getAction().validarTextoPagina("O que está esperando?", null);
-		//controller.getAction("inicial").clicarBotao("Já tenho conta");
-		//controller.getAction("inicial").validarTextoPagina("Continuar com", null);
-		//controller.getAction("continuar").clicarBotao("NENHUMA DAS ALTERNATIVAS ACIMA");
-		//controller.getAction("logar").validarTextoPagina("Senha", null);
-		//controller.getAction("logar").digitarTexto("senha", "sid04197");
-		//controller.getAction("logar").clicarBotao("Entrar");
-		//inicialPage.naoInstalarNovaVersao("Tenemos una nueva versión", "MÁS TARDE");
-		//controller.getAction().validarTextoPagina("¿En dónde estás?", null);
+		inicialPage.naoInstalarNovaVersao("Tenemos una nueva versión", "MAIS TARDE");
+		
+		if(inicialPage.textoExibidoPagina("¿En dónde estás?")) {
+			controller.getAction(Page.INICIAL).validarTextoPagina("¿En dónde estás?", "");			
+			controller.getAction(Page.INICIAL).selecionarItemListaSuspensa("paises", "Brasil", "");
+		}
+		controller.getAction(Page.INICIAL).validarTextoPagina("O que está esperando?", "");
+		controller.getAction(Page.INICIAL).clicarBotao("Já tenho conta");
+		controller.getAction(Page.CONTINUAR).validarTextoPagina("Continuar com", "");
+		controller.getAction(Page.CONTINUAR).clicarBotao("NENHUMA DAS ALTERNATIVAS ACIMA");
+		
+		if(inicialPage.textoExibidoPagina("E-mail ou usuário")) {
+			controller.getAction(Page.LOGAR).digitarTexto("e-mail", "brunopastorelli@hotmail.com");
+			controller.getAction(Page.LOGAR).clicarBotao("Continuar");
+		}
+		controller.getAction(Page.LOGAR).validarTextoPagina("Senha", null);
+		controller.getAction(Page.LOGAR).digitarTexto("senha", "sid04197");
+		controller.getAction(Page.LOGAR).clicarBotao("Entrar");
+		
+		if(inicialPage.textoExibidoPagina("Instale a nova versão disponível")) {
+			controller.getAction(Page.PESQUISA).clicarBotao("MAIS TARDE");;
+		}
+		
+		controller.getAction(Page.PESQUISA).validarTextoPagina("Pagar com QR", "");
 		
 	}
 }

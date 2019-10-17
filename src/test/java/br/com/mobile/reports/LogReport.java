@@ -74,15 +74,11 @@ public class LogReport {
 	
 	public static void pass(String message) {
 		
-		ExtentTest extentTest = getExtentTest();
-		extentTest.log(Status.PASS, message);
 		assertTrue(true);
 	}
 
 	public static void fail(String message) {
 		
-		ExtentTest extentTest = getExtentTest();
-		extentTest.log(Status.FAIL, message);
 		assertFalse(message, true);
 	}
 	
@@ -93,8 +89,7 @@ public class LogReport {
 	
 	public static void info(String message, Boolean print) {
 		
-		ExtentTest extentTest = getExtentTest();
-		extentTest.log(Status.INFO, message);
+		System.out.println(message);
 	}
 	
 	public static String efetuarPrintTela(String strLog) {

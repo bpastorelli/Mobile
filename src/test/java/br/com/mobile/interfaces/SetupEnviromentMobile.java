@@ -11,7 +11,7 @@ public interface SetupEnviromentMobile {
 	 * 
 	 * @return AppiumDriver<MobileElement>
 	 */
-	EnhancedAndroidDriver<MobileElement> setupEnviroment();
+	void setupEnviroment();
 	
 	/**
 	 * Retorna o driver
