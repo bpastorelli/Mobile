@@ -5,11 +5,11 @@ import org.junit.BeforeClass;
 
 import br.com.mobile.commons.Property;
 import br.com.mobile.config.ConfigPages;
-import br.com.mobile.implementations.SetupAndroid;
+import br.com.mobile.implementations.SetupAndroidAppCenter;
 
 public class BaseTestCase {
 	
-	public static SetupAndroid setup = new SetupAndroid();
+	public static SetupAndroidAppCenter setup = new SetupAndroidAppCenter();
 	
 	@BeforeClass
 	public static void beforeClass() throws Exception {

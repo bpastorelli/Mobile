@@ -107,5 +107,12 @@ public interface Actions {
 	 * @param value Texto a ser selecionado
 	 */
 	void selecionarItemListaSuspensa(String name, String value, String message);
+	
+	/**
+	 * Verifica se um determinado texto está presente na tela
+	 * @param texto Texto esperado na página
+	 * @return Boolean
+	 */
+	Boolean textoExibidoPagina(String texto);
 
 }

@@ -18,7 +18,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class BasePageAppCenter extends SetupAndroid implements BasePage {
+public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage {
 
 	private static WebElement element;
 
@@ -216,6 +216,23 @@ public class BasePageAppCenter extends SetupAndroid implements BasePage {
 		return retorno;
 	}
 
+	@Override
+	public boolean waitText(String text, Integer time) {
+		
+		boolean retorno = false;
+		Integer aguardar = time == 0 ? Property.TIMEOUT : time; 
+		
+		for (int i = 0; i < aguardar; i++) {
+
+			if (!getDriver().getPageSource().contains(text))
+				wait(1);
+			else
+				return true;
+		}
+
+		return retorno;
+	}
+	
 	/**
 	 * Aguarda um determinado texto na página independente do elemento.
 	 * 
@@ -225,16 +242,7 @@ public class BasePageAppCenter extends SetupAndroid implements BasePage {
 	@Override
 	public boolean waitText(String text) {
 
-		boolean retorno = false;
-		for (int i = 0; i < Property.TIMEOUT; i++) {
-
-			if (!getDriver().getPageSource().contains(text))
-				wait(1);
-			else
-				return true;
-		}
-
-		return retorno;
+		return waitText(text, 5);
 	}
 
 	/**
@@ -527,7 +535,6 @@ public class BasePageAppCenter extends SetupAndroid implements BasePage {
 			if(e.getText().toLowerCase().contains(text.toLowerCase())) {
 				touchActionDownDisplayed(e);
 				clickElement(e);
-				LogReport.info("Selecionado o item " + text);
 				return;
 			}
 		}
@@ -540,7 +547,6 @@ public class BasePageAppCenter extends SetupAndroid implements BasePage {
 			if (!textIsPresent(text)) {
 				touchActionDown();
 			} else {
-				LogReport.info(message);
 				return;
 			}
 		}

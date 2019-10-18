@@ -17,7 +17,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
-public class SetupAndroid implements SetupEnviromentMobile {
+public class SetupAndroidAppCenter implements SetupEnviromentMobile {
 	
 	protected static EnhancedAndroidDriver<MobileElement> driver;
 	
@@ -34,10 +34,11 @@ public class SetupAndroid implements SetupEnviromentMobile {
 	@Override
 	public void setupEnviroment() {
 		
-		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
-		cmd.killProcessPort();
+		//cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
+		//cmd.killProcessPort();
 		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
+		
 		caps = new DesiredCapabilities();
 		caps.setCapability("noReset", Property.APP_NORESET);
 		caps.setCapability("fullReset", Property.APP_FULLRESET);
@@ -58,8 +59,10 @@ public class SetupAndroid implements SetupEnviromentMobile {
 		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
 		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
 		
-		service = AppiumDriverLocalService.buildService(builder);
-		service.start();
+		try {			
+			service = AppiumDriverLocalService.buildService(builder);
+			service.start();
+		}catch(Exception e) {}
 		
 		Utils.log("[SUCESSO]Appium iniciado.");
 		

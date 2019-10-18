@@ -1,5 +1,7 @@
 package br.com.mobile.actions;
 
+import static org.junit.Assert.*;
+
 import br.com.mobile.interfaces.Actions;
 import br.com.mobile.pages.PesquisaPage;
 import br.com.mobile.reports.LogReport;
@@ -17,7 +19,6 @@ public class ActionsPesquisa implements Actions {
 	@Override
 	public void clicarBotao(String botao) {
 		
-		//pesquisaPage.touchActionDownDisplayed(botao);
 		pesquisaPage.clicarBotao(botao);
 	}
 	
@@ -103,6 +104,22 @@ public class ActionsPesquisa implements Actions {
 	public void deslizarParaBaixoTextoVisivel(String texto) {
 		
 		pesquisaPage.deslizarParaBaixoTextoVisivel(texto);
+	}
+
+	@Override
+	public Boolean textoExibidoPagina(String texto) {
+		
+		return pesquisaPage.textoExibidoPagina(texto);
+	}
+	
+	public void pesquisarProduto(String produto, String descricao, String esperado) {
+		
+		pesquisaPage.clicarBotao("Buscar");
+		pesquisaPage.digitarTexto("txtBusca", produto);
+		pesquisaPage.selecionarItemListaSuspensa("produtos", produto, "");
+		pesquisaPage.deslizarParaBaixoTextoVisivel(descricao);
+		pesquisaPage.selecionarItemListaSuspensa("produtos filtrados", descricao, "");
+		assertTrue(pesquisaPage.textoExibidoPagina(esperado));
 	}
 	
 }

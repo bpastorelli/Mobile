@@ -89,8 +89,8 @@ public class ActionsInicial implements Actions {
 
 	@Override
 	public void digitarTexto(String name, String value) {
-		// TODO Auto-generated method stub
 		
+		inicialPage.digitarTexto(name, value);
 	}
 	
 	public void naoInstalarNovaVersao(String mensagem, String opcao) {
@@ -101,12 +101,18 @@ public class ActionsInicial implements Actions {
 	@Override
 	public void selecionarItemListaSuspensa(String name, String value, String message) {
 		
-		inicialPage.selecionarItemListaSuspensa(name, value, message);;
+		inicialPage.selecionarItemListaSuspensa(name, value, message);
 	}
 
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		inicialPage.touchActionDownTextDisplayed(texto, null);
+	}
+
+	@Override
+	public Boolean textoExibidoPagina(String texto) {
+
+		return inicialPage.waitText(texto);
 	}
 }

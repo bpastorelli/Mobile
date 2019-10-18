@@ -18,7 +18,7 @@ Feature: Automacao Mobile
     Then Encontro o texto "Senha" na pagina atual
     And Digito o texto "sid04197" no campo senha na pagina logar
     When Clico no botao "Entrar" da pagina logar
-    And Caso apareça um popup com a mensagem "Salvar senha do Mercado Livre" clico na opcao "NUNCA"
+    And Caso apareça um popup com a mensagem "Salvar senha do Mercado Livre" clico na opcao "NU	NCA"
     Then Encontro o texto "Pagar com QR" na pagina atual
     
   @pesquisar_produto

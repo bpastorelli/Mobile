@@ -103,4 +103,10 @@ public class ActionsContinuar implements Actions {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public Boolean textoExibidoPagina(String texto) {
+
+		return textoExibidoPagina(texto);
+	}
 }

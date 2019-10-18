@@ -30,7 +30,7 @@ public class LogarPage extends BasePageAppCenter implements Page {
 	@Override
 	public void digitarTexto(String name, String texto) {
 		
-		// TODO Auto-generated method stub
+		setText(name, texto);
 	}
 
 	@Override
@@ -83,8 +83,8 @@ public class LogarPage extends BasePageAppCenter implements Page {
 
 	@Override
 	public void deslizarParaDireitaTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		touchActionDownTextDisplayed(texto, null);
 	}
 
 	@Override
@@ -95,8 +95,8 @@ public class LogarPage extends BasePageAppCenter implements Page {
 
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
-		// TODO Auto-generated method stub
 		
+		selectItemList(name, texto);
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import br.com.mobile.interfaces.Actions;
 import br.com.mobile.pages.InicialPage;
 import br.com.mobile.pages.LogarPage;
 import br.com.mobile.reports.LogReport;
+import static org.junit.Assert.*;
 
 public class ActionsLogar implements Actions {
 	
@@ -97,47 +98,59 @@ public class ActionsLogar implements Actions {
 	@Override
 	public void digitarTexto(String name, String value) {
 		
-		logarPage.setText(name, value);
+		logarPage.digitarTexto(name, value);
 	}
 
 	@Override
 	public void selecionarItemListaSuspensa(String name, String value, String message) {
-		// TODO Auto-generated method stub
 		
+		logarPage.selecionarItemListaSuspensa(name, value, message);
 	}
 
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		logarPage.deslizarParaDireitaTextoVisivel(texto);
+	}
+	
+
+	@Override
+	public Boolean textoExibidoPagina(String texto) {
+		
+		return logarPage.textoExibidoPagina(texto);
 	}
 	
 	public void logar() {
 		
 		inicialPage.naoInstalarNovaVersao("Tenemos una nueva versión", "MAIS TARDE");
-		
-		if(inicialPage.textoExibidoPagina("¿En dónde estás?")) {
+		if(controller.getAction(Page.INICIAL).textoExibidoPagina("¿En dónde estás?")) {
 			controller.getAction(Page.INICIAL).validarTextoPagina("¿En dónde estás?", "");			
 			controller.getAction(Page.INICIAL).selecionarItemListaSuspensa("paises", "Brasil", "");
 		}
-		controller.getAction(Page.INICIAL).validarTextoPagina("O que está esperando?", "");
-		controller.getAction(Page.INICIAL).clicarBotao("Já tenho conta");
-		controller.getAction(Page.CONTINUAR).validarTextoPagina("Continuar com", "");
-		controller.getAction(Page.CONTINUAR).clicarBotao("NENHUMA DAS ALTERNATIVAS ACIMA");
 		
-		if(inicialPage.textoExibidoPagina("E-mail ou usuário")) {
+		inicialPage.naoInstalarNovaVersao("Tenemos una nueva versión", "MAIS TARDE");
+		controller.getAction(Page.INICIAL).validarTextoPagina("¿Qué estás esperando?", "");
+		controller.getAction(Page.INICIAL).clicarBotao("Já tenho conta");
+		
+		if(controller.getAction(Page.LOGAR).textoExibidoPagina("Continuar com")) {			
+			controller.getAction(Page.CONTINUAR).validarTextoPagina("Continuar com", "");
+			controller.getAction(Page.CONTINUAR).clicarBotao("NENHUMA DAS ALTERNATIVAS ACIMA");
+		}
+		
+		if(controller.getAction(Page.LOGAR).textoExibidoPagina("E-mail ou usuário")) {
 			controller.getAction(Page.LOGAR).digitarTexto("e-mail", "brunopastorelli@hotmail.com");
 			controller.getAction(Page.LOGAR).clicarBotao("Continuar");
 		}
+		
 		controller.getAction(Page.LOGAR).validarTextoPagina("Senha", null);
 		controller.getAction(Page.LOGAR).digitarTexto("senha", "sid04197");
 		controller.getAction(Page.LOGAR).clicarBotao("Entrar");
 		
 		if(inicialPage.textoExibidoPagina("Instale a nova versão disponível")) {
-			controller.getAction(Page.PESQUISA).clicarBotao("MAIS TARDE");;
+			controller.getAction(Page.PESQUISA).clicarBotao("MAIS TARDE");
 		}
 		
-		controller.getAction(Page.PESQUISA).validarTextoPagina("Pagar com QR", "");
+		assertTrue(controller.getAction(Page.PESQUISA).textoExibidoPagina("Pagar com QR"));
 		
 	}
 }

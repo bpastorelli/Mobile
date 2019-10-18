@@ -92,10 +92,19 @@ public interface BasePage {
 	/**
 	 * Aguarda um determinado texto na página independente do elemento.
 	 * 
-	 * @param text
+	 * @param text Texto a ser esperado
 	 * @return Boolean
 	 */
 	boolean waitText(String text);
+	
+	/**
+	 * Aguarda um determinado texto na página independente do elemento.
+	 * 
+	 * @param text Texto a ser aguardado
+	 * @time Tempo de espera
+	 * @return Boolean
+	 */	
+	boolean waitText(String text, Integer time);
 	
 	/**
 	 * Desliza a tela para a esquerda.
