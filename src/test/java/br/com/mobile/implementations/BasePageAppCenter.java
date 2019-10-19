@@ -108,7 +108,6 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 			waitDisplayed(element, Property.TIMEOUT);
 			element.click();
 			wait(3);
-			LogReport.info("Clicar no elemento " + name);
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getTagName() + ".");
 		}

@@ -132,7 +132,7 @@ public class ActionsLogar implements Actions {
 		controller.getAction(Page.INICIAL).validarTextoPagina("¿Qué estás esperando?", "");
 		controller.getAction(Page.INICIAL).clicarBotao("Já tenho conta");
 		
-		if(controller.getAction(Page.LOGAR).textoExibidoPagina("Continuar com")) {			
+		if(controller.getAction(Page.LOGAR).textoExibidoPagina("Continue with")) {			
 			controller.getAction(Page.CONTINUAR).validarTextoPagina("Continuar com", "");
 			controller.getAction(Page.CONTINUAR).clicarBotao("NENHUMA DAS ALTERNATIVAS ACIMA");
 		}
@@ -153,4 +153,11 @@ public class ActionsLogar implements Actions {
 		assertTrue(controller.getAction(Page.PESQUISA).textoExibidoPagina("Pagar com QR"));
 		
 	}
+
+	@Override
+	public void menu() {
+		
+		inicialPage.clicarBotao("menu");
+	}
+
 }

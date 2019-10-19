@@ -14,6 +14,8 @@ public class PesquisaPage extends BasePageAppCenter implements Page {
 		this.addElement("txtBusca", By.id("com.mercadolibre:id/search_input_edittext"));
 		this.addElement("produtos", By.xpath("//android.widget.TextView"));
 		this.addElement("produtos filtrados", By.xpath("//android.widget.TextView"));
+		this.addElement("nova pesquisa", By.id("com.mercadolibre:id/vip_action_bar_menu_action_search"));
+		this.addElement("adicionarCarrinho", By.xpath("//android.widget.TextView[@text=\"Adicionar ao carrinho\"]"));
 	}
 	
 	@Override
@@ -25,6 +27,7 @@ public class PesquisaPage extends BasePageAppCenter implements Page {
 	@Override
 	public void clicarBotao(String label) {
 		
+		touchActionDownDisplayed(label);
 		clickElementByMapElements(label);
 	}
 
@@ -37,25 +40,25 @@ public class PesquisaPage extends BasePageAppCenter implements Page {
 	@Override
 	public void deslizarParaEsquerda() {
 		
-		// TODO Auto-generated method stub
+		touchActionLeft();
 	}
 
 	@Override
 	public void deslizarParaDireia() {
 		
-		// TODO Auto-generated method stub
+		touchActionRight();
 	}
 
 	@Override
 	public void deslizarParaCima(Integer qtde) {
 			
-		// TODO Auto-generated method stub
+		touchActionTop(qtde);
 	}
 
 	@Override
 	public void deslizarParaBaixo(Integer qtde) {
 		
-		// TODO Auto-generated method stub
+		touchActionDown(qtde);
 	}
 
 	@Override

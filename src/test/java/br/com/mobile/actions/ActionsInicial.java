@@ -115,4 +115,10 @@ public class ActionsInicial implements Actions {
 
 		return inicialPage.waitText(texto);
 	}
+
+	@Override
+	public void menu() {
+		
+		inicialPage.clicarBotao("menu");
+	}
 }

@@ -112,7 +112,13 @@ public class ActionsPesquisa implements Actions {
 		return pesquisaPage.textoExibidoPagina(texto);
 	}
 	
-	public void pesquisarProduto(String produto, String descricao, String esperado) {
+	@Override
+	public void menu() {
+		
+		pesquisaPage.clicarBotao("menu");
+	}
+	
+	public void pesquisaProduto(String produto, String descricao, String esperado) {
 		
 		pesquisaPage.clicarBotao("Buscar");
 		pesquisaPage.digitarTexto("txtBusca", produto);
@@ -121,5 +127,22 @@ public class ActionsPesquisa implements Actions {
 		pesquisaPage.selecionarItemListaSuspensa("produtos filtrados", descricao, "");
 		assertTrue(pesquisaPage.textoExibidoPagina(esperado));
 	}
+	
+	public void novaPesquisaProduto(String produto, String descricao, String esperado) {
+		
+		pesquisaPage.clicarBotao("nova pesquisa");
+		pesquisaPage.digitarTexto("txtBusca", produto);
+		pesquisaPage.selecionarItemListaSuspensa("produtos", produto, "");
+		pesquisaPage.deslizarParaBaixoTextoVisivel(descricao);
+		pesquisaPage.selecionarItemListaSuspensa("produtos filtrados", descricao, "");
+		assertTrue(pesquisaPage.textoExibidoPagina(esperado));
+	}
+
+	public void adicionarCarrinho(String esperado) {
+		
+		pesquisaPage.clicarBotao("adicionarCarrinho");
+		assertTrue(pesquisaPage.textoExibidoPagina(esperado));
+	}
+	
 	
 }

@@ -114,5 +114,10 @@ public interface Actions {
 	 * @return Boolean
 	 */
 	Boolean textoExibidoPagina(String texto);
+	
+	/**
+	 * Opção menu
+	 */
+	void menu();
 
 }

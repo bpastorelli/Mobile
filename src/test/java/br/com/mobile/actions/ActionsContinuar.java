@@ -109,4 +109,10 @@ public class ActionsContinuar implements Actions {
 
 		return textoExibidoPagina(texto);
 	}
+
+	@Override
+	public void menu() {
+		
+		continuarPage.clicarBotao("menu");
+	}
 }

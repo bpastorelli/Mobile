@@ -7,6 +7,7 @@ import org.junit.rules.TestWatcher;
 import com.microsoft.appcenter.appium.Factory;
 
 import br.com.mobile.actions.ActionsLogar;
+import br.com.mobile.actions.ActionsMenu;
 import br.com.mobile.actions.ActionsPesquisa;
 import br.com.mobile.regression.BaseTestCase;
 
@@ -17,6 +18,8 @@ public class MobileTests extends BaseTestCase {
     public TestWatcher watcher = Factory.createWatcher();
     
     private ActionsLogar actionsLogar = new ActionsLogar();
+    
+    private ActionsMenu actionsMenu = new ActionsMenu();
     
     private ActionsPesquisa actionsPesquisa = new ActionsPesquisa();
     
@@ -29,7 +32,20 @@ public class MobileTests extends BaseTestCase {
     @Test
     public void testeB() {
     	
-    	actionsPesquisa.pesquisarProduto("Bota Robofoot", "Robofoot Salvapé Original Seminova Top", "R$ 180");
+    	actionsPesquisa.pesquisaProduto("Bota Robofoot", "Robofoot Salvapé Original Seminova Top", "R$ 180");
     }
-	
+    
+    @Test
+    public void testeC() {
+    	
+    	actionsPesquisa.novaPesquisaProduto("Notebook", "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux", "R$ 1.749");
+    }
+    
+    @Test
+    public void testeD() {
+    	
+    	actionsPesquisa.novaPesquisaProduto("Bota Robofoot", "Robofoot Salvapé Original Seminova Top", "R$ 180");
+    	actionsPesquisa.adicionarCarrinho("Você adicionou ao seu carrinho");
+    	
+    }
 }

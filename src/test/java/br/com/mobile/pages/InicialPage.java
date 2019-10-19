@@ -12,6 +12,7 @@ public class InicialPage extends BasePageAppCenter implements Page {
 		this.addElement("Já tenho conta", By.id("home_onboarding_already_has_account_button"));
 		this.addElement("MAIS TARDE", By.id("android:id/button2"));
 		this.addElement("paises", By.xpath("//android.widget.TextView"));
+		this.addElement("menu", By.xpath("//android.widget.ImageButton[@content-desc=\"Navegar para cima\"]"));
 	}
 	
 	@Override

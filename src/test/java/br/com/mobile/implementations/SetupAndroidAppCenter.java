@@ -21,8 +21,6 @@ public class SetupAndroidAppCenter implements SetupEnviromentMobile {
 	
 	protected static EnhancedAndroidDriver<MobileElement> driver;
 	
-	private Command cmd = new Command();
-	
 	private DesiredCapabilities caps; 
 	
 	private AppiumServiceBuilder builder;
@@ -33,9 +31,6 @@ public class SetupAndroidAppCenter implements SetupEnviromentMobile {
 	
 	@Override
 	public void setupEnviroment() {
-		
-		//cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
-		//cmd.killProcessPort();
 		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		
