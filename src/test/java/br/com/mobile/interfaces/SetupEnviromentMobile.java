@@ -11,30 +11,30 @@ public interface SetupEnviromentMobile {
 	 * 
 	 * @return AppiumDriver<MobileElement>
 	 */
-	void setupEnviroment();
+	abstract void setupEnviroment();
 	
 	/**
 	 * Retorna o driver
 	 * 
 	 * @return AppiumDriver<MobileElement>
 	 */
-	EnhancedAndroidDriver<MobileElement> getDriver();
+	abstract EnhancedAndroidDriver<MobileElement> getDriver();
 	
 	/**
 	 * Fecha o driver (App)
 	 */
-	void driverClose();
+	abstract void driverClose();
 	
 	/**
 	 * Pára o serviço do Appium
 	 * 
 	 * @throws Exception
 	 */
-	void serviceStop() throws Exception;
+	abstract void serviceStop() throws Exception;
 	
 	/**
 	 * Desinstala a APk
 	 */
-	void uninstallApp();
+	abstract void uninstallApp();
 
 }

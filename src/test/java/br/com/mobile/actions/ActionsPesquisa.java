@@ -1,14 +1,17 @@
 package br.com.mobile.actions;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import br.com.mobile.interfaces.Actions;
+import br.com.mobile.pages.CarrinhoPage;
 import br.com.mobile.pages.PesquisaPage;
 import br.com.mobile.reports.LogReport;
 
 public class ActionsPesquisa implements Actions {
 	
 	private PesquisaPage pesquisaPage = new PesquisaPage();
+	
+	private CarrinhoPage carrinhoPage = new CarrinhoPage();
 	
 	@Override
 	public void validarTextoPagina(String textoEsperado, String mensagem) {
@@ -138,11 +141,19 @@ public class ActionsPesquisa implements Actions {
 		assertTrue(pesquisaPage.textoExibidoPagina(esperado));
 	}
 
-	public void adicionarCarrinho(String esperado) {
+	public void adicionarProdutoCarrinho(String esperado) {
 		
 		pesquisaPage.clicarBotao("adicionarCarrinho");
 		assertTrue(pesquisaPage.textoExibidoPagina(esperado));
 	}
 	
+	public void removerProdutoCarrinho() {
+		
+		carrinhoPage.clicarBotao("menu");
+		carrinhoPage.clicarBotao("carrinho");
+		carrinhoPage.clicarBotao("menuCarrinho");
+		carrinhoPage.selecionarItemListaSuspensa("opcoesCarrinho", "Excluir produto", "");
+		assertTrue(carrinhoPage.textoExibidoPagina("O seu carrinho está vazio"));
+	}
 	
 }

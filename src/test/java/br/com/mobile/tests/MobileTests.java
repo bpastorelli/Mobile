@@ -17,9 +17,9 @@ public class MobileTests extends BaseTestCase {
     @Rule
     public TestWatcher watcher = Factory.createWatcher();
     
-    private ActionsLogar actionsLogar = new ActionsLogar();
-    
     private ActionsMenu actionsMenu = new ActionsMenu();
+    
+    private ActionsLogar actionsLogar = new ActionsLogar();
     
     private ActionsPesquisa actionsPesquisa = new ActionsPesquisa();
     
@@ -45,7 +45,12 @@ public class MobileTests extends BaseTestCase {
     public void testeD() {
     	
     	actionsPesquisa.novaPesquisaProduto("Bota Robofoot", "Robofoot Salvapé Original Seminova Top", "R$ 180");
-    	actionsPesquisa.adicionarCarrinho("Você adicionou ao seu carrinho");
-    	
+    	actionsPesquisa.adicionarProdutoCarrinho("Você adicionou ao seu carrinho");
+    }
+    
+    @Test
+    public void testeE() {
+    
+    	actionsPesquisa.removerProdutoCarrinho();
     }
 }

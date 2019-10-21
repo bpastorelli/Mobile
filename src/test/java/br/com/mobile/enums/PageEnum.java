@@ -1,6 +1,6 @@
 package br.com.mobile.enums;
 
-public enum Page {
+public enum PageEnum {
 
 	LOGAR("logar"),
 	INICIAL("inicial"),
@@ -9,7 +9,7 @@ public enum Page {
 	
     private String descricao;
 	 
-    Page(String descricao) {
+    PageEnum(String descricao) {
         this.descricao = descricao;
     }
  

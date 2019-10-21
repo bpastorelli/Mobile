@@ -1,12 +1,14 @@
 package br.com.mobile.actions;
 
+import static org.junit.Assert.assertTrue;
+
 import br.com.mobile.controllers.GlobalStepsController;
-import br.com.mobile.enums.Page;
+import br.com.mobile.enums.PageEnum;
 import br.com.mobile.interfaces.Actions;
+import br.com.mobile.pages.ContinuarPage;
 import br.com.mobile.pages.InicialPage;
 import br.com.mobile.pages.LogarPage;
 import br.com.mobile.reports.LogReport;
-import static org.junit.Assert.*;
 
 public class ActionsLogar implements Actions {
 	
@@ -123,34 +125,30 @@ public class ActionsLogar implements Actions {
 	public void logar() {
 		
 		inicialPage.naoInstalarNovaVersao("Tenemos una nueva versión", "MAIS TARDE");
-		if(controller.getAction(Page.INICIAL).textoExibidoPagina("¿En dónde estás?")) {
-			controller.getAction(Page.INICIAL).validarTextoPagina("¿En dónde estás?", "");			
-			controller.getAction(Page.INICIAL).selecionarItemListaSuspensa("paises", "Brasil", "");
-		}
+		if(controller.getPage(new InicialPage()).textoExibidoPagina("¿En dónde estás?"))		
+			controller.getPage(new InicialPage()).selecionarItemListaSuspensa("paises", "Brasil", "");
 		
 		inicialPage.naoInstalarNovaVersao("Tenemos una nueva versión", "MAIS TARDE");
-		controller.getAction(Page.INICIAL).validarTextoPagina("¿Qué estás esperando?", "");
-		controller.getAction(Page.INICIAL).clicarBotao("Já tenho conta");
+		controller.getPage(new InicialPage()).textoExibidoPagina("¿Qué estás esperando?");
+		controller.getPage(new InicialPage()).clicarBotao("Já tenho conta");
 		
-		if(controller.getAction(Page.LOGAR).textoExibidoPagina("Continue with")) {			
-			controller.getAction(Page.CONTINUAR).validarTextoPagina("Continuar com", "");
-			controller.getAction(Page.CONTINUAR).clicarBotao("NENHUMA DAS ALTERNATIVAS ACIMA");
+		if(controller.getPage(new ContinuarPage()).textoExibidoPagina("Continue with"))			
+			controller.getPage(new ContinuarPage()).clicarBotao("NENHUMA DAS ALTERNATIVAS ACIMA");
+		
+		if(controller.getPage(new LogarPage()).textoExibidoPagina("E-mail ou usuário")) {
+			controller.getPage(new LogarPage()).digitarTexto("e-mail", "brunopastorelli@hotmail.com");
+			controller.getPage(new LogarPage()).clicarBotao("Continuar");
 		}
 		
-		if(controller.getAction(Page.LOGAR).textoExibidoPagina("E-mail ou usuário")) {
-			controller.getAction(Page.LOGAR).digitarTexto("e-mail", "brunopastorelli@hotmail.com");
-			controller.getAction(Page.LOGAR).clicarBotao("Continuar");
-		}
-		
-		controller.getAction(Page.LOGAR).validarTextoPagina("Senha", null);
-		controller.getAction(Page.LOGAR).digitarTexto("senha", "sid04197");
-		controller.getAction(Page.LOGAR).clicarBotao("Entrar");
+		controller.getPage(new LogarPage()).textoExibidoPagina("Senha");
+		controller.getPage(new LogarPage()).digitarTexto("senha", "sid04197");
+		controller.getPage(new LogarPage()).clicarBotao("Entrar");
 		
 		if(inicialPage.textoExibidoPagina("Instale a nova versão disponível")) {
-			controller.getAction(Page.PESQUISA).clicarBotao("MAIS TARDE");
+			controller.getAction(PageEnum.PESQUISA).clicarBotao("MAIS TARDE");
 		}
 		
-		assertTrue(controller.getAction(Page.PESQUISA).textoExibidoPagina("Pagar com QR"));
+		assertTrue(controller.getAction(PageEnum.PESQUISA).textoExibidoPagina("Pagar com QR"));
 		
 	}
 

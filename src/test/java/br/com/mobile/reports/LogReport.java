@@ -21,12 +21,12 @@ import br.com.mobile.commons.Property;
 import br.com.mobile.implementations.SetupAndroidAppCenter;
 import br.com.mobile.utils.Utils;
 
-public class LogReport {
+public class LogReport extends SetupAndroidAppCenter {
 	
 	private static ExtentTest extentTest;
 	private static ExtentReports extentReport;
 	private static ExtentHtmlReporter htmlReporter;
-	private static SetupAndroidAppCenter setup = new SetupAndroidAppCenter();
+	//private static SetupAndroidAppCenter setup = new SetupAndroidAppCenter();
 	
 	public static ExtentTest getExtentTest() {
 		
@@ -54,7 +54,7 @@ public class LogReport {
 		ExtentTest extentTest = LogReport.getExtentTest();
 		
 		try {
-			String scrFile = ((TakesScreenshot) setup.getDriver()).getScreenshotAs(OutputType.BASE64);
+			String scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
 			extentTest.log(status, strLog, 
 					MediaEntityBuilder
 					.createScreenCaptureFromBase64String(scrFile)
@@ -95,7 +95,7 @@ public class LogReport {
 	public static String efetuarPrintTela(String strLog) {
 		
 		String destination = null;
-		File scrFile = ((TakesScreenshot) setup.getDriver()).getScreenshotAs(OutputType.FILE);
+		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		try {
 			String strLogFormatado = Utils.formatarNomeLog(strLog);
 			destination = System.getProperty("user.dir") + Property.HTML_REPORTER_PATH + strLogFormatado + ".png";

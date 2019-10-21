@@ -18,7 +18,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage {
+public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage {
 
 	private static WebElement element;
 
@@ -107,7 +107,6 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 			element = getElement(name);
 			waitDisplayed(element, Property.TIMEOUT);
 			element.click();
-			wait(3);
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getTagName() + ".");
 		}

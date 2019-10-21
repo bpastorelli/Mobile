@@ -16,6 +16,7 @@ public class PesquisaPage extends BasePageAppCenter implements Page {
 		this.addElement("produtos filtrados", By.xpath("//android.widget.TextView"));
 		this.addElement("nova pesquisa", By.id("com.mercadolibre:id/vip_action_bar_menu_action_search"));
 		this.addElement("adicionarCarrinho", By.xpath("//android.widget.TextView[@text=\"Adicionar ao carrinho\"]"));
+		this.addElement("carrinho", By.id("com.mercadolibre:id/cart_icon"));
 	}
 	
 	@Override
