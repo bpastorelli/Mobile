@@ -13,10 +13,10 @@ Feature: Automacao Mobile
     And Encontro o texto "Continuar com" na pagina atual
     And Clico no botao "NENHUMA DAS ALTERNATIVAS ACIMA" da pagina continuar
     #Then Encontro o texto "E-mail ou usuário" na pagina atual
-    #And Digito o texto "brunopastorelli@hotmail.com" no campo e-mail na pagina logar
+    #And Digito o texto "<login>" no campo e-mail na pagina logar
     #And Clico no botao "Continuar" da pagina logar 
     Then Encontro o texto "Senha" na pagina atual
-    And Digito o texto "sid04197" no campo senha na pagina logar
+    And Digito o texto "<senha>" no campo senha na pagina logar
     When Clico no botao "Entrar" da pagina logar
     And Caso apareça um popup com a mensagem "Salvar senha do Mercado Livre" clico na opcao "NU	NCA"
     Then Encontro o texto "Pagar com QR" na pagina atual

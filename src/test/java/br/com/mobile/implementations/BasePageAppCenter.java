@@ -549,5 +549,29 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 			}
 		}
 	}
+	
+	@Override
+	public void clickByText(String text, String name) {
+		
+		clickByText(text, name, 5);
+	}
 
+	@Override
+	public void clickByText(String text, String name, Integer time) {
+		
+		boolean presence = false; 
+		int timeOut = time != Property.TIMEOUT ? time : Property.TIMEOUT;
+		
+		int i = 0;
+		do {
+			i++;
+			wait(1);
+			if(textIsPresent(text)) {
+				clickElementByMapElements(name);
+				if(!textIsPresent(text)) {					
+					presence = true;
+				}
+			}
+		}while(!presence && i < timeOut);
+	}
 }

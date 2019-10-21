@@ -7,17 +7,13 @@ import org.junit.rules.TestWatcher;
 import com.microsoft.appcenter.appium.Factory;
 
 import br.com.mobile.actions.ActionsLogar;
-import br.com.mobile.actions.ActionsMenu;
 import br.com.mobile.actions.ActionsPesquisa;
 import br.com.mobile.regression.BaseTestCase;
-
 
 public class MobileTests extends BaseTestCase {
 
     @Rule
     public TestWatcher watcher = Factory.createWatcher();
-    
-    private ActionsMenu actionsMenu = new ActionsMenu();
     
     private ActionsLogar actionsLogar = new ActionsLogar();
     

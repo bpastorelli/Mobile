@@ -102,4 +102,9 @@ public class MenuPage extends BasePageAppCenter implements Page {
 		selectItemList(name, texto);
 	}
 
+	@Override
+	public void ifPopupIsPresent(String mensagem, String name) {
+		
+		clickByText(mensagem, name);
+	}
 }

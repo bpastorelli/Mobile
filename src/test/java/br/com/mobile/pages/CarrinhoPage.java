@@ -29,44 +29,50 @@ public class CarrinhoPage extends BasePageAppCenter implements Page {
 
 	@Override
 	public void digitarTexto(String name, String texto) {
-		// TODO Auto-generated method stub
 		
+		setText(name, texto);
 	}
 
 	@Override
 	public void deslizarParaEsquerda() throws Exception {
-		// TODO Auto-generated method stub
 		
+		touchActionLeft();
 	}
 
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
-		// TODO Auto-generated method stub
 		
+		for(int i=0; i < qtde; i++) {
+			
+			touchActionRight();
+		}
 	}
 
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
-		// TODO Auto-generated method stub
 		
+		for(int i=0; i < qtde; i++) {
+			
+			touchActionLeft();
+		}
 	}
 
 	@Override
 	public void deslizarParaDireia() {
-		// TODO Auto-generated method stub
 		
+		touchActionRight();
 	}
 
 	@Override
 	public void deslizarParaCima(Integer qtde) {
-		// TODO Auto-generated method stub
 		
+		touchActionTop(qtde);
 	}
 
 	@Override
 	public void deslizarParaBaixo(Integer qtde) {
-		// TODO Auto-generated method stub
 		
+		touchActionDown(qtde);
 	}
 
 	@Override
@@ -105,6 +111,10 @@ public class CarrinhoPage extends BasePageAppCenter implements Page {
 		selectItemList(name, texto);
 	}
 
-	
+	@Override
+	public void ifPopupIsPresent(String mensagem, String name) {
+		
+		clickByText(mensagem, name);
+	}
 	
 }

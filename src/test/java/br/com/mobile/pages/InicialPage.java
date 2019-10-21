@@ -115,24 +115,12 @@ public class InicialPage extends BasePageAppCenter implements Page {
 		
 	}
 	
-	public void naoInstalarNovaVersao(String mensagem, String name) {
+	@Override
+	public void ifPopupIsPresent(String mensagem, String name) {
 		
-		boolean presence = false;
-		
-		int i = 0;
-		do {
-			i++;
-			wait(1);
-			if(textIsPresent(mensagem)) {
-				clickElementByMapElements(name);
-				if(!textIsPresent(mensagem)) {					
-					presence = true;
-				}
-			}
-		}while(!presence && i < 5);
-		
+		clickByText(mensagem, name);
 	}
-
+	
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		

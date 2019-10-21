@@ -102,4 +102,9 @@ public class ContinuarPage extends BasePageAppCenter implements Page {
 		
 	}
 
+	@Override
+	public void ifPopupIsPresent(String mensagem, String name) {
+		
+		clickByText(mensagem, name);
+	}
 }

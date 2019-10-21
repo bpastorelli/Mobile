@@ -104,4 +104,11 @@ public interface Page {
 	 */
 	abstract void selecionarItemListaSuspensa(String name, String texto, String message);
 	
+	/**
+	 * Funcionalidade que clica em Popup de acordo com a resposta mapeada no mapa de elementos.
+	 * @param mensagem Mensagem esperada
+	 * @param name Nome do elemento de resposta mapeados no mapa de elementos
+	 */
+	abstract void ifPopupIsPresent(String mensagem, String name);
+	
 }

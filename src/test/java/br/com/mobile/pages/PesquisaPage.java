@@ -110,4 +110,10 @@ public class PesquisaPage extends BasePageAppCenter implements Page {
 		touchActionDownTextDisplayed(texto, "Texto esperado " + texto);
 	}
 
+	@Override
+	public void ifPopupIsPresent(String mensagem, String name) {
+		
+		clickByText(mensagem, name);
+	}
+
 }

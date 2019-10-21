@@ -255,5 +255,20 @@ public interface BasePage {
 	 * @param text Texto a ser selecionado
 	 */
 	abstract void selectItemList(String name, String text);
+	
+	/**
+	 * Clica em um elemento caso o texto esteja presente na 
+	 * @param text Texto esperado na tela
+	 * @param name Nome do elemento mapeado no mapa de elementos
+	 */
+	abstract void clickByText(String text, String name);
+	
+	/**
+	 * Clica em um elemento caso o texto esteja presente na 
+	 * @param text Texto esperado na tela
+	 * @param name Nome do elemento mapeado no mapa de elementos
+	 * @param time Tempo de espera para encontrar o texto
+	 */
+	abstract void clickByText(String text, String name, Integer time);
 
 }

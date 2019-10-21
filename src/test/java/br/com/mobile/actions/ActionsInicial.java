@@ -92,11 +92,6 @@ public class ActionsInicial implements Actions {
 		
 		inicialPage.digitarTexto(name, value);
 	}
-	
-	public void naoInstalarNovaVersao(String mensagem, String opcao) {
-				
-		inicialPage.naoInstalarNovaVersao(mensagem, opcao);
-	}
 
 	@Override
 	public void selecionarItemListaSuspensa(String name, String value, String message) {

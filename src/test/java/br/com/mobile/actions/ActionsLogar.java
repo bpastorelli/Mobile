@@ -3,7 +3,6 @@ package br.com.mobile.actions;
 import static org.junit.Assert.assertTrue;
 
 import br.com.mobile.controllers.GlobalStepsController;
-import br.com.mobile.enums.PageEnum;
 import br.com.mobile.interfaces.Actions;
 import br.com.mobile.pages.ContinuarPage;
 import br.com.mobile.pages.InicialPage;
@@ -119,16 +118,16 @@ public class ActionsLogar implements Actions {
 	@Override
 	public Boolean textoExibidoPagina(String texto) {
 		
-		return logarPage.textoExibidoPagina(texto);
+		return controller.getPage(new LogarPage()).textoExibidoPagina(texto);
 	}
 	
 	public void logar() {
 		
-		inicialPage.naoInstalarNovaVersao("Tenemos una nueva versión", "MAIS TARDE");
+		controller.getPage(new InicialPage()).ifPopupIsPresent("Tenemos una nueva versión", "MAIS TARDE");
 		if(controller.getPage(new InicialPage()).textoExibidoPagina("¿En dónde estás?"))		
 			controller.getPage(new InicialPage()).selecionarItemListaSuspensa("paises", "Brasil", "");
 		
-		inicialPage.naoInstalarNovaVersao("Tenemos una nueva versión", "MAIS TARDE");
+		controller.getPage(new InicialPage()).ifPopupIsPresent("Tenemos una nueva versión", "MAIS TARDE");
 		controller.getPage(new InicialPage()).textoExibidoPagina("¿Qué estás esperando?");
 		controller.getPage(new InicialPage()).clicarBotao("Já tenho conta");
 		
@@ -145,17 +144,16 @@ public class ActionsLogar implements Actions {
 		controller.getPage(new LogarPage()).clicarBotao("Entrar");
 		
 		if(inicialPage.textoExibidoPagina("Instale a nova versão disponível")) {
-			controller.getAction(PageEnum.PESQUISA).clicarBotao("MAIS TARDE");
+			controller.getPage(new LogarPage()).clicarBotao("MAIS TARDE");
 		}
 		
-		assertTrue(controller.getAction(PageEnum.PESQUISA).textoExibidoPagina("Pagar com QR"));
-		
+		assertTrue(controller.getPage(new LogarPage()).textoExibidoPagina("Pagar com QR"));
 	}
 
 	@Override
 	public void menu() {
 		
-		inicialPage.clicarBotao("menu");
+		controller.getPage(new LogarPage()).clicarBotao("menu");
 	}
 
 }

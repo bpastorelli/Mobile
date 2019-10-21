@@ -105,4 +105,10 @@ public class LogarPage extends BasePageAppCenter implements Page {
 		
 	}
 
+	@Override
+	public void ifPopupIsPresent(String mensagem, String name) {
+		
+		
+	}
+
 }
