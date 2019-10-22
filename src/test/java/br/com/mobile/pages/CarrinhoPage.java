@@ -24,6 +24,7 @@ public class CarrinhoPage extends BasePageAppCenter implements Page {
 	public void clicarBotao(String label) {
 		
 		touchActionTopDisplayed(label);
+		touchActionDownDisplayed(label);
 		clickElementByMapElements(label);
 	}
 
@@ -41,11 +42,8 @@ public class CarrinhoPage extends BasePageAppCenter implements Page {
 
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
-		
-		for(int i=0; i < qtde; i++) {
 			
-			touchActionRight();
-		}
+		touchActionRight(qtde);
 	}
 
 	@Override
@@ -77,32 +75,32 @@ public class CarrinhoPage extends BasePageAppCenter implements Page {
 
 	@Override
 	public void deslizarParaEsquerdaElementoVisivel(String name) {
-		// TODO Auto-generated method stub
 		
+		touchActionLeftDisplayed(name, "");
 	}
 
 	@Override
 	public void deslizarParaDireitaElementoVisivel(String name) {
-		// TODO Auto-generated method stub
 		
+		touchActionRightDisplayed(name, "");
 	}
 
 	@Override
 	public void deslizarParaDireitaTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		touchActionRightTextDisplayed(texto, "");
 	}
 
 	@Override
 	public void deslizarParaEsquerdaTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		touchActionLeftTextDisplayed(texto, "");
 	}
 
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		touchActionDownTextDisplayed(texto, "");
 	}
 
 	@Override
@@ -115,6 +113,18 @@ public class CarrinhoPage extends BasePageAppCenter implements Page {
 	public void ifPopupIsPresent(String mensagem, String name) {
 		
 		clickByText(mensagem, name);
+	}
+
+	@Override
+	public void deslizarParaBaixoElementoVisivel(String name) {
+		
+		touchActionDownDisplayed(name);
+	}
+
+	@Override
+	public void deslizarParaCimaElementoVisivel(String name) {
+		
+		touchActionTopDisplayed(name);
 	}
 	
 }

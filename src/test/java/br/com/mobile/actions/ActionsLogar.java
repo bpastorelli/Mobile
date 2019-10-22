@@ -13,33 +13,31 @@ public class ActionsLogar implements Actions {
 	
 	private LogarPage logarPage = new LogarPage(); 
 	
-	private InicialPage inicialPage = new InicialPage();
-	
 	private GlobalStepsController controller = new GlobalStepsController();
 	
 	@Override
 	public void validarTextoPagina(String textoEsperado, String mensagem) {
 		
-		LogReport.passFail(logarPage.textoExibidoPagina(textoEsperado), mensagem);
+		LogReport.passFail(controller.getPage(new LogarPage()).textoExibidoPagina(textoEsperado), mensagem);
 	}
 	
 	@Override
 	public void clicarBotao(String botao) {
 		
-		logarPage.touchActionDownDisplayed(botao);
-		logarPage.clicarBotao(botao);
+		controller.getPage(new LogarPage()).deslizarParaBaixoElementoVisivel(botao);
+		controller.getPage(new LogarPage()).clicarBotao(botao);
 	}
 	
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
 		
-		logarPage.deslizarParaEsquerda(qtde);
+		controller.getPage(new LogarPage()).deslizarParaEsquerda(qtde);
 	}
 	
 	@Override
 	public void deslizarParaDireita(int qtde) throws Exception {
 		
-		logarPage.deslizarParaDireia(qtde);
+		controller.getPage(new LogarPage()).deslizarParaDireia(qtde);
 	}
 	
 	@Override
@@ -63,55 +61,55 @@ public class ActionsLogar implements Actions {
 	@Override
 	public void deslizarParaCima(int qtde) {
 		
-		logarPage.deslizarParaCima(qtde);
+		controller.getPage(new LogarPage()).deslizarParaCima(qtde);
 	}
 
 	@Override
 	public void deslizarParaBaixo(int qtde) {
 		
-		logarPage.deslizarParaBaixo(qtde);
+		controller.getPage(new LogarPage()).deslizarParaBaixo(qtde);
 	}
 
 	@Override
 	public void deslizarParaEsquerdaElementoVisivel(String elemento) {
 		
-		logarPage.deslizarParaEsquerdaElementoVisivel(elemento);
+		controller.getPage(new LogarPage()).deslizarParaEsquerdaElementoVisivel(elemento);
 	}
 
 	@Override
 	public void deslizarParaDireitaElementoVisivel(String elemento) {
 		
-		logarPage.deslizarParaEsquerdaElementoVisivel(elemento);
+		controller.getPage(new LogarPage()).deslizarParaEsquerdaElementoVisivel(elemento);
 	}
 
 	@Override
 	public void deslizarParaDireitaTextoVisivel(String texto) {
 		
-		logarPage.deslizarParaDireitaTextoVisivel(texto);
+		controller.getPage(new LogarPage()).deslizarParaDireitaTextoVisivel(texto);
 	}
 
 	@Override
 	public void deslizarParaEsquerdaTextoVisivel(String texto) {
 		
-		logarPage.deslizarParaEsquerdaTextoVisivel(texto);
+		controller.getPage(new LogarPage()).deslizarParaEsquerdaTextoVisivel(texto);
 	}
 
 	@Override
 	public void digitarTexto(String name, String value) {
 		
-		logarPage.digitarTexto(name, value);
+		controller.getPage(new LogarPage()).digitarTexto(name, value);
 	}
 
 	@Override
 	public void selecionarItemListaSuspensa(String name, String value, String message) {
 		
-		logarPage.selecionarItemListaSuspensa(name, value, message);
+		controller.getPage(new LogarPage()).selecionarItemListaSuspensa(name, value, message);
 	}
 
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
 		
-		logarPage.deslizarParaDireitaTextoVisivel(texto);
+		controller.getPage(new LogarPage()).deslizarParaDireitaTextoVisivel(texto);
 	}
 	
 
@@ -143,9 +141,11 @@ public class ActionsLogar implements Actions {
 		controller.getPage(new LogarPage()).digitarTexto("senha", "sid04197");
 		controller.getPage(new LogarPage()).clicarBotao("Entrar");
 		
-		if(inicialPage.textoExibidoPagina("Instale a nova versão disponível")) {
+		if(controller.getPage(new LogarPage()).textoExibidoPagina("Instale a nova versão disponível")) {
 			controller.getPage(new LogarPage()).clicarBotao("MAIS TARDE");
 		}
+		
+		controller.getPage(new InicialPage()).ifPopupIsPresent("NEVER", "NUNCA");
 		
 		assertTrue(controller.getPage(new LogarPage()).textoExibidoPagina("Pagar com QR"));
 	}

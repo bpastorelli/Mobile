@@ -26,7 +26,6 @@ public class LogReport extends SetupAndroidAppCenter {
 	private static ExtentTest extentTest;
 	private static ExtentReports extentReport;
 	private static ExtentHtmlReporter htmlReporter;
-	//private static SetupAndroidAppCenter setup = new SetupAndroidAppCenter();
 	
 	public static ExtentTest getExtentTest() {
 		
@@ -74,11 +73,17 @@ public class LogReport extends SetupAndroidAppCenter {
 	
 	public static void pass(String message) {
 		
+		ExtentTest extentTest = getExtentTest();
+		extentTest.log(Status.PASS, message);
+		logPrint(message, Status.INFO);
 		assertTrue(true);
 	}
 
 	public static void fail(String message) {
 		
+		ExtentTest extentTest = getExtentTest();
+		extentTest.log(Status.FAIL, message);
+		logPrint(message, Status.FAIL);
 		assertFalse(message, true);
 	}
 	
@@ -89,7 +94,10 @@ public class LogReport extends SetupAndroidAppCenter {
 	
 	public static void info(String message, Boolean print) {
 		
-		System.out.println(message);
+		ExtentTest extentTest = getExtentTest();
+		extentTest.log(Status.INFO, message);
+		if(print)
+			logPrint(message, Status.INFO);
 	}
 	
 	public static String efetuarPrintTela(String strLog) {

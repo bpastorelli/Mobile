@@ -65,7 +65,7 @@ public class PesquisaPage extends BasePageAppCenter implements Page {
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
 		
-		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -114,6 +114,18 @@ public class PesquisaPage extends BasePageAppCenter implements Page {
 	public void ifPopupIsPresent(String mensagem, String name) {
 		
 		clickByText(mensagem, name);
+	}
+
+	@Override
+	public void deslizarParaBaixoElementoVisivel(String name) {
+		
+		touchActionDownDisplayed(name);
+	}
+
+	@Override
+	public void deslizarParaCimaElementoVisivel(String name) {
+		
+		touchActionTopDisplayed(name);
 	}
 
 }

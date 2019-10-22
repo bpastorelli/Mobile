@@ -9,6 +9,7 @@ public class InicialPage extends BasePageAppCenter implements Page {
 
 	public InicialPage() {
 		
+		this.addElement("NUNCA", By.id("com.google.android.gms:id/credential_save_reject"));
 		this.addElement("Já tenho conta", By.id("home_onboarding_already_has_account_button"));
 		this.addElement("MAIS TARDE", By.id("android:id/button2"));
 		this.addElement("paises", By.xpath("//android.widget.TextView"));
@@ -99,22 +100,6 @@ public class InicialPage extends BasePageAppCenter implements Page {
 		
 	}
 	
-	public void naoInstalarNovaVersao(String name) {
-		
-		boolean presence = false;
-		
-		int i = 0;
-		do {
-			i++;
-			wait(1);
-			if(textIsPresent(name)) {
-				clickElementByMapElements(name);
-				presence = true;
-			}
-		}while(!presence && i < 5);
-		
-	}
-	
 	@Override
 	public void ifPopupIsPresent(String mensagem, String name) {
 		
@@ -129,6 +114,18 @@ public class InicialPage extends BasePageAppCenter implements Page {
 
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
+		
+		touchActionDownTextDisplayed(texto, "");
+	}
+
+	@Override
+	public void deslizarParaBaixoElementoVisivel(String name) {
+		
+		touchActionDownDisplayed(name);
+	}
+
+	@Override
+	public void deslizarParaCimaElementoVisivel(String name) {
 		// TODO Auto-generated method stub
 		
 	}

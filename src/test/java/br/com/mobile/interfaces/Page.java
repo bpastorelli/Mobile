@@ -69,6 +69,22 @@ public interface Page {
 	 * @param message Mensagem para o relatório
 	 */
 	abstract void deslizarParaEsquerdaElementoVisivel(String name);
+	
+	/**
+	 * Deslizar para baixo ate que o elemento esteja visivel
+	 * 
+	 * @param name Nome do elemento mapeado no mapa de elementos.
+	 * @param message Mensagem para o relatório
+	 */
+	abstract void deslizarParaBaixoElementoVisivel(String name);
+	
+	/**
+	 * Deslizar para cima ate que o elemento esteja visivel
+	 * 
+	 * @param name Nome do elemento mapeado no mapa de elementos.
+	 * @param message Mensagem para o relatório
+	 */
+	abstract void deslizarParaCimaElementoVisivel(String name);
 
 	/**
 	 * Deslizar para a direita ate que o elemento esteja visivel

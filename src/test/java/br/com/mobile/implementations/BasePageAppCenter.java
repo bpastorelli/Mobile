@@ -1,5 +1,7 @@
 package br.com.mobile.implementations;
 
+import static org.junit.Assert.assertFalse;
+
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.util.HashMap;
@@ -51,7 +53,7 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 			obj = getMap(name);
 			element = getDriver().findElement(obj);
 		} catch (Exception e) {
-			LogReport.fail(e.getMessage());
+			assertFalse(e.getMessage(), true);
 		}
 
 		return element;
@@ -89,7 +91,7 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 		try {
 			element = getDriver().findElement(by);
 		} catch (Exception e) {
-			LogReport.fail("[FALHA]Elemento " + by.toString() + " nao encontrado.");
+			assertFalse("[FALHA]Elemento " + by.toString() + " nao encontrado.", true);
 		}
 
 		return element;
@@ -108,7 +110,7 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 			waitDisplayed(element, Property.TIMEOUT);
 			element.click();
 		} catch (Exception e) {
-			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getTagName() + ".");
+			assertFalse("[FALHA]Falha ao clicar no elemento " + element.getTagName() + ".", true);
 		}
 	}
 
@@ -127,7 +129,7 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 			waitDisplayed(element, Property.TIMEOUT);
 			LogReport.info("Clicar no elemento " + by);
 		} catch (Exception e) {
-			LogReport.fail("[FALHA]Falha ao clicar no elemento " + by.toString() + ".");
+			assertFalse("[FALHA]Falha ao clicar no elemento " + by.toString() + ".", true);
 		}
 	}
 	
@@ -142,9 +144,8 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 		try {
 			waitDisplayed(element, Property.TIMEOUT);
 			element.click();
-			//LogReport.info("Clicar no elemento " + element.getText());
 		} catch (Exception e) {
-			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getText() + ".");
+			assertFalse("[FALHA]Falha ao clicar no elemento " + element.getText() + ".", true);
 		}
 	}
 
@@ -160,9 +161,8 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 			element = getElement(name);
 			waitDisplayed(element, Property.TIMEOUT);
 			new Actions(getDriver()).moveToElement(element).click().perform();
-			LogReport.info("Mover o foco e clicar no elemento " + name);
 		} catch (Exception e) {
-			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getTagName() + ".");
+			assertFalse("[FALHA]Falha ao clicar no elemento " + element.getTagName() + ".", true);
 		}
 	}
 
@@ -185,7 +185,7 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 		}
 
 		if (!retorno)
-			LogReport.fail("[FALHA]Elemento " + elemento + " nao encontrado (Timeout = " + time + ").");
+			assertFalse("[FALHA]Elemento " + elemento + " nao encontrado (Timeout = " + time + ").", true);
 		return retorno;
 	}
 
@@ -210,7 +210,7 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 		}
 
 		if (!retorno)
-			LogReport.fail("[FALHA]Elemento " + elemento + " nao encontrado (Timeout = " + Property.TIMEOUT + ").");
+			assertFalse("[FALHA]Elemento " + elemento + " nao encontrado (Timeout = " + Property.TIMEOUT + ").", true);
 		return retorno;
 	}
 
@@ -257,8 +257,7 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 			int starty = size.height / 2;
 			scroll(startx, starty, endx, starty);
 		} catch (Exception e) {
-
-			LogReport.fail("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")");
+			assertFalse("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")", true);
 		}
 	}
 
@@ -276,8 +275,18 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 			int starty = size.height / 2;
 			scroll(startx, starty, endx, starty);
 		} catch (Exception e) {
-
-			LogReport.fail("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")");
+			assertFalse("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")", true);
+		}
+	}
+	
+	/**
+	 * Desliza para a direita por n quantidade de vezes
+	 */
+	@Override
+	public void touchActionRight(Integer qtde) {
+		
+		for (int i = 0; i < qtde; i++) {
+			touchActionRight();
 		}
 	}
 
@@ -295,7 +304,7 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 			scroll(pressX, bottomY, pressX, topY);
 		} catch (Exception e) {
 
-			LogReport.fail("[FALHA]Falha ao deslizar a tela para cima (" + e.getMessage() + ")");
+			assertFalse("[FALHA]Falha ao deslizar a tela para cima (" + e.getMessage() + ")", true);
 		}
 	}
 
@@ -326,7 +335,7 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 			scroll(pressX, bottomY, pressX, topY);
 		} catch (Exception e) {
 
-			LogReport.fail("[FALHA]Falha ao deslizar a tela para cima (" + e.getMessage() + ")");
+			assertFalse("[FALHA]Falha ao deslizar a tela para cima (" + e.getMessage() + ")", true);
 		}
 	}
 
@@ -375,7 +384,7 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 			waitDisplayed(element, Property.TIMEOUT);
 			element.sendKeys(text);
 		} catch (Exception e) {
-			LogReport.fail("[FALHA]Falha ao enviar texto para o campo " + name + ".");
+			assertFalse("[FALHA]Falha ao enviar texto para o campo " + name + ".", true);
 		}
 	}
 	
@@ -383,7 +392,7 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 	public void touchActionTopDisplayed(String name) {
 
 		for (int i = 0; i < Property.TIMEOUT; i++) {
-			if (!elementIsPresent(name))
+			if (!elementIsDisplayed(name))
 				touchActionTop();
 			else
 				return;
@@ -394,7 +403,7 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 	public void touchActionDownDisplayed(String name) {
 
 		for (int i = 0; i < Property.TIMEOUT; i++) {
-			if (!elementIsPresent(name))
+			if (!elementIsDisplayed(name))
 				touchActionDown();
 			else
 				return;
@@ -411,6 +420,17 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 				return;
 		}
 	}
+	
+	@Override
+	public void touchActionTopDisplayed(MobileElement element) {
+
+		for (int i = 0; i < Property.TIMEOUT; i++) {
+			if (!element.isDisplayed())
+				touchActionTop();
+			else
+				return;
+		}
+	}
 
 	@Override
 	public boolean elementIsPresent(String name) {
@@ -418,7 +438,6 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 		By obj = null;
 
 		try {
-
 			obj = getMap(name);
 			element = getDriver().findElement(obj);
 			return true;
@@ -426,6 +445,24 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 
 			return false;
 		}
+	}
+	
+	@Override
+	public boolean elementIsDisplayed(String name) {
+		
+		By obj = null;
+
+		try {
+			obj = getMap(name);
+			element = getDriver().findElement(obj);
+			if(element.isDisplayed())
+				return true;
+			else
+				return false;
+		} catch (Exception e) {
+
+			return false;
+		}		
 	}
 
 	@Override
@@ -458,7 +495,6 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!textIsPresent(text)) {
 				touchActionLeft();
-				LogReport.info(message);
 			} else
 				return;
 		}
@@ -470,7 +506,6 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!textIsPresent(text)) {
 				touchActionRight();
-				LogReport.info(message);
 			} else
 				return;
 		}
@@ -518,7 +553,7 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 			obj = getMap(name);
 			elements = getDriver().findElements(obj);
 		} catch (Exception e) {
-			LogReport.fail("[FALHA]Elemento " + obj.toString() + " nao encontrado.");
+			assertFalse("[FALHA]Elemento " + obj.toString() + " nao encontrado.", true);
 		}
 
 		return elements;
@@ -539,7 +574,7 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 	}
 
 	@Override
-	public void touchActionDownTextDisplayed(String text, String message) {
+	public void touchActionDownTextDisplayed(String text, String mensagem) {
 		
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!textIsPresent(text)) {
@@ -574,4 +609,5 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 			}
 		}while(!presence && i < timeOut);
 	}
+
 }

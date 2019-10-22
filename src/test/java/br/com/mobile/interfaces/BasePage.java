@@ -117,6 +117,12 @@ public interface BasePage {
 	abstract void touchActionRight();
 	
 	/**
+	 * Desliza para a direita determinadas quantidades de vezes
+	 * @param qtde Quantidade de vezes a deslizar
+	 */
+	abstract void touchActionRight(Integer qtde);
+	
+	/**
 	 * Desliza a tela para cima.
 	 */	
 	abstract void touchActionTop();
@@ -159,6 +165,12 @@ public interface BasePage {
 	 * @param name Nome do elemento mapeado no mapa de elementos
 	 */	
 	abstract void touchActionTopDisplayed(String name);
+	
+	/**
+	 * Desliza para cima até que o elemento esteja visivel.
+	 * @param name Elemento mapeado no mapa de elementos
+	 */	
+	abstract void touchActionTopDisplayed(MobileElement element);	
 	
 	/**
 	 * Desliza para baixo até que o elemento esteja visivel.
@@ -210,8 +222,16 @@ public interface BasePage {
 	/**
 	 * Verifica se o elemento está presente
 	 * @param name Nome do elemento mapeado no mapa de elementos
+	 * return Boolean
 	 */
 	abstract boolean elementIsPresent(String name);
+	
+	/**
+	 * Verifica se o elemento está visível
+	 * @param name Nome do elemento mapeado no mapa de elementos
+	 * @return Boolean
+	 */
+	abstract boolean elementIsDisplayed(String name);
 	
 	/**
 	 * Verifica se o texto está presente

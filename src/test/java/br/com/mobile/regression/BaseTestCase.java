@@ -22,6 +22,7 @@ public class BaseTestCase {
 	@AfterClass
 	public static void afterClass() throws Exception {
 		
+		setup.getDriver().resetApp();	
 		setup.driverClose();
 		setup.serviceStop();
 	}

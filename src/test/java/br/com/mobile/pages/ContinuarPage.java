@@ -27,7 +27,7 @@ public class ContinuarPage extends BasePageAppCenter implements Page {
 	@Override
 	public void digitarTexto(String name, String texto) {
 		
-		// TODO Auto-generated method stub
+		setText(name, texto);
 	}
 
 	@Override
@@ -106,5 +106,17 @@ public class ContinuarPage extends BasePageAppCenter implements Page {
 	public void ifPopupIsPresent(String mensagem, String name) {
 		
 		clickByText(mensagem, name);
+	}
+
+	@Override
+	public void deslizarParaBaixoElementoVisivel(String name) {
+		
+		touchActionDownDisplayed(name);
+	}
+
+	@Override
+	public void deslizarParaCimaElementoVisivel(String name) {
+		
+		touchActionTopDisplayed(name);
 	}
 }

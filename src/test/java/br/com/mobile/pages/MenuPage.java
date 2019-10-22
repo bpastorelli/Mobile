@@ -107,4 +107,16 @@ public class MenuPage extends BasePageAppCenter implements Page {
 		
 		clickByText(mensagem, name);
 	}
+
+	@Override
+	public void deslizarParaBaixoElementoVisivel(String name) {
+		
+		touchActionDownDisplayed(name);
+	}
+
+	@Override
+	public void deslizarParaCimaElementoVisivel(String name) {
+		
+		touchActionTopDisplayed(name);
+	}
 }

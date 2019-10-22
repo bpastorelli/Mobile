@@ -36,25 +36,25 @@ public class LogarPage extends BasePageAppCenter implements Page {
 	@Override
 	public void deslizarParaEsquerda() {
 		
-		// TODO Auto-generated method stub
+		touchActionLeft();
 	}
 
 	@Override
 	public void deslizarParaDireia() {
 		
-		// TODO Auto-generated method stub
+		touchActionRight();
 	}
 
 	@Override
 	public void deslizarParaCima(Integer qtde) {
 			
-		// TODO Auto-generated method stub
+		touchActionTop(qtde);
 	}
 
 	@Override
 	public void deslizarParaBaixo(Integer qtde) {
 		
-		// TODO Auto-generated method stub
+		touchActionDown(qtde);
 	}
 
 	@Override
@@ -77,8 +77,8 @@ public class LogarPage extends BasePageAppCenter implements Page {
 
 	@Override
 	public void deslizarParaDireitaElementoVisivel(String name) {
-		// TODO Auto-generated method stub
 		
+		touchActionRightDisplayed(name, "");
 	}
 
 	@Override
@@ -89,8 +89,8 @@ public class LogarPage extends BasePageAppCenter implements Page {
 
 	@Override
 	public void deslizarParaEsquerdaTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		touchActionLeftTextDisplayed(texto, "");
 	}
 
 	@Override
@@ -101,14 +101,26 @@ public class LogarPage extends BasePageAppCenter implements Page {
 
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		touchActionDownTextDisplayed(texto, "");
 	}
 
 	@Override
 	public void ifPopupIsPresent(String mensagem, String name) {
 		
+		clickByText(mensagem, name);
+	}
+
+	@Override
+	public void deslizarParaBaixoElementoVisivel(String name) {
 		
+		touchActionDownDisplayed(name);
+	}
+
+	@Override
+	public void deslizarParaCimaElementoVisivel(String name) {
+		
+		touchActionTopDisplayed(name);
 	}
 
 }
