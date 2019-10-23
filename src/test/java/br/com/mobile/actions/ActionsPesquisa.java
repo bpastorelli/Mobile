@@ -145,7 +145,6 @@ public class ActionsPesquisa implements Actions {
 
 	public void adicionarProdutoCarrinho(String esperado) {
 		
-		
 		controller.getPage(new CarrinhoPage()).clicarBotao("adicionarCarrinho");
 		assertTrue(controller.getPage(new PesquisaPage()).textoExibidoPagina(esperado));
 	}

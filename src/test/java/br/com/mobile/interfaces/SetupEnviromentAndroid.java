@@ -1,10 +1,9 @@
 package br.com.mobile.interfaces;
 
-import com.microsoft.appcenter.appium.EnhancedAndroidDriver;
-
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 
-public interface SetupEnviromentMobile {
+public interface SetupEnviromentAndroid {
 	
 	/**
 	 * Starta o serviço do Appium e o app
@@ -18,7 +17,7 @@ public interface SetupEnviromentMobile {
 	 * 
 	 * @return AppiumDriver<MobileElement>
 	 */
-	abstract EnhancedAndroidDriver<MobileElement> getDriver();
+	abstract AppiumDriver<MobileElement> getDriver();
 	
 	/**
 	 * Fecha o driver (App)

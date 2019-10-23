@@ -25,7 +25,7 @@ public class GlobalSteps {
 	@And("^Clico no botao \"([^\"]*)\" da pagina (.*)$")
 	public void clicoBotao(String botao, String pagina) {
 		
-		//controller.getAction(pagina).clicarBotao(botao);
+		controller.getAction().clicarBotao(botao);
 	}
 	
 	@And("^Deslizo para a esquerda e visualizo (.*) telas$")
@@ -99,19 +99,19 @@ public class GlobalSteps {
 	@And("^Deslizo para baixo até o texto \"([^\"]*)\" da pagina (.*)$")
 	public void deslizo_baixo_ate_o_texto(String texto, String pagina) {
 		
-		//controller.getAction(pagina).deslizarParaBaixoTextoVisivel(texto);
+		controller.getAction().deslizarParaBaixoTextoVisivel(texto);
 	}
 	
 	@And("^Digito o texto \"([^\"]*)\" no campo (.*) na pagina (.*)$")
 	public void digito_texto_no_campo_texto(String texto, String campo, String pagina) {
 		
-		//controller.getAction(pagina).digitarTexto(campo, texto);
+		controller.getAction().digitarTexto(campo, texto);
 	}
 	
 	@And("^Seleciono o item \"([^\"]*)\" na lista de \"([^\"]*)\" da pagina (.*)$")
 	public void seleciono_item_lista_suspensa(String item, String name, String pagina) {
 		
-		//controller.getAction(pagina).selecionarItemListaSuspensa(name, item, "Selecionar item na lista suspesa");
+		controller.getAction().selecionarItemListaSuspensa(name, item, "Selecionar item na lista suspesa");
 	}
 			
 }
