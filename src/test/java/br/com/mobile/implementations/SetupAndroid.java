@@ -6,7 +6,7 @@ import java.net.URL;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.interfaces.SetupEnviromentAndroid;
+import br.com.mobile.interfaces.SetupEnviroment;
 import br.com.mobile.utils.Command;
 import br.com.mobile.utils.Utils;
 import io.appium.java_client.AppiumDriver;
@@ -15,7 +15,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
-public class SetupAndroid implements SetupEnviromentAndroid {
+public class SetupAndroid implements SetupEnviroment {
 	
 	protected static AppiumDriver<MobileElement> driver;
 	

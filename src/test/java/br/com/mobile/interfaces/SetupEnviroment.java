@@ -1,9 +1,6 @@
 package br.com.mobile.interfaces;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-
-public interface SetupEnviromentAndroid {
+public interface SetupEnviroment {
 	
 	/**
 	 * Starta o serviço do Appium e o app
@@ -17,7 +14,7 @@ public interface SetupEnviromentAndroid {
 	 * 
 	 * @return AppiumDriver<MobileElement>
 	 */
-	abstract AppiumDriver<MobileElement> getDriver();
+	abstract Object getDriver();
 	
 	/**
 	 * Fecha o driver (App)

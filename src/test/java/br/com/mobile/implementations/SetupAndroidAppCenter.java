@@ -9,7 +9,7 @@ import com.microsoft.appcenter.appium.EnhancedAndroidDriver;
 import com.microsoft.appcenter.appium.Factory;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.interfaces.SetupEnviromentAppCenter;
+import br.com.mobile.interfaces.SetupEnviroment;
 import br.com.mobile.utils.Command;
 import br.com.mobile.utils.Utils;
 import io.appium.java_client.MobileElement;
@@ -17,7 +17,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
-public class SetupAndroidAppCenter implements SetupEnviromentAppCenter {
+public class SetupAndroidAppCenter implements SetupEnviroment {
 	
 	protected static EnhancedAndroidDriver<MobileElement> driver;
 	
