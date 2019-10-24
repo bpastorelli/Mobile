@@ -1,7 +1,5 @@
 package br.com.mobile.regression;
 
-import java.io.File;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
@@ -11,14 +9,10 @@ import br.com.mobile.implementations.SetupAndroid;
 import br.com.mobile.implementations.SetupAndroidAppCenter;
 import br.com.mobile.interfaces.SetupEnviroment;
 import br.com.mobile.reports.LogReport;
-import br.com.mobile.utils.Command;
-import br.com.mobile.utils.Utils;
 
 public class BaseTestCase {
 	
 	public static SetupEnviroment setup;
-	
-	private static Command cmd = new Command();
 	
 	@BeforeClass
 	public static void beforeClass() throws Exception {
@@ -26,14 +20,8 @@ public class BaseTestCase {
 		Property.loadProperties();
 		ConfigPages.loadPages();
 		
-		if(Property.APP_CENTER) {
-			setup = new SetupAndroidAppCenter();
-			cmd.executeCommand(new File(Utils.getFilePath("files\\executar.bat")).toString(), false);
-		}else {
-			setup = new SetupAndroid();
-			setup.setupEnviroment();			
-		}
-
+		setup = Property.APP_CENTER ? new SetupAndroidAppCenter() : new SetupAndroid();		
+		setup.setupEnviroment();			
 	}
 	
 	@AfterClass

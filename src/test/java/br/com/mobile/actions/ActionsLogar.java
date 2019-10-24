@@ -145,7 +145,7 @@ public class ActionsLogar implements Actions {
 			controller.getPage(new LogarPage()).clicarBotao("MAIS TARDE");
 		}
 		
-		controller.getPage(new InicialPage()).ifPopupIsPresent("NEVER", "NUNCA");
+		controller.getPage(new InicialPage()).ifPopupIsPresent("Sign in easily across devices", "NUNCA");
 		
 		assertTrue(controller.getPage(new LogarPage()).textoExibidoPagina("Pagar com QR"));
 	}

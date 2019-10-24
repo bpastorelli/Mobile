@@ -106,6 +106,7 @@ public class CarrinhoPage extends BasePageAppCenter implements Page {
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		
+		wait(1);
 		selectItemList(name, texto);
 	}
 

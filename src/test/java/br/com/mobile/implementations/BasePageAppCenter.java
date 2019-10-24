@@ -142,8 +142,12 @@ public abstract class BasePageAppCenter extends SetupAndroidAppCenter implements
 	public void clickElement(MobileElement element) {
 
 		try {
-			waitDisplayed(element, Property.TIMEOUT);
-			element.click();
+			if(element.isEnabled())
+				element.click();
+			else {
+				waitDisplayed(element, Property.TIMEOUT);
+				element.click();
+			}
 		} catch (Exception e) {
 			assertFalse("[FALHA]Falha ao clicar no elemento " + element.getText() + ".", true);
 		}

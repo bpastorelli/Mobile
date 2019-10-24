@@ -45,6 +45,8 @@ public abstract class Property {
 	
 	public static Boolean APP_CENTER;
 	
+	public static String APP_BAT;
+	
 	private static final String PROP_FILE_CONFIG = new File(Utils.getFilePath("config.properties")).toString();
 	
 	private static Properties getProp() throws IOException {
@@ -74,6 +76,7 @@ public abstract class Property {
 			APP_NORESET                = Boolean.parseBoolean(properties.getProperty("app.apk.noReset"));
 			APP_FULLRESET              = Boolean.parseBoolean(properties.getProperty("app.apk.fullReset"));
 			APP_CENTER                 = Boolean.parseBoolean(properties.getProperty("app.apk.appCenter"));
+			APP_BAT                    = properties.getProperty("app.files.bat");
 			HTML_REPORTER_PATH         = properties.getProperty("extent.report.path").trim();
 			HTML_REPORTER_NAME         = properties.getProperty("extent.report.name").trim();
 			HTML_REPORTER_TITLE        = properties.getProperty("extent.report.title").trim();
