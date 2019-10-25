@@ -127,5 +127,17 @@ public class CarrinhoPage extends BasePageAndroid implements Page {
 		
 		touchActionTopDisplayed(name);
 	}
+
+	@Override
+	public boolean textoExibidoPagina(String texto, Integer time) {
+		
+		return waitText(texto, time);
+	}
+
+	@Override
+	public void ifPopupIsPresent(String mensagem, String name, Integer time) {
+		
+		clickByText(mensagem, name, time);
+	}
 	
 }

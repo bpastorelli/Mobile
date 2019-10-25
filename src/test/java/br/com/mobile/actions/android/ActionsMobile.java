@@ -16,15 +16,15 @@ public class ActionsMobile {
 	
 	public void logar(String usuario, String senha) {
 		
-		controller.getPage(new InicialPage()).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE");
-		if(controller.getPage(new InicialPage()).textoExibidoPagina("Onde você está?"))		
-			controller.getPage(new InicialPage()).selecionarItemListaSuspensa("paises", "Brasil", "");
+		controller.getPage(new InicialPage()).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 5);
+		if(controller.getPage(new InicialPage()).textoExibidoPagina("Onde você está?", 5))		
+			controller.getPage(new InicialPage()).selecionarItemListaSuspensa("paises", "Brasil", "Clicar no país de localização");
 		
-		controller.getPage(new InicialPage()).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE");
+		controller.getPage(new InicialPage()).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 5);
 		controller.getPage(new InicialPage()).textoExibidoPagina("O que está esperando?");
 		controller.getPage(new InicialPage()).clicarBotao("Já tenho conta");
 		
-		if(controller.getPage(new ContinuarPage()).textoExibidoPagina("Continue com"))			
+		if(controller.getPage(new ContinuarPage()).textoExibidoPagina("Continuar com"))			
 			controller.getPage(new ContinuarPage()).clicarBotao("NENHUMA DAS ALTERNATIVAS ACIMA");
 		
 		if(controller.getPage(new LogarPage()).textoExibidoPagina("E-mail ou usuário")) {
@@ -35,12 +35,8 @@ public class ActionsMobile {
 		controller.getPage(new LogarPage()).textoExibidoPagina("Senha");
 		controller.getPage(new LogarPage()).digitarTexto("senha", senha);
 		controller.getPage(new LogarPage()).clicarBotao("Entrar");
-		
-		if(controller.getPage(new LogarPage()).textoExibidoPagina("Instale a nova versão disponível")) {
-			controller.getPage(new LogarPage()).clicarBotao("MAIS TARDE");
-		}
-		
-		controller.getPage(new InicialPage()).ifPopupIsPresent("Sign in easily across devices", "NUNCA");
+		controller.getPage(new InicialPage()).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 5);
+		controller.getPage(new InicialPage()).ifPopupIsPresent("Sign in easily across devices", "NUNCA", 5);
 		
 		LogReport.passFail(controller.getPage(new LogarPage()).textoExibidoPagina("Pagar com QR"), "Login com usuário " + usuario);
 	}

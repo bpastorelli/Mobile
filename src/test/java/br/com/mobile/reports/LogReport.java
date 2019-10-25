@@ -18,10 +18,10 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.implementations.SetupAndroidAppCenter;
+import br.com.mobile.implementations.SetupAndroid;
 import br.com.mobile.utils.Utils;
 
-public class LogReport extends SetupAndroidAppCenter {
+public class LogReport extends SetupAndroid{
 	
 	private static ExtentTest extentTest;
 	private static ExtentReports extentReport;

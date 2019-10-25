@@ -23,6 +23,12 @@ public class InicialPage extends BasePageAndroid implements Page {
 	}
 
 	@Override
+	public boolean textoExibidoPagina(String texto, Integer time) {
+		
+		return waitText(texto, time);
+	}
+	
+	@Override
 	public void clicarBotao(String label) {
 		
 		clickElementByMapElements(label);
@@ -128,6 +134,12 @@ public class InicialPage extends BasePageAndroid implements Page {
 	public void deslizarParaCimaElementoVisivel(String name) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void ifPopupIsPresent(String mensagem, String name, Integer time) {
+		
+		clickByText(mensagem, name, time);
 	}
 
 }

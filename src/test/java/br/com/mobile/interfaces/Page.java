@@ -11,6 +11,15 @@ public interface Page {
 	abstract boolean textoExibidoPagina(String texto);
 	
 	/**
+	 * Método para verificar se um determinado texto existe na página
+	 * 
+	 * @param texto Texto esperado
+	 * @param time Tempo de espera limite para o texto
+	 * @return Boolean
+	 */
+	abstract boolean textoExibidoPagina(String texto, Integer time);
+	
+	/**
 	 * Clicar no botão pelo label informado no mapa de elementos
 	 * 
 	 * @param label Label do botão
@@ -126,5 +135,13 @@ public interface Page {
 	 * @param name Nome do elemento de resposta mapeados no mapa de elementos
 	 */
 	abstract void ifPopupIsPresent(String mensagem, String name);
+	
+	/**
+	 * Funcionalidade que clica em Popup de acordo com a resposta mapeada no mapa de elementos.
+	 * @param mensagem Mensagem esperada
+	 * @param name Nome do elemento de resposta mapeados no mapa de elementos
+	 * @param time Tempo de espera do texto
+	 */
+	abstract void ifPopupIsPresent(String mensagem, String name, Integer time);
 	
 }
