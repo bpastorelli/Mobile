@@ -1,10 +1,10 @@
-package br.com.mobile.tests;
+package br.com.mobile.tests.android;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 
 import br.com.mobile.regression.AppConfiguration;
-import br.com.mobile.regression.BaseTestCase;
+import br.com.mobile.regression.BaseTestCaseAndroid;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
@@ -17,8 +17,7 @@ format = {"pretty", "html:target/reports/cucumber/html",
 		,tags = {"@mobile"})
 
 @ContextConfiguration(classes= AppConfiguration.class)
-public class MobileTests extends BaseTestCase {
-	
+public class MobileTests extends BaseTestCaseAndroid {
 	
 	
 }

@@ -606,14 +606,14 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public void clickByText(String text, String name) {
 		
-		clickByText(text, name, 5);
+		clickByText(text, name, Property.TIMEOUT);
 	}
 
 	@Override
 	public void clickByText(String text, String name, Integer time) {
 		
 		boolean presence = false; 
-		int timeOut = time != Property.TIMEOUT ? time : Property.TIMEOUT;
+		int timeOut = time != Property.TIMEOUT ? time: Property.TIMEOUT;
 		
 		int i = 0;
 		do {

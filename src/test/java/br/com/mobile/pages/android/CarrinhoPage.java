@@ -1,29 +1,30 @@
-package br.com.mobile.pages;
+package br.com.mobile.pages.android;
 
 import org.openqa.selenium.By;
 
-import br.com.mobile.implementations.BasePageAppCenter;
+import br.com.mobile.implementations.BasePageAndroid;
 import br.com.mobile.interfaces.Page;
 
-public class LogarPage extends BasePageAppCenter implements Page {
+public class CarrinhoPage extends BasePageAndroid implements Page {
 
-	public LogarPage() {
+	public CarrinhoPage() {
 		
-		this.addElement("e-mail", By.id("ui_text_field_input")); 	
-		this.addElement("Continuar", By.id("login_continueButton"));
-		this.addElement("senha", By.id("ui_text_field_input"));
-		this.addElement("Entrar", By.id("login_ingresarButton"));
+		this.addElement("menuCarrinho", By.id("com.mercadolibre:id/cart_item_options"));
+		this.addElement("opcoesCarrinho", By.xpath("//android.widget.TextView"));
+		this.addElement("menu", By.xpath("//android.widget.ImageButton[@content-desc=\"Navegar para cima\"]"));
 	}
 	
 	@Override
 	public boolean textoExibidoPagina(String texto) {
-
+		
 		return waitText(texto);
 	}
 
 	@Override
 	public void clicarBotao(String label) {
 		
+		touchActionTopDisplayed(label);
+		touchActionDownDisplayed(label);
 		clickElementByMapElements(label);
 	}
 
@@ -34,9 +35,24 @@ public class LogarPage extends BasePageAppCenter implements Page {
 	}
 
 	@Override
-	public void deslizarParaEsquerda() {
+	public void deslizarParaEsquerda() throws Exception {
 		
 		touchActionLeft();
+	}
+
+	@Override
+	public void deslizarParaDireia(int qtde) throws Exception {
+			
+		touchActionRight(qtde);
+	}
+
+	@Override
+	public void deslizarParaEsquerda(int qtde) throws Exception {
+		
+		for(int i=0; i < qtde; i++) {
+			
+			touchActionLeft();
+		}
 	}
 
 	@Override
@@ -47,7 +63,7 @@ public class LogarPage extends BasePageAppCenter implements Page {
 
 	@Override
 	public void deslizarParaCima(Integer qtde) {
-			
+		
 		touchActionTop(qtde);
 	}
 
@@ -58,21 +74,9 @@ public class LogarPage extends BasePageAppCenter implements Page {
 	}
 
 	@Override
-	public void deslizarParaDireia(int qtde) throws Exception {
-		
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void deslizarParaEsquerda(int qtde) throws Exception {
-		
-		// TODO Auto-generated method stub
-	}
-
-	@Override
 	public void deslizarParaEsquerdaElementoVisivel(String name) {
-		// TODO Auto-generated method stub
 		
+		touchActionLeftDisplayed(name, "");
 	}
 
 	@Override
@@ -84,7 +88,7 @@ public class LogarPage extends BasePageAppCenter implements Page {
 	@Override
 	public void deslizarParaDireitaTextoVisivel(String texto) {
 		
-		touchActionDownTextDisplayed(texto, null);
+		touchActionRightTextDisplayed(texto, "");
 	}
 
 	@Override
@@ -94,15 +98,16 @@ public class LogarPage extends BasePageAppCenter implements Page {
 	}
 
 	@Override
-	public void selecionarItemListaSuspensa(String name, String texto, String message) {
-		
-		selectItemList(name, texto);
-	}
-
-	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
 		
 		touchActionDownTextDisplayed(texto, "");
+	}
+
+	@Override
+	public void selecionarItemListaSuspensa(String name, String texto, String message) {
+		
+		wait(1);
+		selectItemList(name, texto);
 	}
 
 	@Override
@@ -122,5 +127,5 @@ public class LogarPage extends BasePageAppCenter implements Page {
 		
 		touchActionTopDisplayed(name);
 	}
-
+	
 }

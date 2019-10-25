@@ -1,69 +1,79 @@
-package br.com.mobile.pages;
+package br.com.mobile.pages.appcenter;
 
 import org.openqa.selenium.By;
 
 import br.com.mobile.implementations.BasePageAppCenter;
 import br.com.mobile.interfaces.Page;
 
-public class MenuPage extends BasePageAppCenter implements Page {
-	
-	public MenuPage() {
-		
-	}
+public class InicialPage extends BasePageAppCenter implements Page {
 
+	public InicialPage() {
+		
+		this.addElement("NUNCA", By.id("com.google.android.gms:id/credential_save_reject"));
+		this.addElement("Já tenho conta", By.id("home_onboarding_already_has_account_button"));
+		this.addElement("MAIS TARDE", By.id("android:id/button2"));
+		this.addElement("paises", By.xpath("//android.widget.TextView"));
+		this.addElement("menu", By.xpath("//android.widget.ImageButton[@content-desc=\"Navegar para cima\"]"));
+	}
+	
 	@Override
 	public boolean textoExibidoPagina(String texto) {
 
-		return waitText(texto);		
+		return waitText(texto);
 	}
 
 	@Override
 	public void clicarBotao(String label) {
 		
-		this.addElement(label, By.xpath("//android.widget.TextView[@text=" + label.replace("opcao", "") + "]"));
 		clickElementByMapElements(label);
 	}
 
 	@Override
 	public void digitarTexto(String name, String texto) {
-		// TODO Auto-generated method stub
 		
+		setText(name, texto);
 	}
 
 	@Override
-	public void deslizarParaEsquerda() throws Exception {
-		// TODO Auto-generated method stub
+	public void deslizarParaEsquerda() {
 		
-	}
-
-	@Override
-	public void deslizarParaDireia(int qtde) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deslizarParaEsquerda(int qtde) throws Exception {
-		// TODO Auto-generated method stub
-		
+		touchActionLeft();
 	}
 
 	@Override
 	public void deslizarParaDireia() {
-		// TODO Auto-generated method stub
 		
+		touchActionRight();
 	}
 
 	@Override
 	public void deslizarParaCima(Integer qtde) {
-		// TODO Auto-generated method stub
-		
+			
+		touchActionTop(qtde);
 	}
 
 	@Override
 	public void deslizarParaBaixo(Integer qtde) {
-		// TODO Auto-generated method stub
 		
+		touchActionDown(qtde);
+	}
+
+	@Override
+	public void deslizarParaDireia(int qtde) throws Exception {
+		
+		for(int i=0; i < qtde; i++) {
+			
+			touchActionRight();
+		}
+	}
+
+	@Override
+	public void deslizarParaEsquerda(int qtde) throws Exception {
+		
+		for(int i=0; i < qtde; i++) {
+			
+			touchActionLeft();
+		}
 	}
 
 	@Override
@@ -89,13 +99,13 @@ public class MenuPage extends BasePageAppCenter implements Page {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
-	public void deslizarParaBaixoTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
+	public void ifPopupIsPresent(String mensagem, String name) {
 		
+		clickByText(mensagem, name);
 	}
-
+	
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		
@@ -103,9 +113,9 @@ public class MenuPage extends BasePageAppCenter implements Page {
 	}
 
 	@Override
-	public void ifPopupIsPresent(String mensagem, String name) {
+	public void deslizarParaBaixoTextoVisivel(String texto) {
 		
-		clickByText(mensagem, name);
+		touchActionDownTextDisplayed(texto, "");
 	}
 
 	@Override
@@ -116,7 +126,8 @@ public class MenuPage extends BasePageAppCenter implements Page {
 
 	@Override
 	public void deslizarParaCimaElementoVisivel(String name) {
+		// TODO Auto-generated method stub
 		
-		touchActionTopDisplayed(name);
 	}
+
 }

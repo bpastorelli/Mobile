@@ -1,69 +1,69 @@
-package br.com.mobile.pages;
+package br.com.mobile.pages.android;
 
 import org.openqa.selenium.By;
 
-import br.com.mobile.implementations.BasePageAppCenter;
+import br.com.mobile.implementations.BasePageAndroid;
 import br.com.mobile.interfaces.Page;
 
-public class ContinuarPage extends BasePageAppCenter implements Page {
-
-	public ContinuarPage() {
-		
-		this.addElement("NENHUMA DAS ALTERNATIVAS ACIMA", By.id("com.google.android.gms:id/cancel"));
-	}
+public class MenuPage extends BasePageAndroid implements Page {
 	
+	public MenuPage() {
+		
+	}
+
 	@Override
 	public boolean textoExibidoPagina(String texto) {
 
-		return waitText(texto);
+		return waitText(texto);		
 	}
 
 	@Override
 	public void clicarBotao(String label) {
 		
+		this.addElement(label, By.xpath("//android.widget.TextView[@text=" + label.replace("opcao", "") + "]"));
 		clickElementByMapElements(label);
 	}
 
 	@Override
 	public void digitarTexto(String name, String texto) {
+		// TODO Auto-generated method stub
 		
-		setText(name, texto);
 	}
 
 	@Override
-	public void deslizarParaEsquerda() {
+	public void deslizarParaEsquerda() throws Exception {
+		// TODO Auto-generated method stub
 		
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void deslizarParaDireia() {
-		
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void deslizarParaCima(Integer qtde) {
-			
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void deslizarParaBaixo(Integer qtde) {
-		
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
-		
 		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
-		
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaDireia() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaCima(Integer qtde) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaBaixo(Integer qtde) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -91,15 +91,15 @@ public class ContinuarPage extends BasePageAppCenter implements Page {
 	}
 
 	@Override
-	public void selecionarItemListaSuspensa(String name, String texto, String message) {
+	public void deslizarParaBaixoTextoVisivel(String texto) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deslizarParaBaixoTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
+	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		
+		selectItemList(name, texto);
 	}
 
 	@Override

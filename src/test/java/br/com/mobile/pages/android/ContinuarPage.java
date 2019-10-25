@@ -1,19 +1,15 @@
-package br.com.mobile.pages;
+package br.com.mobile.pages.android;
 
 import org.openqa.selenium.By;
 
-import br.com.mobile.implementations.BasePageAppCenter;
+import br.com.mobile.implementations.BasePageAndroid;
 import br.com.mobile.interfaces.Page;
 
-public class InicialPage extends BasePageAppCenter implements Page {
+public class ContinuarPage extends BasePageAndroid implements Page {
 
-	public InicialPage() {
+	public ContinuarPage() {
 		
-		this.addElement("NUNCA", By.id("com.google.android.gms:id/credential_save_reject"));
-		this.addElement("Já tenho conta", By.id("home_onboarding_already_has_account_button"));
-		this.addElement("MAIS TARDE", By.id("android:id/button2"));
-		this.addElement("paises", By.xpath("//android.widget.TextView"));
-		this.addElement("menu", By.xpath("//android.widget.ImageButton[@content-desc=\"Navegar para cima\"]"));
+		this.addElement("NENHUMA DAS ALTERNATIVAS ACIMA", By.id("com.google.android.gms:id/cancel"));
 	}
 	
 	@Override
@@ -37,43 +33,37 @@ public class InicialPage extends BasePageAppCenter implements Page {
 	@Override
 	public void deslizarParaEsquerda() {
 		
-		touchActionLeft();
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaDireia() {
 		
-		touchActionRight();
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaCima(Integer qtde) {
 			
-		touchActionTop(qtde);
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaBaixo(Integer qtde) {
 		
-		touchActionDown(qtde);
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
 		
-		for(int i=0; i < qtde; i++) {
-			
-			touchActionRight();
-		}
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
 		
-		for(int i=0; i < qtde; i++) {
-			
-			touchActionLeft();
-		}
+		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -99,23 +89,23 @@ public class InicialPage extends BasePageAppCenter implements Page {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	@Override
-	public void ifPopupIsPresent(String mensagem, String name) {
-		
-		clickByText(mensagem, name);
-	}
-	
+
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
+		// TODO Auto-generated method stub
 		
-		selectItemList(name, texto);
 	}
 
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
+		// TODO Auto-generated method stub
 		
-		touchActionDownTextDisplayed(texto, "");
+	}
+
+	@Override
+	public void ifPopupIsPresent(String mensagem, String name) {
+		
+		clickByText(mensagem, name);
 	}
 
 	@Override
@@ -126,8 +116,7 @@ public class InicialPage extends BasePageAppCenter implements Page {
 
 	@Override
 	public void deslizarParaCimaElementoVisivel(String name) {
-		// TODO Auto-generated method stub
 		
+		touchActionTopDisplayed(name);
 	}
-
 }

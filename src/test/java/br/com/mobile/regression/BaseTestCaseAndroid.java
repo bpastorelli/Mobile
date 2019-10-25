@@ -4,13 +4,11 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.config.ConfigPages;
 import br.com.mobile.implementations.SetupAndroid;
-import br.com.mobile.implementations.SetupAndroidAppCenter;
 import br.com.mobile.interfaces.SetupEnviroment;
 import br.com.mobile.reports.LogReport;
 
-public class BaseTestCase {
+public class BaseTestCaseAndroid {
 	
 	public static SetupEnviroment setup;
 	
@@ -18,9 +16,8 @@ public class BaseTestCase {
 	public static void beforeClass() throws Exception {
 		
 		Property.loadProperties();
-		ConfigPages.loadPages();
 		
-		setup = Property.APP_CENTER ? new SetupAndroidAppCenter() : new SetupAndroid();		
+		setup = new SetupAndroid();		
 		setup.setupEnviroment();			
 	}
 	

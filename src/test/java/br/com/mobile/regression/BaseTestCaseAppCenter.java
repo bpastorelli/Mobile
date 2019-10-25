@@ -1,0 +1,36 @@
+package br.com.mobile.regression;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+
+import br.com.mobile.commons.Property;
+import br.com.mobile.implementations.SetupAndroidAppCenter;
+import br.com.mobile.interfaces.SetupEnviroment;
+import br.com.mobile.reports.LogReport;
+
+public class BaseTestCaseAppCenter {
+	
+	public static SetupEnviroment setup;
+	
+	@BeforeClass
+	public static void beforeClass() throws Exception {
+		
+		Property.loadProperties();
+		
+		setup = new SetupAndroidAppCenter();		
+		setup.setupEnviroment();			
+	}
+	
+	@AfterClass
+	public static void afterClass() throws Exception {
+		
+		try {
+			
+			LogReport.finalizarReport();
+			setup.uninstallApp();
+			setup.driverClose();
+			setup.serviceStop();
+		}catch(Exception e) {}
+		
+	}
+}

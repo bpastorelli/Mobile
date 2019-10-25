@@ -1,22 +1,19 @@
-package br.com.mobile.pages;
+package br.com.mobile.pages.android;
 
 import org.openqa.selenium.By;
 
-import br.com.mobile.implementations.BasePageAppCenter;
+import br.com.mobile.implementations.BasePageAndroid;
 import br.com.mobile.interfaces.Page;
 
-public class PesquisaPage extends BasePageAppCenter implements Page {
+public class InicialPage extends BasePageAndroid implements Page {
 
-	public PesquisaPage() {
+	public InicialPage() {
 		
 		this.addElement("NUNCA", By.id("com.google.android.gms:id/credential_save_reject"));
-		this.addElement("Buscar", By.id("com.mercadolibre:id/home_search"));
-		this.addElement("txtBusca", By.id("com.mercadolibre:id/search_input_edittext"));
-		this.addElement("produtos", By.xpath("//android.widget.TextView"));
-		this.addElement("produtos filtrados", By.xpath("//android.widget.TextView"));
-		this.addElement("nova pesquisa", By.id("com.mercadolibre:id/vip_action_bar_menu_action_search"));
-		this.addElement("adicionarCarrinho", By.xpath("//android.widget.TextView[@text=\"Adicionar ao carrinho\"]"));
-		this.addElement("carrinho", By.id("com.mercadolibre:id/cart_icon"));
+		this.addElement("Já tenho conta", By.id("home_onboarding_already_has_account_button"));
+		this.addElement("MAIS TARDE", By.id("android:id/button2"));
+		this.addElement("paises", By.xpath("//android.widget.TextView"));
+		this.addElement("menu", By.xpath("//android.widget.ImageButton[@content-desc=\"Navegar para cima\"]"));
 	}
 	
 	@Override
@@ -28,7 +25,6 @@ public class PesquisaPage extends BasePageAppCenter implements Page {
 	@Override
 	public void clicarBotao(String label) {
 		
-		touchActionDownDisplayed(label);
 		clickElementByMapElements(label);
 	}
 
@@ -65,13 +61,19 @@ public class PesquisaPage extends BasePageAppCenter implements Page {
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
 		
-		
+		for(int i=0; i < qtde; i++) {
+			
+			touchActionRight();
+		}
 	}
 
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
 		
-		// TODO Auto-generated method stub
+		for(int i=0; i < qtde; i++) {
+			
+			touchActionLeft();
+		}
 	}
 
 	@Override
@@ -97,7 +99,13 @@ public class PesquisaPage extends BasePageAppCenter implements Page {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	@Override
+	public void ifPopupIsPresent(String mensagem, String name) {
+		
+		clickByText(mensagem, name);
+	}
+	
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		
@@ -107,13 +115,7 @@ public class PesquisaPage extends BasePageAppCenter implements Page {
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
 		
-		touchActionDownTextDisplayed(texto, "Texto esperado " + texto);
-	}
-
-	@Override
-	public void ifPopupIsPresent(String mensagem, String name) {
-		
-		clickByText(mensagem, name);
+		touchActionDownTextDisplayed(texto, "");
 	}
 
 	@Override
@@ -124,8 +126,8 @@ public class PesquisaPage extends BasePageAppCenter implements Page {
 
 	@Override
 	public void deslizarParaCimaElementoVisivel(String name) {
+		// TODO Auto-generated method stub
 		
-		touchActionTopDisplayed(name);
 	}
 
 }
