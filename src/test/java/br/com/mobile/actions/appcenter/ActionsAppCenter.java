@@ -15,11 +15,12 @@ public class ActionsAppCenter {
 	
 	public void logar(String usuario, String senha) {
 		
-		controller.getPage(new InicialPage()).ifPopupIsPresent("Tenemos una nueva versión", "MAIS TARDE");
-		if(controller.getPage(new InicialPage()).textoExibidoPagina("¿En dónde estás?"))		
+		controller.getPage(new InicialPage()).ifPopupIsPresent("Tenemos una nueva versión", "MAIS TARDE", 5);
+		controller.getPage(new InicialPage()).ifPopupIsPresent("Save Mercado Libre password", "NUNCA", 3);
+		if(controller.getPage(new InicialPage()).textoExibidoPagina("¿En dónde estás?", 5))		
 			controller.getPage(new InicialPage()).selecionarItemListaSuspensa("paises", "Brasil", "");
 		
-		controller.getPage(new InicialPage()).ifPopupIsPresent("Tenemos una nueva versión", "MAIS TARDE");
+		controller.getPage(new InicialPage()).ifPopupIsPresent("Tenemos una nueva versión", "MAIS TARDE", 5);
 		controller.getPage(new InicialPage()).textoExibidoPagina("¿Qué estás esperando?");
 		controller.getPage(new InicialPage()).clicarBotao("Já tenho conta");
 		
@@ -34,12 +35,8 @@ public class ActionsAppCenter {
 		controller.getPage(new LogarPage()).textoExibidoPagina("Senha");
 		controller.getPage(new LogarPage()).digitarTexto("senha", senha);
 		controller.getPage(new LogarPage()).clicarBotao("Entrar");
-		
-		if(controller.getPage(new LogarPage()).textoExibidoPagina("Instale a nova versão disponível")) {
-			controller.getPage(new LogarPage()).clicarBotao("MAIS TARDE");
-		}
-		
-		controller.getPage(new InicialPage()).ifPopupIsPresent("Sign in easily across devices", "NUNCA");
+		controller.getPage(new InicialPage()).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 5);
+		controller.getPage(new InicialPage()).ifPopupIsPresent("Sign in easily across devices", "NUNCA", 5);
 		
 		assertTrue(controller.getPage(new LogarPage()).textoExibidoPagina("Pagar com QR"));
 	}

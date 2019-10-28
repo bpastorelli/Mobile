@@ -1,6 +1,5 @@
 package br.com.mobile.implementations;
 
-import java.io.File;
 import java.net.URL;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -47,7 +46,7 @@ public class SetupAndroid implements SetupEnviroment {
 		caps.setCapability("autoGrantPermissions", Property.AUTO_PERMISSIONS);
 		caps.setCapability("autoAcceptAlerts", false);
 		caps.setCapability("autoDismissAlerts", true);
-		caps.setCapability("app", new File(Utils.getFilePath(Property.APP_PATH)).toString());
+		caps.setCapability("app", Utils.getFilePath(Property.APP_PATH).toString());
 		
 		builder = new AppiumServiceBuilder();
 		builder.withIPAddress(Property.APPIUM_IP);

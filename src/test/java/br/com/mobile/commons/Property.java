@@ -1,6 +1,5 @@
 package br.com.mobile.commons;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -22,6 +21,8 @@ public abstract class Property {
 	public static String APP_ACTIVITY;
 	
 	public static String APP_PATH;
+	
+	public static String APP_ROOT;
 	
 	public static Boolean APK_INSTALL;
 	
@@ -47,7 +48,7 @@ public abstract class Property {
 	
 	public static String APP_BAT;
 	
-	private static final String PROP_FILE_CONFIG = new File(Utils.getFilePath("config.properties")).toString();
+	private static final String PROP_FILE_CONFIG = Utils.getFilePath("config.properties").toString();
 	
 	private static Properties getProp() throws IOException {
 		
@@ -69,6 +70,7 @@ public abstract class Property {
 			APP_PACKAGE                = properties.getProperty("app.apk.appPackage").trim();
 			APP_ACTIVITY               = properties.getProperty("app.apk.appActivity").trim();
 			APP_PATH                   = properties.getProperty("app.apk.path").trim();
+			APP_ROOT                   = properties.getProperty("app.apk.root").trim();
 			APK_INSTALL                = Boolean.parseBoolean(properties.getProperty("app.apk.install"));
 			AUTO_PERMISSIONS           = Boolean.parseBoolean(properties.getProperty("app.apk.autoPermissions"));
 			APPIUM_IP                  = properties.getProperty("app.appium.ip").trim();
