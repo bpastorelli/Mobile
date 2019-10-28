@@ -44,7 +44,7 @@ public abstract class Property {
 	
 	public static Boolean AUTO_PERMISSIONS;
 	
-	public static Boolean APP_CENTER;
+	public static String PLATFORM;
 	
 	public static String APP_BAT;
 	
@@ -77,7 +77,7 @@ public abstract class Property {
 			APPIUM_PORT                = Integer.parseInt(properties.getProperty("app.appium.port"));
 			APP_NORESET                = Boolean.parseBoolean(properties.getProperty("app.apk.noReset"));
 			APP_FULLRESET              = Boolean.parseBoolean(properties.getProperty("app.apk.fullReset"));
-			APP_CENTER                 = Boolean.parseBoolean(properties.getProperty("app.apk.appCenter"));
+			PLATFORM                   = properties.getProperty("app.appium.platform");
 			APP_BAT                    = properties.getProperty("app.files.bat");
 			HTML_REPORTER_PATH         = properties.getProperty("extent.report.path").trim();
 			HTML_REPORTER_NAME         = properties.getProperty("extent.report.name").trim();
@@ -87,4 +87,5 @@ public abstract class Property {
 			e.printStackTrace();
 		}
 	}
+
 }

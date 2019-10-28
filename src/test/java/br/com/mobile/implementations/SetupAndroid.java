@@ -64,7 +64,8 @@ public class SetupAndroid implements SetupEnviroment {
 			Utils.log("[APLICATIVO]Iniciando o aplicativo...");
 			driver = new AppiumDriver<MobileElement>(new URL("http:" 
 					+ Property.APPIUM_IP 
-					+ ":" + Property.APPIUM_PORT + "/wd/hub"), caps);
+					+ ":" + Property.APPIUM_PORT 
+					+ "/wd/hub"), caps);
 		} catch (Exception e) {
 			
 			Utils.log("[FALHA]Falha ao iniciar o aplicativo:" + e.getMessage());

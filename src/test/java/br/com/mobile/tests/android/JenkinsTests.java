@@ -3,15 +3,17 @@ package br.com.mobile.tests.android;
 import org.junit.Test;
 
 import br.com.mobile.actions.android.ActionsMobile;
-import br.com.mobile.regression.BaseTestCaseAppCenter;
+import br.com.mobile.regression.BaseTestCase;
+import br.com.mobile.reports.LogReport;
 
-public class JenkinsTests extends BaseTestCaseAppCenter {
+public class JenkinsTests extends BaseTestCase {
     
     private ActionsMobile actionsAppCenter = new ActionsMobile();
     
     @Test
     public void testA() {
     	
+    	LogReport.createTest("Iniciando o Teste: ");
     	actionsAppCenter.logar("brunopastorelli@hotmail.com", "sid04197");
     }
     

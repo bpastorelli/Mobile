@@ -7,9 +7,9 @@ import org.junit.rules.TestWatcher;
 import com.microsoft.appcenter.appium.Factory;
 
 import br.com.mobile.actions.appcenter.ActionsAppCenter;
-import br.com.mobile.regression.BaseTestCaseAppCenter;
+import br.com.mobile.regression.BaseTestCase;
 
-public class AppCenterTests extends BaseTestCaseAppCenter {
+public class AppCenterTests extends BaseTestCase {
 
     @Rule
     public TestWatcher watcher = Factory.createWatcher();
