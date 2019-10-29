@@ -5,16 +5,12 @@ import org.openqa.selenium.By;
 import br.com.mobile.implementations.BasePageAndroid;
 import br.com.mobile.interfaces.Page;
 
-public class InicialPage extends BasePageAndroid implements Page {
+public class MinhaContaPage extends BasePageAndroid implements Page {
 
-	public InicialPage() {
+	public MinhaContaPage() {
 		
-		this.addElement("NUNCA", By.id("com.google.android.gms:id/credential_save_reject"));
-		this.addElement("Já tenho conta", By.id("home_onboarding_already_has_account_button"));
-		this.addElement("MAIS TARDE", By.id("android:id/button2"));
-		this.addElement("paises", By.xpath("//android.widget.TextView"));
-		this.addElement("menu", By.xpath("//android.widget.ImageButton[@content-desc=\"Navegar para cima\"]"));
-		this.addElement("Acessar a minha conta", By.id("com.mercadolibre:id/button_footer_secondary"));
+		this.addElement("sair", By.id("com.mercadolibre:id/my_account_user_footer_image"));
+		this.addElement("SIM, SAIR", By.id("android:id/button1"));
 	}
 	
 	@Override
@@ -24,14 +20,9 @@ public class InicialPage extends BasePageAndroid implements Page {
 	}
 
 	@Override
-	public boolean textoExibidoPagina(String texto, Integer time) {
-		
-		return waitText(texto, time);
-	}
-	
-	@Override
 	public void clicarBotao(String label) {
 		
+		touchActionDownDisplayed(label);
 		clickElementByMapElements(label);
 	}
 
@@ -68,19 +59,13 @@ public class InicialPage extends BasePageAndroid implements Page {
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
 		
-		for(int i=0; i < qtde; i++) {
-			
-			touchActionRight();
-		}
+		
 	}
 
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
 		
-		for(int i=0; i < qtde; i++) {
-			
-			touchActionLeft();
-		}
+		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -106,13 +91,7 @@ public class InicialPage extends BasePageAndroid implements Page {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	@Override
-	public void ifPopupIsPresent(String mensagem, String name) {
-		
-		clickByText(mensagem, name);
-	}
-	
+
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		
@@ -122,7 +101,13 @@ public class InicialPage extends BasePageAndroid implements Page {
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
 		
-		touchActionDownTextDisplayed(texto, "");
+		touchActionDownTextDisplayed(texto, "Texto esperado " + texto);
+	}
+
+	@Override
+	public void ifPopupIsPresent(String mensagem, String name) {
+		
+		clickByText(mensagem, name);
 	}
 
 	@Override
@@ -133,8 +118,14 @@ public class InicialPage extends BasePageAndroid implements Page {
 
 	@Override
 	public void deslizarParaCimaElementoVisivel(String name) {
-		// TODO Auto-generated method stub
 		
+		touchActionTopDisplayed(name);
+	}
+
+	@Override
+	public boolean textoExibidoPagina(String texto, Integer time) {
+		
+		return waitText(texto, time);
 	}
 
 	@Override

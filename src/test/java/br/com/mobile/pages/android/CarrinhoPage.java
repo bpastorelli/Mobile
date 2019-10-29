@@ -23,8 +23,8 @@ public class CarrinhoPage extends BasePageAndroid implements Page {
 	@Override
 	public void clicarBotao(String label) {
 		
-		touchActionTopDisplayed(label);
-		touchActionDownDisplayed(label);
+		//touchActionTopDisplayed(label);
+		//touchActionDownDisplayed(label);
 		clickElementByMapElements(label);
 	}
 

@@ -9,6 +9,7 @@ public class MenuPage extends BasePageAndroid implements Page {
 	
 	public MenuPage() {
 		
+		
 	}
 
 	@Override
@@ -20,14 +21,14 @@ public class MenuPage extends BasePageAndroid implements Page {
 	@Override
 	public void clicarBotao(String label) {
 		
-		this.addElement(label, By.xpath("//android.widget.TextView[@text=" + label.replace("opcao", "") + "]"));
+		this.addElement(label, By.xpath("//android.widget.TextView[@text='" + label.replace("opcao", "") + "']"));
 		clickElementByMapElements(label);
 	}
 
 	@Override
 	public void digitarTexto(String name, String texto) {
-		// TODO Auto-generated method stub
 		
+		setText(name, texto);
 	}
 
 	@Override

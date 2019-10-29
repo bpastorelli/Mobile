@@ -51,7 +51,7 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 			obj = getMap(name);
 			element = getDriver().findElement(obj);
 		} catch (Exception e) {
-			LogReport.fail(e.getMessage());
+			LogReport.fail("Elemento " + name + " não encontrado");
 		}
 
 		return element;
