@@ -10,13 +10,14 @@ import br.com.mobile.utils.Command;
 import br.com.mobile.utils.Utils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
 public class SetupAndroid implements SetupEnviroment {
 	
-	protected static AppiumDriver<MobileElement> driver;
+	protected static AndroidDriver<MobileElement> driver;
 	
 	private Command cmd = new Command();
 	
@@ -62,7 +63,7 @@ public class SetupAndroid implements SetupEnviroment {
 		
 		try {	
 			Utils.log("[APLICATIVO]Iniciando o aplicativo...");
-			driver = new AppiumDriver<MobileElement>(new URL("http:" 
+			driver = new AndroidDriver<MobileElement>(new URL("http:" 
 					+ Property.APPIUM_IP 
 					+ ":" + Property.APPIUM_PORT 
 					+ "/wd/hub"), caps);

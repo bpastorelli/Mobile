@@ -3,6 +3,7 @@ package br.com.mobile.interfaces;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import io.appium.java_client.MobileElement;
@@ -290,5 +291,17 @@ public interface BasePage {
 	 * @param time Tempo de espera para encontrar o texto
 	 */
 	abstract void clickByText(String text, String name, Integer time);
-
+	
+	/**
+	 * Envia comandos
+	 * @param text Comando
+	 */
+	abstract void sendKeys(Keys key);
+	
+	/**
+	 * Retorna até que o texto esteja presente na página
+	 * @param text Texto esperado
+	 */
+	abstract void returnUntilTextDisplayed(String text);
+	
 }

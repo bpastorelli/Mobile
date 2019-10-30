@@ -144,4 +144,10 @@ public interface Page {
 	 */
 	abstract void ifPopupIsPresent(String mensagem, String name, Integer time);
 	
+	/**
+	 * Retorna até a página que contenha o texto
+	 * @param texto Texto procurado
+	 */
+	abstract void voltar(String texto);
+	
 }

@@ -134,5 +134,11 @@ public class LogarPage extends BasePageAppCenter implements Page {
 		
 		clickByText(mensagem, name, time);
 	}
+	
+	@Override
+	public void voltar(String texto) {
+		
+		returnUntilTextDisplayed(texto);
+	}
 
 }

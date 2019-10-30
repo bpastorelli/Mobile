@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>com.experitest</groupId>
 			<artifactId>appium-seetest-extension</artifactId>
-			<version>LATEST</version>
+			<version>RELEASE</version>
 		</dependency>
 
 		<!-- Appium test extension -->

@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -234,9 +235,6 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 				return true;
 		}
 
-		if (!retorno)
-			LogReport.fail("[FALHA]Texto esperado na página " + text + " nao apresentado (Timeout = " + Property.TIMEOUT
-					+ ").");
 		return retorno;
 	}
 
@@ -627,5 +625,24 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 			}
 		}while(!presence && i < timeOut);
 	}
-
+	
+	@Override
+	public void sendKeys(Keys key) {
+		
+		Actions action = new Actions(driver);
+		action.sendKeys().sendKeys(key).build().perform();
+	}
+	
+	@Override
+	public void returnUntilTextDisplayed(String text) {
+		
+		for(int i=0; i < Property.TIMEOUT; i++) {
+			if(textIsPresent(text)) {
+				return;
+			}
+			getDriver().navigate().back();
+		}
+		
+	}
+	
 }

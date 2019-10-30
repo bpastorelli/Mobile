@@ -69,13 +69,14 @@ public class ActionsMobile {
 		LogReport.passFail(controller.getPage(new PesquisaPage()).textoExibidoPagina(esperado, 5), "Adicionar produto ao carrinho");
 	}
 	
-	public void removerProdutoCarrinho() {
+	public void removerProdutosCarrinho() {
 		
-		controller.getPage(new CarrinhoPage()).deslizarParaCimaElementoVisivel("carrinho");
-		controller.getPage(new InicialPage()).clicarBotao("menu");
-		controller.getPage(new CarrinhoPage()).clicarBotao("carrinho");
-		controller.getPage(new CarrinhoPage()).clicarBotao("menuCarrinho");
-		controller.getPage(new CarrinhoPage()).selecionarItemListaSuspensa("opcoesCarrinho", "Excluir produto", "");
+		controller.getPage(new PesquisaPage()).clicarBotao("carrinho");
+		
+		do{	
+			controller.getPage(new CarrinhoPage()).clicarBotao("menuCarrinho");
+			controller.getPage(new CarrinhoPage()).selecionarItemListaSuspensa("opcoesCarrinho", "Excluir produto", "");
+		}while(!controller.getPage(new CarrinhoPage()).textoExibidoPagina("O seu carrinho está vazio", 2));
 		
 		LogReport.passFail(controller.getPage(new CarrinhoPage()).textoExibidoPagina("O seu carrinho está vazio"), "Remover produto do carrinho");
 	}
@@ -88,6 +89,11 @@ public class ActionsMobile {
 		controller.getPage(new MinhaContaPage()).ifPopupIsPresent("Deseja sair da sua conta?", "SIM, SAIR");
 		
 		LogReport.passFail(controller.getPage(new InicialPage()).textoExibidoPagina("Acesse sua conta"), "Logout");
+	}
+	
+	public void retornarInicio() {
+		
+		controller.getPage(new InicialPage()).voltar("Pagar com QR");
 	}
 
 }

@@ -23,8 +23,6 @@ public class CarrinhoPage extends BasePageAndroid implements Page {
 	@Override
 	public void clicarBotao(String label) {
 		
-		//touchActionTopDisplayed(label);
-		//touchActionDownDisplayed(label);
 		clickElementByMapElements(label);
 	}
 
@@ -138,6 +136,12 @@ public class CarrinhoPage extends BasePageAndroid implements Page {
 	public void ifPopupIsPresent(String mensagem, String name, Integer time) {
 		
 		clickByText(mensagem, name, time);
+	}
+
+	@Override
+	public void voltar(String texto) {
+		
+		returnUntilTextDisplayed(texto);
 	}
 	
 }
