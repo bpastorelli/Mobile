@@ -57,6 +57,5 @@ public class JenkinsTests extends BaseTestCase {
     	LogReport.createTest("Teste: Remover produto do carrinho");
     	actions.retornarInicio();
     	actions.removerProdutosCarrinho();
-    	
     }
 }

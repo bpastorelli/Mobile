@@ -6,6 +6,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import br.com.mobile.commons.Property;
 import br.com.mobile.interfaces.SetupEnviroment;
+import br.com.mobile.utils.Appium;
 import br.com.mobile.utils.Command;
 import br.com.mobile.utils.Utils;
 import io.appium.java_client.AppiumDriver;
@@ -31,6 +32,8 @@ public class SetupAndroid implements SetupEnviroment {
 	
 	@Override
 	public void setupEnviroment() {
+		
+		Appium.install();
 		
 		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
 		cmd.killProcessPort();

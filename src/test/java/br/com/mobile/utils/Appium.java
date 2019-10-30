@@ -1,5 +1,7 @@
 package br.com.mobile.utils;
 
+import java.io.File;
+
 public class Appium {
 	
 	private static Command cmd = new Command();
@@ -7,12 +9,12 @@ public class Appium {
 	public static void install() {
 		
 		cmd.executeCommand("adb devices -l", false);
-		/*cmd.executeCommand("node -version", false);
+		cmd.executeCommand("node -version", false);
 		if(Command.getContent().contains("Error")) {
 			Utils.log("[FALHA]O Node.js não está instalado.");
 			String path = new File("src\\test\\resources\\install").getAbsolutePath(); 
 			cmd.executeCommand("msiexec.exe /i \"" + path + " node-v10.16.3-x64.msi\" \\qn", false);
-		}*/
+		}
 		
 		cmd.executeCommand("appium -version", false);
 		
