@@ -34,7 +34,7 @@ public class SetupAndroid implements SetupEnviroment {
 	public void setupEnviroment() {
 		
 		//Appium.install();
-		cmd.executeCommand("cd .\\Mobile && npm install maven");
+		//cmd.executeCommand("npm install maven");
 		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
 		cmd.killProcessPort();
 		
