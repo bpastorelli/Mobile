@@ -59,7 +59,7 @@ public class SetupAndroid implements SetupEnviroment {
 		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
 	
 		service = AppiumDriverLocalService.buildService(builder);
-		//service.start();
+		service.start();
 		
 		Utils.log("[SUCESSO]Appium iniciado.");
 		
