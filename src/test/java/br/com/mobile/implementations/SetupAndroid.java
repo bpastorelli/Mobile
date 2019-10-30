@@ -33,8 +33,8 @@ public class SetupAndroid implements SetupEnviroment {
 	@Override
 	public void setupEnviroment() {
 		
-		Appium.install();
-		
+		//Appium.install();
+		cmd.executeCommand("npm install maven");
 		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
 		cmd.killProcessPort();
 		
