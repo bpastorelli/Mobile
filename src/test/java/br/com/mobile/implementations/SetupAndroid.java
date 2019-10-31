@@ -1,6 +1,5 @@
 package br.com.mobile.implementations;
 
-import java.io.File;
 import java.net.URL;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -54,12 +53,11 @@ public class SetupAndroid implements SetupEnviroment {
 		builder.withIPAddress(Property.APPIUM_IP);
 		builder.usingPort(Property.APPIUM_PORT);
 		builder.withCapabilities(caps);
-		//builder.withAppiumJS(new File("C:\\Users\\bodl\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\lib\\main.js"));
 		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
 		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
 	
 		service = AppiumDriverLocalService.buildService(builder);
-		//service.start();
+		service.start();
 		
 		Utils.log("[SUCESSO]Appium iniciado.");
 		
