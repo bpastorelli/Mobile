@@ -32,8 +32,9 @@ public class SetupAndroid implements SetupEnviroment {
 	@Override
 	public void setupEnviroment() {
 		
-		//cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
-		//cmd.killProcessPort();
+		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
+		cmd.killProcessPort();
+		cmd.executeCommand("npm install -g maven", false);
 		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		caps = new DesiredCapabilities();
@@ -56,8 +57,8 @@ public class SetupAndroid implements SetupEnviroment {
 		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
 		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
 	
-		//service = AppiumDriverLocalService.buildService(builder);
-		//service.start();
+		service = AppiumDriverLocalService.buildService(builder);
+		service.start();
 		
 		Utils.log("[SUCESSO]Appium iniciado.");
 		
