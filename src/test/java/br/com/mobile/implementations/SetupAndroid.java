@@ -34,7 +34,8 @@ public class SetupAndroid implements SetupEnviroment {
 		
 		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
 		cmd.killProcessPort();
-		cmd.executeCommand("npm install -g appium", false);
+		//cmd.executeCommand("npm install -g appium", false);
+		cmd.executeCommand("appium", false);
 		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		caps = new DesiredCapabilities();
