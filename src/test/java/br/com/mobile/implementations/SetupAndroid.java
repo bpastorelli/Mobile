@@ -1,5 +1,6 @@
 package br.com.mobile.implementations;
 
+import java.io.File;
 import java.net.URL;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -32,10 +33,8 @@ public class SetupAndroid implements SetupEnviroment {
 	@Override
 	public void setupEnviroment() {
 		
-		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
-		cmd.killProcessPort();
-		//cmd.executeCommand("npm install -g appium", false);
-		cmd.executeCommand("appium", false);
+		//cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
+		//cmd.killProcessPort();
 		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		caps = new DesiredCapabilities();
@@ -55,11 +54,12 @@ public class SetupAndroid implements SetupEnviroment {
 		builder.withIPAddress(Property.APPIUM_IP);
 		builder.usingPort(Property.APPIUM_PORT);
 		builder.withCapabilities(caps);
+		builder.withAppiumJS(Utils.getFilePath(""));
 		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
 		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
 	
-		service = AppiumDriverLocalService.buildService(builder);
-		service.start();
+		//service = AppiumDriverLocalService.buildService(builder);
+		//service.start();
 		
 		Utils.log("[SUCESSO]Appium iniciado.");
 		
