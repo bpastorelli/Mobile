@@ -30,12 +30,14 @@ public class SetupAndroid implements SetupEnviroment {
 	
 	private static final String process = "Appium.exe";
 	
+	private static AppiumDriverLocalService appiumService;
+	private static String appiumServiceUrl;
+	
 	@Override
 	public void setupEnviroment() {
 		
-		//cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
-		//cmd.killProcessPort();
-		//cmd.executeCommand("/k C:\\Program Files\\nodejs\\node.exe C:\\Users\\bodl\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\lib\\main.js --address " + Property.APPIUM_IP + " --port " + Property.APPIUM_PORT, false);
+		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
+		cmd.killProcessPort();
 		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		caps = new DesiredCapabilities();
@@ -55,13 +57,23 @@ public class SetupAndroid implements SetupEnviroment {
 		builder.withIPAddress(Property.APPIUM_IP);
 		builder.usingPort(Property.APPIUM_PORT);
 		builder.withCapabilities(caps);
-		//builder.usingDriverExecutable(new File("C:\\Program Files\\nodejs\\node.exe"));
+		builder.usingDriverExecutable(new File("C:\\Program Files\\nodejs\\node.exe"));
 		//builder.withAppiumJS(new File("C:\\Users\\bodl\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\lib\\main.js"));
 		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
 		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
-	
+		
 		//service = AppiumDriverLocalService.buildService(builder);
 		//service.start();
+		
+		appiumService = AppiumDriverLocalService
+				.buildService(new AppiumServiceBuilder()
+						.withIPAddress(Property.APPIUM_IP)
+						.usingPort(Property.APPIUM_PORT)
+						.usingDriverExecutable(new File("C:/Program Files/nodejs/node.exe")));
+						//.withAppiumJS(new File("C:/Users/bodl/AppData/Local/Programs/Appium/resources/app/node_modules/appium/lib/main.js")));
+		appiumService.start();
+		appiumServiceUrl = appiumService.getUrl().toString();
+		System.out.println("Appium Service Address : - " + appiumServiceUrl);
 		
 		Utils.log("[SUCESSO]Appium iniciado.");
 		
