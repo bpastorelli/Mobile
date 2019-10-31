@@ -56,8 +56,8 @@ public class SetupAndroid implements SetupEnviroment {
 		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
 		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
 	
-		service = AppiumDriverLocalService.buildService(builder);
-		service.start();
+		//service = AppiumDriverLocalService.buildService(builder);
+		//service.start();
 		
 		Utils.log("[SUCESSO]Appium iniciado.");
 		
