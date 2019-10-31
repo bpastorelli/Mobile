@@ -35,6 +35,7 @@ public class SetupAndroid implements SetupEnviroment {
 		
 		//cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
 		//cmd.killProcessPort();
+		//cmd.executeCommand("/k C:\\Program Files\\nodejs\\node.exe C:\\Users\\bodl\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\lib\\main.js --address " + Property.APPIUM_IP + " --port " + Property.APPIUM_PORT, false);
 		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		caps = new DesiredCapabilities();
@@ -54,7 +55,8 @@ public class SetupAndroid implements SetupEnviroment {
 		builder.withIPAddress(Property.APPIUM_IP);
 		builder.usingPort(Property.APPIUM_PORT);
 		builder.withCapabilities(caps);
-		builder.withAppiumJS(Utils.getFilePath(""));
+		//builder.usingDriverExecutable(new File("C:\\Program Files\\nodejs\\node.exe"));
+		//builder.withAppiumJS(new File("C:\\Users\\bodl\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\lib\\main.js"));
 		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
 		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
 	
