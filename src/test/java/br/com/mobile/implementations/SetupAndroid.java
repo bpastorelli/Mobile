@@ -39,7 +39,7 @@ public class SetupAndroid implements SetupEnviroment {
 		
 		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
 		cmd.killProcessPort();
-		cmd.executeCommand("call start cmd.exe /k C:\\Program Files\\nodejs\\node.exe C:\\Users\\bodl\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\lib\\main.js --address 0.0.0.0 --port 4723", false);		
+		cmd.executeCommand("start cmd.exe /k \"appium -a 0.0.0.0 -p 4723\"", false);
 		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		caps = new DesiredCapabilities();
@@ -70,11 +70,11 @@ public class SetupAndroid implements SetupEnviroment {
 				.buildService(new AppiumServiceBuilder()
 						.withIPAddress(Property.APPIUM_IP)
 						.usingPort(Property.APPIUM_PORT)
-						.usingDriverExecutable(new File("C:/Program Files/nodejs/node.exe")));
-						//.withAppiumJS(new File("C:/Users/bodl/AppData/Local/Programs/Appium/resources/app/node_modules/appium/lib/main.js")));
-		//appiumService.start();
-		//appiumServiceUrl = appiumService.getUrl().toString();
-		//System.out.println("Appium Service Address : - " + appiumServiceUrl);
+						.usingDriverExecutable(new File("C:/Program Files/nodejs/node.exe"))
+						.withAppiumJS(new File("C:\\Users\\bodl\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\lib\\appium.js")));
+		appiumService.start();
+		appiumServiceUrl = appiumService.getUrl().toString();
+		System.out.println("Appium Service Address : - " + appiumServiceUrl);
 		
 		Utils.log("[SUCESSO]Appium iniciado.");
 		
