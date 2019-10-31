@@ -72,9 +72,9 @@ public class SetupAndroid implements SetupEnviroment {
 						.usingPort(Property.APPIUM_PORT)
 						.usingDriverExecutable(new File("C:/Program Files/nodejs/node.exe"))
 						.withAppiumJS(new File("C:\\Users\\bodl\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\lib\\appium.js")));
-		appiumService.start();
-		appiumServiceUrl = appiumService.getUrl().toString();
-		System.out.println("Appium Service Address : - " + appiumServiceUrl);
+		//appiumService.start();
+		//appiumServiceUrl = appiumService.getUrl().toString();
+		//System.out.println("Appium Service Address : - " + appiumServiceUrl);
 		
 		Utils.log("[SUCESSO]Appium iniciado.");
 		
