@@ -21,9 +21,9 @@ public class Appium {
 		CommandLine cmdLine = new CommandLine("C:\\Program Files\\nodejs\\node.exe");
 		cmdLine.addArgument("C:\\Users\\bodl\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\build\\lib\\main.js");
 		cmdLine.addArgument("--address");
-		cmdLine.addArgument(Property.APPIUM_IP.toString());
+		cmdLine.addArgument("0.0.0.0");
 		cmdLine.addArgument("--port");
-		cmdLine.addArgument(Property.APPIUM_PORT.toString());
+		cmdLine.addArgument("4723");
 
 		DefaultExecuteResultHandler handler = new DefaultExecuteResultHandler();
 		DefaultExecutor executor = new DefaultExecutor();
