@@ -1,6 +1,5 @@
 package br.com.mobile.implementations;
 
-import java.io.File;
 import java.net.URL;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -13,33 +12,19 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
-import io.appium.java_client.service.local.AppiumServiceBuilder;
-import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
 public class SetupAndroid implements SetupEnviroment {
 	
 	protected static AndroidDriver<MobileElement> driver;
 	
-	private Command cmd = new Command();
-	
 	private DesiredCapabilities caps; 
-	
-	private AppiumServiceBuilder builder;
 	
 	private AppiumDriverLocalService service;
 	
 	private static final String process = "Appium.exe";
 	
-	private static String appiumServiceUrl;
-	
-	private static AppiumDriverLocalService appiumService;
-	
 	@Override
 	public void setupEnviroment() {
-		
-		try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e1) {}
 		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		caps = new DesiredCapabilities();
@@ -54,18 +39,6 @@ public class SetupAndroid implements SetupEnviroment {
 		caps.setCapability("autoAcceptAlerts", false);
 		caps.setCapability("autoDismissAlerts", true);
 		caps.setCapability("app", Utils.getFilePath(Property.APP_PATH).toString());
-		
-		builder = new AppiumServiceBuilder();
-		builder.withIPAddress(Property.APPIUM_IP);
-		builder.usingPort(Property.APPIUM_PORT);
-		builder.withCapabilities(caps);
-		builder.usingDriverExecutable(new File("C:\\Program Files\\nodejs\\node.exe"));
-		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
-		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
-		
-		//service = AppiumDriverLocalService.buildService(builder);
-		//service.start();
-		//Utils.log("[SUCESSO]Appium iniciado.");
 		
 		try {	
 			Utils.log("[APLICATIVO]Iniciando o aplicativo...");
