@@ -11,7 +11,8 @@ public class Threads {
 			@Override
 			public void run() {
 				
-				cmd.executeCommand("appium");
+				cmd.executeCommand("appium -a 0.0.0.0 -p 4723");
+				Utils.log("Appium iniciado via Thread...");
 			}
 		}.start();
 		
