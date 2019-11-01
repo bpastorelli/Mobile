@@ -37,14 +37,6 @@ public class SetupAndroid implements SetupEnviroment {
 	@Override
 	public void setupEnviroment() {
 		
-		//cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
-		//cmd.killProcessPort();
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
-		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		caps = new DesiredCapabilities();
 		caps.setCapability("noReset", Property.APP_NORESET);
@@ -69,18 +61,7 @@ public class SetupAndroid implements SetupEnviroment {
 		
 		//service = AppiumDriverLocalService.buildService(builder);
 		//service.start();
-		
-		appiumService = AppiumDriverLocalService
-				.buildService(new AppiumServiceBuilder()
-						.withIPAddress(Property.APPIUM_IP)
-						.usingPort(Property.APPIUM_PORT)
-						.usingDriverExecutable(new File("C:/Program Files/nodejs/node.exe"))
-						.withAppiumJS(new File("C:\\Users\\bodl\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\lib\\appium.js")));
-		//appiumService.start();
-		//appiumServiceUrl = appiumService.getUrl().toString();
-		//System.out.println("Appium Service Address : - " + appiumServiceUrl);
-		
-		Utils.log("[SUCESSO]Appium iniciado.");
+		//Utils.log("[SUCESSO]Appium iniciado.");
 		
 		try {	
 			Utils.log("[APLICATIVO]Iniciando o aplicativo...");

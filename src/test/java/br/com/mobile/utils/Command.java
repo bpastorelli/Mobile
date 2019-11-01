@@ -39,7 +39,7 @@ public class Command {
 
 		try {
 			Utils.log("Executando o comando: " + command);
-			Process process = Runtime.getRuntime().exec("cmd /c" + command);
+			Process process = Runtime.getRuntime().exec("cmd /c" + command);			
 			logOutput(process.getInputStream(), "", updateListProcess);
 			logOutput(process.getErrorStream(), "Error: ", updateListProcess);
 			process.waitFor();
@@ -70,7 +70,7 @@ public class Command {
 				}
 			}
 		}
-		scanner.close();
+		//scanner.close();
 	}
 
 	/**
