@@ -30,7 +30,7 @@ public class JenkinsTests extends BaseTestCase {
     	
     	LogReport.createTest("Teste: Pesquisa de produto");
     	actions.retornarInicio();
-    	actions.pesquisaProduto("Notebook", "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux", "R$ 1.749");
+    	actions.pesquisaProduto("Notebook", "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux", "R$ 1.899");
     } 
     
     @Test
@@ -47,7 +47,7 @@ public class JenkinsTests extends BaseTestCase {
     	
     	LogReport.createTest("Teste: Adicionar produto Notebook ao carrinho");
     	actions.retornarInicio();
-    	actions.pesquisaProduto("Notebook", "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux", "R$ 1.749");
+    	actions.pesquisaProduto("Notebook", "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux", "R$ 1.899");
     	actions.adicionarProdutoCarrinho("Você adicionou ao seu carrinho");
     }    
     
