@@ -15,8 +15,7 @@ public class Threads {
 				
 				cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
 				cmd.killProcessPort();
-				cmd.executeCommand("npm install", false);
-				cmd.executeCommand("appium -a " + Property.APPIUM_IP + " -p " + Property.APPIUM_PORT, false);
+				cmd.executeCommand("npm install && appium -a " + Property.APPIUM_IP + " -p " + Property.APPIUM_PORT, false);
 				Utils.log("[APPIUM]Appium iniciado via Thread...");
 			}
 		}.start();
