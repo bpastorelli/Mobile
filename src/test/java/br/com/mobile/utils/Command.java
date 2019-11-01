@@ -70,7 +70,7 @@ public class Command {
 				}
 			}
 		}
-		//scanner.close();
+		scanner.close();
 	}
 
 	/**
