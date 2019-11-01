@@ -7,6 +7,7 @@ import br.com.mobile.commons.Property;
 import br.com.mobile.enums.PlataformaEnum;
 import br.com.mobile.interfaces.SetupEnviroment;
 import br.com.mobile.reports.LogReport;
+import br.com.mobile.utils.Threads;
 
 public class BaseTestCase {
 	
@@ -16,6 +17,8 @@ public class BaseTestCase {
 	public static void beforeClass() throws Exception {
 		
 		Property.loadProperties();
+		Threads t = new Threads(); 
+		t.startAppium();
 		
 		switch(Property.PLATFORM) {
 			case "mobile":
