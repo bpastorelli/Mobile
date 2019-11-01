@@ -37,6 +37,10 @@ public class SetupAndroid implements SetupEnviroment {
 	@Override
 	public void setupEnviroment() {
 		
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e1) {}
+		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		caps = new DesiredCapabilities();
 		caps.setCapability("noReset", Property.APP_NORESET);
