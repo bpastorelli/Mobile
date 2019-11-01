@@ -69,6 +69,7 @@ public class SetupAndroid implements SetupEnviroment {
 					+ Property.APPIUM_IP 
 					+ ":" + Property.APPIUM_PORT 
 					+ "/wd/hub"), caps);
+			Thread.sleep(10000);
 		} catch (Exception e) {
 			
 			Utils.log("[FALHA]Falha ao iniciar o aplicativo:" + e.getMessage());
