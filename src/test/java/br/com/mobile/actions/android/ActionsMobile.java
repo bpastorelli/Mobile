@@ -63,7 +63,7 @@ public class ActionsMobile {
 
 	public void adicionarProdutoCarrinho(String esperado) {
 		
-		controller.getPage(new PesquisaPage()).deslizarParaBaixoElementoVisivel("adicionarCarrinho");
+		//controller.getPage(new PesquisaPage()).deslizarParaBaixoElementoVisivel("adicionarCarrinho");
 		controller.getPage(new PesquisaPage()).clicarBotao("adicionarCarrinho");
 		
 		LogReport.passFail(controller.getPage(new PesquisaPage()).textoExibidoPagina(esperado, 5), "Adicionar produto ao carrinho");
