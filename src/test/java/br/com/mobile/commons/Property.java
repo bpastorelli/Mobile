@@ -32,6 +32,8 @@ public abstract class Property {
 	
 	public static String NODEJS;
 	
+	public static String APPIUMJS;
+	
 	public static Boolean APP_NORESET;
 	
 	public static Boolean APP_FULLRESET;
@@ -77,6 +79,8 @@ public abstract class Property {
 			AUTO_PERMISSIONS           = Boolean.parseBoolean(properties.getProperty("app.apk.autoPermissions"));
 			APPIUM_IP                  = properties.getProperty("app.appium.ip").trim();
 			APPIUM_PORT                = Integer.parseInt(properties.getProperty("app.appium.port"));
+			NODEJS                     = properties.getProperty("app.appium.node");
+			APPIUMJS                   = properties.getProperty("app.appium.js");
 			APP_NORESET                = Boolean.parseBoolean(properties.getProperty("app.apk.noReset"));
 			APP_FULLRESET              = Boolean.parseBoolean(properties.getProperty("app.apk.fullReset"));
 			PLATFORM                   = properties.getProperty("app.appium.platform");

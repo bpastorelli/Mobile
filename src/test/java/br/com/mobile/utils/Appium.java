@@ -20,8 +20,8 @@ public class Appium {
 		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
 		cmd.killProcessPort();
 
-		cmdLine = new CommandLine("C:\\Program Files\\nodejs\\node.exe");
-		cmdLine.addArgument("C:\\Users\\bodl\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\build\\lib\\main.js");
+		cmdLine = new CommandLine(Property.NODEJS);
+		cmdLine.addArgument(Property.APPIUMJS);
 		cmdLine.addArgument("--address");
 		cmdLine.addArgument(Property.APPIUM_IP);
 		cmdLine.addArgument("--port");
@@ -32,7 +32,7 @@ public class Appium {
 		executor.setExitValue(1);
 		try {
 			executor.execute(cmdLine, handler);
-			Thread.sleep(20000);
+			Thread.sleep(10000);
 		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
 		}
