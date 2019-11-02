@@ -22,7 +22,7 @@ public class JenkinsTests extends BaseTestCase {
     	
     	LogReport.createTest("Teste: Pesquisa de produto");
     	actions.retornarInicio();
-    	actions.pesquisaProduto("Bota Robofoot", "Robofoot Salvapé Original Seminova Top", "R$ 180");
+    	actions.pesquisaProduto("Bota Robofoot", "Bota Imobilizadora Robofoot Salvapé Original Seminova Top", "R$ 180");
     }
     
     @Test
@@ -38,7 +38,7 @@ public class JenkinsTests extends BaseTestCase {
     	
     	LogReport.createTest("Teste: Adicionar produto Robofoot ao carrinho");
     	actions.retornarInicio();
-    	actions.pesquisaProduto("Bota Robofoot", "Robofoot Salvapé Original Seminova Top", "R$ 180");
+    	actions.pesquisaProduto("Bota Robofoot", "Bota Imobilizadora Robofoot Salvapé Original Seminova Top", "R$ 180");
     	actions.adicionarProdutoCarrinho("Você adicionou ao seu carrinho");
     }
     
