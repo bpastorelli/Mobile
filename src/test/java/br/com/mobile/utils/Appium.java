@@ -12,18 +12,20 @@ import br.com.mobile.commons.Property;
 public class Appium {
 
 	private static Command cmd = new Command();
+	
+	private static CommandLine cmdLine;
 
-	public void startAppium() {
+	public static void startAppium() {
 
 		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
 		cmd.killProcessPort();
 
-		CommandLine cmdLine = new CommandLine("C:\\Program Files\\nodejs\\node.exe");
+		cmdLine = new CommandLine("C:\\Program Files\\nodejs\\node.exe");
 		cmdLine.addArgument("C:\\Users\\bodl\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\build\\lib\\main.js");
 		cmdLine.addArgument("--address");
-		cmdLine.addArgument("0.0.0.0");
+		cmdLine.addArgument(Property.APPIUM_IP);
 		cmdLine.addArgument("--port");
-		cmdLine.addArgument("4723");
+		cmdLine.addArgument(Property.APPIUM_PORT.toString());
 
 		DefaultExecuteResultHandler handler = new DefaultExecuteResultHandler();
 		DefaultExecutor executor = new DefaultExecutor();
@@ -53,6 +55,21 @@ public class Appium {
 		if (Command.getContent().contains("operable program or batch file")) {
 			Utils.log("Instalando o Appium via linha de comando...");
 			cmd.executeCommand("npm install -g appium", false);
+		}
+	}
+	
+	public static void killProcessAppium() {
+		
+		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
+		cmd.killProcessPort();
+	}
+	
+	public static void stopServer() {
+		Runtime runtime = Runtime.getRuntime();
+		try {
+			runtime.exec("taskkill /F /IM node.exe");
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 

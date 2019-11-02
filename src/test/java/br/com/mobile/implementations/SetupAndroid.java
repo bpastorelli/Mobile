@@ -6,20 +6,18 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import br.com.mobile.commons.Property;
 import br.com.mobile.interfaces.SetupEnviroment;
+import br.com.mobile.utils.Appium;
 import br.com.mobile.utils.Command;
 import br.com.mobile.utils.Utils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 public class SetupAndroid implements SetupEnviroment {
 	
 	protected static AndroidDriver<MobileElement> driver;
 	
 	private DesiredCapabilities caps; 
-	
-	private AppiumDriverLocalService service;
 	
 	private static final String process = "Appium.exe";
 	
@@ -77,8 +75,7 @@ public class SetupAndroid implements SetupEnviroment {
 		if(Command.isProcessRunning(process))
 			Command.killProcess(process);
 		
-		if(service.isRunning())
-			service.stop();
+		Appium.stopServer();
 	}
 
 	@Override

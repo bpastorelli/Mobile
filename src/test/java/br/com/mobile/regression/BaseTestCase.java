@@ -11,14 +11,13 @@ import br.com.mobile.utils.Appium;
 
 public class BaseTestCase {
 	
-	public static SetupEnviroment setup;
+	private static SetupEnviroment setup;
 	
 	@BeforeClass
 	public static void beforeClass() throws Exception {
 		
 		Property.loadProperties();
-		Appium appium = new Appium(); 
-		appium.startAppium();
+		Appium.startAppium();
 		
 		switch(Property.PLATFORM) {
 			case "mobile":

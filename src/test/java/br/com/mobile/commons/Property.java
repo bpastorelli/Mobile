@@ -30,6 +30,8 @@ public abstract class Property {
 	
 	public static Integer APPIUM_PORT;
 	
+	public static String NODEJS;
+	
 	public static Boolean APP_NORESET;
 	
 	public static Boolean APP_FULLRESET;
