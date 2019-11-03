@@ -7,13 +7,12 @@ Feature: Automacao Mobile
   @primeiro_acesso_app_nao_instalado
   Scenario Outline: Primeiro acesso - Aplicativo nao instalado
     Given Que eu quero testar "Primeiro acesso - Aplicativo nao instalado"
-    And Que efetue o login com usuario e senha
+    And Que efetuo o login com usuario e senha
     Then Pesquiso o produto tipo <tipo> descricao <descricao> com o preco <preco>
     
     Examples:
-    	| tipo            | descricao                                | preco    |
-    	| "Bota Robofoot" | "Robofoot Salvapé Original Seminova Top" | "R$ 180" |
-    
+    	| tipo            | descricao                                | preco      |
+    	| "Bota Robofoot" | "Robofoot Salvapé Original Seminova Top" | "R$ 180"   |
 
     
     

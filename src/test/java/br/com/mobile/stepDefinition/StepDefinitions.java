@@ -8,7 +8,7 @@ public class StepDefinitions {
 
 	private ActionsMobile actionsMobile = new ActionsMobile();
 	
-	@And("^Que efetue o login com usuario e senha$")
+	@And("^Que efetuo o login com usuario e senha$")
 	public void que_efetue_login_com_usuario_senha() {
 		
 		actionsMobile.logar("brunopastorelli@hotmail.com", "sid04197");
