@@ -523,14 +523,21 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 		
 		List<MobileElement> elements = getListElements(name);
 		
-		for(MobileElement e : elements) {
-			if(e.getText().toLowerCase().contains(text.toLowerCase())) {
-				touchActionDownDisplayed(e);
-				clickElement(e);
-				LogReport.info("Selecionado o item " + text);
-				return;
+		for(int i=0; i<Property.TIMEOUT; i++) {
+			if(elements.size()==0) {
+				wait(1);
+			}else {
+				for(MobileElement e : elements) {
+					if(e.getText().toLowerCase().contains(text.toLowerCase())) {
+						touchActionDownDisplayed(e);
+						clickElement(e);
+						LogReport.info("Selecionado o item " + text);
+						return;
+					}
+				}
 			}
 		}
+		
 	}
 
 	@Override

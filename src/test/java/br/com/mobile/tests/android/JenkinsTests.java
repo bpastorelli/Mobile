@@ -58,4 +58,11 @@ public class JenkinsTests extends BaseTestCase {
     	actions.retornarInicio();
     	actions.removerProdutosCarrinho("O seu carrinho está vazio");
     }
+    
+    @Test
+    public void testH() {
+    	
+    	LogReport.createTest("Teste: Logout");
+    	actions.logout();
+    }
 }
