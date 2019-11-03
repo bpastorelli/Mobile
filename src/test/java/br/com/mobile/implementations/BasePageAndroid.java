@@ -133,7 +133,7 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 			LogReport.fail("[FALHA]Falha ao clicar no elemento " + by.toString() + ".");
 		}
 	}
-	
+
 	/**
 	 * Clica no elemento a partir do By.
 	 * 
@@ -295,6 +295,7 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	/**
 	 * Deslizar a tela para cima N vezes.
+	 * 
 	 * @param qtde Quantidade de vezes a deslizar para cima
 	 */
 	@Override
@@ -326,6 +327,7 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	/**
 	 * Deslizar para N vezes
+	 * 
 	 * @param qtde Quantidade de vezes a deslizar.
 	 */
 	@Override
@@ -394,7 +396,7 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 				return;
 		}
 	}
-	
+
 	@Override
 	public void touchActionDownDisplayed(MobileElement element) {
 
@@ -481,33 +483,33 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	@Override
 	public void alert(Boolean option) {
-		
-		if(option)
+
+		if (option)
 			getDriver().switchTo().alert().accept();
-		else 
+		else
 			getDriver().switchTo().alert().dismiss();
-		
+
 	}
 
 	@Override
 	public void pressKey(int key) {
-		
-	     Robot robot;
-	     try {
-	         robot = new Robot();
-	          robot.keyPress(key);
-	          robot.keyRelease(key);
-	     } catch (AWTException e) {
-	         e.printStackTrace();
-	     }
+
+		Robot robot;
+		try {
+			robot = new Robot();
+			robot.keyPress(key);
+			robot.keyRelease(key);
+		} catch (AWTException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public List<MobileElement> getListElements(String name) {
-		
+
 		By obj = null;
 		List<MobileElement> elements = null;
-		
+
 		try {
 			obj = getMap(name);
 			elements = getDriver().findElements(obj);
@@ -520,29 +522,22 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	@Override
 	public void selectItemList(String name, String text) {
-		
+
 		List<MobileElement> elements = getListElements(name);
-		
-		for(int i=0; i<Property.TIMEOUT; i++) {
-			if(elements.size()==0) {
-				wait(1);
-			}else {
-				for(MobileElement e : elements) {
-					if(e.getText().toLowerCase().contains(text.toLowerCase())) {
-						touchActionDownDisplayed(e);
-						clickElement(e);
-						LogReport.info("Selecionado o item " + text);
-						return;
-					}
-				}
+
+		for (MobileElement e : elements) {
+			if (e.getText().toLowerCase().contains(text.toLowerCase())) {
+				touchActionDownDisplayed(e);
+				clickElement(e);
+				LogReport.info("Selecionado o item " + text);
+				return;
 			}
 		}
-		
 	}
 
 	@Override
 	public void touchActionDownTextDisplayed(String text, String message) {
-		
+
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!textIsPresent(text)) {
 				touchActionDown();
@@ -555,10 +550,10 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	@Override
 	public boolean waitText(String text, Integer time) {
-		
+
 		boolean retorno = false;
-		Integer aguardar = time == 0 ? Property.TIMEOUT : time; 
-		
+		Integer aguardar = time == 0 ? Property.TIMEOUT : time;
+
 		for (int i = 0; i < aguardar; i++) {
 
 			if (!getDriver().getPageSource().contains(text))
@@ -572,7 +567,7 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	@Override
 	public void touchActionRight(Integer qtde) {
-		
+
 		for (int i = 0; i < qtde; i++) {
 			touchActionRight();
 		}
@@ -580,7 +575,7 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	@Override
 	public void touchActionTopDisplayed(MobileElement element) {
-		
+
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!element.isDisplayed())
 				touchActionTop();
@@ -597,58 +592,58 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 		try {
 			obj = getMap(name);
 			element = getDriver().findElement(obj);
-			if(element.isDisplayed())
+			if (element.isDisplayed())
 				return true;
 			else
 				return false;
 		} catch (Exception e) {
 
 			return false;
-		}	
+		}
 	}
 
 	@Override
 	public void clickByText(String text, String name) {
-		
+
 		clickByText(text, name, Property.TIMEOUT);
 	}
 
 	@Override
 	public void clickByText(String text, String name, Integer time) {
-		
-		boolean presence = false; 
-		int timeOut = time != Property.TIMEOUT ? time: Property.TIMEOUT;
-		
+
+		boolean presence = false;
+		int timeOut = time != Property.TIMEOUT ? time : Property.TIMEOUT;
+
 		int i = 0;
 		do {
 			i++;
 			wait(1);
-			if(textIsPresent(text)) {
+			if (textIsPresent(text)) {
 				clickElementByMapElements(name);
-				if(!textIsPresent(text)) {					
+				if (!textIsPresent(text)) {
 					presence = true;
 				}
 			}
-		}while(!presence && i < timeOut);
+		} while (!presence && i < timeOut);
 	}
-	
+
 	@Override
 	public void sendKeys(Keys key) {
-		
+
 		Actions action = new Actions(driver);
 		action.sendKeys().sendKeys(key).build().perform();
 	}
-	
+
 	@Override
 	public void returnUntilTextDisplayed(String text) {
-		
-		for(int i=0; i < Property.TIMEOUT; i++) {
-			if(textIsPresent(text)) {
+
+		for (int i = 0; i < Property.TIMEOUT; i++) {
+			if (textIsPresent(text)) {
 				return;
 			}
 			getDriver().navigate().back();
 		}
-		
+
 	}
-	
+
 }
