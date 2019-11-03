@@ -20,5 +20,16 @@ public class StepDefinitions {
 		actionsMobile.pesquisaProduto(produto, descricao, preco);
 	}
 	
+	@And("^Adiciono o produto ao meu carrinho e recebo a mensagem \"([^\"]*)\"$")
+	public void adiciono_produto_carrinho(String mensagem) {
+		
+		actionsMobile.adicionarProdutoCarrinho(mensagem);
+	}
+	
+	@And("^Removo todos os produtos do carrinho e recebo a mensagem \"([^\"]*)\"$")
+	public void removier_produtos_carrinho(String mensagem) {
+		
+		actionsMobile.removerProdutosCarrinho(mensagem);
+	}
 
-}
+} 

@@ -69,16 +69,16 @@ public class ActionsMobile {
 		LogReport.passFail(controller.getPage(new PesquisaPage()).textoExibidoPagina(esperado, 5), "Adicionar produto ao carrinho");
 	}
 	
-	public void removerProdutosCarrinho() {
+	public void removerProdutosCarrinho(String mensagem) {
 		
 		controller.getPage(new PesquisaPage()).clicarBotao("carrinho");
 		
 		do{	
 			controller.getPage(new CarrinhoPage()).clicarBotao("menuCarrinho");
 			controller.getPage(new CarrinhoPage()).selecionarItemListaSuspensa("opcoesCarrinho", "Excluir produto", "");
-		}while(!controller.getPage(new CarrinhoPage()).textoExibidoPagina("O seu carrinho está vazio", 2));
+		}while(!controller.getPage(new CarrinhoPage()).textoExibidoPagina(mensagem, 2));
 		
-		LogReport.passFail(controller.getPage(new CarrinhoPage()).textoExibidoPagina("O seu carrinho está vazio"), "Remover produto do carrinho");
+		LogReport.passFail(controller.getPage(new CarrinhoPage()).textoExibidoPagina(mensagem), "Remover produto do carrinho");
 	}
 	
 	public void logout() {
