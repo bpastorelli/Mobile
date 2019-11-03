@@ -145,9 +145,8 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 		try {
 			waitDisplayed(element, Property.TIMEOUT);
 			element.click();
-			LogReport.info("Clicar no elemento " + element.getText());
 		} catch (Exception e) {
-			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getText() + ".");
+			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getTagName() + ".");
 		}
 	}
 

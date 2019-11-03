@@ -150,4 +150,10 @@ public interface Page {
 	 */
 	abstract void voltar(String texto);
 	
+	/**
+	 * Pausa a execução
+	 * @param time Tempo de pausa
+	 */
+	abstract void pause(Integer time);
+	
 }

@@ -15,7 +15,7 @@ public class StepDefinitions {
 	}
 	
 	@Then("^Pesquiso o produto tipo \"([^\"]*)\" descricao \"([^\"]*)\" com o preco \"([^\"]*)\"$")
-	public void pesquiso_produto_descricao_e_preco(String produto, String descricao, String preco) {
+	public void pesquiso_produto_descricao_e_preco(String produto, String descricao, String preco) throws InterruptedException {
 		
 		actionsMobile.pesquisaProduto(produto, descricao, preco);
 	}

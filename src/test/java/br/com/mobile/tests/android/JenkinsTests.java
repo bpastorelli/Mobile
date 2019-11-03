@@ -18,7 +18,7 @@ public class JenkinsTests extends BaseTestCase {
     }
     
     @Test
-    public void testB() {
+    public void testB() throws InterruptedException {
     	
     	LogReport.createTest("Teste: Pesquisa de produto");
     	actions.retornarInicio();
@@ -34,7 +34,7 @@ public class JenkinsTests extends BaseTestCase {
     } 
     
     @Test
-    public void testE() {
+    public void testE() throws InterruptedException {
     	
     	LogReport.createTest("Teste: Adicionar produto Robofoot ao carrinho");
     	actions.retornarInicio();
@@ -43,7 +43,7 @@ public class JenkinsTests extends BaseTestCase {
     }
     
     @Test
-    public void testF() {
+    public void testF() throws InterruptedException {
     	
     	LogReport.createTest("Teste: Adicionar produto Notebook ao carrinho");
     	actions.retornarInicio();

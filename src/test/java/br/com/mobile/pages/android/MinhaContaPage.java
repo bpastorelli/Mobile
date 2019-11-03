@@ -140,4 +140,9 @@ public class MinhaContaPage extends BasePageAndroid implements Page {
 		returnUntilTextDisplayed(texto);
 	}
 
+	@Override
+	public void pause(Integer time) {
+		
+		wait(time);
+	}
 }

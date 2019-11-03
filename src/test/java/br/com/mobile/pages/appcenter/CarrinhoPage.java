@@ -145,5 +145,10 @@ public class CarrinhoPage extends BasePageAppCenter implements Page {
 		
 		returnUntilTextDisplayed(texto);
 	}
-	
+
+	@Override
+	public void pause(Integer time) {
+		
+		wait(time);
+	}
 }
