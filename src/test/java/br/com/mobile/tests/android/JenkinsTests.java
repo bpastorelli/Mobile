@@ -63,6 +63,7 @@ public class JenkinsTests extends BaseTestCase {
     public void testH() {
     	
     	LogReport.createTest("Teste: Logout");
+    	actions.retornarInicio();
     	actions.logout();
     }
 }
