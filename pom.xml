@@ -6,13 +6,24 @@
 	<artifactId>Mobile</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Mobile</name>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<cucumber.version>1.2.5</cucumber.version>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>seeetest</id>
+			<name>seetest client</name>
+			<url>https://cloud.experitest.com/repo/</url>
+		</repository>
+		<repository>
+			<id>jcenter</id>
+			<url>https://jcenter.bintray.com/</url>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		<!-- Appium -->
@@ -21,7 +32,21 @@
 			<artifactId>java-client</artifactId>
 			<version>7.2.0</version>
 		</dependency>
-		
+
+		<!-- Appium extension -->
+		<dependency>
+			<groupId>com.experitest</groupId>
+			<artifactId>appium-seetest-extension</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+
+		<!-- Appium test extension -->
+		<dependency>
+			<groupId>com.microsoft.appcenter</groupId>
+			<artifactId>appium-test-extension</artifactId>
+			<version>1.5</version>
+		</dependency>
+
 		<!-- Lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -82,4 +107,75 @@
 		</dependency>
 
 	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>prepare-for-upload</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<version>2.10</version>
+						<executions>
+							<execution>
+								<id>copy-dependencies</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy-dependencies</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/upload/dependency-jars/</outputDirectory>
+									<useRepositoryLayout>true</useRepositoryLayout>
+									<copyPom>true</copyPom>
+									<addParentPoms>true</addParentPoms>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-help-plugin</artifactId>
+						<version>2.2</version>
+						<executions>
+							<execution>
+								<id>generate-pom</id>
+								<phase>package</phase>
+								<goals>
+									<goal>effective-pom</goal>
+								</goals>
+								<configuration>
+									<output>${project.build.directory}/upload/pom.xml</output>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-testclasses</id>
+								<phase>package</phase>
+								<goals>
+									<goal>testResources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/upload/test-classes</outputDirectory>
+									<resources>
+										<resource>
+											<directory>
+												${project.build.testOutputDirectory}
+											</directory>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>

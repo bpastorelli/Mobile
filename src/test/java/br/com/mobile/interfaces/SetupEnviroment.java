@@ -1,8 +1,5 @@
 package br.com.mobile.interfaces;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-
 public interface SetupEnviroment {
 	
 	/**
@@ -10,30 +7,30 @@ public interface SetupEnviroment {
 	 * 
 	 * @return AppiumDriver<MobileElement>
 	 */
-	AppiumDriver<MobileElement> setupEnviroment();
+	abstract void setupEnviroment();
 	
 	/**
 	 * Retorna o driver
 	 * 
 	 * @return AppiumDriver<MobileElement>
 	 */
-	AppiumDriver<MobileElement> getDriver();
+	abstract Object getDriver();
 	
 	/**
 	 * Fecha o driver (App)
 	 */
-	void driverClose();
+	abstract void driverClose();
 	
 	/**
 	 * Pára o serviço do Appium
 	 * 
 	 * @throws Exception
 	 */
-	void serviceStop() throws Exception;
+	abstract void serviceStop() throws Exception;
 	
 	/**
 	 * Desinstala a APk
 	 */
-	void uninstallApp();
+	abstract void uninstallApp();
 
 }

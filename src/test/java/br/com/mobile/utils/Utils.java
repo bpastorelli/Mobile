@@ -1,6 +1,7 @@
 package br.com.mobile.utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
@@ -67,7 +68,7 @@ public class Utils {
         return edition;
     }
     
-    public static URI getFilePath(String file) {
+    public static File getFilePath(String file) {
     	
     	URI path = null;
     	
@@ -76,7 +77,7 @@ public class Utils {
 		} catch (Exception e) {
 			log("Falha ao obter o path para o arquivo " + file);
 		}
-    	return path;
+    	return new File(path);
     }
     
     public static boolean isNumeric(String strNum) {
@@ -97,4 +98,17 @@ public class Utils {
 
 		System.out.println(format.format(new Date()) + ": " + message);
 	}
+	
+	/**
+	 * Retorna o diretório a partir de um nome de pasta
+	 * @param folder Nome da pasta
+	 * @return String
+	 */
+	public static String getDir(String folder) {
+		
+		File f = new File(folder).getAbsoluteFile();
+		File f2 = f.getParentFile();
+		return f2.getPath();
+	}
+	
 }

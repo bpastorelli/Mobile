@@ -11,6 +11,8 @@ import java.util.Scanner;
 
 public class Command {
 
+	private static String content;
+	
 	private static final String TASKLIST = "tasklist";
 
 	private static final String KILL = "taskkill /F /IM ";
@@ -37,7 +39,7 @@ public class Command {
 
 		try {
 			Utils.log("Executando o comando: " + command);
-			Process process = Runtime.getRuntime().exec(command);
+			Process process = Runtime.getRuntime().exec("cmd /c" + command);			
 			logOutput(process.getInputStream(), "", updateListProcess);
 			logOutput(process.getErrorStream(), "Error: ", updateListProcess);
 			process.waitFor();
@@ -59,7 +61,7 @@ public class Command {
 		Scanner scanner = new Scanner(inputStream, "UTF-8");
 		while (scanner.hasNextLine()) {
 			synchronized (this) {
-				String content = prefix + scanner.nextLine();
+				content = prefix + scanner.nextLine();
 				Utils.log(content.trim());
 				if (updateListProcess) {
 					String[] item = content.split("\\s* \\s*");
@@ -109,9 +111,14 @@ public class Command {
 
 		if (process.size() > 0) {
 			process.forEach(p -> {
-				executeCommand("cmd /c  taskkill  /F  /PID  " + p, false);
+				executeCommand("taskkill  /F  /PID  " + p, false);
 				return;
 			});
 		}
+	}
+	
+	public static String getContent() {
+		
+		return content;
 	}
 }

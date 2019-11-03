@@ -1,41 +1,28 @@
 package br.com.mobile.implementations;
 
-import java.io.File;
 import java.net.URL;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import br.com.mobile.commons.Property;
 import br.com.mobile.interfaces.SetupEnviroment;
+import br.com.mobile.utils.Appium;
 import br.com.mobile.utils.Command;
 import br.com.mobile.utils.Utils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
-import io.appium.java_client.service.local.AppiumServiceBuilder;
-import io.appium.java_client.service.local.flags.GeneralServerFlag;
+import io.appium.java_client.android.AndroidDriver;
 
 public class SetupAndroid implements SetupEnviroment {
 	
-	protected static AppiumDriver<MobileElement> driver;
-	
-	private Command cmd = new Command();
+	protected static AndroidDriver<MobileElement> driver;
 	
 	private DesiredCapabilities caps; 
-	
-	private AppiumServiceBuilder builder;
-	
-	private AppiumDriverLocalService service;
 	
 	private static final String process = "Appium.exe";
 	
 	@Override
-	public AppiumDriver<MobileElement> setupEnviroment() {
-		
-		cmd.executeCommand("cmd /c npm install -g appium");
-		//Verifica se existe algum processo preso para a porta configurada para o Appium e finaliza.
-		cmd.executeCommand("cmd /c netstat -ano | findstr " + Property.APPIUM_PORT);
-		cmd.killProcessPort();
+	public void setupEnviroment() {
 		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		caps = new DesiredCapabilities();
@@ -47,32 +34,23 @@ public class SetupAndroid implements SetupEnviroment {
 		caps.setCapability("appPackage", Property.APP_PACKAGE);
 		caps.setCapability("appActivity", Property.APP_ACTIVITY);
 		caps.setCapability("autoGrantPermissions", Property.AUTO_PERMISSIONS);
-		if(Property.APK_INSTALL)
-			caps.setCapability("app", new File(Utils.getFilePath(Property.APP_PATH)).toString());
-		
-		builder = new AppiumServiceBuilder();
-		builder.withIPAddress(Property.APPIUM_IP);
-		builder.usingPort(Property.APPIUM_PORT);
-		builder.withCapabilities(caps);
-		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
-		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
-		
-		service = AppiumDriverLocalService.buildService(builder);
-		service.start();
-		Utils.log("[SUCESSO]Appium iniciado.");
+		caps.setCapability("autoAcceptAlerts", false);
+		caps.setCapability("autoDismissAlerts", true);
+		caps.setCapability("app", Utils.getFilePath(Property.APP_PATH).toString());
 		
 		try {	
 			Utils.log("[APLICATIVO]Iniciando o aplicativo...");
-			driver = new AppiumDriver<MobileElement>(new URL("http:" 
+			driver = new AndroidDriver<MobileElement>(new URL("http:" 
 					+ Property.APPIUM_IP 
-					+ ":" + Property.APPIUM_PORT + "/wd/hub"), caps);
+					+ ":" + Property.APPIUM_PORT 
+					+ "/wd/hub"), caps);
+			Thread.sleep(10000);
 		} catch (Exception e) {
 			
 			Utils.log("[FALHA]Falha ao iniciar o aplicativo:" + e.getMessage());
 		}
 		
 		Utils.log("[SUCESSO]Aplicativo iniciado com sucesso.");
-		return driver;
 	}
 	
 	@Override
@@ -97,8 +75,7 @@ public class SetupAndroid implements SetupEnviroment {
 		if(Command.isProcessRunning(process))
 			Command.killProcess(process);
 		
-		if(service.isRunning())
-			service.stop();
+		Appium.stopServer();
 	}
 
 	@Override

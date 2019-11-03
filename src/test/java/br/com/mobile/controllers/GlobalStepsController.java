@@ -1,40 +1,15 @@
-package br.com.mobile.controllers;
+package br.com.mobile.controllers;	
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
-import br.com.mobile.interfaces.Actions;
-import br.com.mobile.reports.LogReport;
+import br.com.mobile.interfaces.Page;
 
 public class GlobalStepsController {
 	
 	private static String page;
 	
-	private static Map<String, Actions> mapaActions = new HashMap<String, Actions>();
-	
-	public void addActions(String key, Actions actions) {
+	public Page getPage(Page page) {
 		
-		mapaActions.put(key, actions);
-	}
-	
-	public Actions getAction() {
-		
-		return getAction(null);
-	}
-	
-	public Actions getAction(String pagina) {
-		
-		Actions actions;
-		page = Objects.equals(pagina, null) ? page : pagina;
-		
-		if(!mapaActions.containsKey(page))
-			LogReport.fail("A pagina [" + page + "] não foi encontrada no mapa de configurações de páginas.");
-			
-		actions = mapaActions.get(page);
-		
-		if(actions instanceof Actions)
-			return actions;
+		if(page instanceof Page)
+			return page;
 		else
 			return null;
 	}
