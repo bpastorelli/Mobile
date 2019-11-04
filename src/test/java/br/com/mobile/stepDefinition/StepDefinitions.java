@@ -17,7 +17,7 @@ public class StepDefinitions {
 	@Then("^Pesquiso o produto tipo \"([^\"]*)\" descricao \"([^\"]*)\"$")
 	public void pesquiso_produto_descricao_e_preco(String produto, String descricao) throws InterruptedException {
 		
-		actionsMobile.retornarInicio();
+		actionsMobile.retornarInicio("Pagar com QR");
 		actionsMobile.pesquisaProduto(produto, descricao);
 	}
 	
@@ -30,7 +30,7 @@ public class StepDefinitions {
 	@And("^Removo todos os produtos do carrinho$")
 	public void removier_produtos_carrinho() {
 		
-		actionsMobile.retornarInicio();
+		actionsMobile.retornarInicio("Pagar com QR");
 		actionsMobile.removerProdutosCarrinho("O seu carrinho está vazio");
 	}
 	

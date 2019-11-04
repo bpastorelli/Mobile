@@ -32,7 +32,7 @@ public class JenkinsTests extends BaseTestCase {
     public void testB() throws InterruptedException {
     	
     	LogReport.createTest("Pesquisa de produto");
-    	actions.retornarInicio();
+    	actions.retornarInicio("Pagar com QR");
     	actions.pesquisaProduto("Bota Robofoot", "Bota Imobilizadora Robofoot Salvapé Original Seminova Top");
     	actions.validarTexto("R$ 180");
     	
@@ -43,7 +43,7 @@ public class JenkinsTests extends BaseTestCase {
     public void testC() {
     	
     	LogReport.createTest("Pesquisa de produto");
-    	actions.retornarInicio();
+    	actions.retornarInicio("Pagar com QR");
     	actions.pesquisaProduto("Notebook", "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux");
     	actions.validarTexto("R$ 1.899");
     	
@@ -54,7 +54,7 @@ public class JenkinsTests extends BaseTestCase {
     public void testE() throws InterruptedException {
     	
     	LogReport.createTest("Adicionar produto Robofoot ao carrinho");
-    	actions.retornarInicio();
+    	actions.retornarInicio("Pagar com QR");
     	actions.pesquisaProduto("Bota Robofoot", "Bota Imobilizadora Robofoot Salvapé Original Seminova Top");
     	actions.validarTexto("R$ 180");
     	actions.adicionarProdutoCarrinho();
@@ -66,7 +66,7 @@ public class JenkinsTests extends BaseTestCase {
     public void testF() throws InterruptedException {
     	
     	LogReport.createTest("Adicionar produto Notebook ao carrinho");
-    	actions.retornarInicio();
+    	actions.retornarInicio("Pagar com QR");
     	actions.pesquisaProduto("Notebook", "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux");
     	actions.validarTexto("R$ 1.899");
     	actions.adicionarProdutoCarrinho();
@@ -78,7 +78,7 @@ public class JenkinsTests extends BaseTestCase {
     public void testG() {
     	
     	LogReport.createTest("Remover produto do carrinho");
-    	actions.retornarInicio();
+    	actions.retornarInicio("Pagar com QR");
     	actions.removerProdutosCarrinho("O seu carrinho está vazio");
     	
     	LogReport.passFail(controller.getPage(new CarrinhoPage()).textoExibidoPagina("O seu carrinho está vazio"), "Remover produto do carrinho");
@@ -88,7 +88,7 @@ public class JenkinsTests extends BaseTestCase {
     public void testH() {
     	
     	LogReport.createTest("Logout");
-    	actions.retornarInicio();
+    	actions.retornarInicio("Pagar com QR");
     	actions.logout();
     	
     	LogReport.passFail(controller.getPage(new InicialPage()).textoExibidoPagina("Acesse sua conta"), "Logout");

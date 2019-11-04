@@ -80,9 +80,9 @@ public class ActionsMobile {
 		controller.getPage(new MinhaContaPage()).ifPopupIsPresent("Deseja sair da sua conta?", "SIM, SAIR");
 	}
 	
-	public void retornarInicio() {
+	public void retornarInicio(String texto) {
 		
-		controller.getPage(new InicialPage()).voltar("Pagar com QR");
+		controller.getPage(new InicialPage()).voltar(texto);
 	}
 	
 	public void validarTexto(String texto) {
