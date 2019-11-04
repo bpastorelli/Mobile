@@ -12,8 +12,8 @@ import br.com.mobile.regression.BaseTestCase;
 import br.com.mobile.reports.LogReport;
 
 public class JenkinsTests extends BaseTestCase {
-    
-    private ActionsMobile actions = new ActionsMobile();
+
+	private ActionsMobile actions = new ActionsMobile();
     
     private PagesController controller = new PagesController();
     

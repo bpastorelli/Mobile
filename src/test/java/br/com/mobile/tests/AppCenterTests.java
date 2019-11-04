@@ -11,7 +11,7 @@ import br.com.mobile.regression.BaseTestCase;
 
 public class AppCenterTests extends BaseTestCase {
 
-    @Rule
+	@Rule
     public TestWatcher watcher = Factory.createWatcher();
     
     private ActionsAppCenter actionsAppCenter = new ActionsAppCenter();
