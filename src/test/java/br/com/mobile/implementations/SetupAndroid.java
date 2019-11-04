@@ -26,6 +26,7 @@ public class SetupAndroid implements SetupEnviroment {
 		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		caps = new DesiredCapabilities();
+		caps.setCapability("automationName", "UiAutomator2");
 		caps.setCapability("noReset", Property.APP_NORESET);
 		caps.setCapability("fullReset", Property.APP_FULLRESET);
 		caps.setCapability("deviceName", Property.DEVICE_NAME);
@@ -44,7 +45,6 @@ public class SetupAndroid implements SetupEnviroment {
 					+ Property.APPIUM_IP 
 					+ ":" + Property.APPIUM_PORT 
 					+ "/wd/hub"), caps);
-			Thread.sleep(10000);
 		} catch (Exception e) {
 			
 			Utils.log("[FALHA]Falha ao iniciar o aplicativo:" + e.getMessage());
