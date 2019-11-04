@@ -1,7 +1,8 @@
-package br.com.mobile.commons;
+package br.com.mobile.capabilities;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import br.com.mobile.commons.Property;
 import br.com.mobile.utils.Utils;
 
 public class Capabilities {
