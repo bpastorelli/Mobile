@@ -34,6 +34,8 @@ public abstract class Property {
 	
 	public static String APPIUMJS;
 	
+	public static String APPIUM_AUTOMATION_NAME;
+	
 	public static Boolean APP_NORESET;
 	
 	public static Boolean APP_FULLRESET;
@@ -77,6 +79,7 @@ public abstract class Property {
 			APP_ROOT                   = properties.getProperty("app.apk.root").trim();
 			APK_INSTALL                = Boolean.parseBoolean(properties.getProperty("app.apk.install"));
 			AUTO_PERMISSIONS           = Boolean.parseBoolean(properties.getProperty("app.apk.autoPermissions"));
+			APPIUM_AUTOMATION_NAME     = properties.getProperty("app.appium.automationName");
 			APPIUM_IP                  = properties.getProperty("app.appium.ip").trim();
 			APPIUM_PORT                = Integer.parseInt(properties.getProperty("app.appium.port"));
 			NODEJS                     = properties.getProperty("app.appium.node");

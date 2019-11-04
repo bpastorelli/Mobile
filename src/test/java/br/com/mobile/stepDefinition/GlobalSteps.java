@@ -12,7 +12,7 @@ public class GlobalSteps {
 	@Given("^Que eu quero testar \"([^\"]*)\"$")
 	public void que_eu_quero_testar(String arg1) throws Throwable {
 		
-		LogReport.createTest("Iniciando o Teste: " + arg1);
+		LogReport.createTest(arg1);
 	}
 	
 	@Then("^Valido o teste com o texto \"([^\"]*)\" na pagina atual$")
