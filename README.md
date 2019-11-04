@@ -42,3 +42,8 @@ Executar os testes:
 
 C:\repositorio_local\Mobile>appcenter test run appium --app "bpastorelli/appCenter" --devices "bpastorelli/samsunga7" --app-path C:\repositorio_local\Mobile\src\test\resources\apk\ml.apk --test-series "master" --locale "en_US" --build-dir target/upload
 
+# HTML Reporter
+Para habilitar o CSS no HTML Reporter, execute o comando abaixo em Manage Jenkins >> Script Consele >> Run
+
+System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
+
