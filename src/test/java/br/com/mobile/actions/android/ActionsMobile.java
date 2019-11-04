@@ -33,8 +33,8 @@ public class ActionsMobile {
 		controller.getPage(new LogarPage()).textoExibidoPagina("Senha", 2);
 		controller.getPage(new LogarPage()).digitarTexto("senha", senha);
 		controller.getPage(new LogarPage()).clicarBotao("Entrar");
+		controller.getPage(new InicialPage()).ifPopupIsPresent("Salvar senha do Mercado Livre", "NUNCA", 2);
 		controller.getPage(new InicialPage()).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 2);
-		controller.getPage(new InicialPage()).ifPopupIsPresent("Sign in easily across devices", "NUNCA", 2);
 	}
 	
 	public void pesquisaProduto(String produto, String descricao) {

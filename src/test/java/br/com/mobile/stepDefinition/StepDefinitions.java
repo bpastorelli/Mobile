@@ -39,5 +39,12 @@ public class StepDefinitions {
 		
 		actionsMobile.validarTexto(preco);
 	}
+	
+	@And("^Efetuo o logout do aplicativo$")
+	public void efetuo_logout_aplicativo() {
+		
+		actionsMobile.retornarInicio("Pagar com QR");
+		actionsMobile.logout();
+	}
 
 } 

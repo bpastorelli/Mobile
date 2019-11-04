@@ -39,6 +39,12 @@ Feature: Automacao Mobile
     Given Que eu quero testar "Remover todos os produtos do carrinho"
     And Removo todos os produtos do carrinho
     Then Valido o teste com o texto "O seu carrinho está vazio" na pagina atual
+    
+ 	@logout
+ 	Scenario: Efetuar logout
+ 		Given Que eu quero testar "Logout"
+ 		And Efetuo o logout do aplicativo
+ 		Then Valido o teste com o texto "Acesse sua conta" na pagina atual 
 
     
     
