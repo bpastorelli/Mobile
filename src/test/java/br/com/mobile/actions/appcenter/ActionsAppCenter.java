@@ -2,7 +2,7 @@ package br.com.mobile.actions.appcenter;
 
 import static org.junit.Assert.assertTrue;
 
-import br.com.mobile.controllers.GlobalStepsController;
+import br.com.mobile.controllers.PagesController;
 import br.com.mobile.pages.appcenter.CarrinhoPage;
 import br.com.mobile.pages.appcenter.ContinuarPage;
 import br.com.mobile.pages.appcenter.InicialPage;
@@ -11,7 +11,7 @@ import br.com.mobile.pages.appcenter.PesquisaPage;
 
 public class ActionsAppCenter {
 	
-	private GlobalStepsController controller = new GlobalStepsController();
+	private PagesController controller = new PagesController();
 	
 	public void logar(String usuario, String senha) {
 		

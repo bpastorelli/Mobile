@@ -5,11 +5,11 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
 public class StepDefinitions {
-
+ 
 	private ActionsMobile actionsMobile = new ActionsMobile();
 	
-	@And("^Que efetuo o login com usuario e senha$")
-	public void que_efetue_login_com_usuario_senha() {
+	@And("^Que efetuo o login com usuario e senha validos$")
+	public void que_efetue_login_com_usuario_senha_validos() {
 		
 		actionsMobile.logar("brunopastorelli@hotmail.com", "sid04197");
 	}
@@ -30,6 +30,12 @@ public class StepDefinitions {
 	public void removier_produtos_carrinho(String mensagem) {
 		
 		actionsMobile.removerProdutosCarrinho(mensagem);
+	}
+	
+	@Then("^Valido o teste com o texto \"([^\"]*)\" na pagina atual$")
+	public void valido_teste_com_texto_na_pagina_atual(String texto) {
+		
+		actionsMobile.validarTexto(texto);
 	}
 
 } 

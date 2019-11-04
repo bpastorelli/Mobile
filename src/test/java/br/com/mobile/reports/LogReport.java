@@ -45,7 +45,7 @@ public class LogReport extends SetupAndroid{
 			htmlReporter.config().setTheme(Theme.STANDARD);
 		}
 		
-		extentTest = extentReport.createTest(cenario);
+		extentTest = extentReport.createTest("Cenario: " + cenario);
 	}
 	
 	public static void logPrint(String strLog, Status status) {
