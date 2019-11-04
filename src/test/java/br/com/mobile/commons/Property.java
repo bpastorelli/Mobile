@@ -86,7 +86,6 @@ public abstract class Property {
 			APPIUMJS                   = properties.getProperty("app.appium.js");
 			APP_NORESET                = Boolean.parseBoolean(properties.getProperty("app.apk.noReset"));
 			APP_FULLRESET              = Boolean.parseBoolean(properties.getProperty("app.apk.fullReset"));
-			PLATFORM                   = properties.getProperty("app.appium.platform");
 			APP_BAT                    = properties.getProperty("app.files.bat");
 			HTML_REPORTER_PATH         = properties.getProperty("extent.report.path").trim();
 			HTML_REPORTER_NAME         = properties.getProperty("extent.report.name").trim();
