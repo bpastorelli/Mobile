@@ -13,7 +13,8 @@ Feature: Automacao Mobile
   @pesquisa_produtos
   Scenario Outline: Pesquisar um produto
     Given Que eu quero testar "Pesquisa de produtos"
-    Then Pesquiso o produto tipo <tipo> descricao <descricao> com o preco <preco>
+    And Pesquiso o produto tipo <tipo> descricao <descricao>
+    Then Visualizo o preco de <preco> do produto
     
     Examples:
     	| tipo            | descricao                                                       | preco      |
@@ -23,8 +24,10 @@ Feature: Automacao Mobile
   @adicionar_produto_carrinho
   Scenario Outline: Adicionar produto ao carrinho
     Given Que eu quero testar "Adicionar produto ao carrinho"
-    And Pesquiso o produto tipo <tipo> descricao <descricao> com o preco <preco>
-    Then Adiciono o produto ao meu carrinho e recebo a mensagem "Você adicionou ao seu carrinho"
+    And Pesquiso o produto tipo <tipo> descricao <descricao>
+    And Visualizo o preco de <preco> do produto
+    And Adiciono o produto ao meu carrinho
+    Then Valido o teste com o texto "Você adicionou ao seu carrinho" na pagina atual
     
     Examples:
     	| tipo            | descricao                                                       | preco      |

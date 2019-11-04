@@ -33,7 +33,8 @@ public class JenkinsTests extends BaseTestCase {
     	
     	LogReport.createTest("Pesquisa de produto");
     	actions.retornarInicio();
-    	actions.pesquisaProduto("Bota Robofoot", "Bota Imobilizadora Robofoot Salvapé Original Seminova Top", "R$ 180");
+    	actions.pesquisaProduto("Bota Robofoot", "Bota Imobilizadora Robofoot Salvapé Original Seminova Top");
+    	actions.validarTexto("R$ 180");
     	
     	LogReport.passFail(controller.getPage(new PesquisaPage()).textoExibidoPagina("R$ 180"), "Pesquisa do produto Bota Robofoot");
     }
@@ -43,7 +44,8 @@ public class JenkinsTests extends BaseTestCase {
     	
     	LogReport.createTest("Pesquisa de produto");
     	actions.retornarInicio();
-    	actions.pesquisaProduto("Notebook", "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux", "R$ 1.899");
+    	actions.pesquisaProduto("Notebook", "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux");
+    	actions.validarTexto("R$ 1.899");
     	
     	LogReport.passFail(controller.getPage(new PesquisaPage()).textoExibidoPagina("R$ 1.899"), "Pesquisa do produto Notebook");
     } 
@@ -53,8 +55,9 @@ public class JenkinsTests extends BaseTestCase {
     	
     	LogReport.createTest("Adicionar produto Robofoot ao carrinho");
     	actions.retornarInicio();
-    	actions.pesquisaProduto("Bota Robofoot", "Bota Imobilizadora Robofoot Salvapé Original Seminova Top", "R$ 180");
-    	actions.adicionarProdutoCarrinho("Você adicionou ao seu carrinho");
+    	actions.pesquisaProduto("Bota Robofoot", "Bota Imobilizadora Robofoot Salvapé Original Seminova Top");
+    	actions.validarTexto("R$ 180");
+    	actions.adicionarProdutoCarrinho();
     	
     	LogReport.passFail(controller.getPage(new PesquisaPage()).textoExibidoPagina("Você adicionou ao seu carrinho", 5), "Adicionar produto ao carrinho");
     }
@@ -64,8 +67,9 @@ public class JenkinsTests extends BaseTestCase {
     	
     	LogReport.createTest("Adicionar produto Notebook ao carrinho");
     	actions.retornarInicio();
-    	actions.pesquisaProduto("Notebook", "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux", "R$ 1.899");
-    	actions.adicionarProdutoCarrinho("Você adicionou ao seu carrinho");
+    	actions.pesquisaProduto("Notebook", "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux");
+    	actions.validarTexto("R$ 1.899");
+    	actions.adicionarProdutoCarrinho();
     	
     	LogReport.passFail(controller.getPage(new PesquisaPage()).textoExibidoPagina("Você adicionou ao seu carrinho", 5), "Adicionar produto ao carrinho");
     }    

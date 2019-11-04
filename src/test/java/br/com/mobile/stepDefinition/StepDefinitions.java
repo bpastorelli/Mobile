@@ -14,16 +14,17 @@ public class StepDefinitions {
 		actionsMobile.logar("brunopastorelli@hotmail.com", "sid04197");
 	}
 	
-	@Then("^Pesquiso o produto tipo \"([^\"]*)\" descricao \"([^\"]*)\" com o preco \"([^\"]*)\"$")
-	public void pesquiso_produto_descricao_e_preco(String produto, String descricao, String preco) throws InterruptedException {
+	@Then("^Pesquiso o produto tipo \"([^\"]*)\" descricao \"([^\"]*)\"$")
+	public void pesquiso_produto_descricao_e_preco(String produto, String descricao) throws InterruptedException {
 		
-		actionsMobile.pesquisaProduto(produto, descricao, preco);
+		actionsMobile.retornarInicio();
+		actionsMobile.pesquisaProduto(produto, descricao);
 	}
 	
-	@And("^Adiciono o produto ao meu carrinho e recebo a mensagem \"([^\"]*)\"$")
-	public void adiciono_produto_carrinho(String mensagem) {
+	@And("^Adiciono o produto ao meu carrinho$")
+	public void adiciono_produto_carrinho() {
 		
-		actionsMobile.adicionarProdutoCarrinho(mensagem);
+		actionsMobile.adicionarProdutoCarrinho();
 	}
 	
 	@And("^Removo todos os produtos do carrinho e recebo a mensagem \"([^\"]*)\"$")
@@ -32,10 +33,10 @@ public class StepDefinitions {
 		actionsMobile.removerProdutosCarrinho(mensagem);
 	}
 	
-	@Then("^Valido o teste com o texto \"([^\"]*)\" na pagina atual$")
-	public void valido_teste_com_texto_na_pagina_atual(String texto) {
+	@And("^Visualizo o preco de \"([^\"]*)\" do produto$")
+	public void visualizo_preco_produto(String preco) {
 		
-		actionsMobile.validarTexto(texto);
+		actionsMobile.validarTexto(preco);
 	}
 
 } 

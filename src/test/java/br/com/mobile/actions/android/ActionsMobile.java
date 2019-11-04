@@ -37,7 +37,7 @@ public class ActionsMobile {
 		controller.getPage(new InicialPage()).ifPopupIsPresent("Sign in easily across devices", "NUNCA", 2);
 	}
 	
-	public void pesquisaProduto(String produto, String descricao, String esperado) {
+	public void pesquisaProduto(String produto, String descricao) {
 		
 		controller.getPage(new PesquisaPage()).clicarBotao("Buscar");
 		controller.getPage(new PesquisaPage()).digitarTexto("txtBusca", produto);
@@ -55,7 +55,7 @@ public class ActionsMobile {
 		controller.getPage(new PesquisaPage()).selecionarItemListaSuspensa("produtos filtrados", descricao, "");
 	}
 
-	public void adicionarProdutoCarrinho(String esperado) {
+	public void adicionarProdutoCarrinho() {
 		
 		controller.getPage(new PesquisaPage()).deslizarParaBaixoElementoVisivel("adicionarCarrinho");
 		controller.getPage(new PesquisaPage()).clicarBotao("adicionarCarrinho");
