@@ -1,4 +1,4 @@
-package br.com.mobile.tests.appcenter;
+package br.com.mobile.tests;
 
 import org.junit.Rule;
 import org.junit.Test;

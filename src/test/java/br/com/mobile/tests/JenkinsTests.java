@@ -1,4 +1,4 @@
-package br.com.mobile.tests.android;
+package br.com.mobile.tests;
 
 import org.junit.Test;
 
