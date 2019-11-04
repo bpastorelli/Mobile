@@ -27,10 +27,10 @@ public class StepDefinitions {
 		actionsMobile.adicionarProdutoCarrinho();
 	}
 	
-	@And("^Removo todos os produtos do carrinho e recebo a mensagem \"([^\"]*)\"$")
-	public void removier_produtos_carrinho(String mensagem) {
+	@And("^Removo todos os produtos do carrinho$")
+	public void removier_produtos_carrinho() {
 		
-		actionsMobile.removerProdutosCarrinho(mensagem);
+		actionsMobile.removerProdutosCarrinho("O seu carrinho está vazio");
 	}
 	
 	@And("^Visualizo o preco de \"([^\"]*)\" do produto$")

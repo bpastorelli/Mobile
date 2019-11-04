@@ -33,6 +33,12 @@ Feature: Automacao Mobile
     	| tipo            | descricao                                                       | preco      |
     	| "Notebook"      | "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux" | "R$ 1.899" |
     	| "Bota Robofoot" | "Robofoot Salvapé Original Seminova Top"                        | "R$ 180"   |
+    	
+  @remover_todos_produtos_carrinho
+  Scenario: Remover todos os produto do carrinho
+    Given Que eu quero testar "Remover todos os produtos do carrinho"
+    And Removo todos os produtos do carrinho
+    Then Valido o teste com o texto "O seu carrinho está vazio" na pagina atual
 
     
     

@@ -26,7 +26,7 @@ public class SetupAndroid implements SetupEnviroment {
 		
 		Utils.log("[APPIUM]Iniciando o serviço do Appium...");
 		caps = new DesiredCapabilities();
-		caps.setCapability("automationName", "UiAutomator2");
+		caps.setCapability("automationName", "UiAutomator1");
 		caps.setCapability("noReset", Property.APP_NORESET);
 		caps.setCapability("fullReset", Property.APP_FULLRESET);
 		caps.setCapability("deviceName", Property.DEVICE_NAME);

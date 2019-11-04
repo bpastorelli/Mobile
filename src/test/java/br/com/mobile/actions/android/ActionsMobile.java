@@ -63,6 +63,7 @@ public class ActionsMobile {
 	
 	public void removerProdutosCarrinho(String mensagem) {
 		
+		//Executa exclusão dos produtos até apareça a mensagem esperada.
 		controller.getPage(new PesquisaPage()).clicarBotao("carrinho");
 		
 		do{	
