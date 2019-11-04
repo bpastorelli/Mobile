@@ -30,6 +30,7 @@ public class StepDefinitions {
 	@And("^Removo todos os produtos do carrinho$")
 	public void removier_produtos_carrinho() {
 		
+		actionsMobile.retornarInicio();
 		actionsMobile.removerProdutosCarrinho("O seu carrinho está vazio");
 	}
 	
