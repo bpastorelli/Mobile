@@ -16,9 +16,9 @@ public class SetupAndroid implements SetupEnviroment {
 	
 	protected static AndroidDriver<MobileElement> driver;
 	
-	private Capabilities caps = new Capabilities(); 
-	
 	private static final String process = "Appium.exe";
+	
+	private Capabilities caps = new Capabilities(); 
 	
 	@Override
 	public void setupEnviroment() {

@@ -8,16 +8,14 @@ import com.microsoft.appcenter.appium.Factory;
 import br.com.mobile.capabilities.Capabilities;
 import br.com.mobile.commons.Property;
 import br.com.mobile.interfaces.SetupEnviroment;
+import br.com.mobile.utils.Appium;
 import br.com.mobile.utils.Command;
 import br.com.mobile.utils.Utils;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 public class SetupAndroidAppCenter implements SetupEnviroment {
 	
 	protected static EnhancedAndroidDriver<MobileElement> driver;
-	
-	private AppiumDriverLocalService service;
 	
 	private static final String process = "Appium.exe";
 	
@@ -62,8 +60,7 @@ public class SetupAndroidAppCenter implements SetupEnviroment {
 		if(Command.isProcessRunning(process))
 			Command.killProcess(process);
 		
-		if(service.isRunning())
-			service.stop();
+		Appium.stopServer();
 	}
 
 	@Override
