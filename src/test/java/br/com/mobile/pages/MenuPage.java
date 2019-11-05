@@ -1,71 +1,73 @@
-package br.com.mobile.pages.android;
+package br.com.mobile.pages;
 
 import org.openqa.selenium.By;
 
-import br.com.mobile.implementations.BasePageAndroid;
+import br.com.mobile.controllers.BasePageController;
+import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.interfaces.Page;
 
-public class MinhaContaPage extends BasePageAndroid implements Page {
-
-	public MinhaContaPage() {
-		
-		this.addElement("sair", By.id("com.mercadolibre:id/my_account_user_footer_image"));
-		this.addElement("SIM, SAIR", By.id("android:id/button1"));
-	}
+public class MenuPage implements Page {
 	
+	private static final BasePage base = BasePageController.getBasePage();
+	
+	public MenuPage() {
+		
+		
+	}
+
 	@Override
 	public boolean textoExibidoPagina(String texto) {
 
-		return waitText(texto);
+		return base.waitText(texto);		
 	}
 
 	@Override
 	public void clicarBotao(String label) {
 		
-		touchActionDownDisplayed(label);
-		clickElementByMapElements(label);
+		base.addElement(label, By.xpath("//android.widget.TextView[@text='" + label.replace("opcao", "") + "']"));
+		base.clickElementByMapElements(label);
 	}
 
 	@Override
 	public void digitarTexto(String name, String texto) {
 		
-		setText(name, texto);
+		base.setText(name, texto);
 	}
 
 	@Override
-	public void deslizarParaEsquerda() {
+	public void deslizarParaEsquerda() throws Exception {
+		// TODO Auto-generated method stub
 		
-		touchActionLeft();
-	}
-
-	@Override
-	public void deslizarParaDireia() {
-		
-		touchActionRight();
-	}
-
-	@Override
-	public void deslizarParaCima(Integer qtde) {
-			
-		touchActionTop(qtde);
-	}
-
-	@Override
-	public void deslizarParaBaixo(Integer qtde) {
-		
-		touchActionDown(qtde);
 	}
 
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
-		
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
-		
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaDireia() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaCima(Integer qtde) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaBaixo(Integer qtde) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -93,56 +95,56 @@ public class MinhaContaPage extends BasePageAndroid implements Page {
 	}
 
 	@Override
-	public void selecionarItemListaSuspensa(String name, String texto, String message) {
+	public void deslizarParaBaixoTextoVisivel(String texto) {
 		
-		selectItemList(name, texto);
+		base.touchActionDownTextDisplayed(texto, "");
 	}
 
 	@Override
-	public void deslizarParaBaixoTextoVisivel(String texto) {
+	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		
-		touchActionDownTextDisplayed(texto, "Texto esperado " + texto);
+		base.selectItemList(name, texto);
 	}
 
 	@Override
 	public void ifPopupIsPresent(String mensagem, String name) {
 		
-		clickByText(mensagem, name);
+		base.clickByText(mensagem, name);
 	}
 
 	@Override
 	public void deslizarParaBaixoElementoVisivel(String name) {
 		
-		touchActionDownDisplayed(name);
+		base.touchActionDownDisplayed(name);
 	}
 
 	@Override
 	public void deslizarParaCimaElementoVisivel(String name) {
 		
-		touchActionTopDisplayed(name);
+		base.touchActionTopDisplayed(name);
 	}
 
 	@Override
 	public boolean textoExibidoPagina(String texto, Integer time) {
 		
-		return waitText(texto, time);
+		return base.waitText(texto, time);
 	}
 
 	@Override
 	public void ifPopupIsPresent(String mensagem, String name, Integer time) {
 		
-		clickByText(mensagem, name, time);
+		base.clickByText(mensagem, name, time);
 	}
 	
 	@Override
 	public void voltar(String texto) {
 		
-		returnUntilTextDisplayed(texto);
+		base.returnUntilTextDisplayed(texto);
 	}
-
+	
 	@Override
 	public void pause(Integer time) {
 		
-		wait(time);
+		base.wait(time);
 	}
 }

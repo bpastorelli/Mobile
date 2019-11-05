@@ -3,7 +3,10 @@ package br.com.mobile.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+import br.com.mobile.commons.Property;
 import br.com.mobile.enums.SetupEnum;
+import br.com.mobile.implementations.SetupAndroid;
+import br.com.mobile.implementations.SetupAndroidAppCenter;
 import br.com.mobile.interfaces.SetupEnviroment;
 
 public class SetupController {
@@ -33,6 +36,21 @@ public class SetupController {
 			return setup;
 		else
 			return null;
+	}
+	
+	public static SetupEnviroment getSetup() {
+		
+		SetupEnviroment setup = null;
+		
+		switch(Property.PLATAFORMA_CI) {
+			case "appcenter":
+				setup = new SetupAndroidAppCenter();
+				break;
+			case "mobile":
+				setup = new SetupAndroid();
+				break;
+		}
+		return setup;
 	}
 	
 	public SetupEnviroment getCurrentSetup() {

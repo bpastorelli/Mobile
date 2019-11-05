@@ -19,12 +19,12 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 
-public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
+public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	private static WebElement element;
 
 	private static Map<String, By> mapElements = new HashMap<String, By>();
-
+	
 	/**
 	 * Adiciona um elemento mapeado ao mapa de elementos.
 	 * 
@@ -225,8 +225,16 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public boolean waitText(String text) {
 
+		return waitText(text, 0);
+	}
+	
+	@Override
+	public boolean waitText(String text, Integer time) {
+
 		boolean retorno = false;
-		for (int i = 0; i < Property.TIMEOUT; i++) {
+		Integer aguardar = time == 0 ? Property.TIMEOUT : time;
+
+		for (int i = 0; i < aguardar; i++) {
 
 			if (!getDriver().getPageSource().contains(text))
 				wait(1);
@@ -549,23 +557,6 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 	}
 
 	@Override
-	public boolean waitText(String text, Integer time) {
-
-		boolean retorno = false;
-		Integer aguardar = time == 0 ? Property.TIMEOUT : time;
-
-		for (int i = 0; i < aguardar; i++) {
-
-			if (!getDriver().getPageSource().contains(text))
-				wait(1);
-			else
-				return true;
-		}
-
-		return retorno;
-	}
-
-	@Override
 	public void touchActionRight(Integer qtde) {
 
 		for (int i = 0; i < qtde; i++) {
@@ -646,5 +637,4 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 		}
 
 	}
-
 }

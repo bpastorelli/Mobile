@@ -5,6 +5,6 @@ import br.com.mobile.interfaces.SetupEnviroment;
 
 public class Globals {
 	
-	public static SetupEnviroment PLATAFORMA_CI = PlataformaEnum.MOBILE.get();
+	public static SetupEnviroment PLATAFORMA_CI = PlataformaEnum.APPCENTER.get();
 
 }

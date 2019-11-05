@@ -1,71 +1,66 @@
-package br.com.mobile.pages.appcenter;
+package br.com.mobile.pages;
 
 import org.openqa.selenium.By;
 
-import br.com.mobile.implementations.BasePageAppCenter;
+import br.com.mobile.controllers.BasePageController;
+import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.interfaces.Page;
 
-public class PesquisaPage extends BasePageAppCenter implements Page {
+public class ContinuarPage implements Page {
+	
+	private static final BasePage base = BasePageController.getBasePage();
 
-	public PesquisaPage() {
+	public ContinuarPage() {
 		
-		this.addElement("NUNCA", By.id("com.google.android.gms:id/credential_save_reject"));
-		this.addElement("Buscar", By.id("com.mercadolibre:id/home_search"));
-		this.addElement("txtBusca", By.id("com.mercadolibre:id/search_input_edittext"));
-		this.addElement("produtos", By.xpath("//android.widget.TextView"));
-		this.addElement("produtos filtrados", By.xpath("//android.widget.TextView"));
-		this.addElement("nova pesquisa", By.id("com.mercadolibre:id/vip_action_bar_menu_action_search"));
-		this.addElement("adicionarCarrinho", By.xpath("//android.widget.TextView[@text=\"Adicionar ao carrinho\"]"));
-		this.addElement("carrinho", By.id("com.mercadolibre:id/cart_icon"));
+		base.addElement("NENHUMA DAS ALTERNATIVAS ACIMA", By.id("com.google.android.gms:id/cancel"));
 	}
 	
 	@Override
 	public boolean textoExibidoPagina(String texto) {
 
-		return waitText(texto);
+		return base.waitText(texto);
 	}
 
 	@Override
 	public void clicarBotao(String label) {
 		
-		touchActionDownDisplayed(label);
-		clickElementByMapElements(label);
+		base.clickElementByMapElements(label);
 	}
 
 	@Override
 	public void digitarTexto(String name, String texto) {
 		
-		setText(name, texto);
+		base.setText(name, texto);
 	}
 
 	@Override
 	public void deslizarParaEsquerda() {
 		
-		touchActionLeft();
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaDireia() {
 		
-		touchActionRight();
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaCima(Integer qtde) {
 			
-		touchActionTop(qtde);
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaBaixo(Integer qtde) {
 		
-		touchActionDown(qtde);
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
 		
-		
+		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -100,55 +95,55 @@ public class PesquisaPage extends BasePageAppCenter implements Page {
 
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
+		// TODO Auto-generated method stub
 		
-		selectItemList(name, texto);
 	}
 
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
+		// TODO Auto-generated method stub
 		
-		touchActionDownTextDisplayed(texto, "Texto esperado " + texto);
 	}
 
 	@Override
 	public void ifPopupIsPresent(String mensagem, String name) {
 		
-		clickByText(mensagem, name);
+		base.clickByText(mensagem, name);
 	}
 
 	@Override
 	public void deslizarParaBaixoElementoVisivel(String name) {
 		
-		touchActionDownDisplayed(name);
+		base.touchActionDownDisplayed(name);
 	}
 
 	@Override
 	public void deslizarParaCimaElementoVisivel(String name) {
 		
-		touchActionTopDisplayed(name);
+		base.touchActionTopDisplayed(name);
 	}
 
 	@Override
 	public boolean textoExibidoPagina(String texto, Integer time) {
 		
-		return waitText(texto, time);
+		return base.waitText(texto, time);
 	}
 
 	@Override
 	public void ifPopupIsPresent(String mensagem, String name, Integer time) {
 		
-		clickByText(mensagem, name, time);
+		base.clickByText(mensagem, name, time);
 	}
-
+	
 	@Override
 	public void voltar(String texto) {
 		
-		returnUntilTextDisplayed(texto);
+		base.returnUntilTextDisplayed(texto);
 	}
 	
 	@Override
 	public void pause(Integer time) {
 		
-		wait(time);
+		base.wait(time);
 	}
 }
