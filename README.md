@@ -25,13 +25,13 @@ adb devices -l
 
 Digite no Prompt Comando:
 
-netstat -ano | findstr <porta>
+netstat -ano | findstr <<porta>>
 
 # Encerrar processo por PID (ID do processo)
 
 Digite no Prompt Comando:
 
-taskkill  /F  /PID  <PID>
+taskkill  /F  /PID  <<PID>>
 
 # Comandos para execução no App Center
 
@@ -55,7 +55,7 @@ System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 
 clean
 install
--Dtest=<ClasseTest>
+-Dtest=<<ClasseTest>>
 
 A instrução acima irá: limpar o workpace, baixar o projeto e dependências e por fim chamar a classe de testes.
 
