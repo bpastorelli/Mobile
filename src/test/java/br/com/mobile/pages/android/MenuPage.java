@@ -93,8 +93,8 @@ public class MenuPage extends BasePageAndroid implements Page {
 
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		touchActionDownTextDisplayed(texto, "");
 	}
 
 	@Override
