@@ -2,7 +2,7 @@ package br.com.mobile.controllers;
 
 import br.com.mobile.interfaces.Page;
 
-public class GlobalStepsController {
+public class PagesController {
 	
 	private static String page;
 	

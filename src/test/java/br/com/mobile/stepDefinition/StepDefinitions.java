@@ -5,31 +5,46 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
 public class StepDefinitions {
-
+ 
 	private ActionsMobile actionsMobile = new ActionsMobile();
 	
-	@And("^Que efetuo o login com usuario e senha$")
-	public void que_efetue_login_com_usuario_senha() {
+	@And("^Que efetuo o login com usuario e senha validos$")
+	public void que_efetue_login_com_usuario_senha_validos() {
 		
 		actionsMobile.logar("brunopastorelli@hotmail.com", "sid04197");
 	}
 	
-	@Then("^Pesquiso o produto tipo \"([^\"]*)\" descricao \"([^\"]*)\" com o preco \"([^\"]*)\"$")
-	public void pesquiso_produto_descricao_e_preco(String produto, String descricao, String preco) throws InterruptedException {
+	@Then("^Pesquiso o produto tipo \"([^\"]*)\" descricao \"([^\"]*)\"$")
+	public void pesquiso_produto_descricao_e_preco(String produto, String descricao) throws InterruptedException {
 		
-		actionsMobile.pesquisaProduto(produto, descricao, preco);
+		actionsMobile.retornarInicio("Pagar com QR");
+		actionsMobile.pesquisaProduto(produto, descricao);
 	}
 	
-	@And("^Adiciono o produto ao meu carrinho e recebo a mensagem \"([^\"]*)\"$")
-	public void adiciono_produto_carrinho(String mensagem) {
+	@And("^Adiciono o produto ao meu carrinho$")
+	public void adiciono_produto_carrinho() {
 		
-		actionsMobile.adicionarProdutoCarrinho(mensagem);
+		actionsMobile.adicionarProdutoCarrinho();
 	}
 	
-	@And("^Removo todos os produtos do carrinho e recebo a mensagem \"([^\"]*)\"$")
-	public void removier_produtos_carrinho(String mensagem) {
+	@And("^Removo todos os produtos do carrinho$")
+	public void removier_produtos_carrinho() {
 		
-		actionsMobile.removerProdutosCarrinho(mensagem);
+		actionsMobile.retornarInicio("Pagar com QR");
+		actionsMobile.removerProdutosCarrinho("O seu carrinho está vazio");
+	}
+	
+	@And("^Visualizo o preco de \"([^\"]*)\" do produto$")
+	public void visualizo_preco_produto(String preco) {
+		
+		actionsMobile.validarTexto(preco);
+	}
+	
+	@And("^Efetuo o logout do aplicativo$")
+	public void efetuo_logout_aplicativo() {
+		
+		actionsMobile.retornarInicio("Pagar com QR");
+		actionsMobile.logout();
 	}
 
 } 

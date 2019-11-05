@@ -1,6 +1,6 @@
 package br.com.mobile.actions.android;
 
-import br.com.mobile.controllers.GlobalStepsController;
+import br.com.mobile.controllers.PagesController;
 import br.com.mobile.pages.android.CarrinhoPage;
 import br.com.mobile.pages.android.ContinuarPage;
 import br.com.mobile.pages.android.InicialPage;
@@ -12,7 +12,7 @@ import br.com.mobile.reports.LogReport;
 
 public class ActionsMobile {
 	
-	private GlobalStepsController controller = new GlobalStepsController();
+	private PagesController controller = new PagesController();
 	
 	public void logar(String usuario, String senha) {
 		
@@ -33,21 +33,17 @@ public class ActionsMobile {
 		controller.getPage(new LogarPage()).textoExibidoPagina("Senha", 2);
 		controller.getPage(new LogarPage()).digitarTexto("senha", senha);
 		controller.getPage(new LogarPage()).clicarBotao("Entrar");
+		controller.getPage(new InicialPage()).ifPopupIsPresent("Salvar senha do Mercado Livre", "NUNCA", 2);
 		controller.getPage(new InicialPage()).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 2);
-		controller.getPage(new InicialPage()).ifPopupIsPresent("Sign in easily across devices", "NUNCA", 2);
-		
-		LogReport.passFail(controller.getPage(new LogarPage()).textoExibidoPagina("Pagar com QR"), "Login com usuário " + usuario);
 	}
 	
-	public void pesquisaProduto(String produto, String descricao, String esperado) {
+	public void pesquisaProduto(String produto, String descricao) {
 		
 		controller.getPage(new PesquisaPage()).clicarBotao("Buscar");
 		controller.getPage(new PesquisaPage()).digitarTexto("txtBusca", produto);
 		controller.getPage(new PesquisaPage()).selecionarItemListaSuspensa("produtos", produto, "");
 		controller.getPage(new PesquisaPage()).deslizarParaBaixoTextoVisivel(descricao);
 		controller.getPage(new PesquisaPage()).selecionarItemListaSuspensa("produtos filtrados", descricao, "");
-		
-		LogReport.passFail(controller.getPage(new PesquisaPage()).textoExibidoPagina(esperado), "Pesquisa do produto " + produto);
 	}
 	
 	public void novaPesquisaProduto(String produto, String descricao, String esperado) {
@@ -57,28 +53,23 @@ public class ActionsMobile {
 		controller.getPage(new PesquisaPage()).selecionarItemListaSuspensa("produtos", produto, "");
 		controller.getPage(new PesquisaPage()).deslizarParaBaixoTextoVisivel(descricao);
 		controller.getPage(new PesquisaPage()).selecionarItemListaSuspensa("produtos filtrados", descricao, "");
-		
-		LogReport.passFail(controller.getPage(new PesquisaPage()).textoExibidoPagina(esperado), "Nova pesquisa de produto " + produto);
 	}
 
-	public void adicionarProdutoCarrinho(String esperado) {
+	public void adicionarProdutoCarrinho() {
 		
 		controller.getPage(new PesquisaPage()).deslizarParaBaixoElementoVisivel("adicionarCarrinho");
 		controller.getPage(new PesquisaPage()).clicarBotao("adicionarCarrinho");
-		
-		LogReport.passFail(controller.getPage(new PesquisaPage()).textoExibidoPagina(esperado, 5), "Adicionar produto ao carrinho");
 	}
 	
 	public void removerProdutosCarrinho(String mensagem) {
 		
+		//Executa exclusão dos produtos até apareça a mensagem esperada.
 		controller.getPage(new PesquisaPage()).clicarBotao("carrinho");
 		
 		do{	
 			controller.getPage(new CarrinhoPage()).clicarBotao("menuCarrinho");
 			controller.getPage(new CarrinhoPage()).selecionarItemListaSuspensa("opcoesCarrinho", "Excluir produto", "");
 		}while(!controller.getPage(new CarrinhoPage()).textoExibidoPagina(mensagem, 2));
-		
-		LogReport.passFail(controller.getPage(new CarrinhoPage()).textoExibidoPagina(mensagem), "Remover produto do carrinho");
 	}
 	
 	public void logout() {
@@ -87,13 +78,17 @@ public class ActionsMobile {
 		controller.getPage(new MenuPage()).clicarBotao("Minha conta");
 		controller.getPage(new MinhaContaPage()).clicarBotao("sair");
 		controller.getPage(new MinhaContaPage()).ifPopupIsPresent("Deseja sair da sua conta?", "SIM, SAIR");
-		
-		LogReport.passFail(controller.getPage(new InicialPage()).textoExibidoPagina("Acesse sua conta"), "Logout");
 	}
 	
-	public void retornarInicio() {
+	public void retornarInicio(String texto) {
 		
-		controller.getPage(new InicialPage()).voltar("Pagar com QR");
+		controller.getPage(new InicialPage()).voltar(texto);
+	}
+	
+	public void validarTexto(String texto) {
+		
+		
+		LogReport.passFail(controller.getPage(new InicialPage()).textoExibidoPagina(texto), "Texto esperado: " + texto);
 	}
 
 }

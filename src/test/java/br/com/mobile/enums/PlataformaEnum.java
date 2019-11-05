@@ -17,6 +17,5 @@ public enum PlataformaEnum {
  
     public SetupEnviroment get() {
         return setup;
-    }
-        
+    }   
 }

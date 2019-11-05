@@ -4,7 +4,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.enums.PlataformaEnum;
+import br.com.mobile.globals.Globals;
 import br.com.mobile.interfaces.SetupEnviroment;
 import br.com.mobile.reports.LogReport;
 import br.com.mobile.utils.Appium;
@@ -19,15 +19,7 @@ public class BaseTestCase {
 		Property.loadProperties();
 		Appium.startAppium();
 		
-		switch(Property.PLATFORM) {
-			case "mobile":
-				setup = PlataformaEnum.MOBILE.get();
-				break;
-			case "appCenter":
-				setup = PlataformaEnum.APPCENTER.get();
-				break;
-		}
-		
+		setup = Globals.PLATAFORMA_CI;
 		setup.setupEnviroment();			
 	}
 	
