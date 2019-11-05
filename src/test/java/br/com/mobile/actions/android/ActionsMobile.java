@@ -69,6 +69,7 @@ public class ActionsMobile {
 		do{	
 			controller.getPage(new CarrinhoPage()).clicarBotao("menuCarrinho");
 			controller.getPage(new CarrinhoPage()).selecionarItemListaSuspensa("opcoesCarrinho", "Excluir produto", "");
+			LogReport.passFail(controller.getPage(new CarrinhoPage()).textoExibidoPagina("Você excluiu um produto.", 2), "Exclusão de produto");
 		}while(!controller.getPage(new CarrinhoPage()).textoExibidoPagina(mensagem, 2));
 	}
 	
