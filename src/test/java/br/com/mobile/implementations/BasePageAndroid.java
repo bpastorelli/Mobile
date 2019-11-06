@@ -263,6 +263,14 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			LogReport.fail("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")");
 		}
 	}
+	
+	@Override
+	public void touchActionLeft(Integer qtde) {
+		
+		for(int i=0; i< qtde; i++) {
+			touchActionLeft();
+		}
+	}
 
 	/**
 	 * Deslizar a tela para a direita.

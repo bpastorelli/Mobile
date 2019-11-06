@@ -36,73 +36,73 @@ public class ContinuarPage implements Page {
 	@Override
 	public void deslizarParaEsquerda() {
 		
-		// TODO Auto-generated method stub
+		base.touchActionLeft();
 	}
 
 	@Override
 	public void deslizarParaDireia() {
 		
-		// TODO Auto-generated method stub
+		base.touchActionRight();
 	}
 
 	@Override
 	public void deslizarParaCima(Integer qtde) {
 			
-		// TODO Auto-generated method stub
+		base.touchActionTop(qtde);
 	}
 
 	@Override
 	public void deslizarParaBaixo(Integer qtde) {
 		
-		// TODO Auto-generated method stub
+		base.touchActionDown(qtde);
 	}
 
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
 		
-		// TODO Auto-generated method stub
+		base.touchActionRight(qtde);
 	}
 
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
 		
-		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void deslizarParaEsquerdaElementoVisivel(String name) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionLeftDisplayed(name, "");
 	}
 
 	@Override
 	public void deslizarParaDireitaElementoVisivel(String name) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionRightDisplayed(name, "");
 	}
 
 	@Override
 	public void deslizarParaDireitaTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionRightTextDisplayed(texto, "");
 	}
 
 	@Override
 	public void deslizarParaEsquerdaTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionDownTextDisplayed(texto, "");
 	}
 
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
-		// TODO Auto-generated method stub
 		
+		base.selectItemList(name, texto);
 	}
 
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionDownTextDisplayed(texto, "");
 	}
 
 	@Override
