@@ -8,7 +8,7 @@ import br.com.mobile.implementations.SetupAndroid;
 import br.com.mobile.implementations.SetupAndroidAppCenter;
 import br.com.mobile.interfaces.SetupEnviroment;
 
-public class SetupController {
+public abstract class SetupController {
 	
 	public SetupEnviroment setup;
 	
