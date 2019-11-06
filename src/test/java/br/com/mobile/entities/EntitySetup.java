@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EntitySetup {
 	
-	private BasePage basePage;
+	private BasePage        basePage;
 	
 	private SetupEnviroment setup;
 

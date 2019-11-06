@@ -12,7 +12,7 @@ public class SetupController {
 	
 	public SetupEnviroment setup;
 	
-	public static SetupEnviroment loadSetup() {
+	public static EntitySetup loadSetup() {
 		
 		EntitySetup e = new EntitySetup();
 		
@@ -20,15 +20,13 @@ public class SetupController {
 			case "appcenter":
 				e.setBasePage(new BasePageAppCenter());
 				e.setSetup(new SetupAndroidAppCenter());
-				e.getSetup().setupEnviroment();
 				break;
 			case "mobile":
 				e.setBasePage(new BasePageAndroid());
 				e.setSetup(new SetupAndroid());
-				e.getSetup().setupEnviroment();
 				break;
 		}
-		return e.getSetup();
+		return e;
 	}
 	
 }

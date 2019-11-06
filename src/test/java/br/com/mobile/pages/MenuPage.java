@@ -2,13 +2,13 @@ package br.com.mobile.pages;
 
 import org.openqa.selenium.By;
 
-import br.com.mobile.controllers.BasePageController;
+import br.com.mobile.controllers.SetupController;
 import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.interfaces.Page;
 
 public class MenuPage implements Page {
 	
-	private static final BasePage base = BasePageController.getBasePage();
+	private static final BasePage base = SetupController.loadSetup().getBasePage();
 	
 	public MenuPage() {
 		
