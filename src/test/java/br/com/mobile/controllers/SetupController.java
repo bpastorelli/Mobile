@@ -1,60 +1,34 @@
 package br.com.mobile.controllers;	
 
-import java.util.HashMap;
-import java.util.Map;
-
 import br.com.mobile.commons.Property;
-import br.com.mobile.enums.SetupEnum;
+import br.com.mobile.entities.EntitySetup;
+import br.com.mobile.implementations.BasePageAndroid;
+import br.com.mobile.implementations.BasePageAppCenter;
 import br.com.mobile.implementations.SetupAndroid;
 import br.com.mobile.implementations.SetupAndroidAppCenter;
 import br.com.mobile.interfaces.SetupEnviroment;
 
 public class SetupController {
 	
-	private SetupEnviroment setup;
+	public SetupEnviroment setup;
 	
-	private static Map<SetupEnum, SetupEnviroment> mapaSetup = new HashMap<SetupEnum, SetupEnviroment>();
-	
-	public void add(SetupEnum key, SetupEnviroment setup) {
+	public static SetupEnviroment loadSetup() {
 		
-		mapaSetup.put(key, setup);
-	}
-		
-	public SetupEnviroment getSetup(SetupEnum setup) {
-		
-		this.setup = setup.get();
-		
-		if(this.setup instanceof SetupEnviroment)
-			return this.setup;
-		else
-			return null;
-	}
-	
-	public SetupEnviroment getSetup(SetupEnviroment setup) {
-		
-		if(setup instanceof SetupEnviroment)
-			return setup;
-		else
-			return null;
-	}
-	
-	public static SetupEnviroment getSetup() {
-		
-		SetupEnviroment setup = null;
+		EntitySetup e = new EntitySetup();
 		
 		switch(Property.PLATAFORMA_CI) {
 			case "appcenter":
-				setup = new SetupAndroidAppCenter();
+				e.setBasePage(new BasePageAppCenter());
+				e.setSetup(new SetupAndroidAppCenter());
+				e.getSetup().setupEnviroment();
 				break;
 			case "mobile":
-				setup = new SetupAndroid();
+				e.setBasePage(new BasePageAndroid());
+				e.setSetup(new SetupAndroid());
+				e.getSetup().setupEnviroment();
 				break;
 		}
-		return setup;
+		return e.getSetup();
 	}
 	
-	public SetupEnviroment getCurrentSetup() {
-		
-		return setup;
-	}
 }

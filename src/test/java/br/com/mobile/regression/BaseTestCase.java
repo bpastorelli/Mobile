@@ -18,9 +18,7 @@ public class BaseTestCase {
 		
 		Property.loadProperties();
 		Appium.startAppium();
-		
-		setup = SetupController.getSetup();
-		setup.setupEnviroment();			
+		setup = SetupController.loadSetup();
 	}
 	
 	@AfterClass
