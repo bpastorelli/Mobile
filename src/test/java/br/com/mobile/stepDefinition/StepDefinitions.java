@@ -5,7 +5,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
 public class StepDefinitions {
- 
+	
 	private ActionsMobile actionsMobile = new ActionsMobile();
 	
 	@And("^Que efetuo o login com usuario \"([^\"]*)\" e senha \"([^\"]*)\" validos$")

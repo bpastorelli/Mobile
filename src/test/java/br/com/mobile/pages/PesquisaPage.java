@@ -20,6 +20,7 @@ public class PesquisaPage implements Page {
 		base.addElement("nova pesquisa", By.id("com.mercadolibre:id/vip_action_bar_menu_action_search"));
 		base.addElement("adicionarCarrinho", By.xpath("//android.widget.TextView[@text=\"Adicionar ao carrinho\"]"));
 		base.addElement("carrinho", By.id("com.mercadolibre:id/cart_icon"));
+		
 	}
 	
 	@Override

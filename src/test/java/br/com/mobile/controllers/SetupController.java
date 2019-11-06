@@ -7,6 +7,7 @@ import br.com.mobile.implementations.BasePageAppCenter;
 import br.com.mobile.implementations.SetupAndroid;
 import br.com.mobile.implementations.SetupAndroidAppCenter;
 import br.com.mobile.interfaces.SetupEnviroment;
+import br.com.mobile.utils.Utils;
 
 public abstract class SetupController {
 	
@@ -26,6 +27,8 @@ public abstract class SetupController {
 				e.setSetup(new SetupAndroid());
 				break;
 		}
+		
+		Utils.log("[PLATAFORMA]Inicializando com a plataforma: " + Property.PLATAFORMA_CI);
 		return e;
 	}
 	
