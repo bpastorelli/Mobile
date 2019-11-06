@@ -8,10 +8,10 @@ public class StepDefinitions {
  
 	private ActionsMobile actionsMobile = new ActionsMobile();
 	
-	@And("^Que efetuo o login com usuario e senha validos$")
-	public void que_efetue_login_com_usuario_senha_validos() {
+	@And("^Que efetuo o login com usuario \"([^\"]*)\" e senha \"([^\"]*)\" validos$")
+	public void que_efetue_login_com_usuario_senha_validos(String usuario, String senha) {
 		
-		actionsMobile.logar("brunopastorelli@hotmail.com", "sid04197");
+		actionsMobile.logar(usuario, senha);
 	}
 	
 	@Then("^Pesquiso o produto tipo \"([^\"]*)\" descricao \"([^\"]*)\"$")
