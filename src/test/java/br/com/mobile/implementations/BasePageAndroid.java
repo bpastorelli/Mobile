@@ -51,6 +51,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		try {
 			obj = getMap(name);
 			element = getDriver().findElement(obj);
+			waitDisplayed(element, Property.TIMEOUT);
 		} catch (Exception e) {
 			LogReport.fail("Elemento " + name + " não encontrado");
 		}
@@ -89,6 +90,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		element = null;
 		try {
 			element = getDriver().findElement(by);
+			waitDisplayed(element, Property.TIMEOUT);
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Elemento " + by.toString() + " nao encontrado.");
 		}
@@ -106,7 +108,6 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 		try {
 			element = getElement(name);
-			waitDisplayed(element, Property.TIMEOUT);
 			element.click();
 			wait(3);
 			LogReport.info("Clicar no elemento " + name, false);
@@ -127,7 +128,6 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 		try {
 			element = findElement(by);
-			waitDisplayed(element, Property.TIMEOUT);
 			LogReport.info("Clicar no elemento " + by);
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao clicar no elemento " + by.toString() + ".");
