@@ -18,14 +18,19 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import br.com.mobile.commons.Property;
-import br.com.mobile.implementations.SetupAndroid;
+import br.com.mobile.controllers.SetupController;
+import br.com.mobile.interfaces.SetupEnviroment;
 import br.com.mobile.utils.Utils;
 
-public class LogReport extends SetupAndroid{
+public class LogReport {
 	
 	private static ExtentTest extentTest;
+	
 	private static ExtentReports extentReport;
+	
 	private static ExtentHtmlReporter htmlReporter;
+	
+	private static final SetupEnviroment setup = SetupController.loadSetup().getSetup();
 	
 	public static ExtentTest getExtentTest() {
 		
@@ -53,7 +58,7 @@ public class LogReport extends SetupAndroid{
 		ExtentTest extentTest = LogReport.getExtentTest();
 		
 		try {
-			String scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+			String scrFile = ((TakesScreenshot) setup.getDriver()).getScreenshotAs(OutputType.BASE64);
 			extentTest.log(status, strLog, 
 					MediaEntityBuilder
 					.createScreenCaptureFromBase64String(scrFile)
@@ -103,7 +108,7 @@ public class LogReport extends SetupAndroid{
 	public static String efetuarPrintTela(String strLog) {
 		
 		String destination = null;
-		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		File scrFile = ((TakesScreenshot) setup.getDriver()).getScreenshotAs(OutputType.FILE);
 		try {
 			String strLogFormatado = Utils.formatarNomeLog(strLog);
 			destination = System.getProperty("user.dir") + Property.HTML_REPORTER_PATH + strLogFormatado + ".png";

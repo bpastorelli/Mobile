@@ -13,7 +13,7 @@ Feature: Automacao Mobile
   @pesquisa_produtos
   Scenario Outline: Pesquisar um produto
     Given Que eu quero testar "Pesquisa de produtos"
-    And Pesquiso o produto tipo <tipo> descricao <descricao>
+    When Pesquiso o produto tipo <tipo> descricao <descricao>
     Then Visualizo o preco de <preco> do produto
     
     Examples:
@@ -25,7 +25,7 @@ Feature: Automacao Mobile
   Scenario Outline: Adicionar produto ao carrinho
     Given Que eu quero testar "Adicionar produto ao carrinho"
     And Pesquiso o produto tipo <tipo> descricao <descricao>
-    And Visualizo o preco de <preco> do produto
+    When Visualizo o preco de <preco> do produto
     And Adiciono o produto ao meu carrinho
     Then Valido o teste com o texto "Você adicionou ao seu carrinho" na pagina atual
     
@@ -37,13 +37,13 @@ Feature: Automacao Mobile
   @remover_todos_produtos_carrinho
   Scenario: Remover todos os produto do carrinho
     Given Que eu quero testar "Remover todos os produtos do carrinho"
-    And Removo todos os produtos do carrinho
+    When Removo todos os produtos do carrinho
     Then Valido o teste com o texto "O seu carrinho está vazio" na pagina atual
     
  	@logout
  	Scenario: Efetuar logout
  		Given Que eu quero testar "Logout"
- 		And Efetuo o logout do aplicativo
+ 		When Efetuo o logout do aplicativo
  		Then Valido o teste com o texto "Acesse sua conta" na pagina atual 
 
     

@@ -56,6 +56,8 @@ public abstract class Property {
 	
 	public static String PLATAFORMA_CI;
 	
+	public static Boolean EVIDENCIAR_STEPS;
+	
 	private static final String PROP_FILE_CONFIG = Utils.getFilePath("config.properties").toString();
 	
 	private static Properties getProp() throws IOException {
@@ -94,6 +96,7 @@ public abstract class Property {
 			HTML_REPORTER_TITLE        = properties.getProperty("extent.report.title").trim();
 			HTML_REPORTER_PAGE_NAME    = properties.getProperty("extent.report.page.name").trim();
 			PLATAFORMA_CI              = properties.getProperty("app.ci.plataforma");
+			EVIDENCIAR_STEPS           = Boolean.parseBoolean(properties.getProperty("app.steps.evidenciar"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

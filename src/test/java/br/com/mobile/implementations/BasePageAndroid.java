@@ -110,7 +110,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			element = getElement(name);
 			element.click();
 			wait(3);
-			LogReport.info("Clicar no elemento " + name, false);
+			LogReport.info("Clicar no elemento " + name, Property.EVIDENCIAR_STEPS);
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getTagName() + ".");
 		}
@@ -128,7 +128,8 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 		try {
 			element = findElement(by);
-			LogReport.info("Clicar no elemento " + by);
+			LogReport.info("Clicar no elemento " + by, Property.EVIDENCIAR_STEPS);
+			element.click();
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao clicar no elemento " + by.toString() + ".");
 		}
@@ -162,7 +163,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			element = getElement(name);
 			waitDisplayed(element, Property.TIMEOUT);
 			new Actions(getDriver()).moveToElement(element).click().perform();
-			LogReport.info("Mover o foco e clicar no elemento " + name);
+			LogReport.info("Mover o foco e clicar no elemento " + name, Property.EVIDENCIAR_STEPS);
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getTagName() + ".");
 		}
@@ -446,7 +447,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!elementIsPresent(name)) {
 				touchActionLeft();
-				LogReport.info(message);
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 			} else
 				return;
 		}
@@ -458,7 +459,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!elementIsPresent(name)) {
 				touchActionRight();
-				LogReport.info(message);
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 			} else
 				return;
 		}
@@ -470,7 +471,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!textIsPresent(text)) {
 				touchActionLeft();
-				LogReport.info(message);
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 			} else
 				return;
 		}
@@ -482,7 +483,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!textIsPresent(text)) {
 				touchActionRight();
-				LogReport.info(message);
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 			} else
 				return;
 		}
@@ -545,7 +546,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			if (e.getText().toLowerCase().contains(text.toLowerCase())) {
 				touchActionDownDisplayed(e);
 				clickElement(e);
-				LogReport.info("Selecionado o item " + text);
+				LogReport.info("Selecionado o item " + text, Property.EVIDENCIAR_STEPS);
 				return;
 			}
 		}
@@ -558,7 +559,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			if (!textIsPresent(text)) {
 				touchActionDown();
 			} else {
-				LogReport.info(message);
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 				return;
 			}
 		}
