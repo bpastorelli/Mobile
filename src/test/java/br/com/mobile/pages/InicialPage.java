@@ -20,6 +20,7 @@ public class InicialPage implements Page {
 		base.addElement("Acessar a minha conta", By.id("com.mercadolibre:id/button_footer_secondary"));
 		base.addElement("Carros, motos e outros", By.xpath("//android.widget.LinearLayout[4]/android.widget.FrameLayout"));
 		base.addElement("Motos", By.xpath("//android.widget.RadioButton[@text=\"Motos\"]"));
+		base.addElement("Carros", By.xpath("//android.widget.RadioButton[@text=\"Carros\"]"));
 		base.addElement("marcaModelo", By.id("com.mercadolibre:id/classifieds_homes_filters_filter_wizard_btn_main"));
 	}
 	
