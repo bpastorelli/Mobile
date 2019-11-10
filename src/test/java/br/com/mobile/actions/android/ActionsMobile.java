@@ -114,5 +114,26 @@ public class ActionsMobile extends PagesController {
 		
 		return getPage(this.inicialPage).textoExibidoPagina(texto, timeout);
 	}
+	
+	public void irParaMenuVeiculos(String tipo) {
+		
+		getPage(this.inicialPage).clicarBotao("Carros, motos e outros");
+		getPage(this.inicialPage).clicarBotao(tipo);
+	}
+	
+	public void selecionarMarcaModelo(String marca, String modelo) {
+		
+		getPage(this.inicialPage).ifPopupIsPresent("Qual marca e modelo?","marcaModelo");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("marcas", marca, "");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("modelos", modelo, "");
+		getPage(this.pesquisaPage).clicarBotao("aplicar");
+		getPage(this.pesquisaPage).clicarBotao("buscarVeiculo");
+	}
+	
+	public void escolherProduto(String descricao) {
+		
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "");
+		getPage(this.pesquisaPage).ifPopupIsPresent("Agora você pode reservar", "reservarVeiculo", 2);
+	}
 
 }
