@@ -74,37 +74,37 @@ public class PesquisaPage implements Page {
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
 		
-		
+		base.touchActionRight(qtde);
 	}
 
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
 		
-		// TODO Auto-generated method stub
+		base.touchActionLeft(qtde);
 	}
 
 	@Override
 	public void deslizarParaEsquerdaElementoVisivel(String name) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionLeftDisplayed(name, "");
 	}
 
 	@Override
 	public void deslizarParaDireitaElementoVisivel(String name) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionLeftDisplayed(name, "");
 	}
 
 	@Override
 	public void deslizarParaDireitaTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionRightTextDisplayed(texto, "");
 	}
 
 	@Override
 	public void deslizarParaEsquerdaTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionLeftTextDisplayed(texto, "");
 	}
 
 	@Override

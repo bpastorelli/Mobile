@@ -48,14 +48,17 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 		By obj = null;
 		element = null;
-		try {
-			obj = getMap(name);
-			element = getDriver().findElement(obj);
-			waitDisplayed(element, Property.TIMEOUT);
-		} catch (Exception e) {
-			LogReport.fail("Elemento " + name + " não encontrado");
+		for(int i=0; i < Property.TIMEOUT; i++) {			
+			try {
+				obj = getMap(name);
+				element = getDriver().findElement(obj);
+				waitDisplayed(element, Property.TIMEOUT);
+				return element;
+			} catch (Exception e) {}
 		}
-
+		
+		LogReport.fail("Elemento " + name + " não encontrado");
+		
 		return element;
 	}
 
@@ -109,7 +112,6 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		try {
 			element = getElement(name);
 			element.click();
-			wait(3);
 			LogReport.info("Clicar no elemento " + name, Property.EVIDENCIAR_STEPS);
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getTagName() + ".");
@@ -543,7 +545,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		List<MobileElement> elements = getListElements(name);
 
 		for (MobileElement e : elements) {
-			if (e.getText().toLowerCase().contains(text.toLowerCase())) {
+			if (e.getText().trim().toLowerCase().contains(text.trim().toLowerCase())) {
 				touchActionDownDisplayed(e);
 				clickElement(e);
 				LogReport.info("Selecionado o item " + text, Property.EVIDENCIAR_STEPS);
