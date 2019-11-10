@@ -111,4 +111,14 @@ public class Utils {
 		return f2.getPath();
 	}
 	
+	public static void wait(int segundos) {
+
+		try {
+			Thread.sleep(segundos*1000);
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
+		}
+	}
+	
 }

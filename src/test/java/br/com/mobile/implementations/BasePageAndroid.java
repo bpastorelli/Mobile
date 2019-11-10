@@ -19,12 +19,12 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 
-public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
+public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	private static WebElement element;
 
 	private static Map<String, By> mapElements = new HashMap<String, By>();
-
+	
 	/**
 	 * Adiciona um elemento mapeado ao mapa de elementos.
 	 * 
@@ -48,13 +48,17 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 
 		By obj = null;
 		element = null;
-		try {
-			obj = getMap(name);
-			element = getDriver().findElement(obj);
-		} catch (Exception e) {
-			LogReport.fail("Elemento " + name + " não encontrado");
+		for(int i=0; i < Property.TIMEOUT; i++) {			
+			try {
+				obj = getMap(name);
+				element = getDriver().findElement(obj);
+				waitDisplayed(element, Property.TIMEOUT);
+				return element;
+			} catch (Exception e) {}
 		}
-
+		
+		LogReport.fail("Elemento " + name + " não encontrado");
+		
 		return element;
 	}
 
@@ -89,6 +93,7 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 		element = null;
 		try {
 			element = getDriver().findElement(by);
+			waitDisplayed(element, Property.TIMEOUT);
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Elemento " + by.toString() + " nao encontrado.");
 		}
@@ -106,10 +111,8 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 
 		try {
 			element = getElement(name);
-			waitDisplayed(element, Property.TIMEOUT);
 			element.click();
-			wait(3);
-			LogReport.info("Clicar no elemento " + name);
+			LogReport.info("Clicar no elemento " + name, Property.EVIDENCIAR_STEPS);
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getTagName() + ".");
 		}
@@ -127,8 +130,8 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 
 		try {
 			element = findElement(by);
-			waitDisplayed(element, Property.TIMEOUT);
-			LogReport.info("Clicar no elemento " + by);
+			LogReport.info("Clicar no elemento " + by, Property.EVIDENCIAR_STEPS);
+			element.click();
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao clicar no elemento " + by.toString() + ".");
 		}
@@ -162,7 +165,7 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 			element = getElement(name);
 			waitDisplayed(element, Property.TIMEOUT);
 			new Actions(getDriver()).moveToElement(element).click().perform();
-			LogReport.info("Mover o foco e clicar no elemento " + name);
+			LogReport.info("Mover o foco e clicar no elemento " + name, Property.EVIDENCIAR_STEPS);
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao clicar no elemento " + element.getTagName() + ".");
 		}
@@ -225,8 +228,16 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public boolean waitText(String text) {
 
+		return waitText(text, 0);
+	}
+	
+	@Override
+	public boolean waitText(String text, Integer time) {
+
 		boolean retorno = false;
-		for (int i = 0; i < Property.TIMEOUT; i++) {
+		Integer aguardar = time == 0 ? Property.TIMEOUT : time;
+
+		for (int i = 0; i < aguardar; i++) {
 
 			if (!getDriver().getPageSource().contains(text))
 				wait(1);
@@ -253,6 +264,14 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 		} catch (Exception e) {
 
 			LogReport.fail("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")");
+		}
+	}
+	
+	@Override
+	public void touchActionLeft(Integer qtde) {
+		
+		for(int i=0; i< qtde; i++) {
+			touchActionLeft();
 		}
 	}
 
@@ -430,7 +449,7 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!elementIsPresent(name)) {
 				touchActionLeft();
-				LogReport.info(message);
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 			} else
 				return;
 		}
@@ -442,7 +461,7 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!elementIsPresent(name)) {
 				touchActionRight();
-				LogReport.info(message);
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 			} else
 				return;
 		}
@@ -454,7 +473,7 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!textIsPresent(text)) {
 				touchActionLeft();
-				LogReport.info(message);
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 			} else
 				return;
 		}
@@ -466,7 +485,7 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!textIsPresent(text)) {
 				touchActionRight();
-				LogReport.info(message);
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 			} else
 				return;
 		}
@@ -526,10 +545,10 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 		List<MobileElement> elements = getListElements(name);
 
 		for (MobileElement e : elements) {
-			if (e.getText().toLowerCase().contains(text.toLowerCase())) {
+			if (e.getText().trim().toLowerCase().contains(text.trim().toLowerCase())) {
 				touchActionDownDisplayed(e);
 				clickElement(e);
-				LogReport.info("Selecionado o item " + text);
+				LogReport.info("Selecionado o item " + text, Property.EVIDENCIAR_STEPS);
 				return;
 			}
 		}
@@ -542,27 +561,10 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 			if (!textIsPresent(text)) {
 				touchActionDown();
 			} else {
-				LogReport.info(message);
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 				return;
 			}
 		}
-	}
-
-	@Override
-	public boolean waitText(String text, Integer time) {
-
-		boolean retorno = false;
-		Integer aguardar = time == 0 ? Property.TIMEOUT : time;
-
-		for (int i = 0; i < aguardar; i++) {
-
-			if (!getDriver().getPageSource().contains(text))
-				wait(1);
-			else
-				return true;
-		}
-
-		return retorno;
 	}
 
 	@Override
@@ -646,5 +648,4 @@ public abstract class BasePageAndroid extends SetupAndroid implements BasePage {
 		}
 
 	}
-
 }

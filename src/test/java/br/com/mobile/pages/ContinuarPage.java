@@ -1,150 +1,149 @@
-package br.com.mobile.pages.appcenter;
+package br.com.mobile.pages;
 
 import org.openqa.selenium.By;
 
-import br.com.mobile.implementations.BasePageAppCenter;
+import br.com.mobile.controllers.SetupController;
+import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.interfaces.Page;
 
-public class LogarPage extends BasePageAppCenter implements Page {
+public class ContinuarPage implements Page {
+	
+	private static final BasePage base = SetupController.loadSetup().getBasePage();
 
-	public LogarPage() {
+	public ContinuarPage() {
 		
-		this.addElement("e-mail", By.id("ui_text_field_input")); 	
-		this.addElement("Continuar", By.id("login_continueButton"));
-		this.addElement("senha", By.id("ui_text_field_input"));
-		this.addElement("Entrar", By.id("login_ingresarButton"));
+		base.addElement("NENHUMA DAS ALTERNATIVAS ACIMA", By.id("com.google.android.gms:id/cancel"));
 	}
 	
 	@Override
 	public boolean textoExibidoPagina(String texto) {
 
-		return waitText(texto);
+		return base.waitText(texto);
 	}
 
 	@Override
 	public void clicarBotao(String label) {
 		
-		clickElementByMapElements(label);
+		base.clickElementByMapElements(label);
 	}
 
 	@Override
 	public void digitarTexto(String name, String texto) {
 		
-		setText(name, texto);
+		base.setText(name, texto);
 	}
 
 	@Override
 	public void deslizarParaEsquerda() {
 		
-		touchActionLeft();
+		base.touchActionLeft();
 	}
 
 	@Override
 	public void deslizarParaDireia() {
 		
-		touchActionRight();
+		base.touchActionRight();
 	}
 
 	@Override
 	public void deslizarParaCima(Integer qtde) {
 			
-		touchActionTop(qtde);
+		base.touchActionTop(qtde);
 	}
 
 	@Override
 	public void deslizarParaBaixo(Integer qtde) {
 		
-		touchActionDown(qtde);
+		base.touchActionDown(qtde);
 	}
 
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
 		
-		// TODO Auto-generated method stub
+		base.touchActionRight(qtde);
 	}
 
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
 		
-		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void deslizarParaEsquerdaElementoVisivel(String name) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionLeftDisplayed(name, "");
 	}
 
 	@Override
 	public void deslizarParaDireitaElementoVisivel(String name) {
 		
-		touchActionRightDisplayed(name, "");
+		base.touchActionRightDisplayed(name, "");
 	}
 
 	@Override
 	public void deslizarParaDireitaTextoVisivel(String texto) {
 		
-		touchActionDownTextDisplayed(texto, null);
+		base.touchActionRightTextDisplayed(texto, "");
 	}
 
 	@Override
 	public void deslizarParaEsquerdaTextoVisivel(String texto) {
 		
-		touchActionLeftTextDisplayed(texto, "");
+		base.touchActionDownTextDisplayed(texto, "");
 	}
 
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		
-		selectItemList(name, texto);
+		base.selectItemList(name, texto);
 	}
 
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
 		
-		touchActionDownTextDisplayed(texto, "");
+		base.touchActionDownTextDisplayed(texto, "");
 	}
 
 	@Override
 	public void ifPopupIsPresent(String mensagem, String name) {
 		
-		clickByText(mensagem, name);
+		base.clickByText(mensagem, name);
 	}
 
 	@Override
 	public void deslizarParaBaixoElementoVisivel(String name) {
 		
-		touchActionDownDisplayed(name);
+		base.touchActionDownDisplayed(name);
 	}
 
 	@Override
 	public void deslizarParaCimaElementoVisivel(String name) {
 		
-		touchActionTopDisplayed(name);
+		base.touchActionTopDisplayed(name);
 	}
 
 	@Override
 	public boolean textoExibidoPagina(String texto, Integer time) {
 		
-		return waitText(texto, time);
+		return base.waitText(texto, time);
 	}
 
 	@Override
 	public void ifPopupIsPresent(String mensagem, String name, Integer time) {
 		
-		clickByText(mensagem, name, time);
+		base.clickByText(mensagem, name, time);
 	}
 	
 	@Override
 	public void voltar(String texto) {
 		
-		returnUntilTextDisplayed(texto);
+		base.returnUntilTextDisplayed(texto);
 	}
 	
 	@Override
 	public void pause(Integer time) {
 		
-		wait(time);
+		base.wait(time);
 	}
-
 }

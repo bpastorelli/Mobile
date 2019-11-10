@@ -3,11 +3,11 @@ package br.com.mobile.regression;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
+import br.com.mobile.appium.Appium;
 import br.com.mobile.commons.Property;
-import br.com.mobile.globals.Globals;
+import br.com.mobile.controllers.SetupController;
 import br.com.mobile.interfaces.SetupEnviroment;
 import br.com.mobile.reports.LogReport;
-import br.com.mobile.utils.Appium;
 
 public class BaseTestCase {
 	
@@ -18,9 +18,8 @@ public class BaseTestCase {
 		
 		Property.loadProperties();
 		Appium.startAppium();
-		
-		setup = Globals.PLATAFORMA_CI;
-		setup.setupEnviroment();			
+		setup = SetupController.loadSetup().getSetup();
+		setup.setupEnviroment();
 	}
 	
 	@AfterClass

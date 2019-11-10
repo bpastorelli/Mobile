@@ -1,42 +1,35 @@
 package br.com.mobile.controllers;	
 
-import java.util.HashMap;
-import java.util.Map;
-
-import br.com.mobile.enums.SetupEnum;
+import br.com.mobile.commons.Property;
+import br.com.mobile.entities.EntitySetup;
+import br.com.mobile.implementations.BasePageAndroid;
+import br.com.mobile.implementations.BasePageAppCenter;
+import br.com.mobile.implementations.SetupAndroid;
+import br.com.mobile.implementations.SetupAndroidAppCenter;
 import br.com.mobile.interfaces.SetupEnviroment;
+import br.com.mobile.utils.Utils;
 
-public class SetupController {
+public abstract class SetupController {
 	
-	private SetupEnviroment setup;
+	public SetupEnviroment setup;
 	
-	private static Map<SetupEnum, SetupEnviroment> mapaSetup = new HashMap<SetupEnum, SetupEnviroment>();
-	
-	public void add(SetupEnum key, SetupEnviroment setup) {
+	public static EntitySetup loadSetup() {
 		
-		mapaSetup.put(key, setup);
-	}
+		EntitySetup e = new EntitySetup();
 		
-	public SetupEnviroment getSetup(SetupEnum setup) {
+		switch(Property.PLATAFORMA_CI) {
+			case "appcenter":
+				e.setBasePage(new BasePageAppCenter());
+				e.setSetup(new SetupAndroidAppCenter());
+				break;
+			case "mobile":
+				e.setBasePage(new BasePageAndroid());
+				e.setSetup(new SetupAndroid());
+				break;
+		}
 		
-		this.setup = setup.get();
-		
-		if(this.setup instanceof SetupEnviroment)
-			return this.setup;
-		else
-			return null;
-	}
-	
-	public SetupEnviroment getSetup(SetupEnviroment setup) {
-		
-		if(setup instanceof SetupEnviroment)
-			return setup;
-		else
-			return null;
+		Utils.log("[PLATAFORMA]Inicializando com a plataforma: " + Property.PLATAFORMA_CI);
+		return e;
 	}
 	
-	public SetupEnviroment getCurrentSetup() {
-		
-		return setup;
-	}
 }

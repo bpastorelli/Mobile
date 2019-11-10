@@ -3,15 +3,16 @@ package br.com.mobile.stepDefinition;
 import br.com.mobile.actions.android.ActionsMobile;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 public class StepDefinitions {
- 
+	
 	private ActionsMobile actionsMobile = new ActionsMobile();
 	
-	@And("^Que efetuo o login com usuario e senha validos$")
-	public void que_efetue_login_com_usuario_senha_validos() {
+	@And("^Que efetuo o login com usuario \"([^\"]*)\" e senha \"([^\"]*)\" validos$")
+	public void que_efetue_login_com_usuario_senha_validos(String usuario, String senha) {
 		
-		actionsMobile.logar("brunopastorelli@hotmail.com", "sid04197");
+		actionsMobile.logar(usuario, senha);
 	}
 	
 	@Then("^Pesquiso o produto tipo \"([^\"]*)\" descricao \"([^\"]*)\"$")
@@ -40,11 +41,31 @@ public class StepDefinitions {
 		actionsMobile.validarTexto(preco);
 	}
 	
-	@And("^Efetuo o logout do aplicativo$")
+	@And("^Efetuo o logout do aplicativo$") 
 	public void efetuo_logout_aplicativo() {
 		
 		actionsMobile.retornarInicio("Pagar com QR");
 		actionsMobile.logout();
 	}
+	
+	@And("^Que eu quero pesquisar um veiculo tipo \"([^\"]*)\"$")
+	public void clico_no_menu(String tipo) {
+		
+		actionsMobile.retornarInicio("Pagar com QR");
+		actionsMobile.irParaMenuVeiculos(tipo);
+	}
+	
+	@And("^Seleciono a marca \"([^\"]*)\" e modelo \"([^\"]*)\"$")
+	public void selecio_marca_e_modelo(String marca, String modelo) {
+		
+		actionsMobile.selecionarMarcaModelo(marca, modelo);
+	}
+	
+	@When("^Escolho o veiculo \"([^\"]*)\" e visualizo$")
+	public void escolho_o_veiculo_e_visualizo(String descricao) {
+		
+		actionsMobile.escolherProduto(descricao);
+	}
+	
 
 } 

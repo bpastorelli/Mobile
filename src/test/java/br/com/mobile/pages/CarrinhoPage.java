@@ -1,147 +1,155 @@
-package br.com.mobile.pages.android;
+package br.com.mobile.pages;
 
 import org.openqa.selenium.By;
 
-import br.com.mobile.implementations.BasePageAndroid;
+import br.com.mobile.controllers.SetupController;
+import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.interfaces.Page;
 
-public class MenuPage extends BasePageAndroid implements Page {
+public class CarrinhoPage implements Page {
 	
-	public MenuPage() {
+	private static final BasePage base = SetupController.loadSetup().getBasePage();
+	
+	public CarrinhoPage() {
 		
-		
+		base.addElement("menuCarrinho", By.id("com.mercadolibre:id/cart_item_options"));
+		base.addElement("opcoesCarrinho", By.xpath("//android.widget.TextView"));
+		base.addElement("menu", By.xpath("//android.widget.ImageButton[@content-desc=\"Navegar para cima\"]"));
 	}
-
+	
 	@Override
 	public boolean textoExibidoPagina(String texto) {
-
-		return waitText(texto);		
+		
+		return base.waitText(texto);
 	}
 
 	@Override
 	public void clicarBotao(String label) {
 		
-		this.addElement(label, By.xpath("//android.widget.TextView[@text='" + label.replace("opcao", "") + "']"));
-		clickElementByMapElements(label);
+		base.clickElementByMapElements(label);
 	}
 
 	@Override
 	public void digitarTexto(String name, String texto) {
 		
-		setText(name, texto);
+		base.setText(name, texto);
 	}
 
 	@Override
 	public void deslizarParaEsquerda() throws Exception {
-		// TODO Auto-generated method stub
 		
+		base.touchActionLeft();
 	}
 
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
-		// TODO Auto-generated method stub
-		
+			
+		base.touchActionRight(qtde);
 	}
 
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
-		// TODO Auto-generated method stub
 		
+		for(int i=0; i < qtde; i++) {
+			
+			base.touchActionLeft();
+		}
 	}
 
 	@Override
 	public void deslizarParaDireia() {
-		// TODO Auto-generated method stub
 		
+		base.touchActionRight();
 	}
 
 	@Override
 	public void deslizarParaCima(Integer qtde) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionTop(qtde);
 	}
 
 	@Override
 	public void deslizarParaBaixo(Integer qtde) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionDown(qtde);
 	}
 
 	@Override
 	public void deslizarParaEsquerdaElementoVisivel(String name) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionLeftDisplayed(name, "");
 	}
 
 	@Override
 	public void deslizarParaDireitaElementoVisivel(String name) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionRightDisplayed(name, "");
 	}
 
 	@Override
 	public void deslizarParaDireitaTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionRightTextDisplayed(texto, "");
 	}
 
 	@Override
 	public void deslizarParaEsquerdaTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionLeftTextDisplayed(texto, "");
 	}
 
 	@Override
 	public void deslizarParaBaixoTextoVisivel(String texto) {
-		// TODO Auto-generated method stub
 		
+		base.touchActionDownTextDisplayed(texto, "");
 	}
 
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		
-		selectItemList(name, texto);
+		base.wait(1);
+		base.selectItemList(name, texto);
 	}
 
 	@Override
 	public void ifPopupIsPresent(String mensagem, String name) {
 		
-		clickByText(mensagem, name);
+		base.clickByText(mensagem, name);
 	}
 
 	@Override
 	public void deslizarParaBaixoElementoVisivel(String name) {
 		
-		touchActionDownDisplayed(name);
+		base.touchActionDownDisplayed(name);
 	}
 
 	@Override
 	public void deslizarParaCimaElementoVisivel(String name) {
 		
-		touchActionTopDisplayed(name);
+		base.touchActionTopDisplayed(name);
 	}
 
 	@Override
 	public boolean textoExibidoPagina(String texto, Integer time) {
 		
-		return waitText(texto, time);
+		return base.waitText(texto, time);
 	}
 
 	@Override
 	public void ifPopupIsPresent(String mensagem, String name, Integer time) {
 		
-		clickByText(mensagem, name, time);
+		base.clickByText(mensagem, name, time);
 	}
-	
+
 	@Override
 	public void voltar(String texto) {
 		
-		returnUntilTextDisplayed(texto);
+		base.returnUntilTextDisplayed(texto);
 	}
 	
 	@Override
 	public void pause(Integer time) {
 		
-		wait(time);
+		base.wait(time);
 	}
 }

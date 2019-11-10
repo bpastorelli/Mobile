@@ -25,13 +25,13 @@ adb devices -l
 
 Digite no Prompt Comando:
 
-netstat -ano | findstr <porta>
+netstat -ano | findstr <<porta>>
 
 # Encerrar processo por PID (ID do processo)
 
 Digite no Prompt Comando:
 
-taskkill  /F  /PID  <PID>
+taskkill  /F  /PID  <<PID>>
 
 # Comandos para execução no App Center
 
@@ -43,7 +43,22 @@ Executar os testes:
 C:\repositorio_local\Mobile>appcenter test run appium --app "bpastorelli/appCenter" --devices "bpastorelli/samsunga7" --app-path C:\repositorio_local\Mobile\src\test\resources\apk\ml.apk --test-series "master" --locale "en_US" --build-dir target/upload
 
 # HTML Reporter
-Para habilitar o CSS no HTML Reporter, execute o comando abaixo em Manage Jenkins >> Script Consele >> Run
+Para habilitar o CSS no HTML Reporter, execute o comando abaixo em Manage Jenkins >> Script Console >> Run
 
 System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
+
+# Configurando o build no Jenkins
+
+1) Em "Build Enviroment" marque a opção "Delete workspace before build starts";
+2) Em "Build" selecione em "Add build step" a opção "Invoke top-level Maven targets" e em "Maven Version" selecione a versão do Maven;
+3) No campo "Goals" insira o codigo abaixo:
+
+clean
+install
+-Dtest=<<ClasseTest>>
+
+A instrução acima irá: limpar o workpace, baixar o projeto e dependências e por fim chamar a classe de testes.
+
+
+
 

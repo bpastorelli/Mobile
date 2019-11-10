@@ -1,4 +1,4 @@
-package br.com.mobile.utils;
+package br.com.mobile.appium;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +8,9 @@ import org.apache.commons.exec.DefaultExecuteResultHandler;
 import org.apache.commons.exec.DefaultExecutor;
 
 import br.com.mobile.commons.Property;
+import br.com.mobile.utils.Command;
+import br.com.mobile.utils.Utils;
+import java8.util.Objects;
 
 public class Appium {
 
@@ -17,6 +20,9 @@ public class Appium {
 
 	public static void startAppium() {
 
+		if(Objects.equals(Property.PLATAFORMA_CI,"appcenter"))
+			return;
+		
 		cmd.executeCommand("netstat -ano | findstr " + Property.APPIUM_PORT);
 		cmd.killProcessPort();
 
@@ -33,11 +39,10 @@ public class Appium {
 		try {
 			executor.execute(cmdLine, handler);
 			Thread.sleep(10000);
+			Utils.log("[APPIUM]Appium iniciado...");
 		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
 		}
-
-		Utils.log("[APPIUM]Appium iniciado via Thread...");
 	}
 
 	public static void install() {

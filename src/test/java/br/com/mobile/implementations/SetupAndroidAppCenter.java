@@ -5,10 +5,10 @@ import java.net.URL;
 import com.microsoft.appcenter.appium.EnhancedAndroidDriver;
 import com.microsoft.appcenter.appium.Factory;
 
+import br.com.mobile.appium.Appium;
 import br.com.mobile.capabilities.Capabilities;
 import br.com.mobile.commons.Property;
 import br.com.mobile.interfaces.SetupEnviroment;
-import br.com.mobile.utils.Appium;
 import br.com.mobile.utils.Command;
 import br.com.mobile.utils.Utils;
 import io.appium.java_client.MobileElement;

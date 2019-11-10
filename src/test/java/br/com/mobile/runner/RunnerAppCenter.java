@@ -1,7 +1,7 @@
 package br.com.mobile.runner;
 
+import br.com.mobile.actions.appcenter.CommandAppCenter;
 import br.com.mobile.utils.Command;
-import br.com.mobile.utils.CommandAppCenter;
 
 public class RunnerAppCenter extends CommandAppCenter {
 	

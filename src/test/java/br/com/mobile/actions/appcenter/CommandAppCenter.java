@@ -1,6 +1,7 @@
-package br.com.mobile.utils;
+package br.com.mobile.actions.appcenter;
 
 import br.com.mobile.commons.Property;
+import br.com.mobile.utils.Utils;
 
 public class CommandAppCenter {
 	

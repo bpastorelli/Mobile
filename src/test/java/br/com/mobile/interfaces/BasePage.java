@@ -113,6 +113,12 @@ public interface BasePage {
 	abstract void touchActionLeft();
 	
 	/**
+	 * Desliza para a esquerda determinadas quantidades de vezes
+	 * @param qtde Quantidade de vezes a deslizar
+	 */
+	abstract void touchActionLeft(Integer qtde);
+	
+	/**
 	 * Desliza a tela para a direita.
 	 */
 	abstract void touchActionRight();
