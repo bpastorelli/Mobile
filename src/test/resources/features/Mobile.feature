@@ -41,15 +41,16 @@ Feature: Automacao Mobile
 
   @consultar_veiculo
   Scenario Outline: Consultar veiculo
-    Given Que eu quero testar "Consultar um veículo"
+    Given Que eu quero testar "Consultar um veiculo"
     And Que eu quero pesquisar um veiculo tipo <tipo>
     And Seleciono a marca <marca> e modelo <modelo>
     When Escolho o veiculo <escolher> e visualizo
     Then Valido o teste com o texto <preco> na pagina atual
 
     Examples: 
-      | tipo    | marca    | modelo  | escolher                | preco       |
-      | "Motos" | "Yamaha" | "MT 07" | "Yamaha Mt-07 Abs,2018" | "R$ 31.490" |
+      | tipo    | marca    | modelo           | escolher                | preco       |
+      | "Motos" | "Yamaha" | "MT 07"          | "Yamaha Mt-07 Abs,2018" | "R$ 31.490" |
+      | "Motos" | "Suzuki" | "Outros Modelos" | "Suzuki Gsx R 1100"     | "R$ 16.900" |
 
   @logout
   Scenario: Efetuar logout
