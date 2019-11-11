@@ -48,10 +48,11 @@ Feature: Automacao Mobile
     Then Valido o teste com o texto <preco> na pagina atual
 
     Examples: 
-      | tipo    | marca     | modelo           | escolher                 | preco       |
-      | "Motos" | "Yamaha"  | "MT 07"          | "Yamaha Mt-07 Abs,2018"  | "R$ 31.490" |
-      | "Motos" | "Suzuki"  | "Outros Modelos" | "Suzuki Gsx R 1100"      | "R$ 16.900" |
-      | "Motos" | "Triumph" | "Tiger 800"      | "Triumph Tiger 800 2014" | "R$ 28.900" |
+      | tipo                    | marca        | modelo           | escolher                                                 | preco       |
+      | "Motos"                 | "Yamaha"     | "MT 07"          | "Yamaha Mt-07 Abs,2018"                                  | "R$ 31.490" |
+      | "Motos"                 | "Suzuki"     | "Outros Modelos" | "Suzuki Gsx R 1100"                                      | "R$ 16.900" |
+      | "Motos"                 | "Triumph"    | "Tiger 800"      | "Triumph Tiger 800 2014"                                 | "R$ 28.900" |
+      | "Carros e caminhonetes" | "Mitsubishi" | "L200"           | "Mitsubishi L200 3.5 Triton Hpe Cab. Dupl A 4X4 Aut. 4p" | "R$ 94.900" |
 
   @logout
   Scenario: Efetuar logout
