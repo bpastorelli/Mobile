@@ -414,6 +414,17 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 	}
 
 	@Override
+	public void touchActionTopTextDisplayed(String text, String message) {
+
+		for (int i = 0; i < Property.TIMEOUT; i++) {
+			if (!textIsPresent(text)) {
+				touchActionTop();
+			} else
+				return;
+		}
+	}
+	
+	@Override
 	public void touchActionDownDisplayed(String name) {
 
 		for (int i = 0; i < Property.TIMEOUT; i++) {
@@ -485,7 +496,7 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!elementIsPresent(name)) {
 				touchActionLeft();
-				LogReport.info(message);
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 			} else
 				return;
 		}
@@ -497,7 +508,7 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!elementIsPresent(name)) {
 				touchActionRight();
-				LogReport.info(message);
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 			} else
 				return;
 		}

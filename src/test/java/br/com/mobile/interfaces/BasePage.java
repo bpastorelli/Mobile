@@ -227,6 +227,13 @@ public interface BasePage {
 	abstract void touchActionDownTextDisplayed(String text, String message);
 	
 	/**
+	 * Desliza para cima até que o texto esteja visível.
+	 * @param texto Texto esperado.
+	 * @message Mensagem e evidência gerada após deslizar a tela.
+	 */
+	abstract void touchActionTopTextDisplayed(String text, String message);
+	
+	/**
 	 * Verifica se o elemento está presente
 	 * @param name Nome do elemento mapeado no mapa de elementos
 	 * return Boolean

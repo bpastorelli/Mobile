@@ -120,11 +120,13 @@ public class ActionsMobile extends PagesController {
 		getPage(this.inicialPage).clicarBotao("Carros, motos e outros");
 		getPage(this.inicialPage).clicarBotao(tipo);
 	}
-	
+	 
 	public void selecionarMarcaModelo(String marca, String modelo) {
 		
 		getPage(this.inicialPage).ifPopupIsPresent("Qual marca e modelo?","marcaModelo");
+		getPage(this.inicialPage).textoExibidoPagina("Marca");
 		getPage(this.pesquisaPage).selecionarItemListaSuspensa("marcas", marca, "");
+		getPage(this.inicialPage).textoExibidoPagina(marca);
 		getPage(this.pesquisaPage).selecionarItemListaSuspensa("modelos", modelo, "");
 		getPage(this.pesquisaPage).clicarBotao("aplicar");
 		getPage(this.pesquisaPage).clicarBotao("buscarVeiculo");

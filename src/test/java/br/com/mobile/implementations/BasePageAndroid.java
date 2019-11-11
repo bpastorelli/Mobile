@@ -478,6 +478,18 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 				return;
 		}
 	}
+	
+	@Override
+	public void touchActionTopTextDisplayed(String text, String message) {
+
+		for (int i = 0; i < Property.TIMEOUT; i++) {
+			if (!textIsPresent(text)) {
+				touchActionTop();
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
+			} else
+				return;
+		}
+	}
 
 	@Override
 	public void touchActionRightTextDisplayed(String text, String message) {
@@ -494,7 +506,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public boolean textIsPresent(String text) {
 
-		if (!getDriver().getPageSource().contains(text.trim()))
+		if (!getDriver().getPageSource().contains(text))
 			return false;
 		else
 			return true;
