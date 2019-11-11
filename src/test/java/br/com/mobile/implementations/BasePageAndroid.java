@@ -494,7 +494,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public boolean textIsPresent(String text) {
 
-		if (!getDriver().getPageSource().contains(text))
+		if (!getDriver().getPageSource().contains(text.trim()))
 			return false;
 		else
 			return true;
