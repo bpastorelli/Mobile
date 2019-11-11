@@ -35,8 +35,8 @@ public class ActionsMobile extends PagesController {
 			getPage(this.inicialPage).selecionarItemListaSuspensa("paises", "Brasil", "Clicar no país de localização");
 		
 		getPage(this.inicialPage).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 2);
-		getPage(this.inicialPage).ifPopupIsPresent("O que está esperando?", "Já tenho conta", 2);
-		getPage(this.continuarPage).ifPopupIsPresent("Continuar com", "NENHUMA DAS ALTERNATIVAS ACIMA", 2);			
+		getPage(this.inicialPage).ifPopupIsPresent("O que está esperando?", "Já tenho conta");
+		getPage(this.continuarPage).ifPopupIsPresent("Continuar com", "NENHUMA DAS ALTERNATIVAS ACIMA");			
 		
 		if(getPage(this.logarPage).textoExibidoPagina("E-mail ou usuário", 2)) {
 			getPage(this.logarPage).digitarTexto("e-mail", usuario);
