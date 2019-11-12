@@ -45,6 +45,12 @@ Feature: Automacao Mobile
       | "Motos"                 | "Triumph"    | "Tiger 800"      | "Triumph Tiger 800 2014"                                   | "R$ 28.900" |
       | "Carros e caminhonetes" | "Mitsubishi" | "L200"           | "Mitsubishi L200 3.5 Triton Hpe Cab. Dupl A 4x4 Aut. 4p"   | "R$ 49.990" |
 
+  @remover_todos_produtos_lista_favoritos
+  Scenario: Remover todos os produtos da lista de favoritos
+    Given Que eu quero testar "Remover todos os produtos da lista de favoritos"
+    When Removo todos os produtos da lista de favoritos
+    Then Valido o teste com o texto "Você ainda não adicionou os seus favoritos." na pagina atual
+
   @logout
   Scenario: Efetuar logout
     Given Que eu quero testar "Logout"

@@ -78,4 +78,13 @@ public class StepDefinitions {
 		
 		actionsMobile.validarProdutoListaFavoritos(descricao);
 	}
+	
+	@When("^Removo todos os produtos da lista de favoritos$")
+	public void removo_produtos_lista_favoritos() {
+		
+		actionsMobile.retornarInicio("Pagar com QR");
+		actionsMobile.irParaMenuFavoritos();
+		actionsMobile.removerProdutosListaFavoritos();
+	}
+	
 } 

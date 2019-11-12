@@ -1,5 +1,9 @@
 package br.com.mobile.interfaces;
 
+import java.util.List;
+
+import io.appium.java_client.MobileElement;
+
 public interface Page {
 
 	/**
@@ -163,5 +167,12 @@ public interface Page {
 	 * @param time Tempo de pausa
 	 */
 	abstract void pause(Integer time);
+	
+	/**
+	 * Retorna uma lista de elementos pelo nome da lista mapeada na página
+	 * @param name Nome da lista
+	 * @return List<MobileElement>
+	 */
+	abstract List<MobileElement> retornaElementos(String name);
 	
 }

@@ -655,7 +655,7 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 	public void returnUntilTextDisplayed(String text) {
 		
 		for (int i = 0; i < Property.TIMEOUT; i++) {
-			wait(1);
+			waitText(text, 2);
 			if (textIsPresent(text)) {
 				return;
 			}

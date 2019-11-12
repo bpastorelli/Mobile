@@ -1,10 +1,13 @@
 package br.com.mobile.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 
 import br.com.mobile.controllers.SetupController;
 import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.interfaces.Page;
+import io.appium.java_client.MobileElement;
 
 public class ContinuarPage implements Page {
 	
@@ -151,5 +154,11 @@ public class ContinuarPage implements Page {
 	public void pause(Integer time) {
 		
 		base.wait(time);
+	}
+	
+	@Override
+	public List<MobileElement> retornaElementos(String name) {
+		
+		return base.getListElements(name);
 	}
 }

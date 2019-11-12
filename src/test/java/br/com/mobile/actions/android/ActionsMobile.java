@@ -1,15 +1,19 @@
 package br.com.mobile.actions.android;
 
+import java.util.List;
+
 import br.com.mobile.commons.Property;
 import br.com.mobile.controllers.PagesController;
 import br.com.mobile.pages.CarrinhoPage;
 import br.com.mobile.pages.ContinuarPage;
+import br.com.mobile.pages.FavoritosPage;
 import br.com.mobile.pages.InicialPage;
 import br.com.mobile.pages.LogarPage;
 import br.com.mobile.pages.MenuPage;
 import br.com.mobile.pages.MinhaContaPage;
 import br.com.mobile.pages.PesquisaPage;
 import br.com.mobile.reports.LogReport;
+import io.appium.java_client.MobileElement;
 
 public class ActionsMobile extends PagesController {
 	
@@ -26,6 +30,8 @@ public class ActionsMobile extends PagesController {
 	private CarrinhoPage carrinhoPage = new CarrinhoPage();
 	
 	private MinhaContaPage minhaContaPage =  new MinhaContaPage();
+	
+	private FavoritosPage favoritosPage = new FavoritosPage();
 	
 	public void logar(String usuario, String senha) {
 		
@@ -120,7 +126,14 @@ public class ActionsMobile extends PagesController {
 		getPage(this.inicialPage).clicarBotao("Carros, motos e outros");
 		getPage(this.inicialPage).clicarBotao(tipo);
 	}
-	 
+	
+	public void irParaMenuFavoritos() {
+		
+		getPage(this.inicialPage).clicarBotao("menu");
+		getPage(this.menuPage).clicarBotao("Favoritos");
+		getPage(this.favoritosPage).textoExibidoPagina("Favoritos");
+	}
+	
 	public void selecionarMarcaModelo(String marca, String modelo) {
 		
 		getPage(this.inicialPage).ifPopupIsPresent("Qual marca e modelo?","marcaModelo");
@@ -150,6 +163,17 @@ public class ActionsMobile extends PagesController {
 		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
 		
 		LogReport.passFail(getPage(this.inicialPage).textoExibidoPagina(descricao), "Descricao esperada: " + descricao);
+	}
+	
+	public void removerProdutosListaFavoritos() {
+		
+		List<MobileElement> elements = getPage(this.favoritosPage).retornaElementos("favoritos");
+		for(MobileElement e : elements) {
+			e.click();
+			getPage(this.pesquisaPage).ifPopupIsPresent("Agora você pode reservar", "reservarVeiculo", 2);
+			getPage(this.pesquisaPage).clicarBotao("favoritar");
+			irParaMenuFavoritos();
+		}
 	}
 	
 }
