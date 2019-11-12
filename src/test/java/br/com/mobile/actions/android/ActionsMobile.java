@@ -162,7 +162,7 @@ public class ActionsMobile extends PagesController {
 		getPage(this.menuPage).clicarBotao("Favoritos");
 		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
 		
-		LogReport.passFail(getPage(this.inicialPage).textoExibidoPagina(descricao), "Descricao esperada: " + descricao);
+		LogReport.passFail(getPage(this.inicialPage).textoExibidoPagina(descricao, 10), "Descricao esperada: " + descricao);
 	}
 	
 	public void removerProdutosListaFavoritos() {
