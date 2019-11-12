@@ -16,7 +16,6 @@ import org.openqa.selenium.interactions.Actions;
 
 import br.com.mobile.commons.Property;
 import br.com.mobile.interfaces.BasePage;
-import br.com.mobile.reports.LogReport;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
@@ -128,7 +127,6 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 		try {
 			element = findElement(by);
 			waitDisplayed(element, Property.TIMEOUT);
-			LogReport.info("Clicar no elemento " + by);
 		} catch (Exception e) {
 			assertFalse("[FALHA]Falha ao clicar no elemento " + by.toString() + ".", true);
 		}
@@ -272,7 +270,6 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 		for(int i=0; i<qtde; i++) {
 			touchActionLeft();
 		}
-		
 	}
 
 	/**
@@ -496,7 +493,6 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!elementIsPresent(name)) {
 				touchActionLeft();
-				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 			} else
 				return;
 		}
@@ -508,7 +504,6 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!elementIsPresent(name)) {
 				touchActionRight();
-				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 			} else
 				return;
 		}

@@ -54,18 +54,18 @@ public class ActionsMobile extends PagesController {
 		
 		getPage(this.pesquisaPage).clicarBotao("Buscar");
 		getPage(this.pesquisaPage).digitarTexto("txtBusca", produto);
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", produto, "");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", produto, "Selecionar item " + produto);
 		getPage(this.pesquisaPage).deslizarParaBaixoTextoVisivel(descricao);
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
 	}
 	
 	public void novaPesquisaProduto(String produto, String descricao, String esperado) {
 		
 		getPage(this.pesquisaPage).clicarBotao("nova pesquisa");
 		getPage(this.pesquisaPage).digitarTexto("txtBusca", produto);
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", produto, "");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", produto, "Selecionar item " + produto);
 		getPage(this.pesquisaPage).deslizarParaBaixoTextoVisivel(descricao);
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
 	}
 
 	public void adicionarProdutoCarrinho() {
@@ -125,16 +125,16 @@ public class ActionsMobile extends PagesController {
 		
 		getPage(this.inicialPage).ifPopupIsPresent("Qual marca e modelo?","marcaModelo");
 		getPage(this.inicialPage).textoExibidoPagina("Marca");
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("marcas", marca, "");
-		getPage(this.inicialPage).textoExibidoPagina(marca);
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("modelos", modelo, "");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("marcas", marca, "Selecionar item " + marca);
+		getPage(this.pesquisaPage).textoExibidoPagina(marca);
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("modelos", modelo, "Selecionar item " + modelo);
 		getPage(this.pesquisaPage).clicarBotao("aplicar");
 		getPage(this.pesquisaPage).clicarBotao("buscarVeiculo");
 	}
 	
 	public void escolherProduto(String descricao) {
 		
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
 		getPage(this.pesquisaPage).ifPopupIsPresent("Agora você pode reservar", "reservarVeiculo", 2);
 	}
 

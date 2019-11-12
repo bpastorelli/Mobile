@@ -20,7 +20,7 @@ public class InicialPage implements Page {
 		base.addElement("Acessar a minha conta", By.id("com.mercadolibre:id/button_footer_secondary"));
 		base.addElement("Carros, motos e outros", By.xpath("//android.widget.LinearLayout[4]/android.widget.FrameLayout"));
 		base.addElement("Motos", By.xpath("//android.widget.RadioButton[@text=\"Motos\"]"));
-		base.addElement("Carros", By.xpath("//android.widget.RadioButton[@text=\"Carros\"]"));
+		base.addElement("Carros e caminhonetes", By.xpath("//android.widget.RadioButton[@text=\"Carros e caminhonetes\"]"));
 		base.addElement("marcaModelo", By.id("com.mercadolibre:id/classifieds_homes_filters_filter_wizard_btn_main"));
 	}
 	
@@ -121,6 +121,12 @@ public class InicialPage implements Page {
 	}
 	
 	@Override
+	public void ifPopupIsPresent(String mensagem, String name, Integer time) {
+		
+		base.clickByText(mensagem, name, time);
+	}
+	
+	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		
 		base.selectItemList(name, texto);
@@ -142,12 +148,6 @@ public class InicialPage implements Page {
 	public void deslizarParaCimaElementoVisivel(String name) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void ifPopupIsPresent(String mensagem, String name, Integer time) {
-		
-		base.clickByText(mensagem, name, time);
 	}
 
 	@Override

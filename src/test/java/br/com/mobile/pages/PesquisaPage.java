@@ -110,7 +110,7 @@ public class PesquisaPage implements Page {
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		
-		base.touchActionDownTextDisplayed(texto, "");
+		base.touchActionDownTextDisplayed(texto, message);
 		base.selectItemList(name, texto);
 	}
 

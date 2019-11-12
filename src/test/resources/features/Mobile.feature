@@ -9,17 +9,6 @@ Feature: Automacao Mobile
     And Que efetuo o login com usuario "brunopastorelli@hotmail.com" e senha "sid04197" validos
     Then Valido o teste com o texto "Pagar com QR" na pagina atual
 
-  @pesquisa_produtos
-  Scenario Outline: Pesquisar um produto
-    Given Que eu quero testar "Pesquisa de produtos"
-    When Pesquiso o produto tipo <tipo> descricao <descricao>
-    Then Visualizo o preco de <preco> do produto
-
-    Examples: 
-      | tipo            | descricao                                                       | preco      |
-      | "Notebook"      | "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux" | "R$ 1.899" |
-      | "Bota Robofoot" | "Robofoot Salvapé Original Seminova Top"                        | "R$ 180"   |
-
   @adicionar_produto_carrinho
   Scenario Outline: Adicionar produto ao carrinho
     Given Que eu quero testar "Adicionar produto ao carrinho"
@@ -31,7 +20,7 @@ Feature: Automacao Mobile
     Examples: 
       | tipo            | descricao                                                       | preco      |
       | "Notebook"      | "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux" | "R$ 1.899" |
-      | "Bota Robofoot" | "Robofoot Salvapé Original Seminova Top"                        | "R$ 180"   |
+      | "Bota Robofoot" | "Bota Imobilizadora Robofoot Salvapé Original Seminova Top"     | "R$ 180"   |
 
   @remover_todos_produtos_carrinho
   Scenario: Remover todos os produto do carrinho
@@ -48,11 +37,11 @@ Feature: Automacao Mobile
     Then Valido o teste com o texto <preco> na pagina atual
 
     Examples: 
-      | tipo                    | marca        | modelo           | escolher                                                 | preco       |
-      | "Motos"                 | "Yamaha"     | "MT 07"          | "Yamaha Mt-07 Abs,2018"                                  | "R$ 31.490" |
-      | "Motos"                 | "Suzuki"     | "Outros Modelos" | "Suzuki Gsx R 1100"                                      | "R$ 16.900" |
-      | "Motos"                 | "Triumph"    | "Tiger 800"      | "Triumph Tiger 800 2014"                                 | "R$ 28.900" |
-      | "Carros e caminhonetes" | "Mitsubishi" | "L200"           | "Mitsubishi L200 3.5 Triton Hpe Cab. Dupl A 4X4 Aut. 4p" | "R$ 94.900" |
+      | tipo                    | marca        | modelo           | escolher                                                   | preco       |
+      | "Motos"                 | "Yamaha"     | "MT 07"          | "Yamaha Mt-07 Abs,2018 Financiamos E Parcelamos No Cartão" | "R$ 31.490" |
+      | "Motos"                 | "Suzuki"     | "Outros Modelos" | "Suzuki Gsx R 1100"                                        | "R$ 16.900" |
+      | "Motos"                 | "Triumph"    | "Tiger 800"      | "Triumph Tiger 800 2014"                                   | "R$ 28.900" |
+      | "Carros e caminhonetes" | "Mitsubishi" | "L200"           | "Mitsubishi L200 3.5 Triton Hpe Cab. Dupl A 4x4 Aut. 4p"   | "R$ 49.990" |
 
   @logout
   Scenario: Efetuar logout
