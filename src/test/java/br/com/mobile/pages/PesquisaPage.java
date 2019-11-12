@@ -1,10 +1,14 @@
 package br.com.mobile.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 
 import br.com.mobile.controllers.SetupController;
 import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.interfaces.Page;
+import br.com.mobile.utils.Utils;
+import io.appium.java_client.MobileElement;
 
 public class PesquisaPage implements Page {
 	
@@ -25,6 +29,7 @@ public class PesquisaPage implements Page {
 		base.addElement("aplicar", By.id("com.mercadolibre:id/classifieds_homes_filters_location_apply"));
 		base.addElement("buscarVeiculo", By.id("com.mercadolibre:id/filter_button_button"));
 		base.addElement("reservarVeiculo", By.id("com.mercadolibre:id/vip_on_boarding_dialog_button"));
+		base.addElement("favoritar", By.id("com.mercadolibre:id/vip_action_bar_menu_action_bookmark"));
 		
 	}
 	
@@ -37,6 +42,8 @@ public class PesquisaPage implements Page {
 	@Override
 	public void clicarBotao(String label) {
 		
+		if(Utils.isNumeric(label))
+			base.addElement(label, By.xpath("//android.widget.RelativeLayout[" + label + "]/android.widget.FrameLayout[2]/android.widget.FrameLayout"));
 		base.touchActionDownDisplayed(label);
 		base.clickElementByMapElements(label);
 	}
@@ -44,7 +51,13 @@ public class PesquisaPage implements Page {
 	@Override
 	public void digitarTexto(String name, String texto) {
 		
-		base.setText(name, texto);
+		base.setText(name, texto, false);
+	}	
+	
+	@Override
+	public void digitarTexto(String name, String texto, Boolean slow) {
+		
+		base.setText(name, texto, slow);
 	}
 
 	@Override
@@ -110,7 +123,7 @@ public class PesquisaPage implements Page {
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		
-		base.touchActionDownTextDisplayed(texto, "");
+		base.touchActionDownTextDisplayed(texto, message);
 		base.selectItemList(name, texto);
 	}
 
@@ -160,5 +173,11 @@ public class PesquisaPage implements Page {
 	public void pause(Integer time) {
 		
 		base.wait(time);
+	}
+
+	@Override
+	public List<MobileElement> retornaElementos(String name) {
+		
+		return base.getListElements(name);
 	}
 }

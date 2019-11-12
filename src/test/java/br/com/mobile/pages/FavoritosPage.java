@@ -9,26 +9,24 @@ import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.interfaces.Page;
 import io.appium.java_client.MobileElement;
 
-public class MinhaContaPage implements Page {
-
+public class FavoritosPage implements Page {
+	
 	private static final BasePage base = SetupController.loadSetup().getBasePage();
 	
-	public MinhaContaPage() {
+	public FavoritosPage() {
 		
-		base.addElement("sair", By.id("com.mercadolibre:id/my_account_user_footer_image"));
-		base.addElement("SIM, SAIR", By.id("android:id/button1"));
+		base.addElement("favoritos", By.xpath("//android.widget.FrameLayout/android.widget.RelativeLayout"));
 	}
-	
+
 	@Override
 	public boolean textoExibidoPagina(String texto) {
 
-		return base.waitText(texto);
+		return base.waitText(texto);		
 	}
 
 	@Override
 	public void clicarBotao(String label) {
 		
-		base.touchActionDownDisplayed(label);
 		base.clickElementByMapElements(label);
 	}
 
@@ -45,39 +43,39 @@ public class MinhaContaPage implements Page {
 	}
 
 	@Override
-	public void deslizarParaEsquerda() {
+	public void deslizarParaEsquerda() throws Exception {
+		// TODO Auto-generated method stub
 		
-		base.touchActionLeft();
-	}
-
-	@Override
-	public void deslizarParaDireia() {
-		
-		base.touchActionRight();
-	}
-
-	@Override
-	public void deslizarParaCima(Integer qtde) {
-			
-		base.touchActionTop(qtde);
-	}
-
-	@Override
-	public void deslizarParaBaixo(Integer qtde) {
-		
-		base.touchActionDown(qtde);
 	}
 
 	@Override
 	public void deslizarParaDireia(int qtde) throws Exception {
-		
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void deslizarParaEsquerda(int qtde) throws Exception {
-		
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaDireia() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaCima(Integer qtde) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deslizarParaBaixo(Integer qtde) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -105,15 +103,15 @@ public class MinhaContaPage implements Page {
 	}
 
 	@Override
-	public void selecionarItemListaSuspensa(String name, String texto, String message) {
+	public void deslizarParaBaixoTextoVisivel(String texto) {
 		
-		base.selectItemList(name, texto);
+		base.touchActionDownTextDisplayed(texto, "");
 	}
 
 	@Override
-	public void deslizarParaBaixoTextoVisivel(String texto) {
+	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		
-		base.touchActionDownTextDisplayed(texto, "Texto esperado " + texto);
+		base.selectItemList(name, texto);
 	}
 
 	@Override
@@ -151,7 +149,7 @@ public class MinhaContaPage implements Page {
 		
 		base.returnUntilTextDisplayed(texto);
 	}
-
+	
 	@Override
 	public void pause(Integer time) {
 		

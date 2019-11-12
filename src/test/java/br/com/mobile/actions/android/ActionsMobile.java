@@ -1,15 +1,19 @@
 package br.com.mobile.actions.android;
 
+import java.util.List;
+
 import br.com.mobile.commons.Property;
 import br.com.mobile.controllers.PagesController;
 import br.com.mobile.pages.CarrinhoPage;
 import br.com.mobile.pages.ContinuarPage;
+import br.com.mobile.pages.FavoritosPage;
 import br.com.mobile.pages.InicialPage;
 import br.com.mobile.pages.LogarPage;
 import br.com.mobile.pages.MenuPage;
 import br.com.mobile.pages.MinhaContaPage;
 import br.com.mobile.pages.PesquisaPage;
 import br.com.mobile.reports.LogReport;
+import io.appium.java_client.MobileElement;
 
 public class ActionsMobile extends PagesController {
 	
@@ -27,6 +31,8 @@ public class ActionsMobile extends PagesController {
 	
 	private MinhaContaPage minhaContaPage =  new MinhaContaPage();
 	
+	private FavoritosPage favoritosPage = new FavoritosPage();
+	
 	public void logar(String usuario, String senha) {
 		
 		getPage(this.inicialPage).ifPopupIsPresent("Acessar a minha conta", "Acessar a minha conta", 2);
@@ -35,8 +41,8 @@ public class ActionsMobile extends PagesController {
 			getPage(this.inicialPage).selecionarItemListaSuspensa("paises", "Brasil", "Clicar no país de localização");
 		
 		getPage(this.inicialPage).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 2);
-		getPage(this.inicialPage).ifPopupIsPresent("O que está esperando?", "Já tenho conta", 2);
-		getPage(this.continuarPage).ifPopupIsPresent("Continuar com", "NENHUMA DAS ALTERNATIVAS ACIMA", 2);			
+		getPage(this.inicialPage).ifPopupIsPresent("O que está esperando?", "Já tenho conta");
+		getPage(this.continuarPage).ifPopupIsPresent("Continuar com", "NENHUMA DAS ALTERNATIVAS ACIMA");			
 		
 		if(getPage(this.logarPage).textoExibidoPagina("E-mail ou usuário", 2)) {
 			getPage(this.logarPage).digitarTexto("e-mail", usuario);
@@ -54,18 +60,18 @@ public class ActionsMobile extends PagesController {
 		
 		getPage(this.pesquisaPage).clicarBotao("Buscar");
 		getPage(this.pesquisaPage).digitarTexto("txtBusca", produto);
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", produto, "");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", produto, "Selecionar item " + produto);
 		getPage(this.pesquisaPage).deslizarParaBaixoTextoVisivel(descricao);
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
 	}
 	
 	public void novaPesquisaProduto(String produto, String descricao, String esperado) {
 		
 		getPage(this.pesquisaPage).clicarBotao("nova pesquisa");
 		getPage(this.pesquisaPage).digitarTexto("txtBusca", produto);
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", produto, "");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", produto, "Selecionar item " + produto);
 		getPage(this.pesquisaPage).deslizarParaBaixoTextoVisivel(descricao);
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
 	}
 
 	public void adicionarProdutoCarrinho() {
@@ -121,19 +127,53 @@ public class ActionsMobile extends PagesController {
 		getPage(this.inicialPage).clicarBotao(tipo);
 	}
 	
+	public void irParaMenuFavoritos() {
+		
+		getPage(this.inicialPage).clicarBotao("menu");
+		getPage(this.menuPage).clicarBotao("Favoritos");
+		getPage(this.favoritosPage).textoExibidoPagina("Favoritos");
+	}
+	
 	public void selecionarMarcaModelo(String marca, String modelo) {
 		
 		getPage(this.inicialPage).ifPopupIsPresent("Qual marca e modelo?","marcaModelo");
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("marcas", marca, "");
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("modelos", modelo, "");
+		getPage(this.inicialPage).textoExibidoPagina("Marca");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("marcas", marca, "Selecionar item " + marca);
+		getPage(this.pesquisaPage).textoExibidoPagina(marca);
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("modelos", modelo, "Selecionar item " + modelo);
 		getPage(this.pesquisaPage).clicarBotao("aplicar");
 		getPage(this.pesquisaPage).clicarBotao("buscarVeiculo");
 	}
 	
 	public void escolherProduto(String descricao) {
 		
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
 		getPage(this.pesquisaPage).ifPopupIsPresent("Agora você pode reservar", "reservarVeiculo", 2);
 	}
-
+	
+	public void favoritarProduto() {
+		
+		getPage(this.pesquisaPage).clicarBotao("favoritar");
+	}
+	
+	public void validarProdutoListaFavoritos(String descricao) {
+		
+		getPage(this.inicialPage).clicarBotao("menu");
+		getPage(this.menuPage).clicarBotao("Favoritos");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
+		
+		LogReport.passFail(getPage(this.inicialPage).textoExibidoPagina(descricao, 10), "Descricao esperada: " + descricao);
+	}
+	
+	public void removerProdutosListaFavoritos() {
+		
+		List<MobileElement> elements = getPage(this.favoritosPage).retornaElementos("favoritos");
+		for(MobileElement e : elements) {
+			e.click();
+			getPage(this.pesquisaPage).ifPopupIsPresent("Agora você pode reservar", "reservarVeiculo", 2);
+			getPage(this.pesquisaPage).clicarBotao("favoritar");
+			irParaMenuFavoritos();
+		}
+	}
+	
 }

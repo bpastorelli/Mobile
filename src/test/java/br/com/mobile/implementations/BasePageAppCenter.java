@@ -16,7 +16,6 @@ import org.openqa.selenium.interactions.Actions;
 
 import br.com.mobile.commons.Property;
 import br.com.mobile.interfaces.BasePage;
-import br.com.mobile.reports.LogReport;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
@@ -128,7 +127,6 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 		try {
 			element = findElement(by);
 			waitDisplayed(element, Property.TIMEOUT);
-			LogReport.info("Clicar no elemento " + by);
 		} catch (Exception e) {
 			assertFalse("[FALHA]Falha ao clicar no elemento " + by.toString() + ".", true);
 		}
@@ -272,7 +270,6 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 		for(int i=0; i<qtde; i++) {
 			touchActionLeft();
 		}
-		
 	}
 
 	/**
@@ -392,11 +389,25 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 
 	@Override
 	public void setText(String name, String text) {
+		
+		setText(name, text, false);
+	}
+	
+	@Override
+	public void setText(String name, String text, Boolean slow) {
 
 		try {
 			element = getElement(name);
 			waitDisplayed(element, Property.TIMEOUT);
-			element.sendKeys(text);
+			 
+			if(slow) {				
+				for (int i=0; i<text.length(); i++) {
+					char c = text.charAt(i);
+					element.sendKeys(String.valueOf(c));
+				}
+			} else {				
+				element.sendKeys(text);
+			}
 		} catch (Exception e) {
 			assertFalse("[FALHA]Falha ao enviar texto para o campo " + name + ".", true);
 		}
@@ -413,6 +424,17 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 		}
 	}
 
+	@Override
+	public void touchActionTopTextDisplayed(String text, String message) {
+
+		for (int i = 0; i < Property.TIMEOUT; i++) {
+			if (!textIsPresent(text)) {
+				touchActionTop();
+			} else
+				return;
+		}
+	}
+	
 	@Override
 	public void touchActionDownDisplayed(String name) {
 
@@ -485,7 +507,6 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!elementIsPresent(name)) {
 				touchActionLeft();
-				LogReport.info(message);
 			} else
 				return;
 		}
@@ -497,7 +518,6 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!elementIsPresent(name)) {
 				touchActionRight();
-				LogReport.info(message);
 			} else
 				return;
 		}
@@ -635,7 +655,7 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 	public void returnUntilTextDisplayed(String text) {
 		
 		for (int i = 0; i < Property.TIMEOUT; i++) {
-			wait(1);
+			waitText(text, 2);
 			if (textIsPresent(text)) {
 				return;
 			}

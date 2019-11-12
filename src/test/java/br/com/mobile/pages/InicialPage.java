@@ -1,10 +1,13 @@
 package br.com.mobile.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 
 import br.com.mobile.controllers.SetupController;
 import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.interfaces.Page;
+import io.appium.java_client.MobileElement;
 
 public class InicialPage implements Page {
 	
@@ -20,7 +23,7 @@ public class InicialPage implements Page {
 		base.addElement("Acessar a minha conta", By.id("com.mercadolibre:id/button_footer_secondary"));
 		base.addElement("Carros, motos e outros", By.xpath("//android.widget.LinearLayout[4]/android.widget.FrameLayout"));
 		base.addElement("Motos", By.xpath("//android.widget.RadioButton[@text=\"Motos\"]"));
-		base.addElement("Carros", By.xpath("//android.widget.RadioButton[@text=\"Carros\"]"));
+		base.addElement("Carros e caminhonetes", By.xpath("//android.widget.RadioButton[@text=\"Carros e caminhonetes\"]"));
 		base.addElement("marcaModelo", By.id("com.mercadolibre:id/classifieds_homes_filters_filter_wizard_btn_main"));
 	}
 	
@@ -45,7 +48,13 @@ public class InicialPage implements Page {
 	@Override
 	public void digitarTexto(String name, String texto) {
 		
-		base.setText(name, texto);
+		base.setText(name, texto, false);
+	}	
+	
+	@Override
+	public void digitarTexto(String name, String texto, Boolean slow) {
+		
+		base.setText(name, texto, slow);
 	}
 
 	@Override
@@ -121,6 +130,12 @@ public class InicialPage implements Page {
 	}
 	
 	@Override
+	public void ifPopupIsPresent(String mensagem, String name, Integer time) {
+		
+		base.clickByText(mensagem, name, time);
+	}
+	
+	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		
 		base.selectItemList(name, texto);
@@ -145,12 +160,6 @@ public class InicialPage implements Page {
 	}
 
 	@Override
-	public void ifPopupIsPresent(String mensagem, String name, Integer time) {
-		
-		base.clickByText(mensagem, name, time);
-	}
-
-	@Override
 	public void voltar(String texto) {
 		
 		base.returnUntilTextDisplayed(texto);
@@ -160,5 +169,11 @@ public class InicialPage implements Page {
 	public void pause(Integer time) {
 		
 		base.wait(time);
+	}
+	
+	@Override
+	public List<MobileElement> retornaElementos(String name) {
+		
+		return base.getListElements(name);
 	}
 }

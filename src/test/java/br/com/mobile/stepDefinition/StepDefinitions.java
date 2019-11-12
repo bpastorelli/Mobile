@@ -67,5 +67,24 @@ public class StepDefinitions {
 		actionsMobile.escolherProduto(descricao);
 	}
 	
-
+	@When("^Marco o produto nos meus favoritos$")
+	public void marcar_produto_como_favorito() {
+		
+		actionsMobile.favoritarProduto();
+	}
+	
+	@Then("^Valido se o produto \"([^\"]*)\" esta presenta na lista de favoritos$")
+	public void valido_se_o_produto_esta_presente_na_lista_de_favoritos(String descricao) {
+		
+		actionsMobile.validarProdutoListaFavoritos(descricao);
+	}
+	
+	@When("^Removo todos os produtos da lista de favoritos$")
+	public void removo_produtos_lista_favoritos() {
+		
+		actionsMobile.retornarInicio("Pagar com QR");
+		actionsMobile.irParaMenuFavoritos();
+		actionsMobile.removerProdutosListaFavoritos();
+	}
+	
 } 

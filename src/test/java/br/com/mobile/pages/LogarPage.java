@@ -1,10 +1,13 @@
 package br.com.mobile.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 
 import br.com.mobile.controllers.SetupController;
 import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.interfaces.Page;
+import io.appium.java_client.MobileElement;
 
 public class LogarPage implements Page {
 
@@ -33,7 +36,13 @@ public class LogarPage implements Page {
 	@Override
 	public void digitarTexto(String name, String texto) {
 		
-		base.setText(name, texto);
+		base.setText(name, texto, false);
+	}	
+	
+	@Override
+	public void digitarTexto(String name, String texto, Boolean slow) {
+		
+		base.setText(name, texto, slow);
 	}
 
 	@Override
@@ -148,5 +157,11 @@ public class LogarPage implements Page {
 	public void pause(Integer time) {
 		
 		base.wait(time);
+	}
+	
+	@Override
+	public List<MobileElement> retornaElementos(String name) {
+		
+		return base.getListElements(name);
 	}
 }

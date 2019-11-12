@@ -162,10 +162,16 @@ public interface BasePage {
 	
 	/**
 	 * Digitar um texto
-	 * 
 	 * @param text Texto
 	 */
 	abstract void setText(String name, String text);
+	
+	/**
+	 * Digitar um texto
+	 * @param text Texto
+	 * @param slow Insere os caracteres um por, simulando uma digitação
+	 */	
+	abstract void setText(String name, String text, Boolean slow);
 	
 	/**
 	 * Desliza para cima até que o elemento esteja visivel.
@@ -225,6 +231,13 @@ public interface BasePage {
 	 * @message Mensagem e evidência gerada após deslizar a tela.
 	 */
 	abstract void touchActionDownTextDisplayed(String text, String message);
+	
+	/**
+	 * Desliza para cima até que o texto esteja visível.
+	 * @param texto Texto esperado.
+	 * @message Mensagem e evidência gerada após deslizar a tela.
+	 */
+	abstract void touchActionTopTextDisplayed(String text, String message);
 	
 	/**
 	 * Verifica se o elemento está presente

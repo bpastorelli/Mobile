@@ -1,5 +1,9 @@
 package br.com.mobile.interfaces;
 
+import java.util.List;
+
+import io.appium.java_client.MobileElement;
+
 public interface Page {
 
 	/**
@@ -32,6 +36,14 @@ public interface Page {
 	 * @param texto Texto a ser digitado
 	 */
 	abstract void digitarTexto(String name, String texto);
+	
+	/**
+	 * Digita um texto
+	 * 
+	 * @param texto Texto a ser digitado
+	 * @param slow Simula a digitação dos caratres um por um.
+	 */
+	abstract void digitarTexto(String name, String texto, Boolean slow);
 	
 	/**
 	 * Deslizar para a esquerda.
@@ -155,5 +167,12 @@ public interface Page {
 	 * @param time Tempo de pausa
 	 */
 	abstract void pause(Integer time);
+	
+	/**
+	 * Retorna uma lista de elementos pelo nome da lista mapeada na página
+	 * @param name Nome da lista
+	 * @return List<MobileElement>
+	 */
+	abstract List<MobileElement> retornaElementos(String name);
 	
 }

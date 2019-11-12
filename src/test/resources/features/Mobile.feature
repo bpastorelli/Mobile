@@ -9,17 +9,6 @@ Feature: Automacao Mobile
     And Que efetuo o login com usuario "email@email.com" e senha "12345" validos
     Then Valido o teste com o texto "Pagar com QR" na pagina atual
 
-  @pesquisa_produtos
-  Scenario Outline: Pesquisar um produto
-    Given Que eu quero testar "Pesquisa de produtos"
-    When Pesquiso o produto tipo <tipo> descricao <descricao>
-    Then Visualizo o preco de <preco> do produto
-
-    Examples: 
-      | tipo            | descricao                                                       | preco      |
-      | "Notebook"      | "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux" | "R$ 1.899" |
-      | "Bota Robofoot" | "Robofoot Salvapé Original Seminova Top"                        | "R$ 180"   |
-
   @adicionar_produto_carrinho
   Scenario Outline: Adicionar produto ao carrinho
     Given Que eu quero testar "Adicionar produto ao carrinho"
@@ -31,7 +20,7 @@ Feature: Automacao Mobile
     Examples: 
       | tipo            | descricao                                                       | preco      |
       | "Notebook"      | "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux" | "R$ 1.899" |
-      | "Bota Robofoot" | "Robofoot Salvapé Original Seminova Top"                        | "R$ 180"   |
+      | "Bota Robofoot" | "Bota Imobilizadora Robofoot Salvapé Original Seminova Top"     | "R$ 180"   |
 
   @remover_todos_produtos_carrinho
   Scenario: Remover todos os produto do carrinho
@@ -46,11 +35,21 @@ Feature: Automacao Mobile
     And Seleciono a marca <marca> e modelo <modelo>
     When Escolho o veiculo <escolher> e visualizo
     Then Valido o teste com o texto <preco> na pagina atual
+    When Marco o produto nos meus favoritos
+    Then Valido se o produto <escolher> esta presenta na lista de favoritos
 
     Examples: 
-      | tipo    | marca    | modelo           | escolher                | preco       |
-      | "Motos" | "Yamaha" | "MT 07"          | "Yamaha Mt-07 Abs,2018" | "R$ 31.490" |
-      | "Motos" | "Suzuki" | "Outros Modelos" | "Suzuki Gsx R 1100"     | "R$ 16.900" |
+      | tipo                    | marca        | modelo           | escolher                                                   | preco       |
+      | "Motos"                 | "Yamaha"     | "MT 07"          | "Yamaha Mt-07 Abs,2018 Financiamos E Parcelamos No Cartão" | "R$ 31.490" |
+      | "Motos"                 | "Suzuki"     | "Outros Modelos" | "Suzuki Gsx R 1100"                                        | "R$ 16.900" |
+      | "Motos"                 | "Triumph"    | "Tiger 800"      | "Triumph Tiger 800 2014"                                   | "R$ 28.900" |
+      | "Carros e caminhonetes" | "Mitsubishi" | "L200"           | "Mitsubishi L200 3.5 Triton Hpe Cab. Dupl A 4x4 Aut. 4p"   | "R$ 49.990" |
+
+  @remover_todos_produtos_lista_favoritos
+  Scenario: Remover todos os produtos da lista de favoritos
+    Given Que eu quero testar "Remover todos os produtos da lista de favoritos"
+    When Removo todos os produtos da lista de favoritos
+    Then Valido o teste com o texto "Você ainda não adicionou os seus favoritos." na pagina atual
 
   @logout
   Scenario: Efetuar logout

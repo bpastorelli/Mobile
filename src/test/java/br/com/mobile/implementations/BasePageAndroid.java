@@ -21,7 +21,7 @@ import io.appium.java_client.touch.offset.PointOption;
 
 public class BasePageAndroid extends SetupAndroid implements BasePage {
 
-	private static WebElement element;
+	private static MobileElement element;
 
 	private static Map<String, By> mapElements = new HashMap<String, By>();
 	
@@ -44,8 +44,8 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	 * @return WebElemento
 	 */
 	@Override
-	public WebElement getElement(String name) {
-
+	public MobileElement getElement(String name) {
+		
 		By obj = null;
 		element = null;
 		for(int i=0; i < Property.TIMEOUT; i++) {			
@@ -88,7 +88,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	 * @return WebElement
 	 */
 	@Override
-	public WebElement findElement(By by) {
+	public MobileElement findElement(By by) {
 
 		element = null;
 		try {
@@ -120,7 +120,6 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	/**
 	 * Clica no elemento a partir do By.
-	 * 
 	 * @param by Id, Name, Xpath...
 	 */
 	@Override
@@ -139,7 +138,6 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	/**
 	 * Clica no elemento a partir do By.
-	 * 
 	 * @param element Elemento a ser clicado
 	 */
 	@Override
@@ -256,7 +254,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 		try {
 
-			Dimension size = driver.manage().window().getSize();
+			Dimension size = getDriver().manage().window().getSize();
 			int startx = (int) (size.width * 0.9D);
 			int endx = (int) (size.width * 0.1D);
 			int starty = size.height / 2;
@@ -283,7 +281,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 		try {
 
-			Dimension size = driver.manage().window().getSize();
+			Dimension size = getDriver().manage().window().getSize();
 			int startx = (int) (size.width * 0.1D);
 			int endx = (int) (size.width * 0.9D);
 			int starty = size.height / 2;
@@ -365,7 +363,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	public void scroll(int fromX, int fromY, int toX, int toY) {
 
 		@SuppressWarnings("rawtypes")
-		TouchAction<?> touchAction = new TouchAction(driver);
+		TouchAction<?> touchAction = new TouchAction(getDriver());
 		touchAction.longPress(PointOption.point(fromX, fromY)).moveTo(PointOption.point(toX, toY)).release().perform();
 	}
 
@@ -381,14 +379,29 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			e.printStackTrace();
 		}
 	}
-
+	
 	@Override
 	public void setText(String name, String text) {
-
+		
+		setText(name, text, false);
+	}
+	
+	@Override
+	public void setText(String name, String text, Boolean slow) {
+		
 		try {
 			element = getElement(name);
 			waitDisplayed(element, Property.TIMEOUT);
-			element.sendKeys(text);
+			
+			if(slow) {				
+				for (int i=0; i<text.length(); i++) { 		 
+			        char c = text.charAt(i);
+			        String s = new StringBuilder().append(c).toString();
+			        element.sendKeys(s);
+				}
+			} else {				
+				element.sendKeys(text);
+			}
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao enviar texto para o campo " + name + ".");
 		}
@@ -403,6 +416,8 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			else
 				return;
 		}
+		
+		LogReport.fail("Elemento \"" + name + "\" não encontrado.");
 	}
 
 	@Override
@@ -414,6 +429,8 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			else
 				return;
 		}
+		
+		LogReport.fail("Elemento \"" + name + "\" não encontrado.");
 	}
 
 	@Override
@@ -425,6 +442,8 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			else
 				return;
 		}
+		
+		LogReport.fail("Elemento não encontrado.");
 	}
 
 	@Override
@@ -449,10 +468,13 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!elementIsPresent(name)) {
 				touchActionLeft();
-				LogReport.info(message, Property.EVIDENCIAR_STEPS);
-			} else
+			} else {
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);				
 				return;
+			}
 		}
+		
+		LogReport.fail("Elemento \"" + name + "\" não encontrado.");
 	}
 
 	@Override
@@ -461,10 +483,13 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!elementIsPresent(name)) {
 				touchActionRight();
+			} else {
 				LogReport.info(message, Property.EVIDENCIAR_STEPS);
-			} else
 				return;
+			}
 		}
+		
+		LogReport.fail("Elemento \"" + name + "\" não encontrado.");
 	}
 
 	@Override
@@ -473,10 +498,28 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!textIsPresent(text)) {
 				touchActionLeft();
+			} else {				
 				LogReport.info(message, Property.EVIDENCIAR_STEPS);
-			} else
 				return;
+			}
 		}
+		
+		LogReport.fail("Produto \"" + text + "\" não encontrado.");
+	}
+	
+	@Override
+	public void touchActionTopTextDisplayed(String text, String message) {
+
+		for (int i = 0; i < Property.TIMEOUT; i++) {
+			if (!textIsPresent(text)) {
+				touchActionTop();
+			} else {
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);				
+				return;
+			}
+		}
+		
+		LogReport.fail("Produto \"" + text + "\" não encontrado.");
 	}
 
 	@Override
@@ -542,16 +585,20 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public void selectItemList(String name, String text) {
 
-		List<MobileElement> elements = getListElements(name);
-
-		for (MobileElement e : elements) {
-			if (e.getText().trim().toLowerCase().contains(text.trim().toLowerCase())) {
-				touchActionDownDisplayed(e);
-				clickElement(e);
-				LogReport.info("Selecionado o item " + text, Property.EVIDENCIAR_STEPS);
-				return;
-			}
-		}
+		List<MobileElement> elements = getListElements(name);	
+		
+        element = elements.stream()
+                .filter(x -> text.toLowerCase().equals(x.getText().trim().toLowerCase()))
+                .findAny()
+                .orElse(null);
+        
+        if(!element.equals(null)) {        	
+        	touchActionDownDisplayed(element);
+        	clickElement(element);
+        	LogReport.info("Selecionado o item " + text, Property.EVIDENCIAR_STEPS);        
+        }else {
+        	LogReport.fail("Elemento " + name + " não encontrado.");
+        }
 	}
 
 	@Override
@@ -565,6 +612,8 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 				return;
 			}
 		}
+		
+		LogReport.fail("Produto \"" + text + "\" não encontrado.");
 	}
 
 	@Override
@@ -584,6 +633,8 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			else
 				return;
 		}
+		
+		LogReport.fail("Produto não encontrado.");
 	}
 
 	@Override
@@ -640,7 +691,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	public void returnUntilTextDisplayed(String text) {
 
 		for (int i = 0; i < Property.TIMEOUT; i++) {
-			wait(1);
+			waitText(text, 1);
 			if (textIsPresent(text)) {
 				return;
 			}
