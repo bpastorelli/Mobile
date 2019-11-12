@@ -143,4 +143,13 @@ public class ActionsMobile extends PagesController {
 		getPage(this.pesquisaPage).clicarBotao("favoritar");
 	}
 	
+	public void validarProdutoListaFavoritos(String descricao) {
+		
+		getPage(this.inicialPage).clicarBotao("menu");
+		getPage(this.menuPage).clicarBotao("Favoritos");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
+		
+		LogReport.passFail(getPage(this.inicialPage).textoExibidoPagina(descricao), "Descricao esperada: " + descricao);
+	}
+	
 }

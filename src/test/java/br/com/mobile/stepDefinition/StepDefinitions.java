@@ -72,4 +72,10 @@ public class StepDefinitions {
 		
 		actionsMobile.favoritarProduto();
 	}
+	
+	@Then("^Valido se o produto \"([^\"]*)\" esta presenta na lista de favoritos$")
+	public void valido_se_o_produto_esta_presente_na_lista_de_favoritos(String descricao) {
+		
+		actionsMobile.validarProdutoListaFavoritos(descricao);
+	}
 } 

@@ -36,6 +36,7 @@ Feature: Automacao Mobile
     When Escolho o veiculo <escolher> e visualizo
     Then Valido o teste com o texto <preco> na pagina atual
     When Marco o produto nos meus favoritos
+    Then Valido se o produto <escolher> esta presenta na lista de favoritos
 
     Examples: 
       | tipo                    | marca        | modelo           | escolher                                                   | preco       |
