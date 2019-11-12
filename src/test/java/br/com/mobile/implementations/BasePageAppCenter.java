@@ -389,11 +389,25 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 
 	@Override
 	public void setText(String name, String text) {
+		
+		setText(name, text, false);
+	}
+	
+	@Override
+	public void setText(String name, String text, Boolean slow) {
 
 		try {
 			element = getElement(name);
 			waitDisplayed(element, Property.TIMEOUT);
-			element.sendKeys(text);
+			 
+			if(slow) {				
+				for (int i=0; i<text.length(); i++) {
+					char c = text.charAt(i);
+					element.sendKeys(String.valueOf(c));
+				}
+			} else {				
+				element.sendKeys(text);
+			}
 		} catch (Exception e) {
 			assertFalse("[FALHA]Falha ao enviar texto para o campo " + name + ".", true);
 		}

@@ -162,10 +162,16 @@ public interface BasePage {
 	
 	/**
 	 * Digitar um texto
-	 * 
 	 * @param text Texto
 	 */
 	abstract void setText(String name, String text);
+	
+	/**
+	 * Digitar um texto
+	 * @param text Texto
+	 * @param slow Insere os caracteres um por, simulando uma digitação
+	 */	
+	abstract void setText(String name, String text, Boolean slow);
 	
 	/**
 	 * Desliza para cima até que o elemento esteja visivel.

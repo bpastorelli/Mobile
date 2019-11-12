@@ -45,7 +45,13 @@ public class InicialPage implements Page {
 	@Override
 	public void digitarTexto(String name, String texto) {
 		
-		base.setText(name, texto);
+		base.setText(name, texto, false);
+	}	
+	
+	@Override
+	public void digitarTexto(String name, String texto, Boolean slow) {
+		
+		base.setText(name, texto, slow);
 	}
 
 	@Override

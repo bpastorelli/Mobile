@@ -120,7 +120,6 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	/**
 	 * Clica no elemento a partir do By.
-	 * 
 	 * @param by Id, Name, Xpath...
 	 */
 	@Override
@@ -139,7 +138,6 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	/**
 	 * Clica no elemento a partir do By.
-	 * 
 	 * @param element Elemento a ser clicado
 	 */
 	@Override
@@ -381,14 +379,29 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			e.printStackTrace();
 		}
 	}
-
+	
 	@Override
 	public void setText(String name, String text) {
-
+		
+		setText(name, text, false);
+	}
+	
+	@Override
+	public void setText(String name, String text, Boolean slow) {
+		
 		try {
 			element = getElement(name);
 			waitDisplayed(element, Property.TIMEOUT);
-			element.sendKeys(text);
+			
+			if(slow) {				
+				for (int i=0; i<text.length(); i++) { 		 
+			        char c = text.charAt(i);
+			        String s = new StringBuilder().append(c).toString();
+			        element.sendKeys(s);
+				}
+			} else {				
+				element.sendKeys(text);
+			}
 		} catch (Exception e) {
 			LogReport.fail("[FALHA]Falha ao enviar texto para o campo " + name + ".");
 		}

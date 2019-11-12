@@ -34,6 +34,14 @@ public interface Page {
 	abstract void digitarTexto(String name, String texto);
 	
 	/**
+	 * Digita um texto
+	 * 
+	 * @param texto Texto a ser digitado
+	 * @param slow Simula a digitação dos caratres um por um.
+	 */
+	abstract void digitarTexto(String name, String texto, Boolean slow);
+	
+	/**
 	 * Deslizar para a esquerda.
 	 */
 	abstract void deslizarParaEsquerda() throws Exception;
