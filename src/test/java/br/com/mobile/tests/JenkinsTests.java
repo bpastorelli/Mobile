@@ -13,8 +13,8 @@ public class JenkinsTests extends BaseTestCase {
     @Test
     public void testA() {
     	
-    	String usuario = "brunopastorelli@hotmail.com";
-    	String senha = "sid04197";
+    	String usuario = "email@email.com";
+    	String senha = "123456";
     	
     	LogReport.createTest("Login");
     	actions.logar(usuario, senha);

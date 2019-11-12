@@ -19,7 +19,7 @@ public class AppCenterTests extends BaseTestCase {
     @Test
     public void testA() {
     	
-    	actionsAppCenter.logar("brunopastorelli@hotmail.com", "sid04197");
+    	actionsAppCenter.logar("email@email.com", "123456");
     }
     
     @Test
