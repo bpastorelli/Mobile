@@ -38,9 +38,9 @@ public class Appium {
 		executor.setExitValue(1);
 		try {
 			executor.execute(cmdLine, handler);
-			Thread.sleep(10000);
+			Utils.wait(10);
 			Utils.log("[APPIUM]Appium iniciado...");
-		} catch (IOException | InterruptedException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

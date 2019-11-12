@@ -67,5 +67,9 @@ public class StepDefinitions {
 		actionsMobile.escolherProduto(descricao);
 	}
 	
-
+	@When("^Marco o produto nos meus favoritos$")
+	public void marcar_produto_como_favorito() {
+		
+		actionsMobile.favoritarProduto();
+	}
 } 

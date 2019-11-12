@@ -137,5 +137,10 @@ public class ActionsMobile extends PagesController {
 		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
 		getPage(this.pesquisaPage).ifPopupIsPresent("Agora você pode reservar", "reservarVeiculo", 2);
 	}
-
+	
+	public void favoritarProduto() {
+		
+		getPage(this.pesquisaPage).clicarBotao("favoritar");
+	}
+	
 }

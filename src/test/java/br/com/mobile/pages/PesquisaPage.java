@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import br.com.mobile.controllers.SetupController;
 import br.com.mobile.interfaces.BasePage;
 import br.com.mobile.interfaces.Page;
+import br.com.mobile.utils.Utils;
 
 public class PesquisaPage implements Page {
 	
@@ -25,6 +26,7 @@ public class PesquisaPage implements Page {
 		base.addElement("aplicar", By.id("com.mercadolibre:id/classifieds_homes_filters_location_apply"));
 		base.addElement("buscarVeiculo", By.id("com.mercadolibre:id/filter_button_button"));
 		base.addElement("reservarVeiculo", By.id("com.mercadolibre:id/vip_on_boarding_dialog_button"));
+		base.addElement("favoritar", By.id("com.mercadolibre:id/vip_action_bar_menu_action_bookmark"));
 		
 	}
 	
@@ -37,6 +39,8 @@ public class PesquisaPage implements Page {
 	@Override
 	public void clicarBotao(String label) {
 		
+		if(Utils.isNumeric(label))
+			base.addElement(label, By.xpath("//android.widget.RelativeLayout[" + label + "]/android.widget.FrameLayout[2]/android.widget.FrameLayout"));
 		base.touchActionDownDisplayed(label);
 		base.clickElementByMapElements(label);
 	}
