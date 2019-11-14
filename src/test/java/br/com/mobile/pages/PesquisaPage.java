@@ -20,7 +20,6 @@ public class PesquisaPage implements Page {
 		base.addElement("Buscar", By.id("com.mercadolibre:id/home_search"));
 		base.addElement("txtBusca", By.id("com.mercadolibre:id/search_input_edittext"));
 		base.addElement("produtos", By.xpath("//android.widget.TextView"));
-		base.addElement("produtos filtrados", By.xpath("//android.widget.TextView"));
 		base.addElement("nova pesquisa", By.id("com.mercadolibre:id/vip_action_bar_menu_action_search"));
 		base.addElement("adicionarCarrinho", By.xpath("//android.widget.TextView[@text=\"Adicionar ao carrinho\"]"));
 		base.addElement("carrinho", By.id("com.mercadolibre:id/cart_icon"));
@@ -123,7 +122,6 @@ public class PesquisaPage implements Page {
 	@Override
 	public void selecionarItemListaSuspensa(String name, String texto, String message) {
 		
-		base.touchActionDownTextDisplayed(texto, message);
 		base.selectItemList(name, texto);
 	}
 

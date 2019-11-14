@@ -35,12 +35,12 @@ public class ActionsMobile extends PagesController {
 	
 	public void logar(String usuario, String senha) {
 		
+		getPage(this.inicialPage).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 1);
 		getPage(this.inicialPage).ifPopupIsPresent("Acessar a minha conta", "Acessar a minha conta", 2);
-		getPage(this.inicialPage).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 2);
-		if(getPage(this.inicialPage).textoExibidoPagina("Onde você está?", 2))		
+		if(getPage(this.inicialPage).textoExibidoPagina("Onde você está?", 1))		
 			getPage(this.inicialPage).selecionarItemListaSuspensa("paises", "Brasil", "Clicar no país de localização");
 		
-		getPage(this.inicialPage).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 2);
+		getPage(this.inicialPage).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 1);
 		getPage(this.inicialPage).ifPopupIsPresent("O que está esperando?", "Já tenho conta");
 		getPage(this.continuarPage).ifPopupIsPresent("Continuar com", "NENHUMA DAS ALTERNATIVAS ACIMA");			
 		
@@ -52,8 +52,8 @@ public class ActionsMobile extends PagesController {
 		getPage(this.logarPage).textoExibidoPagina("Senha");
 		getPage(this.logarPage).digitarTexto("senha", senha);
 		getPage(this.logarPage).clicarBotao("Entrar");
-		getPage(this.inicialPage).ifPopupIsPresent("Salvar senha do Mercado Livre", "NUNCA", 2);
-		getPage(this.inicialPage).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 2);
+		getPage(this.inicialPage).ifPopupIsPresent("Salvar senha do Mercado Livre", "NUNCA", 1);
+		getPage(this.inicialPage).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 1);
 	}
 	
 	public void pesquisaProduto(String produto, String descricao) {
@@ -61,8 +61,8 @@ public class ActionsMobile extends PagesController {
 		getPage(this.pesquisaPage).clicarBotao("Buscar");
 		getPage(this.pesquisaPage).digitarTexto("txtBusca", produto);
 		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", produto, "Selecionar item " + produto);
-		getPage(this.pesquisaPage).deslizarParaBaixoTextoVisivel(descricao);
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
+		//getPage(this.pesquisaPage).deslizarParaBaixoTextoVisivel(descricao);
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", descricao, "Selecionar item " + descricao);
 	}
 	
 	public void novaPesquisaProduto(String produto, String descricao, String esperado) {
@@ -70,8 +70,8 @@ public class ActionsMobile extends PagesController {
 		getPage(this.pesquisaPage).clicarBotao("nova pesquisa");
 		getPage(this.pesquisaPage).digitarTexto("txtBusca", produto);
 		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", produto, "Selecionar item " + produto);
-		getPage(this.pesquisaPage).deslizarParaBaixoTextoVisivel(descricao);
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
+		//getPage(this.pesquisaPage).deslizarParaBaixoTextoVisivel(descricao);
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", descricao, "Selecionar item " + descricao);
 	}
 
 	public void adicionarProdutoCarrinho() {
@@ -147,7 +147,7 @@ public class ActionsMobile extends PagesController {
 	
 	public void escolherProduto(String descricao) {
 		
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", descricao, "Selecionar item " + descricao);
 		getPage(this.pesquisaPage).ifPopupIsPresent("Agora você pode reservar", "reservarVeiculo", 2);
 	}
 	
@@ -160,7 +160,7 @@ public class ActionsMobile extends PagesController {
 		
 		getPage(this.inicialPage).clicarBotao("menu");
 		getPage(this.menuPage).clicarBotao("Favoritos");
-		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos filtrados", descricao, "Selecionar item " + descricao);
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", descricao, "Selecionar item " + descricao);
 		
 		LogReport.passFail(getPage(this.inicialPage).textoExibidoPagina(descricao, 10), "Descricao esperada: " + descricao);
 	}

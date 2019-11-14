@@ -18,13 +18,14 @@ import br.com.mobile.reports.LogReport;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
+import java8.util.Objects;
 
 public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	private static MobileElement element;
 
 	private static Map<String, By> mapElements = new HashMap<String, By>();
-	
+
 	/**
 	 * Adiciona um elemento mapeado ao mapa de elementos.
 	 * 
@@ -45,20 +46,21 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	 */
 	@Override
 	public MobileElement getElement(String name) {
-		
+
 		By obj = null;
 		element = null;
-		for(int i=0; i < Property.TIMEOUT; i++) {			
+		for (int i = 0; i < Property.TIMEOUT; i++) {
 			try {
 				obj = getMap(name);
 				element = getDriver().findElement(obj);
 				waitDisplayed(element, Property.TIMEOUT);
 				return element;
-			} catch (Exception e) {}
+			} catch (Exception e) {
+			}
 		}
-		
+
 		LogReport.fail("Elemento " + name + " não encontrado");
-		
+
 		return element;
 	}
 
@@ -120,6 +122,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	/**
 	 * Clica no elemento a partir do By.
+	 * 
 	 * @param by Id, Name, Xpath...
 	 */
 	@Override
@@ -138,6 +141,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	/**
 	 * Clica no elemento a partir do By.
+	 * 
 	 * @param element Elemento a ser clicado
 	 */
 	@Override
@@ -228,7 +232,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 		return waitText(text, 0);
 	}
-	
+
 	@Override
 	public boolean waitText(String text, Integer time) {
 
@@ -264,11 +268,11 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			LogReport.fail("[FALHA]Falha ao deslizar a tela para esquerda (" + e.getMessage() + ")");
 		}
 	}
-	
+
 	@Override
 	public void touchActionLeft(Integer qtde) {
-		
-		for(int i=0; i< qtde; i++) {
+
+		for (int i = 0; i < qtde; i++) {
 			touchActionLeft();
 		}
 	}
@@ -301,7 +305,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		try {
 
 			int pressX = getDriver().manage().window().getSize().width / 2;
-			int bottomY = getDriver().manage().window().getSize().height / 8;
+			int bottomY = getDriver().manage().window().getSize().height / 6;
 			int topY = getDriver().manage().window().getSize().height * 4 / 5;
 			scroll(pressX, bottomY, pressX, topY);
 		} catch (Exception e) {
@@ -334,7 +338,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 			int pressX = getDriver().manage().window().getSize().width / 2;
 			int bottomY = getDriver().manage().window().getSize().height * 4 / 5;
-			int topY = getDriver().manage().window().getSize().height / 8;
+			int topY = getDriver().manage().window().getSize().height / 6;
 			scroll(pressX, bottomY, pressX, topY);
 		} catch (Exception e) {
 
@@ -379,27 +383,27 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public void setText(String name, String text) {
-		
+
 		setText(name, text, false);
 	}
-	
+
 	@Override
 	public void setText(String name, String text, Boolean slow) {
-		
+
 		try {
 			element = getElement(name);
 			waitDisplayed(element, Property.TIMEOUT);
-			
-			if(slow) {				
-				for (int i=0; i<text.length(); i++) { 		 
-			        char c = text.charAt(i);
-			        String s = new StringBuilder().append(c).toString();
-			        element.sendKeys(s);
+
+			if (slow) {
+				for (int i = 0; i < text.length(); i++) {
+					char c = text.charAt(i);
+					String s = new StringBuilder().append(c).toString();
+					element.sendKeys(s);
 				}
-			} else {				
+			} else {
 				element.sendKeys(text);
 			}
 		} catch (Exception e) {
@@ -416,7 +420,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			else
 				return;
 		}
-		
+
 		LogReport.fail("Elemento \"" + name + "\" não encontrado.");
 	}
 
@@ -429,7 +433,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			else
 				return;
 		}
-		
+
 		LogReport.fail("Elemento \"" + name + "\" não encontrado.");
 	}
 
@@ -442,7 +446,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			else
 				return;
 		}
-		
+
 		LogReport.fail("Elemento não encontrado.");
 	}
 
@@ -469,11 +473,11 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			if (!elementIsPresent(name)) {
 				touchActionLeft();
 			} else {
-				LogReport.info(message, Property.EVIDENCIAR_STEPS);				
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 				return;
 			}
 		}
-		
+
 		LogReport.fail("Elemento \"" + name + "\" não encontrado.");
 	}
 
@@ -488,7 +492,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 				return;
 			}
 		}
-		
+
 		LogReport.fail("Elemento \"" + name + "\" não encontrado.");
 	}
 
@@ -498,15 +502,15 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!textIsPresent(text)) {
 				touchActionLeft();
-			} else {				
+			} else {
 				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 				return;
 			}
 		}
-		
+
 		LogReport.fail("Produto \"" + text + "\" não encontrado.");
 	}
-	
+
 	@Override
 	public void touchActionTopTextDisplayed(String text, String message) {
 
@@ -514,11 +518,11 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			if (!textIsPresent(text)) {
 				touchActionTop();
 			} else {
-				LogReport.info(message, Property.EVIDENCIAR_STEPS);				
+				LogReport.info(message, Property.EVIDENCIAR_STEPS);
 				return;
 			}
 		}
-		
+
 		LogReport.fail("Produto \"" + text + "\" não encontrado.");
 	}
 
@@ -572,33 +576,41 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 		By obj = null;
 		List<MobileElement> elements = null;
 
-		try {
-			obj = getMap(name);
-			elements = getDriver().findElements(obj);
-		} catch (Exception e) {
-			LogReport.fail("[FALHA]Elemento " + obj.toString() + " nao encontrado.");
-		}
+		Integer i = 0;
+		Boolean retorno = false;
+		do {
+			i++;
+			try {
+				obj = getMap(name);
+				elements = getDriver().findElements(obj);
+				retorno = true;
+			} catch (Exception e) {
+			}
+		} while (!retorno && i < 3);
 
+		if (!retorno)
+			LogReport.fail("[FALHA]Elementos " + name + " nao encontrados.");
 		return elements;
 	}
 
 	@Override
 	public void selectItemList(String name, String text) {
 
-		List<MobileElement> elements = getListElements(name);	
+		touchActionDownTextDisplayed(text, "");
+
+		List<MobileElement> elements;
+		elements = getListElements(name);
+
+		element = elements.stream().filter(x -> text.toLowerCase().equals(x.getText().toLowerCase()))
+				.findAny()
+				.orElse(null);
 		
-        element = elements.stream()
-                .filter(x -> text.toLowerCase().equals(x.getText().trim().toLowerCase()))
-                .findAny()
-                .orElse(null);
-        
-        if(!element.equals(null)) {        	
-        	touchActionDownDisplayed(element);
-        	clickElement(element);
-        	LogReport.info("Selecionado o item " + text, Property.EVIDENCIAR_STEPS);        
-        }else {
-        	LogReport.fail("Elemento " + name + " não encontrado.");
-        }
+		if (Objects.equals(element, null))
+			LogReport.fail("Elemento " + name + " não encontrado.");
+		
+		clickElement(element);
+		LogReport.info("Selecionado o item " + text, Property.EVIDENCIAR_STEPS);
+
 	}
 
 	@Override
@@ -612,7 +624,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 				return;
 			}
 		}
-		
+
 		LogReport.fail("Produto \"" + text + "\" não encontrado.");
 	}
 
@@ -633,7 +645,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			else
 				return;
 		}
-		
+
 		LogReport.fail("Produto não encontrado.");
 	}
 
