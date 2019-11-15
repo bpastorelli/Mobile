@@ -584,8 +584,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 				obj = getMap(name);
 				elements = getDriver().findElements(obj);
 				retorno = true;
-			} catch (Exception e) {
-			}
+			} catch (Exception e) {}
 		} while (!retorno && i < 3);
 
 		if (!retorno)
@@ -596,10 +595,9 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public void selectItemList(String name, String text) {
 
-		touchActionDownTextDisplayed(text, "Deslizar até o produto " + text);
-
 		List<MobileElement> elements;
 		elements = getListElements(name);
+		touchActionDownTextDisplayed(text, "Deslizar até o produto " + text);
 
 		element = elements.stream().filter(x -> text.toLowerCase().equals(x.getText().toLowerCase()))
 				.findAny()
@@ -615,7 +613,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 	@Override
 	public void touchActionDownTextDisplayed(String text, String message) {
-
+		
 		for (int i = 0; i < Property.TIMEOUT; i++) {
 			if (!textIsPresent(text)) {
 				touchActionDown();
