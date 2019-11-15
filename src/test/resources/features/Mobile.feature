@@ -45,6 +45,18 @@ Feature: Automacao Mobile
       | "Motos"                 | "Triumph"    | "Tiger 800"      | "Triumph Tiger 800 2014"                                   | "R$ 28.900" |
       | "Carros e caminhonetes" | "Mitsubishi" | "L200"           | "Mitsubishi L200 3.5 Triton Hpe Cab. Dupl A 4x4 Aut. 4p"   | "R$ 49.990" |
 
+  @favoritar_um_produto_na_lista
+  Scenario Outline: Favoritar um produto na lista
+    Given Que eu quero testar "Favoritar um produto na lista"
+    And Que eu quero pesquisar um veiculo tipo <tipo>
+    And Seleciono a marca <marca> e modelo <modelo>
+    When Escolho o veiculo <escolher> sem visualizar os detalhes do anuncio e marco como favorito
+    Then Valido se o produto <escolher> esta presenta na lista de favoritos
+
+    Examples: 
+      | tipo    | marca   | modelo           | escolher                    | preco      |
+      | "Motos" | "Honda" | "XR 250 Tornado" | "Xr 250 Honda Tornado 2004" | "R$ 6.750" |
+
   @remover_todos_produtos_lista_favoritos
   Scenario: Remover todos os produtos da lista de favoritos
     Given Que eu quero testar "Remover todos os produtos da lista de favoritos"

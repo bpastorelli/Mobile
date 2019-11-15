@@ -165,6 +165,11 @@ public class ActionsMobile extends PagesController {
 		LogReport.passFail(getPage(this.inicialPage).textoExibidoPagina(descricao, 10), "Descricao esperada: " + descricao);
 	}
 	
+	public void escolherProdutoSemVisualizar(String descricao) {
+		
+		getPage(this.pesquisaPage).deslizarParaBaixoTextoVisivel(descricao);
+	}
+	
 	public void removerProdutosListaFavoritos() {
 		
 		List<MobileElement> elements = getPage(this.favoritosPage).retornaElementos("favoritos");
@@ -173,6 +178,15 @@ public class ActionsMobile extends PagesController {
 			getPage(this.pesquisaPage).ifPopupIsPresent("Agora você pode reservar", "reservarVeiculo", 2);
 			getPage(this.pesquisaPage).clicarBotao("favoritar");
 			irParaMenuFavoritos();
+		}
+	}
+	
+	public void favoritarProdutoNaLista(String descricao) {
+		
+		List<MobileElement> elements = getPage(this.favoritosPage).retornaElementos("produtos");
+		for(int i=0; i < elements.size(); i++) {
+			if(elements.get(i).getText().toLowerCase().equals(descricao.toLowerCase()))
+				getPage(this.pesquisaPage).clicarBotao(String.valueOf(i-2));
 		}
 	}
 	

@@ -596,7 +596,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public void selectItemList(String name, String text) {
 
-		touchActionDownTextDisplayed(text, "");
+		touchActionDownTextDisplayed(text, "Deslizar até o produto " + text);
 
 		List<MobileElement> elements;
 		elements = getListElements(name);
@@ -609,7 +609,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			LogReport.fail("Elemento " + name + " não encontrado.");
 		
 		clickElement(element);
-		LogReport.info("Selecionado o item " + text, Property.EVIDENCIAR_STEPS);
+		LogReport.info("Selecionado o item \"" + text + "\"", Property.EVIDENCIAR_STEPS);
 
 	}
 
