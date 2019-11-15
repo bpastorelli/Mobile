@@ -61,7 +61,6 @@ public class ActionsMobile extends PagesController {
 		getPage(this.pesquisaPage).clicarBotao("Buscar");
 		getPage(this.pesquisaPage).digitarTexto("txtBusca", produto);
 		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", produto, "Selecionar item " + produto);
-		//getPage(this.pesquisaPage).deslizarParaBaixoTextoVisivel(descricao);
 		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", descricao, "Selecionar item " + descricao);
 	}
 	
@@ -70,7 +69,6 @@ public class ActionsMobile extends PagesController {
 		getPage(this.pesquisaPage).clicarBotao("nova pesquisa");
 		getPage(this.pesquisaPage).digitarTexto("txtBusca", produto);
 		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", produto, "Selecionar item " + produto);
-		//getPage(this.pesquisaPage).deslizarParaBaixoTextoVisivel(descricao);
 		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", descricao, "Selecionar item " + descricao);
 	}
 

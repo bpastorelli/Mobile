@@ -338,7 +338,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 
 			int pressX = getDriver().manage().window().getSize().width / 2;
 			int bottomY = getDriver().manage().window().getSize().height * 4 / 5;
-			int topY = getDriver().manage().window().getSize().height / 6;
+			int topY = getDriver().manage().window().getSize().height / 8;
 			scroll(pressX, bottomY, pressX, topY);
 		} catch (Exception e) {
 
