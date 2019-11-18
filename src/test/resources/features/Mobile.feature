@@ -3,9 +3,8 @@
 Feature: Automacao Mobile
   Feature de Testes para criação de framework de automação mobile.
 
-  @login_sucesso
-  Scenario: Login com sucesso
-    Given Que eu quero testar "Login com sucesso"
+	Background:
+		Given Que eu quero testar "Login"
     And Que efetuo o login com usuario "brunopastorelli@hotmail.com" e senha "sid04197" validos
     Then Valido o teste com o texto "Pagar com QR" na pagina atual
 
