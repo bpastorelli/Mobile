@@ -172,7 +172,7 @@ public class ActionsMobile extends PagesController {
 		
 		List<MobileElement> elements = getPage(this.favoritosPage).retornaElementos("favoritos");
 		for(MobileElement e : elements) {
-			e.click();
+			getPage(this.pesquisaPage).clicarBotao(e);
 			getPage(this.pesquisaPage).ifPopupIsPresent("Agora você pode reservar", "reservarVeiculo", 2);
 			getPage(this.pesquisaPage).clicarBotao("favoritar");
 			irParaMenuFavoritos();
@@ -183,8 +183,10 @@ public class ActionsMobile extends PagesController {
 		
 		List<MobileElement> elements = getPage(this.favoritosPage).retornaElementos("produtos");
 		for(int i=0; i < elements.size(); i++) {
-			if(elements.get(i).getText().toLowerCase().equals(descricao.toLowerCase()))
+			if(elements.get(i).getText().toLowerCase().equals(descricao.toLowerCase())) {
 				getPage(this.pesquisaPage).clicarBotao(String.valueOf(i-2));
+				return;
+			}
 		}
 	}
 	

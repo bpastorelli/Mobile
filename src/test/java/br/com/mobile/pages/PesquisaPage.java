@@ -46,6 +46,12 @@ public class PesquisaPage implements Page {
 		base.touchActionDownDisplayed(label);
 		base.clickElementByMapElements(label);
 	}
+	
+	@Override
+	public void clicarBotao(MobileElement element) {
+		
+		base.clickElement(element);
+	}
 
 	@Override
 	public void digitarTexto(String name, String texto) {

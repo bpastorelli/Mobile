@@ -31,6 +31,13 @@ public interface Page {
 	abstract void clicarBotao(String label);
 	
 	/**
+	 * Clicar no botão pelo elemento recebido
+	 * 
+	 * @param element Elemento a ser clicado
+	 */	
+	abstract void clicarBotao(MobileElement element);
+	
+	/**
 	 * Digita um texto
 	 * 
 	 * @param texto Texto a ser digitado

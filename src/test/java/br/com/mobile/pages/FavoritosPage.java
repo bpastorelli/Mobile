@@ -31,6 +31,12 @@ public class FavoritosPage implements Page {
 	}
 
 	@Override
+	public void clicarBotao(MobileElement element) {
+		
+		base.clickElement(element);
+	}
+	
+	@Override
 	public void digitarTexto(String name, String texto) {
 		
 		base.setText(name, texto, false);
