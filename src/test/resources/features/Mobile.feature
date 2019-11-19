@@ -18,9 +18,9 @@ Feature: Automacao Mobile
     Then Valido o teste com o texto "Você adicionou ao seu carrinho" na pagina atual
 
     Examples: 
-      | tipo            | descricao                                                       | preco      |
-      | "Notebook"      | "Notebook Dell Inspiron 3583-u05p Pentium 4gb 500gb 15.6 Linux" | "R$ 1.899" |
-      | "Bota Robofoot" | "Bota Imobilizadora Robofoot Salvapé Original Seminova Top"     | "R$ 180"   |
+      | tipo            | descricao                                                    | preco      |
+      | "Notebook"      | "Notebook Positivo Intel 4gb 500gb Hdmi Wifi Webcam Usb 3.0" | "R$ 1.369" |
+      | "Bota Robofoot" | "Bota Imobilizadora Robofoot Salvapé Original Seminova Top"  | "R$ 180"   |
 
   @remover_todos_produtos_carrinho
   Scenario: Remover todos os produto do carrinho
