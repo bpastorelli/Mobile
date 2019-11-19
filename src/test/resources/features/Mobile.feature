@@ -3,8 +3,9 @@
 Feature: Automacao Mobile
   Feature de Testes para criação de framework de automação mobile.
 
-	Background:
-		Given Que eu quero testar "Login"
+  @login_sucesso
+  Scenario: Login com sucesso
+    Given Que eu quero testar "Login com sucesso"
     And Que efetuo o login com usuario "brunopastorelli@hotmail.com" e senha "sid04197" validos
     Then Valido o teste com o texto "Pagar com QR" na pagina atual
 
@@ -17,9 +18,9 @@ Feature: Automacao Mobile
     Then Valido o teste com o texto "Você adicionou ao seu carrinho" na pagina atual
 
     Examples: 
-      | tipo            | descricao                                                   | preco      |
-      | "Notebook"      | "Notebook Lenovo S145 Celeron 4gb 500gb Win10 15.6"         | "R$ 1.649" |
-      | "Bota Robofoot" | "Bota Imobilizadora Robofoot Salvapé Original Seminova Top" | "R$ 180"   |
+      | tipo            | descricao                                                    | preco      |
+      | "Notebook"      | "Notebook Positivo Intel 4gb 500gb Hdmi Wifi Webcam Usb 3.0" | "R$ 1.369" |
+      | "Bota Robofoot" | "Bota Imobilizadora Robofoot Salvapé Original Seminova Top"  | "R$ 180"   |
 
   @remover_todos_produtos_carrinho
   Scenario: Remover todos os produto do carrinho
