@@ -54,8 +54,8 @@ Feature: Automacao Mobile
     Then Valido se o produto <escolher> esta presenta na lista de favoritos
 
     Examples: 
-      | tipo    | marca   | modelo           | escolher                    | preco      |
-      | "Motos" | "Honda" | "XR 250 Tornado" | "Xr 250 Honda Tornado 2004" | "R$ 6.750" |
+      | tipo    | marca   | modelo           | escolher          | preco       |
+      | "Motos" | "Honda" | "Outros Modelos" | "Honda Nx Falcon" | "R$ 10.500" |
 
   @remover_todos_produtos_lista_favoritos
   Scenario: Remover todos os produtos da lista de favoritos

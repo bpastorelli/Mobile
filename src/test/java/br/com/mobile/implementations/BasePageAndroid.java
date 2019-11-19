@@ -414,7 +414,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public void touchActionTopDisplayed(String name) {
 
-		for (int i = 0; i < Property.TIMEOUT; i++) {
+		for (int i = 0; i < Property.SCROLL; i++) {
 			if (!elementIsPresent(name))
 				touchActionTop();
 			else
@@ -427,7 +427,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public void touchActionDownDisplayed(String name) {
 
-		for (int i = 0; i < Property.TIMEOUT; i++) {
+		for (int i = 0; i < Property.SCROLL; i++) {
 			if (!elementIsPresent(name))
 				touchActionDown();
 			else
@@ -440,7 +440,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public void touchActionDownDisplayed(MobileElement element) {
 
-		for (int i = 0; i < Property.TIMEOUT; i++) {
+		for (int i = 0; i < Property.SCROLL; i++) {
 			if (!element.isDisplayed())
 				touchActionDown();
 			else
@@ -469,7 +469,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public void touchActionLeftDisplayed(String name, String message) {
 
-		for (int i = 0; i < Property.TIMEOUT; i++) {
+		for (int i = 0; i < Property.SCROLL; i++) {
 			if (!elementIsPresent(name)) {
 				touchActionLeft();
 			} else {
@@ -484,7 +484,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public void touchActionRightDisplayed(String name, String message) {
 
-		for (int i = 0; i < Property.TIMEOUT; i++) {
+		for (int i = 0; i < Property.SCROLL; i++) {
 			if (!elementIsPresent(name)) {
 				touchActionRight();
 			} else {
@@ -499,7 +499,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public void touchActionLeftTextDisplayed(String text, String message) {
 
-		for (int i = 0; i < Property.TIMEOUT; i++) {
+		for (int i = 0; i < Property.SCROLL; i++) {
 			if (!textIsPresent(text)) {
 				touchActionLeft();
 			} else {
@@ -514,7 +514,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public void touchActionTopTextDisplayed(String text, String message) {
 
-		for (int i = 0; i < Property.TIMEOUT; i++) {
+		for (int i = 0; i < Property.SCROLL; i++) {
 			if (!textIsPresent(text)) {
 				touchActionTop();
 			} else {
@@ -529,7 +529,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public void touchActionRightTextDisplayed(String text, String message) {
 
-		for (int i = 0; i < Property.TIMEOUT; i++) {
+		for (int i = 0; i < Property.SCROLL; i++) {
 			if (!textIsPresent(text)) {
 				touchActionRight();
 				LogReport.info(message, Property.EVIDENCIAR_STEPS);
@@ -614,7 +614,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public void touchActionDownTextDisplayed(String text, String message) {
 		
-		for (int i = 0; i < Property.TIMEOUT; i++) {
+		for (int i = 0; i < Property.SCROLL; i++) {
 			if (!textIsPresent(text)) {
 				touchActionDown();
 			} else {
@@ -637,7 +637,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	@Override
 	public void touchActionTopDisplayed(MobileElement element) {
 
-		for (int i = 0; i < Property.TIMEOUT; i++) {
+		for (int i = 0; i < Property.SCROLL; i++) {
 			if (!element.isDisplayed())
 				touchActionTop();
 			else

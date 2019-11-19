@@ -35,12 +35,12 @@ public class ActionsMobile extends PagesController {
 	
 	public void logar(String usuario, String senha) {
 		
-		getPage(this.inicialPage).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 1);
+		getPage(this.inicialPage).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 2);
 		getPage(this.inicialPage).ifPopupIsPresent("Acessar a minha conta", "Acessar a minha conta", 2);
-		if(getPage(this.inicialPage).textoExibidoPagina("Onde você está?", 1))		
+		if(getPage(this.inicialPage).textoExibidoPagina("Onde você está?", 2))		
 			getPage(this.inicialPage).selecionarItemListaSuspensa("paises", "Brasil", "Clicar no país de localização");
 		
-		getPage(this.inicialPage).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 1);
+		getPage(this.inicialPage).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 2);
 		getPage(this.inicialPage).ifPopupIsPresent("O que está esperando?", "Já tenho conta");
 		getPage(this.continuarPage).ifPopupIsPresent("Continuar com", "NENHUMA DAS ALTERNATIVAS ACIMA");			
 		
@@ -52,8 +52,8 @@ public class ActionsMobile extends PagesController {
 		getPage(this.logarPage).textoExibidoPagina("Senha");
 		getPage(this.logarPage).digitarTexto("senha", senha);
 		getPage(this.logarPage).clicarBotao("Entrar");
-		getPage(this.inicialPage).ifPopupIsPresent("Salvar senha do Mercado Livre", "NUNCA", 1);
-		getPage(this.inicialPage).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 1);
+		getPage(this.inicialPage).ifPopupIsPresent("Salvar senha do Mercado Livre", "NUNCA", 2);
+		getPage(this.inicialPage).ifPopupIsPresent("Instale a nova versão disponível", "MAIS TARDE", 2);
 	}
 	
 	public void pesquisaProduto(String produto, String descricao) {
@@ -171,8 +171,10 @@ public class ActionsMobile extends PagesController {
 	public void removerProdutosListaFavoritos() {
 		
 		List<MobileElement> elements = getPage(this.favoritosPage).retornaElementos("favoritos");
+		
 		for(MobileElement e : elements) {
-			getPage(this.pesquisaPage).clicarBotao(e);
+			getPage(this.favoritosPage).textoExibidoPagina("Favoritos");
+			getPage(this.favoritosPage).clicarBotao(e);
 			getPage(this.pesquisaPage).ifPopupIsPresent("Agora você pode reservar", "reservarVeiculo", 2);
 			getPage(this.pesquisaPage).clicarBotao("favoritar");
 			irParaMenuFavoritos();
@@ -181,7 +183,10 @@ public class ActionsMobile extends PagesController {
 	
 	public void favoritarProdutoNaLista(String descricao) {
 		
+		getPage(this.pesquisaPage).textoExibidoPagina("Anúncio");
+		
 		List<MobileElement> elements = getPage(this.favoritosPage).retornaElementos("produtos");
+		
 		for(int i=0; i < elements.size(); i++) {
 			if(elements.get(i).getText().toLowerCase().equals(descricao.toLowerCase())) {
 				getPage(this.pesquisaPage).clicarBotao(String.valueOf(i-2));

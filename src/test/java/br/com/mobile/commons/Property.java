@@ -58,6 +58,8 @@ public abstract class Property {
 	
 	public static Boolean EVIDENCIAR_STEPS;
 	
+	public static Integer SCROLL;
+	
 	private static final String PROP_FILE_CONFIG = Utils.getFilePath("config.properties").toString();
 	
 	private static Properties getProp() throws IOException {
@@ -97,6 +99,7 @@ public abstract class Property {
 			HTML_REPORTER_PAGE_NAME    = properties.getProperty("extent.report.page.name").trim();
 			PLATAFORMA_CI              = properties.getProperty("app.ci.plataforma");
 			EVIDENCIAR_STEPS           = Boolean.parseBoolean(properties.getProperty("app.steps.evidenciar"));
+			SCROLL                     = Integer.valueOf(properties.getProperty("selenium.element.scroll"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
