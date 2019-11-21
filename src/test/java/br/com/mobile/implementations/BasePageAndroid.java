@@ -11,6 +11,8 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.com.mobile.commons.Property;
 import br.com.mobile.interfaces.BasePage;
@@ -109,7 +111,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 	 * @param name Nome do elemento
 	 */
 	@Override
-	public void clickElementByMapElements(String name) {
+	public void clickElement(String name) {
 
 		try {
 			element = getElement(name);
@@ -682,7 +684,7 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			i++;
 			wait(1);
 			if (textIsPresent(text)) {
-				clickElementByMapElements(name);
+				clickElement(name);
 				if (!textIsPresent(text)) {
 					presence = true;
 				}
@@ -708,5 +710,21 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			getDriver().navigate().back();
 		}
 
+	}
+	
+	@Override
+	public MobileElement elementToBeClickable(String name) {
+		
+		MobileElement element = null;
+		
+		try {
+			By by = getMap(name);
+			WebDriverWait wait = new WebDriverWait(getDriver(), Property.TIMEOUT);
+			element = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(by));
+		}catch(Exception e) {
+			LogReport.fail("Elemento \"" + name + "\" não encontrado.");
+		}
+		
+	    return element;
 	}
 }

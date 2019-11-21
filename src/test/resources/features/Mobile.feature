@@ -19,7 +19,7 @@ Feature: Automacao Mobile
 
     Examples: 
       | tipo            | descricao                                                    | preco      |
-      | "Notebook"      | "Notebook Positivo Intel 4gb 500gb Hdmi Wifi Webcam Usb 3.0" | "R$ 1.369" |
+      | "Notebook"      | "Notebook Positivo Intel 4gb 500gb Hdmi Wifi Webcam Usb 3.0" | "R$ 1.299" |
       | "Bota Robofoot" | "Bota Imobilizadora Robofoot Salvapé Original Seminova Top"  | "R$ 180"   |
 
   @remover_todos_produtos_carrinho
@@ -36,12 +36,12 @@ Feature: Automacao Mobile
     When Escolho o veiculo <escolher> e visualizo
     Then Valido o teste com o texto <preco> na pagina atual
     When Marco o produto nos meus favoritos
-    Then Valido se o produto <escolher> esta presenta na lista de favoritos
+    Then Valido se o produto <escolher> esta presente na lista de favoritos
 
     Examples: 
       | tipo                    | marca        | modelo           | escolher                                                   | preco       |
       | "Motos"                 | "Yamaha"     | "MT 07"          | "Yamaha Mt-07 Abs,2018 Financiamos E Parcelamos No Cartão" | "R$ 31.490" |
-      | "Motos"                 | "Suzuki"     | "Outros Modelos" | "Suzuki Gsx R 1100"                                        | "R$ 16.900" |
+      | "Motos"                 | "Suzuki"     | "Outros Modelos" | "Suzuki Gsx 750f"                                          | "R$ 18.900" |
       | "Motos"                 | "Triumph"    | "Tiger 800"      | "Triumph Tiger 800 2014"                                   | "R$ 28.900" |
       | "Carros e caminhonetes" | "Mitsubishi" | "L200"           | "Mitsubishi L200 3.5 Triton Hpe Cab. Dupl A 4x4 Aut. 4p"   | "R$ 49.990" |
 
@@ -50,12 +50,12 @@ Feature: Automacao Mobile
     Given Que eu quero testar "Favoritar um produto na lista"
     And Que eu quero pesquisar um veiculo tipo <tipo>
     And Seleciono a marca <marca> e modelo <modelo>
-    When Escolho o veiculo <escolher> sem visualizar os detalhes do anuncio e marco como favorito
-    Then Valido se o produto <escolher> esta presenta na lista de favoritos
+    When Seleciono o <ordem> veiculo sem visualizar os detalhes do anuncio e marco como favorito
+    Then Valido se o produto esta presente na lista de favoritos
 
     Examples: 
-      | tipo    | marca   | modelo           | escolher          | preco       |
-      | "Motos" | "Honda" | "Outros Modelos" | "Honda Nx Falcon" | "R$ 10.500" |
+      | tipo    | marca   | modelo       | ordem      |
+      | "Motos" | "Honda" | "Falcon 400" | "terceiro" |
 
   @remover_todos_produtos_lista_favoritos
   Scenario: Remover todos os produtos da lista de favoritos

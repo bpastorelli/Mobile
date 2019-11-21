@@ -27,7 +27,7 @@ public class ContinuarPage implements Page {
 	@Override
 	public void clicarBotao(String label) {
 		
-		base.clickElementByMapElements(label);
+		base.clickElement(label);
 	}
 	
 	@Override

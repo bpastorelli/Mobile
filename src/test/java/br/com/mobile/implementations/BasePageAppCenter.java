@@ -13,6 +13,8 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.com.mobile.commons.Property;
 import br.com.mobile.interfaces.BasePage;
@@ -22,7 +24,7 @@ import io.appium.java_client.touch.offset.PointOption;
 
 public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage {
 
-	private static WebElement element;
+	private static MobileElement element;
 
 	private static Map<String, By> mapElements = new HashMap<String, By>();
 
@@ -45,7 +47,7 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 	 * @return WebElemento
 	 */
 	@Override
-	public WebElement getElement(String name) {
+	public MobileElement getElement(String name) {
 
 		By obj = null;
 		element = null;
@@ -85,7 +87,7 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 	 * @return WebElement
 	 */
 	@Override
-	public WebElement findElement(By by) {
+	public MobileElement findElement(By by) {
 
 		element = null;
 		try {
@@ -103,7 +105,7 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 	 * @param name Nome do elemento
 	 */
 	@Override
-	public void clickElementByMapElements(String name) {
+	public void clickElement(String name) {
 
 		try {
 			element = getElement(name);
@@ -636,7 +638,7 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 			i++;
 			wait(1);
 			if(textIsPresent(text)) {
-				clickElementByMapElements(name);
+				clickElement(name);
 				if(!textIsPresent(text)) {					
 					presence = true;
 				}
@@ -662,4 +664,13 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 			getDriver().navigate().back();
 		}
 	}	
+	
+	@Override
+	public MobileElement elementToBeClickable(String name) {
+		
+		By by = getMap(name);
+	    WebDriverWait wait = new WebDriverWait(getDriver(), Property.TIMEOUT);
+	    MobileElement element = (MobileElement) wait.until(ExpectedConditions.elementToBeClickable(by));
+	    return element;
+	}
 }

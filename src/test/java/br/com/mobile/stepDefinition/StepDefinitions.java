@@ -67,11 +67,10 @@ public class StepDefinitions {
 		actionsMobile.escolherProduto(descricao);
 	}
 	
-	@When("^Escolho o veiculo \"([^\"]*)\" sem visualizar os detalhes do anuncio e marco como favorito$")
-	public void escolho_o_veiculo_sem_visualizar(String descricao) {
-		
-		actionsMobile.escolherProdutoSemVisualizar(descricao);
-		actionsMobile.favoritarProdutoNaLista(descricao);
+	@When("^Seleciono o \"([^\"]*)\" veiculo sem visualizar os detalhes do anuncio e marco como favorito$")
+	public void escolho_o_veiculo_sem_visualizar(String ordem) {
+			
+		actionsMobile.favoritarProdutoNaLista(ordem);
 		actionsMobile.retornarInicio("Pagar com QR");
 	}
 	
@@ -81,7 +80,7 @@ public class StepDefinitions {
 		actionsMobile.favoritarProduto();
 	}
 	
-	@Then("^Valido se o produto \"([^\"]*)\" esta presenta na lista de favoritos$")
+	@Then("^Valido se o produto \"([^\"]*)\" esta presente na lista de favoritos$")
 	public void valido_se_o_produto_esta_presente_na_lista_de_favoritos(String descricao) {
 		
 		actionsMobile.validarProdutoListaFavoritos(descricao);
@@ -94,5 +93,11 @@ public class StepDefinitions {
 		actionsMobile.irParaMenuFavoritos();
 		actionsMobile.removerProdutosListaFavoritos();
 	}
+	
+	@Then("^Valido se o produto esta presente na lista de favoritos$")
+	public void valido_se_o_produto_esta_presente_na_lista_de_favoritos() {
+		
+		actionsMobile.validarProdutoListaFavoritos();
+	}	
 	
 } 

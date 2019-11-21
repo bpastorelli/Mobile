@@ -28,7 +28,7 @@ public class MenuPage implements Page {
 	public void clicarBotao(String label) {
 		
 		base.addElement(label, By.xpath("//android.widget.TextView[@text='" + label.replace("opcao", "") + "']"));
-		base.clickElementByMapElements(label);
+		base.clickElement(label);
 	}
 
 	@Override

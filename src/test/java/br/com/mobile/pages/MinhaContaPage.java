@@ -29,7 +29,7 @@ public class MinhaContaPage implements Page {
 	public void clicarBotao(String label) {
 		
 		base.touchActionDownDisplayed(label);
-		base.clickElementByMapElements(label);
+		base.clickElement(label);
 	}
 
 	@Override

@@ -24,7 +24,7 @@ public interface BasePage {
 	 * @param name Nome do elemento no mapa
 	 * @return WebElemento
 	 */
-	abstract WebElement getElement(String name);
+	abstract MobileElement getElement(String name);
 	
 	/**
 	 * Busca o mapeamento de um elemento a partir do key informado no mapa de elementos.
@@ -40,14 +40,14 @@ public interface BasePage {
 	 * @param by By.Id, By.Name, By.Xpath...
 	 * @return WebElement
 	 */
-	abstract WebElement findElement(By by);
+	abstract MobileElement findElement(By by);
 	
 	/**
 	 * Clica um elemento pelo nome informado no mapElements
 	 * 
 	 * @param name Nome do elemento
 	 */
-	abstract void clickElementByMapElements(String name);
+	abstract void clickElement(String name);
 	
 	/**
 	 * Clica no elemento a partir do By.
@@ -322,5 +322,12 @@ public interface BasePage {
 	 * @param text Texto esperado
 	 */
 	abstract void returnUntilTextDisplayed(String text);
+	
+	/**
+	 * Retorna um elemento caso ele seja clicavel
+	 * @param name Nome do elemento no mapa de elementos
+	 * @return MobileElement
+	 */
+	abstract MobileElement elementToBeClickable(String name);
 	
 }

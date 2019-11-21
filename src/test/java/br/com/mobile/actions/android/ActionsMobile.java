@@ -17,6 +17,8 @@ import io.appium.java_client.MobileElement;
 
 public class ActionsMobile extends PagesController {
 	
+	private static String produto;
+	
 	private MenuPage menuPage = new MenuPage();
 	
 	private LogarPage logarPage = new LogarPage();
@@ -44,7 +46,7 @@ public class ActionsMobile extends PagesController {
 		getPage(this.inicialPage).ifPopupIsPresent("O que está esperando?", "Já tenho conta");
 		getPage(this.continuarPage).ifPopupIsPresent("Continuar com", "NENHUMA DAS ALTERNATIVAS ACIMA");			
 		
-		if(getPage(this.logarPage).textoExibidoPagina("E-mail ou usuário", 2)) {
+		if(getPage(this.logarPage).textoExibidoPagina("E-mail ou usuário")) {
 			getPage(this.logarPage).digitarTexto("e-mail", usuario);
 			getPage(this.logarPage).clicarBotao("Continuar");
 		}
@@ -145,6 +147,7 @@ public class ActionsMobile extends PagesController {
 	
 	public void escolherProduto(String descricao) {
 		
+		getPage(this.pesquisaPage).textoExibidoPagina("resultados");
 		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", descricao, "Selecionar item " + descricao);
 		getPage(this.pesquisaPage).ifPopupIsPresent("Agora você pode reservar", "reservarVeiculo", 2);
 	}
@@ -158,9 +161,20 @@ public class ActionsMobile extends PagesController {
 		
 		getPage(this.inicialPage).clicarBotao("menu");
 		getPage(this.menuPage).clicarBotao("Favoritos");
+		getPage(this.favoritosPage).textoExibidoPagina("Favoritos");
 		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", descricao, "Selecionar item " + descricao);
 		
 		LogReport.passFail(getPage(this.inicialPage).textoExibidoPagina(descricao, 10), "Descricao esperada: " + descricao);
+	}
+	
+	public void validarProdutoListaFavoritos() {
+		
+		getPage(this.inicialPage).clicarBotao("menu");
+		getPage(this.menuPage).clicarBotao("Favoritos");
+		getPage(this.favoritosPage).textoExibidoPagina("Favoritos");
+		getPage(this.pesquisaPage).selecionarItemListaSuspensa("produtos", produto, "Selecionar item " + produto);
+		
+		LogReport.passFail(getPage(this.inicialPage).textoExibidoPagina(produto, 10), "Descricao esperada: " + produto);
 	}
 	
 	public void escolherProdutoSemVisualizar(String descricao) {
@@ -181,18 +195,37 @@ public class ActionsMobile extends PagesController {
 		}
 	}
 	
-	public void favoritarProdutoNaLista(String descricao) {
+	public void favoritarProdutoNaLista(String ordem) {
 		
-		getPage(this.pesquisaPage).textoExibidoPagina("Anúncio");
+		Integer numero = 0;
 		
 		List<MobileElement> elements = getPage(this.favoritosPage).retornaElementos("produtos");
 		
-		for(int i=0; i < elements.size(); i++) {
-			if(elements.get(i).getText().toLowerCase().equals(descricao.toLowerCase())) {
-				getPage(this.pesquisaPage).clicarBotao(String.valueOf(i-2));
-				return;
+		if(elements.size() > 0) {
+			
+			switch(ordem) {
+			case "primeiro":
+				numero=1;
+				break;
+			case "segundo":
+				numero=2;
+				break;
+			case "terceiro":
+				numero=3;
+				break;
+			case "quarto":
+				numero=4;
+				break;
 			}
+			
+			produto = elements.get(numero).getText();
+			getPage(this.pesquisaPage).clicarBotao(String.valueOf(numero));
+			
+		}else {
+			
+			LogReport.fail("Não existem veiculos na lista.");
 		}
+
 	}
 	
 }

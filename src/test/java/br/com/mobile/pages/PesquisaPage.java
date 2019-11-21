@@ -43,8 +43,10 @@ public class PesquisaPage implements Page {
 		
 		if(Utils.isNumeric(label))
 			base.addElement(label, By.xpath("//android.widget.RelativeLayout[" + label + "]/android.widget.FrameLayout[2]/android.widget.FrameLayout"));
-		base.touchActionDownDisplayed(label);
-		base.clickElementByMapElements(label);
+		else 		
+			base.touchActionDownDisplayed(label);
+		
+		base.clickElement(label);
 	}
 	
 	@Override
