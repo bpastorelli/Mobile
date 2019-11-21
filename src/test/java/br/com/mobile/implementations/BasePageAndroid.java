@@ -593,6 +593,26 @@ public class BasePageAndroid extends SetupAndroid implements BasePage {
 			LogReport.fail("[FALHA]Elementos " + name + " nao encontrados.");
 		return elements;
 	}
+	
+	@Override
+	public List<MobileElement> getListElements(By by) {
+
+		List<MobileElement> elements = null;
+
+		Integer i = 0;
+		Boolean retorno = false;
+		do {
+			i++;
+			try {
+				elements = getDriver().findElements(by);
+				retorno = true;
+			} catch (Exception e) {}
+		} while (!retorno && i < 3);
+
+		if (!retorno)
+			LogReport.fail("[FALHA]Elementos nao encontrados.");
+		return elements;
+	}
 
 	@Override
 	public void selectItemList(String name, String text) {

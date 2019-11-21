@@ -283,11 +283,18 @@ public interface BasePage {
 	abstract void pressKey(int key);
 	
 	/**
-	 * Lista elementos a partir de uma classe css
+	 * Lista elementos
 	 * @param name Nome do elemento mapeado no mapa de elementos
 	 * @return List<MobileElement> 
 	 */
 	abstract List<MobileElement> getListElements(String name);
+	
+	/**
+	 * Lista elementos
+	 * @param by id, name, xpath
+	 * @return List<MobileElement> 
+	 */
+	abstract List<MobileElement> getListElements(By by);
 	
 	/**
 	 * Seleciona item em uma lista suspensa

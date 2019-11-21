@@ -67,10 +67,10 @@ public class StepDefinitions {
 		actionsMobile.escolherProduto(descricao);
 	}
 	
-	@When("^Seleciono o \"([^\"]*)\" veiculo sem visualizar os detalhes do anuncio e marco como favorito$")
-	public void escolho_o_veiculo_sem_visualizar(String ordem) {
-			
-		actionsMobile.favoritarProdutoNaLista(ordem);
+	@When("^Seleciono o veiculo \"([^\"]*)\" sem visualizar os detalhes do anuncio e marco como favorito$")
+	public void escolho_o_veiculo_sem_visualizar(String descricao) {
+		
+		actionsMobile.favoritarProdutoNaLista(descricao);
 		actionsMobile.retornarInicio("Pagar com QR");
 	}
 	

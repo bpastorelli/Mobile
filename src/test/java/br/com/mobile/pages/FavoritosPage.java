@@ -27,9 +27,16 @@ public class FavoritosPage implements Page {
 	@Override
 	public void clicarBotao(String label) {
 		
+		//base.addElement(label, By.xpath("//android.widget.TextView[@text='"+ label + "']"));
 		base.clickElement(label);
 	}
-
+	
+	@Override
+	public void clicarBotao(By by) {
+		
+		base.clickElement(by);
+	}
+	
 	@Override
 	public void clicarBotao(MobileElement element) {
 		
@@ -166,5 +173,11 @@ public class FavoritosPage implements Page {
 	public List<MobileElement> retornaElementos(String name) {
 		
 		return base.getListElements(name);
+	}
+	
+	@Override
+	public List<MobileElement> retornaElementos(By by) {
+		
+		return base.getListElements(by);
 	}
 }

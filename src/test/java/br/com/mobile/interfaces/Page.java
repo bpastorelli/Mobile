@@ -2,6 +2,8 @@ package br.com.mobile.interfaces;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
+
 import io.appium.java_client.MobileElement;
 
 public interface Page {
@@ -29,6 +31,12 @@ public interface Page {
 	 * @param label Label do botão
 	 */
 	abstract void clicarBotao(String label);
+	
+	/**
+	 * Clicar no botão pelo By informado
+	 * @param by id, name, xpath...
+	 */
+	abstract void clicarBotao(By by);
 	
 	/**
 	 * Clicar no botão pelo elemento recebido
@@ -181,5 +189,12 @@ public interface Page {
 	 * @return List<MobileElement>
 	 */
 	abstract List<MobileElement> retornaElementos(String name);
+	
+	/**
+	 * Retorna lista de elementos pelo by informado
+	 * @param by id, name, xpath...
+	 * @return List<MobileElement>
+	 */
+	abstract List<MobileElement> retornaElementos(By by);
 	
 }

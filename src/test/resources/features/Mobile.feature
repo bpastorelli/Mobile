@@ -50,12 +50,13 @@ Feature: Automacao Mobile
     Given Que eu quero testar "Favoritar um produto na lista"
     And Que eu quero pesquisar um veiculo tipo <tipo>
     And Seleciono a marca <marca> e modelo <modelo>
-    When Seleciono o <ordem> veiculo sem visualizar os detalhes do anuncio e marco como favorito
-    Then Valido se o produto esta presente na lista de favoritos
+    When Seleciono o veiculo <escolher> sem visualizar os detalhes do anuncio e marco como favorito
+    Then Valido se o produto <escolher> esta presente na lista de favoritos
 
     Examples: 
-      | tipo    | marca   | modelo       | ordem      |
-      | "Motos" | "Honda" | "Falcon 400" | "terceiro" |
+      | tipo    | marca   | modelo       | escolher                 |
+      | "Motos" | "Honda" | "Falcon 400" | "Honda Nx4 Falcon 2006"  |
+      | "Motos" | "Honda" | "Falcon 400" | "Honda Nx-4 Falcon 2007" |
 
   @remover_todos_produtos_lista_favoritos
   Scenario: Remover todos os produtos da lista de favoritos

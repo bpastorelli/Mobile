@@ -40,6 +40,12 @@ public class LogarPage implements Page {
 	}
 	
 	@Override
+	public void clicarBotao(By by) {
+		
+		base.clickElement(by);
+	}
+	
+	@Override
 	public void digitarTexto(String name, String texto) {
 		
 		base.setText(name, texto, false);
@@ -169,5 +175,11 @@ public class LogarPage implements Page {
 	public List<MobileElement> retornaElementos(String name) {
 		
 		return base.getListElements(name);
+	}
+	
+	@Override
+	public List<MobileElement> retornaElementos(By by) {
+		
+		return base.getListElements(by);
 	}
 }

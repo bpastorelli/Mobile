@@ -594,6 +594,20 @@ public class BasePageAppCenter extends SetupAndroidAppCenter implements BasePage
 
 		return elements;
 	}
+	
+	@Override
+	public List<MobileElement> getListElements(By by) {
+		
+		List<MobileElement> elements = null;
+		
+		try {
+			elements = getDriver().findElements(by);
+		} catch (Exception e) {
+			assertFalse("[FALHA]Elemento nao encontrado.", true);
+		}
+
+		return elements;
+	}
 
 	@Override
 	public void selectItemList(String name, String text) {

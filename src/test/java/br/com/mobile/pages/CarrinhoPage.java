@@ -33,6 +33,12 @@ public class CarrinhoPage implements Page {
 	}
 
 	@Override
+	public void clicarBotao(By by) {
+		
+		base.clickElement(by);
+	}
+	
+	@Override
 	public void clicarBotao(MobileElement element) {
 		
 		base.clickElement(element);
@@ -172,5 +178,11 @@ public class CarrinhoPage implements Page {
 	public List<MobileElement> retornaElementos(String name) {
 		
 		return base.getListElements(name);
+	}
+	
+	@Override
+	public List<MobileElement> retornaElementos(By by) {
+		
+		return base.getListElements(by);
 	}
 }

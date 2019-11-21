@@ -30,6 +30,12 @@ public class MenuPage implements Page {
 		base.addElement(label, By.xpath("//android.widget.TextView[@text='" + label.replace("opcao", "") + "']"));
 		base.clickElement(label);
 	}
+	
+	@Override
+	public void clicarBotao(By by) {
+		
+		base.clickElement(by);
+	}
 
 	@Override
 	public void clicarBotao(MobileElement element) {
@@ -167,5 +173,11 @@ public class MenuPage implements Page {
 	public List<MobileElement> retornaElementos(String name) {
 		
 		return base.getListElements(name);
+	}
+	
+	@Override
+	public List<MobileElement> retornaElementos(By by) {
+		
+		return base.getListElements(by);
 	}
 }
