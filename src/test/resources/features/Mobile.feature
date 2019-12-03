@@ -40,23 +40,23 @@ Feature: Automacao Mobile
 
     Examples: 
       | tipo                    | marca        | modelo           | escolher                                                   | preco       |
-      | "Motos"                 | "Yamaha"     | "MT 07"          | "Yamaha Mt-07 Abs,2018 Financiamos E Parcelamos No Cartão" | "R$ 31.490" |
+      | "Motos"                 | "Yamaha"     | "MT 07"          | "Yamaha Mt-07 Abs,2018 Financiamos E Parcelamos No Cartão" | "R$ 30.190" |
       | "Motos"                 | "Suzuki"     | "Outros Modelos" | "Suzuki Gsx 750f"                                          | "R$ 18.900" |
-      | "Motos"                 | "Triumph"    | "Tiger 800"      | "Triumph Tiger 800 2014"                                   | "R$ 28.900" |
-      | "Carros e caminhonetes" | "Mitsubishi" | "L200"           | "Mitsubishi L200 3.5 Triton Hpe Cab. Dupl A 4x4 Aut. 4p"   | "R$ 49.990" |
+      | "Motos"                 | "Triumph"    | "Tiger 800"      | "Triumph Tiger 800 2014"                                   | "R$ 31.900" |
+      | "Carros e caminhonetes" | "Mitsubishi" | "L200"           | "Mitsubishi L200 3.5 Triton Hpe Cab. Dupl A 4x4 Aut. 4p"   | "R$ 51.900" |
 
-  @favoritar_um_produto_na_lista
-  Scenario Outline: Favoritar um produto na lista
-    Given Que eu quero testar "Favoritar um produto na lista"
-    And Que eu quero pesquisar um veiculo tipo <tipo>
-    And Seleciono a marca <marca> e modelo <modelo>
-    When Seleciono o veiculo <escolher> sem visualizar os detalhes do anuncio e marco como favorito
-    Then Valido se o produto <escolher> esta presente na lista de favoritos
+  #@favoritar_um_produto_na_lista
+  #Scenario Outline: Favoritar um produto na lista
+  #  Given Que eu quero testar "Favoritar um produto na lista"
+  #  And Que eu quero pesquisar um veiculo tipo <tipo>
+  #  And Seleciono a marca <marca> e modelo <modelo>
+  #  When Seleciono o veiculo <escolher> sem visualizar os detalhes do anuncio e marco como favorito
+  #  Then Valido se o produto <escolher> esta presente na lista de favoritos
 
-    Examples: 
-      | tipo    | marca   | modelo       | escolher                 |
-      | "Motos" | "Honda" | "Falcon 400" | "Honda Nx4 Falcon 2006"  |
-      | "Motos" | "Honda" | "Falcon 400" | "Honda Nx-4 Falcon 2007" |
+  #  Examples: 
+  #    | tipo    | marca   | modelo       | escolher                   |
+  #    | "Motos" | "Honda" | "Falcon 400" | "Nx-4 Falcon Cinza 2007"   |
+  #    | "Motos" | "Honda" | "Falcon 400" | "Honda Falcon 400, Zerada" |
 
   @remover_todos_produtos_lista_favoritos
   Scenario: Remover todos os produtos da lista de favoritos

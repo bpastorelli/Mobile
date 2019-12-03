@@ -27,7 +27,6 @@ public class FavoritosPage implements Page {
 	@Override
 	public void clicarBotao(String label) {
 		
-		//base.addElement(label, By.xpath("//android.widget.TextView[@text='"+ label + "']"));
 		base.clickElement(label);
 	}
 	

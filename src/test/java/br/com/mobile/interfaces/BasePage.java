@@ -24,7 +24,7 @@ public interface BasePage {
 	 * @param name Nome do elemento no mapa
 	 * @return WebElemento
 	 */
-	abstract MobileElement getElement(String name);
+	abstract Object getElement(String name);
 	
 	/**
 	 * Busca o mapeamento de um elemento a partir do key informado no mapa de elementos.
@@ -40,7 +40,7 @@ public interface BasePage {
 	 * @param by By.Id, By.Name, By.Xpath...
 	 * @return WebElement
 	 */
-	abstract MobileElement findElement(By by);
+	abstract Object findElement(By by);
 	
 	/**
 	 * Clica um elemento pelo nome informado no mapElements

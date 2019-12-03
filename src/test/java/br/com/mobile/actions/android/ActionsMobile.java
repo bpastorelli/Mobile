@@ -194,10 +194,9 @@ public class ActionsMobile extends PagesController {
 	public void removerProdutosListaFavoritos() {
 
 		List<MobileElement> elements = getPage(this.favoritosPage).retornaElementos("favoritos");
-
-		for (MobileElement e : elements) {
+		for(MobileElement e : elements) {
 			getPage(this.favoritosPage).textoExibidoPagina("Favoritos");
-			getPage(this.favoritosPage).clicarBotao(e);
+			e.click();
 			getPage(this.pesquisaPage).ifPopupIsPresent("Agora você pode reservar", "reservarVeiculo", 2);
 			getPage(this.pesquisaPage).clicarBotao("favoritar");
 			irParaMenuFavoritos();
@@ -213,7 +212,6 @@ public class ActionsMobile extends PagesController {
 				.retornaElementos(By.xpath("//android.widget.TextView[starts-with(@text,'" + this.marca + "')]"));
 
 		for(int i=0; i < elements.size(); i++) {
-			
 			if(elements.get(i).getText().toLowerCase().equals(descricao.toLowerCase())) {
 				getPage(this.pesquisaPage).clicarBotao(String.valueOf(i+1));
 				return;
